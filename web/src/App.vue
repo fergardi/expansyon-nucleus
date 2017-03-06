@@ -22,15 +22,14 @@
                   img(src="img/avatar.jpg")
                 .flex
       md-list.md-dense.scrollable
-        template(v-for="item in left")
-          md-subheader {{ item.header }}
-          md-list-item(v-for="subitem in item.items")
-            router-link(exact, v-bind:to="subitem.url")
+        template(v-for="section in left")
+          md-subheader {{ section.header }}
+          md-list-item(v-for="item in section.items")
+            router-link(exact, v-bind:to="item.url")
               md-avatar
-                md-icon.md-primary {{ subitem.icon }}
-              span {{ subitem.title }}
-              md-chip.md-accent 17
-          md-divider
+                md-icon.md-primary {{ item.icon }}
+              span {{ item.title }}
+              md-chip {{ item.quantity }}
 
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
@@ -43,15 +42,13 @@
                   img(src="img/avatar.jpg")
                 .flex
       md-list.md-dense.scrollable
-        template(v-for="item in right")
-          md-subheader {{ item.header }}
-          md-list-item(v-for="subitem in item.items")
-            router-link(exact, v-bind:to="subitem.url")
-              md-avatar
-                md-icon.md-primary {{ subitem.icon }}
-              span {{ subitem.title }}
-              md-chip.md-warn 17
-          md-divider
+        template(v-for="section in right")
+          md-subheader {{ section.header }}
+          md-list-item(v-for="item in section.items")
+            md-avatar
+              md-icon.md-primary {{ item.icon }}
+            span {{ item.title }}
+            md-chip {{ item.quantity }}
 
     .main.padding
       router-view#scroll.content.animation.fadeIn
@@ -68,23 +65,27 @@
             items: [
               {
                 url: '/planetarium',
-                icon: 'public',
-                title: 'Planetarium'
+                icon: 'language',
+                title: 'Planetarium',
+                quantity: 17
               },
               {
                 url: '/bazaar',
-                icon: 'local_mall',
-                title: 'Bazaar'
+                icon: 'shopping_basket',
+                title: 'Bazaar',
+                quantity: 17
               },
               {
                 url: '/sell',
                 icon: 'attach_money',
-                title: 'Sell'
+                title: 'Sell',
+                quantity: 17
               },
               {
                 url: '/market',
                 icon: 'store',
-                title: 'Blackmarket'
+                title: 'Blackmarket',
+                quantity: 17
               }
             ]
           },
@@ -94,49 +95,55 @@
               {
                 url: '/research',
                 icon: 'school',
-                title: 'Research'
+                title: 'Research',
+                quantity: 17
               },
               {
                 url: '/hangar',
                 icon: 'build',
-                title: 'Hangar'
+                title: 'Hangar',
+                quantity: 17
               },
               {
                 url: '/Infrastructure',
-                icon: 'settings',
-                title: 'Infrastructure'
+                icon: 'location_city',
+                title: 'Infrastructure',
+                quantity: 17
               },
               {
                 url: '/defense',
-                icon: 'security',
-                title: 'Defense'
+                icon: 'track_changes',
+                title: 'Defense',
+                quantity: 17
               }
             ]
-          }
-        ],
-        right: [
+          },
           {
             header: 'Strategy',
             items: [
               {
                 url: '/explore',
-                icon: 'explore',
-                title: 'Explore'
+                icon: 'search',
+                title: 'Explore',
+                quantity: 17
               },
               {
                 url: '/cantina',
                 icon: 'local_bar',
-                title: 'Cantina'
+                title: 'Cantina',
+                quantity: 17
               },
               {
                 url: '/guild',
                 icon: 'wc',
-                title: 'Guild'
+                title: 'Guild',
+                quantity: 17
               },
               {
                 url: '/temple',
                 icon: 'account_balance',
-                title: 'Temple'
+                title: 'Temple',
+                quantity: 17
               }
             ]
           },
@@ -146,22 +153,103 @@
               {
                 url: '/senate',
                 icon: 'gavel',
-                title: 'Senate'
+                title: 'Senate',
+                quantity: 17
               },
               {
                 url: '/transmission',
                 icon: 'wifi',
-                title: 'Transmission'
+                title: 'Transmission',
+                quantity: 17
               },
               {
                 url: '/census',
                 icon: 'group',
-                title: 'Census'
+                title: 'Census',
+                quantity: 17
               },
               {
                 url: '/reputation',
+                icon: 'done',
+                title: 'Reputation',
+                quantity: 17
+              }
+            ]
+          }
+        ],
+        right: [
+          {
+            header: 'Resources',
+            items: [
+              {
+                icon: 'hourglass_full',
+                title: 'Turns',
+                quantity: 300
+              },
+              {
+                icon: 'home',
+                title: 'Size',
+                quantity: 300
+              },
+              {
+                icon: 'view_comfy',
+                title: 'Metal',
+                quantity: 300
+              },
+              {
+                icon: 'texture',
+                title: 'Crystal',
+                quantity: 300
+              },
+              {
+                icon: 'opacity',
+                title: 'Oil',
+                quantity: 300
+              },
+              {
+                icon: 'flash_on',
+                title: 'Energy',
+                quantity: 300
+              },
+              {
                 icon: 'star',
-                title: 'Reputation'
+                title: 'Influence',
+                quantity: 300
+              }
+            ]
+          },
+          {
+            header: 'Fleet',
+            items: [
+              {
+                icon: 'send',
+                title: 'Fighter',
+                quantity: 1234
+              },
+              {
+                icon: 'toys',
+                title: 'Cruiser',
+                quantity: 234
+              },
+              {
+                icon: 'bubble_chart',
+                title: 'Bomber',
+                quantity: 23
+              },
+              {
+                icon: 'camera',
+                title: 'Orbiter',
+                quantity: 456
+              },
+              {
+                icon: 'storage',
+                title: 'Carrier',
+                quantity: 12
+              },
+              {
+                icon: 'cached',
+                title: 'Recycler',
+                quantity: 2
               }
             ]
           }

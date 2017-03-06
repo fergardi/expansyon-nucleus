@@ -6,6 +6,7 @@ import moment from 'moment'
 
 import App from './App.vue'
 import Home from './views/Home.vue'
+import Planetarium from './views/Planetarium.vue'
 
 // router
 Vue.use(VueRouter)
@@ -14,6 +15,7 @@ var router = new VueRouter({
   routes: [
     { path: '/', redirect: '/home' },
     { path: '/home', component: Home },
+    { path: '/planetarium', component: Planetarium },
     { path: '*', redirect: '/' }
   ]
 })
