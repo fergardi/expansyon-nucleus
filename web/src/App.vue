@@ -29,7 +29,7 @@
               md-avatar
                 md-icon.md-primary {{ item.icon }}
               span {{ item.title }}
-              md-chip {{ item.quantity }}
+              md-chip(v-if="item.quantity") {{ item.quantity }}
 
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
@@ -67,25 +67,25 @@
                 url: '/planetarium',
                 icon: 'language',
                 title: 'Planetarium',
-                quantity: 17
+                quantity: 2
               },
               {
                 url: '/bazaar',
                 icon: 'shopping_basket',
                 title: 'Bazaar',
-                quantity: 17
+                quantity: 8
               },
               {
                 url: '/sell',
                 icon: 'attach_money',
                 title: 'Sell',
-                quantity: 17
+                quantity: null
               },
               {
                 url: '/market',
                 icon: 'store',
                 title: 'Blackmarket',
-                quantity: 17
+                quantity: null
               }
             ]
           },
@@ -96,25 +96,25 @@
                 url: '/research',
                 icon: 'school',
                 title: 'Research',
-                quantity: 17
+                quantity: 2
               },
               {
                 url: '/hangar',
                 icon: 'build',
                 title: 'Hangar',
-                quantity: 17
+                quantity: 87362
               },
               {
                 url: '/Infrastructure',
                 icon: 'location_city',
                 title: 'Infrastructure',
-                quantity: 17
+                quantity: 1792
               },
               {
                 url: '/defense',
                 icon: 'track_changes',
                 title: 'Defense',
-                quantity: 17
+                quantity: 172
               }
             ]
           },
@@ -125,25 +125,25 @@
                 url: '/explore',
                 icon: 'search',
                 title: 'Explore',
-                quantity: 17
+                quantity: 8
               },
               {
                 url: '/cantina',
                 icon: 'local_bar',
                 title: 'Cantina',
-                quantity: 17
+                quantity: 3
               },
               {
                 url: '/guild',
                 icon: 'wc',
                 title: 'Guild',
-                quantity: 17
+                quantity: 2
               },
               {
                 url: '/temple',
                 icon: 'account_balance',
                 title: 'Temple',
-                quantity: 17
+                quantity: 6
               }
             ]
           },
@@ -154,25 +154,48 @@
                 url: '/senate',
                 icon: 'gavel',
                 title: 'Senate',
-                quantity: 17
+                quantity: 3
               },
               {
                 url: '/transmission',
                 icon: 'wifi',
                 title: 'Transmission',
-                quantity: 17
+                quantity: 2
               },
               {
                 url: '/census',
                 icon: 'group',
                 title: 'Census',
-                quantity: 17
+                quantity: 172
               },
               {
                 url: '/reputation',
                 icon: 'done',
                 title: 'Reputation',
-                quantity: 17
+                quantity: null
+              }
+            ]
+          },
+          {
+            header: 'Help',
+            items: [
+              {
+                url: '/account',
+                icon: 'account_circle',
+                title: 'Account',
+                quantity: null
+              },
+              {
+                url: '/tutorial',
+                icon: 'help',
+                title: 'Tutorial',
+                quantity: null
+              },
+              {
+                url: '/logout',
+                icon: 'cancel',
+                title: 'Log Out',
+                quantity: null
               }
             ]
           }
@@ -324,8 +347,9 @@
           .md-avatar
             .md-icon
               border-radius 50%
-    .router-link-active
-      background-color rgba(153, 153, 153, 0.2)
+    .md-list-item:not(.md-avatar-list)
+      .router-link-active
+        background-color rgba(153, 153, 153, 0.2)
   .flex
     display flex
     flex 1
