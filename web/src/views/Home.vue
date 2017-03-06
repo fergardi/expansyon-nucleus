@@ -20,7 +20,7 @@
       return {
         cards: [
           {
-            image: 'https://image.flaticon.com/icons/svg/270/270084.svg',
+            image: 'https://lh3.googleusercontent.com/-gJ6LIKAM_xI/V1EfKDbkmUI/AAAAAAABs1s/V5nIvz9fD4AflSpDIxisKJH1rwHK-HZzA/w2880-h1800/MATERIAL-DESIGN-GREAT-PICS-%2B%25283%2529.jpg',
             title: 'Title',
             subtitle: 'Subtitle',
             description: 'Description lorem ipsum'
