@@ -25,9 +25,33 @@
       }
     },
     created () {
-      for (var i = 0; i < 2; i++) {
+      var images = [
+        'https://image.flaticon.com/icons/svg/124/124558.svg',
+        'https://image.flaticon.com/icons/svg/124/124582.svg',
+        'https://image.flaticon.com/icons/svg/139/139706.svg',
+        'https://image.flaticon.com/icons/svg/139/139706.svg',
+        'https://image.flaticon.com/icons/svg/124/124581.svg',
+        'https://image.flaticon.com/icons/svg/139/139727.svg',
+        'https://image.flaticon.com/icons/svg/207/207532.svg',
+        'https://image.flaticon.com/icons/svg/308/308748.svg',
+        'https://image.flaticon.com/icons/svg/124/124555.svg',
+        'https://image.flaticon.com/icons/svg/139/139682.svg',
+        'https://image.flaticon.com/icons/svg/139/139725.svg',
+        'https://image.flaticon.com/icons/svg/139/139730.svg',
+        'https://image.flaticon.com/icons/svg/139/139728.svg',
+        'https://image.flaticon.com/icons/svg/231/231105.svg',
+        'https://image.flaticon.com/icons/svg/327/327483.svg',
+        'https://image.flaticon.com/icons/svg/305/305895.svg',
+        'https://image.flaticon.com/icons/svg/310/310121.svg',
+        'https://image.flaticon.com/icons/svg/170/170816.svg',
+        'https://image.flaticon.com/icons/svg/290/290846.svg',
+        'https://image.flaticon.com/icons/svg/290/290904.svg',
+        'https://image.flaticon.com/icons/svg/234/234298.svg',
+        'https://image.flaticon.com/icons/svg/290/290867.svg'
+      ]
+      for (var i = 0; i < 8; i++) {
         var planet = {
-          image: 'https://image.flaticon.com/icons/svg/124/124582.svg',
+          image: images[Math.floor(Math.random() * images.length)],
           title: 'ABC-123',
           size: Math.floor(Math.random() * 80),
           metal: Math.floor(Math.random() * 80),
@@ -40,7 +64,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Planetarium'
+      vuex.state.name = 'Explore'
     },
     methods: {
       color (planet) {

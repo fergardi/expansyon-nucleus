@@ -312,9 +312,9 @@
       background-size: cover;
       box-sizing: border-box;
       &#left
-        background-image url('img/background-blue.gif')
+        background-image url('img/left.jpg')
       &#right
-        background-image url('img/background-red.gif')
+        background-image url('img/right.jpg')
       .md-account-header
         a:not(.md-button)
           color inherit

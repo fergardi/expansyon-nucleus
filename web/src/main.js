@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueMaterial from '../js/vue-material'
+import VueMaterial from 'vue-material'
 
 import moment from 'moment'
 
 import App from './App.vue'
 import Home from './views/Home.vue'
+import Explore from './views/Explore.vue'
 import Planetarium from './views/Planetarium.vue'
 
 // router
@@ -16,6 +17,7 @@ var router = new VueRouter({
     { path: '/', redirect: '/home' },
     { path: '/home', component: Home },
     { path: '/planetarium', component: Planetarium },
+    { path: '/explore', component: Explore },
     { path: '*', redirect: '/' }
   ]
 })
