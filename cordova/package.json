@@ -1,0 +1,12 @@
+{
+  "name": "Nucleus",
+  "description": "Nucleus",
+  "author": "@fergardi",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "android": "cordova run android",
+    "ios": "cordova run ios"
+  },
+  "license": "MIT"
+}
