@@ -1,10 +1,11 @@
 <template lang="pug">
   div
     md-layout
-      md-layout(v-for="card in cards", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
+      md-layout(v-for="card in cards", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
         md-card
           md-card-media
             img(v-bind:src="card.image")
+            md-ink-ripple
           md-card-header
             .md-title {{ card.title }}
             .md-subtitle {{ card.subtitle }}
@@ -19,7 +20,7 @@
       return {
         cards: [
           {
-            image: 'https://lh3.googleusercontent.com/-gJ6LIKAM_xI/V1EfKDbkmUI/AAAAAAABs1s/V5nIvz9fD4AflSpDIxisKJH1rwHK-HZzA/w2880-h1800/MATERIAL-DESIGN-GREAT-PICS-%2B%25283%2529.jpg',
+            image: 'https://image.flaticon.com/icons/svg/270/270084.svg',
             title: 'Title',
             subtitle: 'Subtitle',
             description: 'Description lorem ipsum'

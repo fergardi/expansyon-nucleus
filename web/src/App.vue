@@ -1,58 +1,58 @@
 <template lang="pug">
   .app
+
     md-whiteframe
       md-toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="toggle('left')")
-          md-icon menu
+          md-icon.md-size-2x chevron_right
         .flex
         h2.md-title {{ name }}
         .flex
         md-button.md-icon-button.toggler(v-on:click.native="toggle('right')")
-          md-icon menu
+          md-icon.md-size-2x chevron_left
+
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
       md-whiteframe
         md-toolbar.md-account-header#left
           md-list.md-transparent
-            router-link(exact, to="/account")
-              md-list-item.md-avatar-list.center
+            md-list-item.md-avatar-list.center
+              router-link(exact, to="/home")
                 .flex
                 md-avatar.md-large
                   img(src="img/avatar.jpg")
                 .flex
-      md-list.md-dense.md-double-line.scrollable
+      md-list.md-dense.scrollable
         template(v-for="item in left")
           md-subheader {{ item.header }}
           md-list-item(v-for="subitem in item.items")
             router-link(exact, v-bind:to="subitem.url")
               md-avatar
                 md-icon.md-primary {{ subitem.icon }}
-              .md-list-text-container
-                span {{ subitem.title }}
-                span {{ subitem.subtitle }}
-              md-chip.md-warn 17
+              span {{ subitem.title }}
+              md-chip.md-accent 17
           md-divider
+
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
         md-toolbar.md-account-header#right
           md-list.md-transparent
-            router-link(exact, to="/account")
-              md-list-item.md-avatar-list.center
+            md-list-item.md-avatar-list.center
+              router-link(exact, to="/home")
                 .flex
                 md-avatar.md-large
                   img(src="img/avatar.jpg")
                 .flex
-      md-list.md-dense.md-double-line.scrollable
+      md-list.md-dense.scrollable
         template(v-for="item in right")
           md-subheader {{ item.header }}
           md-list-item(v-for="subitem in item.items")
             router-link(exact, v-bind:to="subitem.url")
               md-avatar
                 md-icon.md-primary {{ subitem.icon }}
-              .md-list-text-container
-                span {{ subitem.title }}
-                span {{ subitem.subtitle }}
-              md-chip.md-accent 17
+              span {{ subitem.title }}
+              md-chip.md-warn 17
           md-divider
+
     .main.padding
       router-view#scroll.content.animation.fadeIn
 </template>
@@ -64,106 +64,104 @@
       return {
         left: [
           {
-            header: 'Realm',
-            items: [
-              {
-                url: '/home',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
-              },
-              {
-                url: '/home1',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
-              }
-            ]
-          },
-          {
             header: 'Economy',
             items: [
               {
-                url: '/home2',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/planetarium',
+                icon: 'public',
+                title: 'Planetarium'
               },
               {
-                url: '/home3',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/bazaar',
+                icon: 'local_mall',
+                title: 'Bazaar'
+              },
+              {
+                url: '/sell',
+                icon: 'attach_money',
+                title: 'Sell'
+              },
+              {
+                url: '/market',
+                icon: 'store',
+                title: 'Blackmarket'
               }
             ]
           },
           {
-            header: 'Research',
+            header: 'Technonoly',
             items: [
               {
-                url: '/home4',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/research',
+                icon: 'school',
+                title: 'Research'
               },
               {
-                url: '/home5',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/hangar',
+                icon: 'build',
+                title: 'Hangar'
+              },
+              {
+                url: '/Infrastructure',
+                icon: 'settings',
+                title: 'Infrastructure'
+              },
+              {
+                url: '/defense',
+                icon: 'security',
+                title: 'Defense'
               }
             ]
           }
         ],
         right: [
           {
-            header: 'Realm',
+            header: 'Strategy',
             items: [
               {
-                url: '/home',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/explore',
+                icon: 'explore',
+                title: 'Explore'
               },
               {
-                url: '/home1',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/cantina',
+                icon: 'local_bar',
+                title: 'Cantina'
+              },
+              {
+                url: '/guild',
+                icon: 'wc',
+                title: 'Guild'
+              },
+              {
+                url: '/temple',
+                icon: 'account_balance',
+                title: 'Temple'
               }
             ]
           },
           {
-            header: 'Economy',
+            header: 'Diplomacy',
             items: [
               {
-                url: '/home2',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/senate',
+                icon: 'gavel',
+                title: 'Senate'
               },
               {
-                url: '/home3',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
-              }
-            ]
-          },
-          {
-            header: 'Research',
-            items: [
-              {
-                url: '/home4',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/transmission',
+                icon: 'wifi',
+                title: 'Transmission'
               },
               {
-                url: '/home5',
-                icon: 'home',
-                title: 'Home',
-                subtitle: 'Description'
+                url: '/census',
+                icon: 'group',
+                title: 'Census'
+              },
+              {
+                url: '/reputation',
+                icon: 'star',
+                title: 'Reputation'
               }
             ]
           }
@@ -280,7 +278,7 @@
     animation-name fadeIn
   /* MEDIAS*/
   // from desktop on show sidebar
-  @media only screen and (min-width 1280px)
+  @media only screen and (min-width 1080px)
     .app
       padding-left 304px
       padding-right 304px
