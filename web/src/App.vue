@@ -386,6 +386,7 @@
   .md-card.ship
   .md-card.building
   .md-card.tower
+  .md-card.mission
     width 100%
     margin 4px
     background-color #333356 !important

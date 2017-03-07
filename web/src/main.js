@@ -12,6 +12,7 @@ import Store from './views/Store.vue'
 import Infrastructure from './views/Infrastructure.vue'
 import Defense from './views/Defense.vue'
 import Hangar from './views/Hangar.vue'
+import Cantina from './views/Cantina.vue'
 import Planetarium from './views/Planetarium.vue'
 
 // router
@@ -28,6 +29,7 @@ var router = new VueRouter({
     { path: '/infrastructure', component: Infrastructure },
     { path: '/defense', component: Defense },
     { path: '/hangar', component: Hangar },
+    { path: '/cantina', component: Cantina },
     { path: '*', redirect: '/' }
   ]
 })
