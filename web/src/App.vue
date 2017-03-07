@@ -372,6 +372,8 @@
     justify-content center
   .hidden
     visibility hidden
+  .removed
+    display none
   
   /* PLANETS */
   .md-layout
@@ -382,6 +384,7 @@
   .md-card.sale
   .md-card.artifact
   .md-card.ship
+  .md-card.building
     width 100%
     margin 4px
     background-color #333356 !important
@@ -470,7 +473,7 @@
       padding-left 304px
       padding-right 304px
       .toggler
-        visibility hidden
+        display none
       .md-sidenav-content
         top 0
         pointer-events auto

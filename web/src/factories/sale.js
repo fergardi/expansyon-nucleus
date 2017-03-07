@@ -22,7 +22,7 @@ const factory = {
   build () {
     var sale = {
       image: factory.image(),
-      name: 'ITEM',
+      name: 'SALE',
       class: factory.class()
     }
     return sale

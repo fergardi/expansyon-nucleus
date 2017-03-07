@@ -1,6 +1,7 @@
 var images = [
-  'https://image.flaticon.com/icons/svg/167/167347.svg',
-  'https://image.flaticon.com/icons/svg/315/315312.svg'
+  'https://image.flaticon.com/icons/svg/232/232481.svg',
+  'https://image.flaticon.com/icons/svg/129/129522.svg',
+  'https://image.flaticon.com/icons/svg/224/224474.svg'
 ]
 
 var classes = [
@@ -23,7 +24,7 @@ const factory = {
   build () {
     var sale = {
       image: factory.image(),
-      name: 'ITEM',
+      name: 'BUILDING',
       class: factory.class()
     }
     return sale

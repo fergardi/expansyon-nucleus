@@ -9,6 +9,7 @@ import Home from './views/Home.vue'
 import Explore from './views/Explore.vue'
 import Market from './views/Market.vue'
 import Store from './views/Store.vue'
+import Infrastructure from './views/Infrastructure.vue'
 import Hangar from './views/Hangar.vue'
 import Planetarium from './views/Planetarium.vue'
 
@@ -23,6 +24,7 @@ var router = new VueRouter({
     { path: '/explore', component: Explore },
     { path: '/market', component: Market },
     { path: '/store', component: Store },
+    { path: '/infrastructure', component: Infrastructure },
     { path: '/hangar', component: Hangar },
     { path: '*', redirect: '/' }
   ]
