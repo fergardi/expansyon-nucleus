@@ -4,12 +4,12 @@
     md-whiteframe
       md-toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="toggle('left')")
-          md-icon.md-size-2x chevron_right
-        .flex
+          md-icon chevron_right
         h2.md-title {{ name }}
-        .flex
+        md-input-container.flex
+          md-input(type="search", placeholder="Search...", v-model="search")
         md-button.md-icon-button.toggler(v-on:click.native="toggle('right')")
-          md-icon.md-size-2x chevron_left
+          md-icon chevron_left
 
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
       md-whiteframe
@@ -41,10 +41,10 @@
                 md-avatar.md-large
                   img(src="img/avatar.jpg")
                 .flex
-      md-list.md-dense.scrollable
+      md-list.md-dense.scrollable(style="direction: rtl;")
         template(v-for="section in right")
           md-subheader {{ section.header }}
-          md-list-item(v-for="item in section.items")
+          md-list-item(v-for="item in section.items", style="direction: ltr;")
             md-avatar
               md-icon.md-primary {{ item.icon }}
             span {{ item.title }}
@@ -55,10 +55,11 @@
 </template>
 
 <script>
-  import vuex from './vuex/vuex.js'
+  import vuex from './vuex/vuex'
   export default {
     data () {
       return {
+        search: '',
         left: [
           {
             header: 'Economy',
@@ -70,9 +71,9 @@
                 quantity: 2
               },
               {
-                url: '/bazaar',
+                url: '/market',
                 icon: 'shopping_basket',
-                title: 'Bazaar',
+                title: 'Market',
                 quantity: 8
               },
               {
@@ -82,10 +83,10 @@
                 quantity: null
               },
               {
-                url: '/market',
+                url: '/store',
                 icon: 'store',
-                title: 'Blackmarket',
-                quantity: null
+                title: 'Store',
+                quantity: 8
               }
             ]
           },
@@ -287,6 +288,12 @@
         if (this.$refs[ref].close) this.$refs[ref].close()
       }
     },
+    watch: {
+      search (string) {
+        console.log(string)
+        vuex.state.search = string
+      }
+    },
     computed: {
       fullscreen () {
         return vuex.state.fullscreen
@@ -299,10 +306,12 @@
 </script>
 
 <style lang="stylus">
+  /* COMMON */
   body
     //background: url("img/background.jpg") no-repeat center center fixed;
     background-size: cover;
     box-sizing: border-box;
+    user-select: none !important;
   html
   body
   .app
@@ -363,6 +372,71 @@
     justify-content center
   .hidden
     visibility hidden
+  
+  /* PLANETS */
+  .md-layout
+    align-items flex-start
+    align-items flex-start
+    align-content flex-start
+  .md-card.planet
+  .md-card.sale
+  .md-card.artifact
+  .md-card.ship
+    width 100%
+    margin 4px
+    background-color #333356 !important
+    .md-card-header
+      background-color darken(#333356, 5) !important
+      .md-title
+        font-size 18px
+        text-align center
+    .md-card-content
+      background-color darken(#333356, 5) !important
+      color white
+      .md-progress
+        height 10px
+        margin 5px 0
+    .md-card-media
+      background-color #333356
+      img
+        height 140px
+        padding 10px
+    &.green
+      .md-card-header
+        color #4CAF50
+      .md-progress-track
+        background-color #4CAF50 !important
+    &.purple
+      .md-card-header
+        color #9C27B0
+      .md-progress-track
+        background-color #9C27B0 !important
+    &.pink
+      .md-card-header
+        color #E91E63
+      .md-progress-track
+        background-color #E91E63 !important
+    &.grey
+      .md-card-header
+        color #E0E0E0
+      .md-progress-track
+        background-color #E0E0E0 !important
+    &.blue
+      .md-card-header
+        color #2196F3
+      .md-progress-track
+        background-color #2196F3 !important
+    &.red
+      .md-card-header
+        color #B71C1C
+      .md-progress-track
+        background-color #B71C1C !important
+    &.orange
+      .md-card-header
+        color #FF9800
+      .md-progress-track
+        background-color #FF9800 !important
+
   /* ANIMATION TRANSITION */
   /*base code*/
   .animation
@@ -388,7 +462,8 @@
   .fadeIn
     -webkit-animation-name fadeIn
     animation-name fadeIn
-  /* MEDIAS*/
+    
+  /* SIDEBAR APPEARING */
   // from desktop on show sidebar
   @media only screen and (min-width 1080px)
     .app

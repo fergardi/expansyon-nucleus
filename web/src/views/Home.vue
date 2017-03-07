@@ -1,16 +1,15 @@
 <template lang="pug">
-  div
-    md-layout
-      md-layout(v-for="card in cards", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
-        md-card
-          md-card-media
-            img(v-bind:src="card.image")
-            md-ink-ripple
-          md-card-header
-            .md-title {{ card.title }}
-            .md-subtitle {{ card.subtitle }}
-          md-card-content
-            p {{ card.description }}
+  md-layout
+    md-layout(v-for="card in cards", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
+      md-card
+        md-card-media
+          img(v-bind:src="card.image")
+          md-ink-ripple
+        md-card-header
+          .md-title {{ card.title }}
+          .md-subtitle {{ card.subtitle }}
+        md-card-content
+          p {{ card.description }}
 </template>
 
 <script>

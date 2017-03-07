@@ -7,6 +7,9 @@ import moment from 'moment'
 import App from './App.vue'
 import Home from './views/Home.vue'
 import Explore from './views/Explore.vue'
+import Market from './views/Market.vue'
+import Store from './views/Store.vue'
+import Hangar from './views/Hangar.vue'
 import Planetarium from './views/Planetarium.vue'
 
 // router
@@ -18,6 +21,9 @@ var router = new VueRouter({
     { path: '/home', component: Home },
     { path: '/planetarium', component: Planetarium },
     { path: '/explore', component: Explore },
+    { path: '/market', component: Market },
+    { path: '/store', component: Store },
+    { path: '/hangar', component: Hangar },
     { path: '*', redirect: '/' }
   ]
 })
