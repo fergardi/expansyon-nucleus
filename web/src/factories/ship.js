@@ -1,10 +1,10 @@
 var images = [
-  'https://image.flaticon.com/icons/svg/270/270127.svg',
+  'https://image.flaticon.com/icons/svg/270/270109.svg',
   'https://image.flaticon.com/icons/svg/270/270140.svg',
   'https://image.flaticon.com/icons/svg/270/270118.svg',
   'https://image.flaticon.com/icons/svg/270/270106.svg',
   'https://image.flaticon.com/icons/svg/270/270105.svg',
-  'https://image.flaticon.com/icons/svg/270/270107.svg'
+  'https://image.flaticon.com/icons/svg/270/270108.svg'
 ]
 
 var classes = [

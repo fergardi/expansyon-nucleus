@@ -1,6 +1,6 @@
 <template lang="pug">
   md-layout
-    md-layout(v-for="building in filtered", md-flex-xlarge="25", md-flex-large="25", md-flex-small="33", md-flex-xsmall="50")
+    md-layout(v-for="building in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
       md-card.building(v-bind:class="building.class")
         md-card-header
           .md-title {{ building.name }}
