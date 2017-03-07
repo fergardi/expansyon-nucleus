@@ -41,10 +41,10 @@
                 md-avatar.md-large
                   img(src="img/avatar.jpg")
                 .flex
-      md-list.md-dense.scrollable(style="direction: rtl;")
+      md-list.md-dense.scrollable
         template(v-for="section in right")
           md-subheader {{ section.header }}
-          md-list-item(v-for="item in section.items", style="direction: ltr;")
+          md-list-item(v-for="item in section.items")
             md-avatar
               md-icon.md-primary {{ item.icon }}
             span {{ item.title }}
