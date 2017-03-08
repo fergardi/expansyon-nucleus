@@ -31,24 +31,31 @@ const factory = {
     if (factory.total(planet) > 400) {
       planet.class = 'orange'
       planet.name = 'FORTUNE'
+      planet.description = 'Description'
     } else if (planet.metal > 50) {
       planet.class = 'purple'
       planet.name = 'HERMES'
+      planet.description = 'Description'
     } else if (planet.crystal > 50) {
       planet.class = 'pink'
       planet.name = 'ATHENA'
+      planet.description = 'Description'
     } else if (planet.oil > 50) {
       planet.class = 'grey'
       planet.name = 'HADES'
+      planet.description = 'Description'
     } else if (planet.energy > 50) {
       planet.class = 'blue'
       planet.name = 'ZEUS'
+      planet.description = 'Description'
     } else if (planet.influence > 50) {
       planet.class = 'red'
       planet.name = 'ARES'
+      planet.description = 'Description'
     } else {
       planet.class = 'green'
       planet.name = 'GAIA'
+      planet.description = 'Description'
     }
     planet.name += '-' + factory.total(planet)
   },

@@ -23,12 +23,13 @@ const factory = {
     return classes[Math.floor(Math.random() * classes.length)]
   },
   build () {
-    var sale = {
+    var artifact = {
       image: factory.image(),
       name: 'ITEM',
+      description: 'Description',
       class: factory.class()
     }
-    return sale
+    return artifact
   }
 }
 

@@ -1,13 +1,13 @@
 <template lang="pug">
   md-layout
-    md-layout(v-for="artifact in filtered", md-flex-xlarge="25", md-flex-large="25", md-flex-small="33", md-flex-xsmall="50")
-      md-card.artifact(v-bind:class="artifact.class")
+    md-layout(v-for="artifact in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="33", md-flex-xsmall="50")
+      md-card.md-primary.card(v-bind:class="artifact.class")
         md-card-header
           .md-title {{ artifact.name }}
         md-card-media
           img(v-bind:src="artifact.image")
         md-card-content.no-padding.center
-          p Descripcion
+          p {{ artifact.description }}
 </template>
 
 <script>

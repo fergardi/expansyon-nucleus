@@ -1,13 +1,13 @@
 <template lang="pug">
   md-layout
     md-layout(v-for="building in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
-      md-card.building(v-bind:class="building.class")
+      md-card.md-primary.card(v-bind:class="building.class")
         md-card-header
           .md-title {{ building.name }}
         md-card-media
           img(v-bind:src="building.image")
         md-card-content.no-padding.center
-          p Description
+          p {{ building.description }}
 </template>
 
 <script>

@@ -1,13 +1,17 @@
 <template lang="pug">
   md-layout
     md-layout(v-for="tower in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
-      md-card.tower(v-bind:class="tower.class")
+      md-card.md-primary.card(v-bind:class="tower.class")
         md-card-header
           .md-title {{ tower.name }}
         md-card-media
           img(v-bind:src="tower.image")
         md-card-content.no-padding.center
-          p Description
+          md-progress(v-bind:md-progress="tower.attack")
+          md-progress(v-bind:md-progress="tower.defense")
+          md-progress(v-bind:md-progress="tower.speed")
+        md-card-content.no-padding.center
+          p {{ tower.description }}
 </template>
 
 <script>

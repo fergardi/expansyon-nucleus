@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
     md-layout(v-for="ship in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
-      md-card.ship(v-bind:class="ship.class")
+      md-card.md-primary.card(v-bind:class="ship.class")
         md-card-header
           .md-title {{ ship.name }}
         md-card-media
@@ -10,7 +10,8 @@
           md-progress(v-bind:md-progress="ship.attack")
           md-progress(v-bind:md-progress="ship.defense")
           md-progress(v-bind:md-progress="ship.speed")
-          p Description
+        md-card-content.no-padding.center
+          p {{ ship.description }}
 </template>
 
 <script>

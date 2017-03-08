@@ -1,13 +1,13 @@
 <template lang="pug">
   md-layout
     md-layout(v-for="mission in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
-      md-card.mission(v-bind:class="mission.class")
+      md-card.md-primary.card(v-bind:class="mission.class")
         md-card-header
           .md-title {{ mission.name }}
         md-card-media
           img(v-bind:src="mission.image")
         md-card-content.no-padding.center
-          p Description
+          p {{ mission.description }}
 </template>
 
 <script>

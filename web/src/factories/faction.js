@@ -1,10 +1,9 @@
 var images = [
-  'https://image.flaticon.com/icons/svg/167/167347.svg'
+  'https://image.flaticon.com/icons/svg/270/270136.svg'
 ]
 
 var classes = [
   'red',
-  'orange',
   'green',
   'blue',
   'purple',
@@ -20,12 +19,13 @@ const factory = {
     return classes[Math.floor(Math.random() * classes.length)]
   },
   build () {
-    var sale = {
+    var faction = {
       image: factory.image(),
-      name: 'SALE',
+      name: 'FACTION',
+      description: 'Description',
       class: factory.class()
     }
-    return sale
+    return faction
   }
 }
 

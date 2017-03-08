@@ -8,13 +8,7 @@ var images = [
 ]
 
 var classes = [
-  'red',
-  'orange',
-  'green',
-  'blue',
-  'purple',
-  'grey',
-  'pink'
+  'grey'
 ]
 
 const factory = {
@@ -25,18 +19,19 @@ const factory = {
     return classes[Math.floor(Math.random() * classes.length)]
   },
   number () {
-    return 10 + Math.floor(Math.random() * 70) // [10, 70)
+    return 0 + Math.floor(Math.random() * 100) // [0, 100)
   },
   build () {
-    var sale = {
+    var ship = {
       image: factory.image(),
       attack: factory.number(),
       defense: factory.number(),
       speed: factory.number(),
       name: 'SHIP',
+      description: 'Description',
       class: factory.class()
     }
-    return sale
+    return ship
   }
 }
 

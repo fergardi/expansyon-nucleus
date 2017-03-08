@@ -14,13 +14,6 @@
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
       md-whiteframe
         md-toolbar.md-account-header#left
-          md-list.md-transparent
-            md-list-item.md-avatar-list.center
-              router-link(exact, to="/home")
-                .flex
-                md-avatar.md-large
-                  img(src="img/avatar.jpg")
-                .flex
       md-list.md-dense.scrollable
         template(v-for="section in left")
           md-subheader {{ section.header }}
@@ -34,13 +27,6 @@
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
         md-toolbar.md-account-header#right
-          md-list.md-transparent
-            md-list-item.md-avatar-list.center
-              router-link(exact, to="/home")
-                .flex
-                md-avatar.md-large
-                  img(src="img/avatar.jpg")
-                .flex
       md-list.md-dense.scrollable
         template(v-for="section in right")
           md-subheader {{ section.header }}
@@ -309,9 +295,9 @@
   /* COMMON */
   body
     //background: url("img/background.jpg") no-repeat center center fixed;
-    background-size: cover;
-    box-sizing: border-box;
-    user-select: none !important;
+    background-size cover
+    box-sizing border-box
+    user-select none !important
   html
   body
   .app
@@ -326,11 +312,12 @@
   .content
     margin 0 !important
     height: 100%
+    scroll-behavior smooth !important
   .md-chip
     margin-right 5px
     margin-bottom 5px
   .md-toolbar
-    background-color #333356 !important
+    // background-color #333356 !important
   .md-sidenav
     .md-sidenav-content
       height 100%
@@ -344,9 +331,9 @@
       background-size: cover;
       box-sizing: border-box;
       &#left
-        background-image url('img/left.jpg')
+        // background-image url('img/left.jpg')
       &#right
-        background-image url('img/right.jpg')
+        // background-image url('img/right.jpg')
       .md-account-header
         a:not(.md-button)
           color inherit
@@ -377,32 +364,25 @@
   
   /* PLANETS */
   .md-layout
-    align-items flex-start
-    align-items flex-start
-    align-content flex-start
-  .md-card.planet
-  .md-card.sale
-  .md-card.artifact
-  .md-card.ship
-  .md-card.building
-  .md-card.tower
-  .md-card.mission
+    // align-items flex-start
+    // align-content flex-start
+  .md-card.card
     width 100%
     margin 4px
-    background-color #333356 !important
+    // background-color #333356 !important
     .md-card-header
-      background-color darken(#333356, 5) !important
       .md-title
         font-size 18px
         text-align center
+        font-weight bold
     .md-card-content
-      background-color darken(#333356, 5) !important
+      // background-color darken(#333356, 5) !important
       color white
       .md-progress
         height 10px
         margin 5px 0
     .md-card-media
-      background-color #333356
+      background-color lighten(#263238, 5) !important
       img
         height 140px
         padding 10px
@@ -470,7 +450,7 @@
     
   /* SIDEBAR APPEARING */
   // from desktop on show sidebar
-  @media only screen and (min-width 1080px)
+  @media only screen and (min-width 1280px)
     .app
       padding-left 304px
       padding-right 304px
@@ -480,5 +460,4 @@
         top 0
         pointer-events auto
         transform translate3d(0, 0, 0) !important
-        box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 1px 1px rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
 </style>

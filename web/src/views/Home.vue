@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
     md-layout(v-for="card in cards", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
-      md-card
+      md-card.md-primary.card
         md-card-media
           img(v-bind:src="card.image")
           md-ink-ripple

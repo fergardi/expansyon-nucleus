@@ -12,7 +12,13 @@ import Store from './views/Store.vue'
 import Infrastructure from './views/Infrastructure.vue'
 import Defense from './views/Defense.vue'
 import Hangar from './views/Hangar.vue'
+import Census from './views/Census.vue'
+import Guild from './views/Guild.vue'
+import Senate from './views/Senate.vue'
 import Cantina from './views/Cantina.vue'
+import Sell from './views/Sell.vue'
+import Research from './views/Research.vue'
+import Transmission from './views/Transmission.vue'
 import Planetarium from './views/Planetarium.vue'
 
 // router
@@ -29,6 +35,12 @@ var router = new VueRouter({
     { path: '/infrastructure', component: Infrastructure },
     { path: '/defense', component: Defense },
     { path: '/hangar', component: Hangar },
+    { path: '/census', component: Census },
+    { path: '/transmission', component: Transmission },
+    { path: '/guild', component: Guild },
+    { path: '/senate', component: Senate },
+    { path: '/research', component: Research },
+    { path: '/sell', component: Sell },
     { path: '/cantina', component: Cantina },
     { path: '*', redirect: '/' }
   ]
@@ -39,7 +51,10 @@ Vue.use(VueMaterial)
 Vue.material.registerTheme({
   // fallback
   default: {
-    primary: 'blue-grey',
+    primary: {
+      color: 'blue-grey',
+      hue: '900'
+    },
     accent: 'green',
     warn: 'red'
   }

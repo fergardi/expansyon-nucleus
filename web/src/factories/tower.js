@@ -5,13 +5,7 @@ var images = [
 ]
 
 var classes = [
-  'red',
-  'orange',
-  'green',
-  'blue',
-  'purple',
-  'grey',
-  'pink'
+  'grey'
 ]
 
 const factory = {
@@ -21,13 +15,20 @@ const factory = {
   class () {
     return classes[Math.floor(Math.random() * classes.length)]
   },
+  number () {
+    return 0 + Math.floor(Math.random() * 100) // [0, 100)
+  },
   build () {
-    var sale = {
+    var tower = {
       image: factory.image(),
       name: 'TOWER',
+      description: 'Description',
+      attack: factory.number(),
+      defense: factory.number(),
+      speed: factory.number(),
       class: factory.class()
     }
-    return sale
+    return tower
   }
 }
 

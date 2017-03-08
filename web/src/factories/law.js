@@ -1,11 +1,10 @@
 var images = [
-  'https://image.flaticon.com/icons/svg/232/232481.svg',
-  'https://image.flaticon.com/icons/svg/129/129522.svg',
-  'https://image.flaticon.com/icons/svg/224/224474.svg'
+  'https://image.flaticon.com/icons/svg/270/270136.svg'
 ]
 
 var classes = [
-  'grey'
+  'red',
+  'green'
 ]
 
 const factory = {
@@ -16,13 +15,13 @@ const factory = {
     return classes[Math.floor(Math.random() * classes.length)]
   },
   build () {
-    var building = {
+    var law = {
       image: factory.image(),
-      name: 'BUILDING',
-      building: 'Description',
+      name: 'LAW',
+      description: 'Description',
       class: factory.class()
     }
-    return building
+    return law
   }
 }
 
