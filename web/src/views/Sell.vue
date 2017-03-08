@@ -10,7 +10,7 @@
             md-input-container
               label Metal
               md-input(type="number", v-model="metal", required)
-              md-icon view_comfy
+              md-icon apps
             md-input-container
               label Crystal
               md-input(type="number", v-model="crystal", required)
@@ -19,11 +19,8 @@
               label Oil
               md-input(type="number", v-model="oil", required)
               md-icon opacity
-            div
-              md-button.md-raised.md-accent(type="submit", v-bind:disabled="!valid")
-                md-icon done
-            div
-              md-checkbox.md-accent(v-model="sure", id="sure", name="sure") I'm absolutely sure
+            md-button.md-raised.md-accent(type="submit", v-bind:disabled="!valid")
+              md-icon done
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="33", md-flex-xsmall="50")
       md-card.md-primary.card(v-bind:class="selected.class")

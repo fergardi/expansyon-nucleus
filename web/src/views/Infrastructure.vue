@@ -7,7 +7,14 @@
         md-card-media
           img(v-bind:src="building.image")
         md-card-content.no-padding.center
+          md-progress(v-bind:md-progress="building.metal")
+          md-progress(v-bind:md-progress="building.crystal")
+          md-progress(v-bind:md-progress="building.oil")
+        md-card-content.no-padding.center
           p {{ building.description }}
+        md-card-content.no-padding.center
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>

@@ -6,20 +6,24 @@ import moment from 'moment'
 
 import App from './App.vue'
 import Home from './views/Home.vue'
-import Explore from './views/Explore.vue'
+import Planetarium from './views/Planetarium.vue'
 import Market from './views/Market.vue'
+import Sell from './views/Sell.vue'
 import Store from './views/Store.vue'
+import Research from './views/Research.vue'
+import Hangar from './views/Hangar.vue'
 import Infrastructure from './views/Infrastructure.vue'
 import Defense from './views/Defense.vue'
-import Hangar from './views/Hangar.vue'
+import Explore from './views/Explore.vue'
+import Cantina from './views/Cantina.vue'
+import Relicarium from './views/Relicarium.vue'
+import Temple from './views/Temple.vue'
+import Senate from './views/Senate.vue'
 import Census from './views/Census.vue'
 import Guild from './views/Guild.vue'
-import Senate from './views/Senate.vue'
-import Cantina from './views/Cantina.vue'
-import Sell from './views/Sell.vue'
-import Research from './views/Research.vue'
 import Transmission from './views/Transmission.vue'
-import Planetarium from './views/Planetarium.vue'
+import Account from './views/Account.vue'
+import Help from './views/Help.vue'
 
 // router
 Vue.use(VueRouter)
@@ -29,19 +33,23 @@ var router = new VueRouter({
     { path: '/', redirect: '/home' },
     { path: '/home', component: Home },
     { path: '/planetarium', component: Planetarium },
-    { path: '/explore', component: Explore },
     { path: '/market', component: Market },
+    { path: '/sell', component: Sell },
     { path: '/store', component: Store },
+    { path: '/research', component: Research },
+    { path: '/hangar', component: Hangar },
     { path: '/infrastructure', component: Infrastructure },
     { path: '/defense', component: Defense },
-    { path: '/hangar', component: Hangar },
-    { path: '/census', component: Census },
-    { path: '/transmission', component: Transmission },
-    { path: '/guild', component: Guild },
-    { path: '/senate', component: Senate },
-    { path: '/research', component: Research },
-    { path: '/sell', component: Sell },
+    { path: '/explore', component: Explore },
     { path: '/cantina', component: Cantina },
+    { path: '/relicarium', component: Relicarium },
+    { path: '/temple', component: Temple },
+    { path: '/senate', component: Senate },
+    { path: '/census', component: Census },
+    { path: '/guild', component: Guild },
+    { path: '/transmission', component: Transmission },
+    { path: '/account', component: Account },
+    { path: '/help', component: Help },
     { path: '*', redirect: '/' }
   ]
 })

@@ -12,6 +12,9 @@
               md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)")
                 img(v-bind:src="skill.image")
                 md-icon {{ skill.level }}
+        md-card-content.no-padding.center
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>

@@ -87,13 +87,13 @@
               },
               {
                 url: '/hangar',
-                icon: 'build',
+                icon: 'flight',
                 title: 'Hangar',
                 quantity: 87362
               },
               {
                 url: '/Infrastructure',
-                icon: 'location_city',
+                icon: 'build',
                 title: 'Infrastructure',
                 quantity: 1792
               },
@@ -121,10 +121,10 @@
                 quantity: 3
               },
               {
-                url: '/guild',
-                icon: 'wc',
-                title: 'Guild',
-                quantity: 2
+                url: '/relicarium',
+                icon: 'all_inclusive',
+                title: 'Relicarium',
+                quantity: 3
               },
               {
                 url: '/temple',
@@ -144,44 +144,44 @@
                 quantity: 3
               },
               {
-                url: '/transmission',
-                icon: 'wifi',
-                title: 'Transmission',
-                quantity: 2
-              },
-              {
                 url: '/census',
                 icon: 'group',
                 title: 'Census',
                 quantity: 172
               },
               {
-                url: '/reputation',
-                icon: 'done',
-                title: 'Reputation',
-                quantity: null
+                url: '/guild',
+                icon: 'security',
+                title: 'Guild',
+                quantity: 2
+              },
+              {
+                url: '/transmission',
+                icon: 'wifi',
+                title: 'Transmission',
+                quantity: 2
               }
             ]
           },
           {
-            header: 'Help',
+            header: 'Empire',
             items: [
               {
                 url: '/account',
                 icon: 'account_circle',
-                title: 'Account',
+                title: 'Reputation',
                 quantity: null
               },
               {
-                url: '/tutorial',
+                url: '/help',
                 icon: 'help',
-                title: 'Tutorial',
+                title: 'Council',
                 quantity: null
               },
               {
                 url: '/logout',
                 icon: 'cancel',
-                title: 'Log Out',
+                title: 'Disconnect',
                 quantity: null
               }
             ]
@@ -202,7 +202,7 @@
                 quantity: 300
               },
               {
-                icon: 'view_comfy',
+                icon: 'apps',
                 title: 'Metal',
                 quantity: 300
               },

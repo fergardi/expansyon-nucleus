@@ -29,7 +29,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Store'
+      vuex.state.name = 'Relicarium'
     },
     computed: {
       search () {

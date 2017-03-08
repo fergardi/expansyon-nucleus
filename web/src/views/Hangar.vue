@@ -12,6 +12,9 @@
           md-progress(v-bind:md-progress="ship.speed")
         md-card-content.no-padding.center
           p {{ ship.description }}
+        md-card-content.no-padding.center
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>

@@ -35,11 +35,17 @@ const factory = {
   class () {
     return classes[Math.floor(Math.random() * classes.length)]
   },
+  number () {
+    return 0 + Math.floor(Math.random() * 100) // [0, 100)
+  },
   build () {
     var mission = {
       image: factory.image(),
       name: 'MISSION',
       description: 'Description',
+      attack: factory.number(),
+      defense: factory.number(),
+      speed: factory.number(),
       class: factory.class()
     }
     return mission

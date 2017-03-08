@@ -15,11 +15,17 @@ const factory = {
   class () {
     return classes[Math.floor(Math.random() * classes.length)]
   },
+  number () {
+    return 0 + Math.floor(Math.random() * 100) // [0, 100)
+  },
   build () {
     var building = {
       image: factory.image(),
       name: 'BUILDING',
       building: 'Description',
+      metal: factory.number(),
+      crystal: factory.number(),
+      oil: factory.number(),
       class: factory.class()
     }
     return building

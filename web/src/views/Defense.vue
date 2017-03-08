@@ -12,6 +12,9 @@
           md-progress(v-bind:md-progress="tower.speed")
         md-card-content.no-padding.center
           p {{ tower.description }}
+        md-card-content.no-padding.center
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>

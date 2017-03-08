@@ -17,6 +17,9 @@
           p(v-if="sale.description") {{ sale.description }}
         md-card-content.no-padding.center
           md-chip 333
+        md-card-content.no-padding.center
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>

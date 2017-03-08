@@ -15,6 +15,9 @@
           md-progress(v-bind:md-progress="planet.influence")
         md-card-content.no-padding.center
           p {{ planet.description }}
+        md-card-content.no-padding.center
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>
