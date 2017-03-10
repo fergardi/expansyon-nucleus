@@ -1,13 +1,26 @@
 <template lang="pug">
   md-layout
-    md-layout(v-for="law in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
+    
+    md-layout(v-for="law in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="law.class")
         md-card-header
           .md-title {{ law.name }}
-        md-card-media
+        md-card-media.background
           img(v-bind:src="law.image")
         md-card-content.no-padding.center
-          p {{ law.description }}
+          md-progress(v-bind:md-progress="law.metal")
+          md-progress(v-bind:md-progress="law.crystal")
+          md-progress(v-bind:md-progress="law.oil")
+          md-progress(v-bind:md-progress="law.attack")
+          md-progress(v-bind:md-progress="law.defense")
+          md-progress(v-bind:md-progress="law.speed")
+        md-card-content.center
+          span {{ law.description | lorem }}
+        md-card-content.center
+          md-button.md-raised.md-warn
+            md-icon close
+          md-button.md-raised.md-accent
+            md-icon done
 </template>
 
 <script>

@@ -1,13 +1,20 @@
 var images = [
-  'https://image.flaticon.com/icons/svg/270/270136.svg',
-  'https://image.flaticon.com/icons/svg/178/178158.svg',
-  'https://image.flaticon.com/icons/svg/201/201883.svg'
+  'https://image.flaticon.com/icons/svg/270/270109.svg',
+  'https://image.flaticon.com/icons/svg/270/270140.svg',
+  'https://image.flaticon.com/icons/svg/270/270118.svg',
+  'https://image.flaticon.com/icons/svg/270/270106.svg',
+  'https://image.flaticon.com/icons/svg/270/270105.svg',
+  'https://image.flaticon.com/icons/svg/270/270108.svg',
+  'https://image.flaticon.com/icons/svg/270/270126.svg',
+  'https://image.flaticon.com/icons/svg/270/270141.svg',
+  'https://image.flaticon.com/icons/svg/270/270162.svg',
+  'https://image.flaticon.com/icons/svg/270/270157.svg'
 ]
 
 var classes = [
   'red',
   'green',
-  'blue'
+  'yellow'
 ]
 
 const factory = {

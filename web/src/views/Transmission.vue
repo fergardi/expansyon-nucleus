@@ -1,21 +1,23 @@
 <template lang="pug">
   md-table(md-sort="date")
+
     md-table-header
       md-table-row
         md-table-head(md-sort-by="title") Title
         md-table-head(md-sort-by="from") From
-        md-table-head(md-sort-by="date") Date
         md-table-head(md-sort-by="text") Text
+        md-table-head(md-sort-by="date") Date
         md-table-head Actions
+
     md-table-body
       md-table-row(v-for="message in filtered")
-        md-table-cell {{ message.title }}
+        md-table-cell {{ message.title | lorem }}
         md-table-cell {{ message.from }}
+        md-table-cell {{ message.text | lorem }}
         md-table-cell {{ message.date }}
-        md-table-cell {{ message.text }}
         md-table-cell
           md-button.md-icon-button
-            md-icon delete
+            md-icon message
 </template>
 
 <script>

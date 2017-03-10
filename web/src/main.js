@@ -72,6 +72,9 @@ Vue.material.registerTheme({
 Vue.filter('date', (timestamp) => {
   return moment(parseInt(timestamp)).format('D/M/YYYY HH:mm:ss')
 })
+Vue.filter('lorem', (string) => {
+  return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+})
 
 // scroll to top and close sidebar
 router.beforeEach((to, from, next) => {

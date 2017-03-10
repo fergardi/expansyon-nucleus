@@ -22,10 +22,10 @@ var classes = [
   'red',
   'orange',
   'green',
-  'blue',
+  'indigo',
   'purple',
-  'grey',
-  'pink'
+  'yellow',
+  'cyan'
 ]
 
 const factory = {

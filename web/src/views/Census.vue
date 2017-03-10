@@ -1,6 +1,8 @@
 <template lang="pug">
   md-table(md-sort="influence")
+    
     md-table-header
+
       md-table-row
         md-table-head(md-sort-by="name") Name
         md-table-head(md-sort-by="faction") Faction
@@ -8,13 +10,17 @@
         md-table-head(md-sort-by="planets", md-numeric) Planets
         md-table-head(md-sort-by="fleet", md-numeric) Fleet
         md-table-head Actions
+
     md-table-body
       md-table-row(v-for="player in filtered")
         md-table-cell {{ player.name }}
         md-table-cell {{ player.faction }}
-        md-table-cell(md-numeric) {{ player.influence }}
-        md-table-cell(md-numeric) {{ player.planets }}
-        md-table-cell(md-numeric) {{ player.fleet }}
+        md-table-cell(md-numeric)
+          md-chip {{ player.influence }}
+        md-table-cell(md-numeric)
+          md-chip {{ player.planets }}
+        md-table-cell(md-numeric)
+          md-chip {{ player.fleet }}
         md-table-cell
           md-button.md-icon-button
             md-icon message

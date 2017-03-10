@@ -20,7 +20,8 @@ var images = [
   'https://image.flaticon.com/icons/svg/139/139693.svg',
   'https://image.flaticon.com/icons/svg/139/139705.svg',
   'https://image.flaticon.com/icons/svg/139/139707.svg',
-  'https://image.flaticon.com/icons/svg/270/270146.svg'
+  'https://image.flaticon.com/icons/svg/270/270146.svg',
+  'https://image.flaticon.com/icons/svg/124/124559.svg'
 ]
 
 const factory = {
@@ -37,15 +38,15 @@ const factory = {
       planet.name = 'HERMES'
       planet.description = 'Description'
     } else if (planet.crystal > 50) {
-      planet.class = 'pink'
+      planet.class = 'cyan'
       planet.name = 'ATHENA'
       planet.description = 'Description'
     } else if (planet.oil > 50) {
-      planet.class = 'grey'
+      planet.class = 'yellow'
       planet.name = 'HADES'
       planet.description = 'Description'
     } else if (planet.energy > 50) {
-      planet.class = 'blue'
+      planet.class = 'indigo'
       planet.name = 'ZEUS'
       planet.description = 'Description'
     } else if (planet.influence > 50) {

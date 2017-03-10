@@ -66,7 +66,7 @@
                 url: '/sell',
                 icon: 'attach_money',
                 title: 'Sell',
-                quantity: null
+                quantity: 54
               },
               {
                 url: '/store',
@@ -361,6 +361,16 @@
     visibility hidden
   .removed
     display none
+  .md-table
+    .md-table-cell
+      .md-button
+        .md-icon
+          width: 24px;
+          min-width: 24px;
+          height: 24px;
+          min-height: 24px;
+          font-size: 24px;
+          margin: auto;
   
   /* PLANETS */
   .md-layout
@@ -370,6 +380,8 @@
     width 100%
     margin 4px
     // background-color #333356 !important
+    .background
+      background-color lighten(#263238, 5) !important
     .md-card-header
       .md-title
         font-size 18px
@@ -382,7 +394,6 @@
         height 10px
         margin 5px 0
     .md-card-media
-      background-color lighten(#263238, 5) !important
       img
         height 140px
         padding 10px
@@ -396,26 +407,31 @@
         color #9C27B0
       .md-progress-track
         background-color #9C27B0 !important
-    &.pink
+    &.indigo
       .md-card-header
-        color #E91E63
+        color #3F51B5
       .md-progress-track
-        background-color #E91E63 !important
+        background-color #3F51B5 !important
     &.grey
       .md-card-header
-        color #E0E0E0
+        color #EEEEEE
       .md-progress-track
-        background-color #E0E0E0 !important
-    &.blue
+        background-color #EEEEEE !important
+    &.yellow
       .md-card-header
-        color #2196F3
+        color #FFEB3B
       .md-progress-track
-        background-color #2196F3 !important
+        background-color #FFEB3B !important
+    &.cyan
+      .md-card-header
+        color #00BCD4
+      .md-progress-track
+        background-color #00BCD4 !important
     &.red
       .md-card-header
-        color #B71C1C
+        color #D50000
       .md-progress-track
-        background-color #B71C1C !important
+        background-color #D50000 !important
     &.orange
       .md-card-header
         color #FF9800

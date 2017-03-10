@@ -1,14 +1,19 @@
 var images = [
-  'https://image.flaticon.com/icons/svg/270/270136.svg'
+  'https://image.flaticon.com/icons/svg/270/270136.svg',
+  'https://image.flaticon.com/icons/svg/270/270165.svg',
+  'https://image.flaticon.com/icons/svg/270/270164.svg',
+  'https://image.flaticon.com/icons/svg/270/270102.svg',
+  'https://image.flaticon.com/icons/svg/270/270167.svg',
+  'https://image.flaticon.com/icons/svg/270/270135.svg'
 ]
 
 var classes = [
   'red',
   'green',
-  'blue',
+  'indigo',
   'purple',
-  'grey',
-  'pink'
+  'yellow',
+  'cyan'
 ]
 
 const factory = {

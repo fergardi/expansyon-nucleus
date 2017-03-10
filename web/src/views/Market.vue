@@ -1,10 +1,11 @@
 <template lang="pug">
   md-layout
-    md-layout(v-for="sale in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="33", md-flex-xsmall="50")
+    
+    md-layout(v-for="sale in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="sale.class")
         md-card-header
           .md-title {{ sale.name }}
-        md-card-media
+        md-card-media.background
           img(v-bind:src="sale.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="sale.size", v-if="sale.size")
@@ -14,10 +15,12 @@
           md-progress(v-bind:md-progress="sale.energy", v-if="sale.energy")
           md-progress(v-bind:md-progress="sale.influence", v-if="sale.influence")
         md-card-content.no-padding.center
-          p(v-if="sale.description") {{ sale.description }}
-        md-card-content.no-padding.center
-          md-chip 333
-        md-card-content.no-padding.center
+          md-progress(v-bind:md-progress="sale.attack", v-if="sale.attack")
+          md-progress(v-bind:md-progress="sale.defense", v-if="sale.defense")
+          md-progress(v-bind:md-progress="sale.speed", v-if="sale.speed")
+        md-card-content.center
+          span(v-if="sale.description") {{ sale.description | lorem }}
+        md-card-content.center
           md-button.md-raised.md-accent
             md-icon done
 </template>

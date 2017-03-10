@@ -1,14 +1,15 @@
 <template lang="pug">
   md-layout
-    md-layout(v-for="faction in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="50")
+    
+    md-layout(v-for="faction in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="faction.class")
         md-card-header
           .md-title {{ faction.name }}
-        md-card-media
+        md-card-media.background
           img(v-bind:src="faction.image")
-        md-card-content.no-padding.center
-          p {{ faction.description }}
-        md-card-content.no-padding.center
+        md-card-content.center
+          span {{ faction.description | lorem }}
+        md-card-content.center
           md-button.md-raised.md-accent
             md-icon done
 </template>
