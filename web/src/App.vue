@@ -386,7 +386,7 @@
   #toolbar
   .md-sidenav
   .md-card
-    opacity 0.85
+    opacity 0.87
 
   /* CARDS */
   .md-layout
