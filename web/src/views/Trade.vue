@@ -95,7 +95,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Sell'
+      vuex.state.name = 'Trade'
     },
     methods: {
       select (item) {
@@ -116,7 +116,7 @@
         })
       },
       valid () {
-        return this.selected.length > 0 && (this.metal > 0 || this.crystal > 0 || this.oil > 0)
+        return true
       }
     }
   }

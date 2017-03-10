@@ -8,7 +8,7 @@ import App from './App.vue'
 import Home from './views/Home.vue'
 import Planetarium from './views/Planetarium.vue'
 import Market from './views/Market.vue'
-import Sell from './views/Sell.vue'
+import Trade from './views/Trade.vue'
 import Store from './views/Store.vue'
 import Research from './views/Research.vue'
 import Hangar from './views/Hangar.vue'
@@ -34,7 +34,7 @@ var router = new VueRouter({
     { path: '/home', component: Home },
     { path: '/planetarium', component: Planetarium },
     { path: '/market', component: Market },
-    { path: '/sell', component: Sell },
+    { path: '/trade', component: Trade },
     { path: '/store', component: Store },
     { path: '/research', component: Research },
     { path: '/hangar', component: Hangar },

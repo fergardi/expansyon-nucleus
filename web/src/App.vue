@@ -63,9 +63,9 @@
                 quantity: 8
               },
               {
-                url: '/sell',
+                url: '/trade',
                 icon: 'attach_money',
-                title: 'Sell',
+                title: 'Trade',
                 quantity: 54
               },
               {
@@ -167,20 +167,26 @@
             header: 'Empire',
             items: [
               {
+                url: '/home',
+                icon: 'equalizer',
+                title: 'Status',
+                quantity: null
+              },
+              {
                 url: '/account',
-                icon: 'account_circle',
+                icon: 'person',
                 title: 'Reputation',
                 quantity: null
               },
               {
                 url: '/help',
-                icon: 'help',
-                title: 'Council',
+                icon: 'chrome_reader_mode',
+                title: 'Archive',
                 quantity: null
               },
               {
                 url: '/logout',
-                icon: 'cancel',
+                icon: 'lock',
                 title: 'Disconnect',
                 quantity: null
               }
