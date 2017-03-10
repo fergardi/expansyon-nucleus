@@ -2,7 +2,7 @@
   .app
 
     md-whiteframe
-      md-toolbar.md-dense(v-if="!fullscreen")
+      md-toolbar#toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="toggle('left')")
           md-icon chevron_right
         h2.md-title {{ name }}
@@ -14,6 +14,8 @@
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
       md-whiteframe
         md-toolbar.md-account-header#left
+          md-avatar.md-large
+            img(src="https://image.flaticon.com/icons/svg/148/148908.svg")
       md-list.md-dense.scrollable
         template(v-for="section in left")
           md-subheader {{ section.header }}
@@ -27,6 +29,8 @@
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
         md-toolbar.md-account-header#right
+          md-avatar.md-large
+            img(src="https://image.flaticon.com/icons/svg/196/196682.svg")
       md-list.md-dense.scrollable
         template(v-for="section in right")
           md-subheader {{ section.header }}
@@ -300,7 +304,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    //background: url("img/background.jpg") no-repeat center center fixed;
+    background: url("https://www.expansyon.com/bundles/armadagame/images/background/theme.jpg?v10") no-repeat center center fixed;
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -378,7 +382,13 @@
           font-size: 24px;
           margin: auto;
   
-  /* PLANETS */
+  /* OPACITY */
+  #toolbar
+  .md-sidenav
+  .md-card
+    opacity 0.85
+
+  /* CARDS */
   .md-layout
     // align-items flex-start
     // align-content flex-start
