@@ -1,22 +1,27 @@
 <template lang="pug">
-  md-table(md-sort="influence")
-    
-    md-table-header
-      md-table-row
-        md-table-head(md-sort-by="name") Name
-        md-table-head Description
-        md-table-head(md-sort-by="members", md-numeric) Members
-        md-table-head Actions
+  md-table-card
+    md-table(md-sort="influence")
+      
+      md-table-header
+        md-table-row
+          md-table-head(md-sort-by="name") Name
+          md-table-head(md-sort-by="members", md-numeric) Members
 
-    md-table-body
-      md-table-row(v-for="guild in filtered")
-        md-table-cell {{ guild.name }}
-        md-table-cell {{ guild.description | lorem }}
-        md-table-cell(md-numeric)
-          md-chip {{ guild.members }}
-        md-table-cell
-          md-button.md-icon-button
-            md-icon message
+      md-table-body
+        md-table-row(v-for="guild in filtered", md-auto-select, v-bind:md-item="guild", v-on:click.native="popup(guild)")
+          md-table-cell {{ guild.name }}
+          md-table-cell(md-numeric) {{ guild.members }}
+
+      md-dialog(ref='popup')
+        md-dialog-title {{ selected.name }}
+        md-dialog-content {{ selected.description | lorem }}
+        md-dialog-content
+          md-chip {{ selected.members }} members
+        md-dialog-actions
+          md-button.md-icon-button(v-on:click.native="close()")
+            md-icon.md-warn close
+          md-button.md-icon-button(v-on:click.native="apply()")
+            md-icon.md-accent person_add
 </template>
 
 <script>
@@ -26,7 +31,8 @@
   export default {
     data () {
       return {
-        guilds: []
+        guilds: [],
+        selected: {}
       }
     },
     created () {
@@ -36,6 +42,19 @@
     },
     mounted () {
       vuex.state.name = 'Guild'
+    },
+    methods: {
+      popup (guild) {
+        this.selected = guild
+        this.$refs['popup'].open()
+      },
+      close () {
+        this.$refs['popup'].close()
+      },
+      remove () {
+        // TODO
+        this.close()
+      }
     },
     computed: {
       search () {

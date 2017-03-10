@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 var classes = [
   'red',
   'orange',
@@ -17,7 +19,7 @@ const factory = {
       title: 'MESSAGE',
       text: 'TEXT',
       from: 'PLAYER',
-      date: new Date().toLocaleString(),
+      date: moment().unix(),
       class: factory.class()
     }
     return message

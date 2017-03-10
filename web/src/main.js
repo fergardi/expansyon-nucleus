@@ -70,7 +70,7 @@ Vue.material.registerTheme({
 
 // filter
 Vue.filter('date', (timestamp) => {
-  return moment(parseInt(timestamp)).format('D/M/YYYY HH:mm:ss')
+  return moment(parseInt(timestamp)).format('DD/MM/YY HH:mm:ss')
 })
 Vue.filter('lorem', (string) => {
   return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'

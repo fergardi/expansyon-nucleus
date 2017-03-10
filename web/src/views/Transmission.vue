@@ -6,19 +6,23 @@
         md-table-row
           md-table-head(md-sort-by="title") Title
           md-table-head(md-sort-by="from") From
-          md-table-head(md-sort-by="text") Text
-          md-table-head(md-sort-by="date") Date
-          md-table-head Actions
+          md-table-head(md-sort-by="date", md-numeric) Date
 
       md-table-body
-        md-table-row.background(v-for="message in filtered")
-          md-table-cell {{ message.title | lorem }}
+        md-table-row.background(v-for="message in filtered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+          md-table-cell {{ message.title }}
           md-table-cell {{ message.from }}
-          md-table-cell {{ message.text | lorem }}
-          md-table-cell {{ message.date }}
-          md-table-cell
-            md-button.md-icon-button
-              md-icon message
+          md-table-cell.md-numeric {{ message.date | date }}
+
+      md-dialog(ref='popup')
+        md-dialog-title {{ selected.title }}
+        md-dialog-content {{ selected.date | date }}
+        md-dialog-content {{ selected.text }}
+        md-dialog-actions
+          md-button.md-icon-button(v-on:click.native="remove()")
+            md-icon.md-warn delete
+          md-button.md-icon-button(v-on:click.native="close()")
+            md-icon.md-accent done
 </template>
 
 <script>
@@ -28,7 +32,8 @@
   export default {
     data () {
       return {
-        messages: []
+        messages: [],
+        selected: {}
       }
     },
     created () {
@@ -38,6 +43,19 @@
     },
     mounted () {
       vuex.state.name = 'Transmission'
+    },
+    methods: {
+      popup (message) {
+        this.selected = message
+        this.$refs['popup'].open()
+      },
+      close () {
+        this.$refs['popup'].close()
+      },
+      remove () {
+        // TODO
+        this.close()
+      }
     },
     computed: {
       search () {

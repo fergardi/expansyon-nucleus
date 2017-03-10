@@ -326,8 +326,6 @@
   .md-chip
     margin-right 5px
     margin-bottom 5px
-  .md-toolbar
-    // background-color #333356 !important
   .md-sidenav
     .md-sidenav-content
       height 100%
@@ -340,10 +338,6 @@
     .md-toolbar
       background-size: cover;
       box-sizing: border-box;
-      &#left
-        // background-image url('img/left.jpg')
-      &#right
-        // background-image url('img/right.jpg')
       .md-account-header
         a:not(.md-button)
           color inherit
@@ -371,6 +365,10 @@
     visibility hidden
   .removed
     display none
+  .right
+    float right
+  .left
+    float left
   .md-table
     .md-table-cell
       .md-button
@@ -384,9 +382,12 @@
   
   /* OPACITY */
   #toolbar
-  .md-sidenav
+  .md-sidenav-content
   .md-card
-    opacity 0.87
+  .md-table-card
+    opacity 0.90
+  .md-table-card.md-card
+    background-color rgba(255,255,255,0.90) !important
 
   /* CARDS */
   .md-layout
@@ -395,7 +396,6 @@
   .md-card.card
     width 100%
     margin 4px
-    // background-color #333356 !important
     .background
       background-color lighten(#263238, 5) !important
     .md-card-header
@@ -404,7 +404,6 @@
         text-align center
         font-weight bold
     .md-card-content
-      // background-color darken(#333356, 5) !important
       color white
       .md-progress
         height 10px
@@ -417,41 +416,49 @@
       .md-card-header
         color #4CAF50
       .md-progress-track
+      .md-chip
         background-color #4CAF50 !important
     &.purple
       .md-card-header
         color #9C27B0
       .md-progress-track
+      .md-chip
         background-color #9C27B0 !important
     &.indigo
       .md-card-header
         color #3F51B5
       .md-progress-track
+      .md-chip
         background-color #3F51B5 !important
     &.grey
       .md-card-header
         color #EEEEEE
       .md-progress-track
+      .md-chip
         background-color #EEEEEE !important
     &.yellow
       .md-card-header
         color #FFEB3B
       .md-progress-track
+      .md-chip
         background-color #FFEB3B !important
     &.cyan
       .md-card-header
         color #00BCD4
       .md-progress-track
+      .md-chip
         background-color #00BCD4 !important
     &.red
       .md-card-header
         color #D50000
       .md-progress-track
+      .md-chip
         background-color #D50000 !important
     &.orange
       .md-card-header
         color #FF9800
       .md-progress-track
+      .md-chip
         background-color #FF9800 !important
 
   /* ANIMATION TRANSITION */
@@ -480,9 +487,9 @@
     -webkit-animation-name fadeIn
     animation-name fadeIn
     
-  /* SIDEBAR APPEARING */
-  // from desktop on show sidebar
-  @media only screen and (min-width 1280px)
+  /* MEDIA QUERIES */
+  // sidebars appearing on desktop
+  @media only screen and (min-width 1080px)
     .app
       padding-left 304px
       padding-right 304px
