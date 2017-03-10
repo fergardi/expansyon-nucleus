@@ -25,6 +25,10 @@
                 md-icon.md-primary {{ item.icon }}
               span {{ item.title }}
               md-chip(v-if="item.quantity") {{ item.quantity }}
+          md-list-item(v-on:click.native="logout()")
+            md-avatar
+              md-icon.md-primary lock
+            span Disconnect
 
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
@@ -45,7 +49,9 @@
 </template>
 
 <script>
+  import auth from './services/auth'
   import vuex from './vuex/vuex'
+
   export default {
     data () {
       return {
@@ -187,12 +193,6 @@
                 icon: 'chrome_reader_mode',
                 title: 'Archive',
                 quantity: null
-              },
-              {
-                url: '/logout',
-                icon: 'lock',
-                title: 'Disconnect',
-                quantity: null
               }
             ]
           }
@@ -278,15 +278,18 @@
     },
     methods: {
       toggle (ref) {
-        if (this.$refs[ref].toggle) this.$refs[ref].toggle()
+        if (ref && this.$refs[ref]) this.$refs[ref].toggle()
       },
       close (ref) {
-        if (this.$refs[ref].close) this.$refs[ref].close()
+        if (ref && this.$refs[ref]) this.$refs[ref].close()
+      },
+      logout () {
+        auth.logout()
+        this.$router.push('/login')
       }
     },
     watch: {
       search (string) {
-        console.log(string)
         vuex.state.search = string
       }
     },
@@ -304,7 +307,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    background: url("https://www.expansyon.com/bundles/armadagame/images/background/theme.jpg?v10") no-repeat center center fixed;
+    background: url("https://www.expansyon.com/bundles/armadagame/images/background/theme.jpg") no-repeat center center fixed;
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -355,6 +358,7 @@
     flex 1
   .no-padding
     padding 0 !important
+    margin 0 !important
   .padding
     padding 4px
   .center
@@ -397,7 +401,7 @@
     width 100%
     margin 4px
     .background
-      background-color lighten(#263238, 5) !important
+      background-color lighten(#263238, 10) !important
     .md-card-header
       .md-title
         font-size 18px

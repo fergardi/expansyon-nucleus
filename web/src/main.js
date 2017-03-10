@@ -24,13 +24,14 @@ import Guild from './views/Guild.vue'
 import Transmission from './views/Transmission.vue'
 import Account from './views/Account.vue'
 import Help from './views/Help.vue'
+import Login from './views/Login.vue'
 
 // router
 Vue.use(VueRouter)
 // routes
 var router = new VueRouter({
   routes: [
-    { path: '/', redirect: '/home' },
+    { path: '/', redirect: '/login' },
     { path: '/home', component: Home },
     { path: '/planetarium', component: Planetarium },
     { path: '/market', component: Market },
@@ -50,6 +51,7 @@ var router = new VueRouter({
     { path: '/transmission', component: Transmission },
     { path: '/account', component: Account },
     { path: '/help', component: Help },
+    { path: '/login', component: Login },
     { path: '*', redirect: '/' }
   ]
 })
@@ -75,6 +77,18 @@ Vue.filter('date', (timestamp) => {
 Vue.filter('lorem', (string) => {
   return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 })
+
+// redirect to home if not authentication
+/*
+router.beforeEach((to, from, next) => {
+  if ((secured.indexOf(to.name) !== -1) && !authentication.logged) {
+    router.push({ path: '/' });
+    notification.danger(Vue.t('alert.login.secure'));
+  } else {
+    return next();
+  }
+});
+*/
 
 // scroll to top and close sidebar
 router.beforeEach((to, from, next) => {
