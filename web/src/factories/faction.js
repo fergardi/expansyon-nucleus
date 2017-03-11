@@ -26,7 +26,7 @@ const factory = {
   build () {
     var faction = {
       image: factory.image(),
-      name: 'FACTION',
+      name: 'Faction',
       description: 'Description',
       class: factory.class()
     }

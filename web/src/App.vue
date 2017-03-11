@@ -1,14 +1,13 @@
 <template lang="pug">
   .app
-
     md-whiteframe
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
-        md-button.md-icon-button.toggler(v-on:click.native="toggle('left')")
+        md-button.md-icon-button.toggler(v-on:click.native="open('left')")
           md-icon chevron_right
         h2.md-title {{ name }}
         md-input-container.flex
           md-input(type="search", placeholder="Search...", v-model="search")
-        md-button.md-icon-button.toggler(v-on:click.native="toggle('right')")
+        md-button.md-icon-button.toggler(v-on:click.native="open('right')")
           md-icon chevron_left
 
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
@@ -16,16 +15,16 @@
         md-toolbar.md-account-header#left
           md-avatar.md-large
             img(src="https://image.flaticon.com/icons/svg/148/148908.svg")
-      md-list.md-dense.scrollable
+      md-list.md-dense.scrollcable
         template(v-for="section in left")
           md-subheader {{ section.header }}
           md-list-item(v-for="item in section.items")
-            router-link(exact, v-bind:to="item.url")
+            router-link(exact, v-bind:to="item.url", v-on:click.native="clear()")
               md-avatar
                 md-icon.md-primary {{ item.icon }}
               span {{ item.title }}
               md-chip(v-if="item.quantity") {{ item.quantity }}
-          md-list-item(v-on:click.native="logout()")
+        md-list-item(v-on:click.native="logout()")
             md-avatar
               md-icon.md-primary lock
             span Disconnect
@@ -177,21 +176,21 @@
             header: 'Empire',
             items: [
               {
-                url: '/home',
+                url: '/status',
                 icon: 'equalizer',
                 title: 'Status',
                 quantity: null
               },
               {
-                url: '/account',
+                url: '/profile',
                 icon: 'person',
-                title: 'Reputation',
+                title: 'Profile',
                 quantity: null
               },
               {
                 url: '/help',
                 icon: 'chrome_reader_mode',
-                title: 'Archive',
+                title: 'Help',
                 quantity: null
               }
             ]
@@ -277,14 +276,22 @@
       }
     },
     methods: {
+      open (ref) {
+        if (ref && this.$refs[ref]) this.$refs[ref].open()
+      },
       toggle (ref) {
         if (ref && this.$refs[ref]) this.$refs[ref].toggle()
       },
       close (ref) {
         if (ref && this.$refs[ref]) this.$refs[ref].close()
       },
+      clear () {
+        this.$refs['left'].close()
+        this.$refs['right'].close()
+      },
       logout () {
         auth.logout()
+        this.clear()
         this.$router.push('/login')
       }
     },
@@ -307,7 +314,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    background: url("https://www.expansyon.com/bundles/armadagame/images/background/theme.jpg") no-repeat center center fixed;
+    background: url("img/background.jpg") no-repeat center center fixed;
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -383,6 +390,9 @@
           min-height: 24px;
           font-size: 24px;
           margin: auto;
+  /* Change the white to any color ;) */
+  input:-webkit-autofill
+    -webkit-box-shadow: 0 0 0px 1000px lightgray inset !important;
   
   /* OPACITY */
   #toolbar
@@ -434,12 +444,6 @@
       .md-progress-track
       .md-chip
         background-color #3F51B5 !important
-    &.grey
-      .md-card-header
-        color #EEEEEE
-      .md-progress-track
-      .md-chip
-        background-color #EEEEEE !important
     &.yellow
       .md-card-header
         color #FFEB3B
@@ -464,6 +468,18 @@
       .md-progress-track
       .md-chip
         background-color #FF9800 !important
+    &.pink
+      .md-card-header
+        color #E91E63
+      .md-progress-track
+      .md-chip
+        background-color #E91E63 !important
+    &.grey
+      .md-card-header
+        color #EEEEEE
+      .md-progress-track
+      .md-chip
+        background-color #EEEEEE !important
 
   /* ANIMATION TRANSITION */
   /*base code*/

@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex.js'
   import factory from '../factories/faction'
+  import vuex from '../vuex/vuex.js'
 
   export default {
     data () {

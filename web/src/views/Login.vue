@@ -1,39 +1,40 @@
 <template lang="pug">
-  .login.padding
-    md-tabs(md-fixed)
+  md-layout.login.padding
+    md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-small="100", md-flex-xsmall="100")
+      md-tabs(md-fixed)
 
-      md-tab.no-padding#login(md-label="Login")
-        form(v-on:submit.prevent="login()")
-          md-card.md-primary.card.no-padding
-            md-card-content.background
-              md-input-container
-                label Email
-                md-input(type="email", v-model="credentials.email", required)
-              md-input-container
-                label Password
-                md-input(type="password", v-model="credentials.password", required)
-            md-card-content.center
-              md-button.md-raised.md-accent(type="submit")
-                md-icon(v-if="!spin") done
-                md-icon.spin(v-else) autorenew
+        md-tab.no-padding#login(md-label="Login")
+          form(v-on:submit.prevent="login()")
+            md-card.md-primary.card.no-padding
+              md-card-content.background
+                md-input-container
+                  label Email
+                  md-input(type="email", v-model="credentials.email", required)
+                md-input-container
+                  label Password
+                  md-input(type="password", v-model="credentials.password", required)
+              md-card-content.center
+                md-button.md-raised.md-accent(type="submit")
+                  md-icon(v-if="!spin") done
+                  md-icon.spin(v-else) autorenew
 
-      md-tab.no-padding#register(md-label="Register")
-        form(v-on:submit.prevent="register()")
-          md-card.md-primary.card.no-padding
-            md-card-content.background
-              md-input-container
-                label Email
-                md-input(type="mail", v-model="information.email", required)
-              md-input-container
-                label Password
-                md-input(type="password", v-model="information.password", required)
-              md-input-container
-                label Name
-                md-input(type="text", v-model="information.username", required)
-            md-card-content.center
-              md-button.md-raised.md-accent(type="submit")
-                md-icon(v-if="!spin") done
-                md-icon.spin(v-else) autorenew
+        md-tab.no-padding#register(md-label="Register")
+          form(v-on:submit.prevent="register()")
+            md-card.md-primary.card.no-padding
+              md-card-content.background
+                md-input-container
+                  label Email
+                  md-input(type="mail", v-model="information.email", required)
+                md-input-container
+                  label Password
+                  md-input(type="password", v-model="information.password", required)
+                md-input-container
+                  label Name
+                  md-input(type="text", v-model="information.username", required)
+              md-card-content.center
+                md-button.md-raised.md-accent(type="submit")
+                  md-icon(v-if="!spin") done
+                  md-icon.spin(v-else) autorenew
 </template>
 
 <script>
@@ -65,7 +66,7 @@
         auth.login(this.credentials)
         .then((response) => {
           this.spin = false
-          if (auth.logged) this.$router.push('/home')
+          if (auth.logged) this.$router.push('/status')
         })
       },
       register () {

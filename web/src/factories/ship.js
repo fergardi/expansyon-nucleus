@@ -8,7 +8,12 @@ var images = [
 ]
 
 var classes = [
-  'grey'
+  'purple',
+  'cyan',
+  'yellow',
+  'indigo',
+  'red',
+  'green'
 ]
 
 const factory = {
