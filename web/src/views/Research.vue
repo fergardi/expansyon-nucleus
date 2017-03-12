@@ -14,9 +14,9 @@
         md-card-content.center
           span {{ branch.description | lorem }}
         md-card-content.center
-          md-button.md-raised.md-warn(v-on:click.native="reset(branch)")
+          md-button.md-raised.md-fab.md-mini.md-warn(v-on:click.native="reset(branch)")
             md-icon refresh
-          md-button.md-raised.md-accent(v-on:click.native="save(branch)")
+          md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="save(branch)")
             md-icon done
 </template>
 
@@ -64,7 +64,9 @@
 </script>
 
 <style lang="stylus" scoped>
-  .skill
+  .md-button.skill
+    padding 5px
+    display flex
     .md-icon
       font-family Roboto,Noto Sans,Noto,sans-serif
       background-color rgba(0,0,0,0.8)

@@ -18,10 +18,10 @@
         md-dialog-content
           md-chip {{ selected.members }} members
         md-dialog-actions
-          md-button.md-icon-button(v-on:click.native="close()")
-            md-icon.md-warn close
-          md-button.md-icon-button(v-on:click.native="apply()")
-            md-icon.md-accent person_add
+          md-button.md-icon-button.md-warn(v-on:click.native="close()")
+            md-icon close
+          md-button.md-icon-button.md-accent(v-on:click.native="apply()")
+            md-icon person_add
 </template>
 
 <script>

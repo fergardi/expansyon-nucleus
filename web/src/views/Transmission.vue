@@ -19,10 +19,10 @@
         md-dialog-content {{ selected.date | date }}
         md-dialog-content {{ selected.text }}
         md-dialog-actions
-          md-button.md-icon-button(v-on:click.native="remove()")
-            md-icon.md-warn delete
-          md-button.md-icon-button(v-on:click.native="close()")
-            md-icon.md-accent done
+          md-button.md-icon-button.md-warn(v-on:click.native="remove()")
+            md-icon delete
+          md-button.md-icon-button.md-accent(v-on:click.native="close()")
+            md-icon done
 </template>
 
 <script>

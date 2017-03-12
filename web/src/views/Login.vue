@@ -1,5 +1,6 @@
 <template lang="pug">
   md-layout.login.padding
+
     md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-small="100", md-flex-xsmall="100")
       md-tabs(md-fixed)
 
@@ -14,8 +15,10 @@
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
               md-card-content.center
-                md-button.md-raised.md-accent(type="submit")
-                  md-icon(v-if="!spin") done
+                md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="logging")
+                  md-icon close
+                md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="logging")
+                  md-icon(v-if="!logging") done
                   md-icon.spin(v-else) autorenew
 
         md-tab.no-padding#register(md-label="Register")
@@ -32,8 +35,10 @@
                   label Name
                   md-input(type="text", v-model="information.username", required)
               md-card-content.center
-                md-button.md-raised.md-accent(type="submit")
-                  md-icon(v-if="!spin") done
+                md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="registering")
+                  md-icon clear
+                md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="registering")
+                  md-icon(v-if="!registering") done
                   md-icon.spin(v-else) autorenew
 </template>
 
@@ -53,7 +58,8 @@
           email: 'test@test.com',
           password: 'test'
         },
-        spin: false
+        logging: false,
+        registering: false
       }
     },
     mounted () {
@@ -62,18 +68,18 @@
     },
     methods: {
       login () {
-        this.spin = true
+        this.logging = true
         auth.login(this.credentials)
         .then((response) => {
-          this.spin = false
+          this.logging = false
           if (auth.logged) this.$router.push('/status')
         })
       },
       register () {
-        this.spin = true
+        this.registering = true
         auth.register(this.information)
         .then((response) => {
-          this.spin = false
+          this.registering = false
         })
       }
     },

@@ -402,6 +402,8 @@
     opacity 0.90
   .md-table-card.md-card
     background-color rgba(255,255,255,0.90) !important
+    td
+      font-size 0.8em
 
   /* CARDS */
   .md-layout
@@ -480,6 +482,14 @@
       .md-progress-track
       .md-chip
         background-color #EEEEEE !important
+        
+    /* REFERENDUM */
+    .md-progress.green
+      .md-progress-track
+        background-color #4CAF50 !important
+    .md-progress.red
+      .md-progress-track
+        background-color #D50000 !important
 
   /* ANIMATION TRANSITION */
   /*base code*/

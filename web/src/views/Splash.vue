@@ -1,15 +1,12 @@
 <template lang="pug">
   md-layout.splash
 
-    md-layout(md-flex-xlarge="50", md-flex-large="50", md-flex-small="100", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
           .md-title Planet Exploration
         md-card-media
           md-image.image(md-src="img/blue.gif")
-
-    md-layout(md-flex-xlarge="50", md-flex-large="50", md-flex-small="100", md-flex-xsmall="100")
-      md-card.md-primary.card
         md-card-header
           .md-title Space Battles
         md-card-media

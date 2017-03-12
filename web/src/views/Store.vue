@@ -10,7 +10,7 @@
         md-card-content.center
           span {{ artifact.description | lorem }}
         md-card-content.center
-          md-button.md-raised.md-accent
+          md-button.md-raised.md-fab.md-mini.md-accent
             md-icon done
 </template>
 

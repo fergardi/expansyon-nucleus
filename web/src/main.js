@@ -59,8 +59,10 @@ var router = new VueRouter({
     { path: '*', redirect: '/' }
   ]
 })
+
 // secured routes
 const security = [
+/* development
   'planetarium',
   'market',
   'trade',
@@ -80,6 +82,7 @@ const security = [
   'status',
   'profile',
   'help'
+*/
 ]
 
 // material

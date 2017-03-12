@@ -7,15 +7,7 @@
           .md-title Planets
         md-card-content.center.doughnut
           pie(v-bind:data="planets.data")
-          md-chip.grey.total {{ planets.total }}
-
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card
-        md-card-header
-          .md-title Ships
-        md-card-content.center.doughnut
-          pie(v-bind:data="ships.data")
-          md-chip.grey.total {{ ships.total }}
+          span.total {{ planets.total }}
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -23,39 +15,68 @@
           .md-title Buildings
         md-card-content.center.doughnut
           pie(v-bind:data="buildings.data")
-          md-chip.grey.total {{ buildings.total }}
+          span.total {{ buildings.total }}
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
+        md-card-header
+          .md-title Ships
+        md-card-content.center.doughnut
+          pie(v-bind:data="ships.data")
+          span.total {{ ships.total }}
+
+    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
+      md-card.md-primary.card.grey
         md-card-header
           .md-title Resources
-        md-card-content.center.bar
-          bar(v-bind:data="resources.data")
+        md-card-content.center
+          md-progress.green(v-bind:md-progress="resources.metal")
+          md-progress.green(v-bind:md-progress="resources.crystal")
+          md-progress.green(v-bind:md-progress="resources.oil")
+          md-progress.green(v-bind:md-progress="resources.size")
+          md-progress.green(v-bind:md-progress="resources.energy")
+          md-progress.green(v-bind:md-progress="resources.influence")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card
+      md-card.md-primary.card.grey
         md-card-header
-          .md-title Referendum
-        md-card-content.center.radar
-          radar(v-bind:data="referendum.data")
+          .md-title {{ referendum.name }}
+        md-card-content.center
+          md-progress(v-bind:md-progress="referendum.metal", v-bind:class="referendum.metal >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.crystal", v-bind:class="referendum.crystal >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.oil", v-bind:class="referendum.oil >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.size", v-bind:class="referendum.size >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.energy", v-bind:class="referendum.energy >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.influence", v-bind:class="referendum.influence >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.attack", v-bind:class="referendum.attack >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.defense", v-bind:class="referendum.defense >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card
+      md-card.md-primary.card.grey
         md-card-header
           .md-title {{ faction.name }}
-        md-card-media.background
-          img(v-bind:src="faction.image")
         md-card-content.center
-          md-chip 23
+          md-progress.green(v-bind:md-progress="faction.metal", v-if="faction.metal > 0")
+          md-progress.green(v-bind:md-progress="faction.crystal", v-if="faction.crystal > 0")
+        //
+          md-progress.green(v-bind:md-progress="faction.oil", v-if="faction.oil > 0")
+          md-progress.green(v-bind:md-progress="faction.size", v-if="faction.size > 0")
+          md-progress.green(v-bind:md-progress="faction.energy", v-if="faction.energy > 0")
+          md-progress.green(v-bind:md-progress="faction.influence", v-if="faction.influence > 0")
+          md-progress.green(v-bind:md-progress="faction.attack", v-if="faction.attack > 0")
+          md-progress.green(v-bind:md-progress="faction.defense", v-if="faction.defense > 0")
+          md-progress.green(v-bind:md-progress="faction.speed", v-if="faction.speed > 0")
 </template>
 
 <script>
-  import { pie, radar, bar } from '../components/chart'
-  import factory from '../factories/faction'
+  import { pie } from '../components/chart'
+  import factionFactory from '../factories/faction'
+  import referendumFactory from '../factories/referendum'
   import vuex from '../vuex/vuex'
 
   export default {
-    components: { pie, radar, bar },
+    components: { pie },
     data () {
       return {
         planets: {
@@ -120,6 +141,7 @@
               'Factory',
               'Refinery',
               'Plant',
+              'Barrier',
               'Warehouse',
               'Turret',
               'Railgun',
@@ -144,45 +166,24 @@
           }
         },
         resources: {
-          data: {
-            labels: ['Metal', 'Crystal', 'Oil', 'Energy'],
-            datasets: [
-              {
-                label: 'Resources',
-                backgroundColor: '#f87979',
-                data: [123, 321, 213, 22]
-              }
-            ]
-          }
+          turns: 100,
+          metal: 23,
+          crystal: 23,
+          oil: 23,
+          size: 23,
+          energy: 23,
+          influence: 23
         },
-        referendum: {
-          data: {
-            labels: ['Metal', 'Crystal', 'Oil', 'Attack', 'Defense', 'Speed'],
-            datasets: [
-              {
-                label: 'Increase',
-                backgroundColor: 'rgba(76, 175, 80, 0.2)',
-                borderColor: 'rgba(0, 0, 0, 1)',
-                data: [65, 59, 90, 81, 56, 55]
-              },
-              {
-                label: 'Decrease',
-                backgroundColor: 'rgba(213, 0, 0, 0.2)',
-                borderColor: 'rgba(0, 0, 0, 1)',
-                data: [28, 48, 40, 19, 96, 27]
-              }
-            ]
-          }
-        },
+        referendum: {},
         faction: {}
       }
     },
     created () {
-      this.faction = factory.build()
+      this.referendum = referendumFactory.build()
+      this.faction = factionFactory.build()
     },
     mounted () {
-      vuex.state.name = 'Home'
-      // vuex.state.search = false
+      vuex.state.name = 'Status'
     }
   }
 </script>

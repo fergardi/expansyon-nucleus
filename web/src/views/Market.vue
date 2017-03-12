@@ -21,7 +21,7 @@
         md-card-content.center
           span(v-if="sale.description") {{ sale.description | lorem }}
         md-card-content.center
-          md-button.md-raised.md-accent
+          md-button.md-raised.md-fab.md-mini.md-accent
             md-icon done
 </template>
 

@@ -39,9 +39,9 @@
               label Oil
               md-input(type="number", v-model="oil", required)
               md-icon opacity
-            md-button.md-raised.md-warn(type="reset", v-bind:disabled="!valid")
+            md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="!valid")
               md-icon close
-            md-button.md-raised.md-accent(type="submit", v-bind:disabled="!valid")
+            md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="!valid")
               md-icon done
 
     md-layout(v-for="item in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")

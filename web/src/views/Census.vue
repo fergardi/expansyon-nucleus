@@ -18,10 +18,10 @@
         md-dialog-title {{ selected.name }}
         md-dialog-content {{ selected.faction }}
         md-dialog-actions
-          md-button.md-icon-button(v-on:click.native="close('info')")
-            md-icon.md-warn close
-          md-button.md-icon-button(v-on:click.native="form()")
-            md-icon.md-accent send
+          md-button.md-icon-button.md-warn(v-on:click.native="close('info')")
+            md-icon close
+          md-button.md-icon-button.md-accent(v-on:click.native="form()")
+            md-icon send
 
       md-dialog(ref="form")
         md-dialog-title Send message
@@ -35,10 +35,10 @@
               label Text
               md-textarea(v-model="message.text")
         md-dialog-actions
-          md-button.md-icon-button(v-on:click.native="close('form')")
-            md-icon.md-warn close
-          md-button.md-icon-button(v-on:click.native="send()")
-            md-icon.md-accent done
+          md-button.md-icon-button.md-warn(v-on:click.native="close('form')")
+            md-icon close
+          md-button.md-icon-button.md-accent(v-on:click.native="send()")
+            md-icon done
 </template>
 
 <script>

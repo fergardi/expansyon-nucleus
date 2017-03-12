@@ -20,13 +20,16 @@ const factory = {
   build () {
     var law = {
       image: factory.image(),
-      name: 'LAW',
-      attack: factory.number(),
-      defense: factory.number(),
-      speed: factory.number(),
+      name: 'Referendum',
       metal: factory.number(),
       crystal: factory.number(),
       oil: factory.number(),
+      size: factory.number(),
+      energy: factory.number(),
+      influence: factory.number(),
+      attack: factory.number(),
+      defense: factory.number(),
+      speed: factory.number(),
       description: 'Description',
       class: factory.class()
     }
