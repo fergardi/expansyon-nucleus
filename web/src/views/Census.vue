@@ -4,15 +4,17 @@
 
       md-table-header
         md-table-row
-          md-table-head(md-sort-by="name") Name
-          md-table-head(md-sort-by="influence", md-numeric) Influence
-          md-table-head(md-sort-by="planets", md-numeric) Planets
+          md-table-head(md-sort-by="name", md-tooltip="Name of the player") Name
+          md-table-head(md-sort-by="influence", md-numeric, md-tooltip="Ammount of influence of the player") Influence
+          md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
 
       md-table-body
         md-table-row(v-for="player in filtered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
           md-table-cell {{ player.name }}
-          md-table-cell(md-numeric) {{ player.influence }}
-          md-table-cell(md-numeric) {{ player.planets }}
+          md-table-cell(md-numeric)
+            md-chip {{ player.influence }}
+          md-table-cell(md-numeric)
+            md-chip {{ player.planets }}
 
       md-dialog(ref="info")
         md-dialog-title {{ selected.name }}
@@ -42,7 +44,7 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex.js'
+  import vuex from '../vuex/vuex'
   import factory from '../factories/player'
 
   export default {

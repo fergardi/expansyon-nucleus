@@ -73,7 +73,7 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex.js'
+  import vuex from '../vuex/vuex'
   import artifactFactory from '../factories/artifact'
   import planetFactory from '../factories/planet'
   import shipFactory from '../factories/ship'

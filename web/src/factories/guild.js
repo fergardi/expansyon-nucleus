@@ -6,7 +6,8 @@ const factory = {
     var guild = {
       name: 'GUILD',
       description: 'DESCRIPTION',
-      members: factory.number()
+      members: factory.number(),
+      influence: factory.number()
     }
     return guild
   }

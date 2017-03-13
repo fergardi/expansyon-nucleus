@@ -4,10 +4,10 @@
 
       md-table-header
         md-table-row
-          md-table-head(md-sort-by="title") Title
-          md-table-head(md-sort-by="from") From
-          md-table-head.hide(md-sort-by="text") Text
-          md-table-head(md-sort-by="date", md-numeric) Date
+          md-table-head(md-sort-by="title", md-tooltip="Title of the transmission") Title
+          md-table-head(md-sort-by="from", md-tooltip="Origin of the transmission") From
+          md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
+          md-table-head(md-sort-by="date", md-numeric, md-tooltip="Date of the transmission") Date
 
       md-table-body
         md-table-row(v-for="message in filtered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")

@@ -53,7 +53,7 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex.js'
+  import vuex from '../vuex/vuex'
   import factory from '../factories/mission'
 
   export default {

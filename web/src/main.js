@@ -96,6 +96,24 @@ Vue.material.registerTheme({
     },
     accent: 'green',
     warn: 'red'
+  },
+  // light
+  light: {
+    primary: {
+      color: 'blue-grey',
+      hue: '400'
+    },
+    accent: 'green',
+    warn: 'red'
+  },
+  // dark
+  dark: {
+    primary: {
+      color: 'blue-grey',
+      hue: '900'
+    },
+    accent: 'green',
+    warn: 'red'
   }
 })
 

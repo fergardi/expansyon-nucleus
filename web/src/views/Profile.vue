@@ -20,11 +20,11 @@
         md-card-header
           .md-title Change theme color
         md-card-content.center
-          md-checkbox(v-model="theme", name="theme", id="theme") Light/Dark
+          md-switch(v-model="theme", name="theme", id="theme") Light/Dark
 </template>
 
 <script>
-  import vuex from '../vuex/vuex.js'
+  import vuex from '../vuex/vuex'
 
   export default {
     data () {
@@ -49,7 +49,7 @@
     },
     watch: {
       theme (boolean) {
-        console.log(boolean)
+        boolean ? this.$material.setCurrentTheme('dark') : this.$material.setCurrentTheme('light')
       }
     }
   }

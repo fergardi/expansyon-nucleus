@@ -9,6 +9,7 @@
         h2.md-title {{ name }}
         md-input-container.flex
           md-input(type="search", placeholder="Search...", v-model="search")
+          md-icon search    
         md-button.md-icon-button.toggler(v-on:click.native="open('right')")
           md-icon chevron_left
 
@@ -36,7 +37,7 @@
       md-whiteframe
         md-toolbar#right.md-account-header.center
           md-avatar.md-large
-            img(src="https://image.flaticon.com/icons/svg/124/124558.svg")
+            img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
           h2.md-title Resources
       md-list.md-dense.scrollable
         template(v-for="section in right")
@@ -340,9 +341,8 @@
     margin 0 !important
     height 100%
     scroll-behavior smooth !important
-  .md-chip
-    margin-right 5px
-    margin-bottom 5px
+  .md-chip + .md-chip
+    margin-left 5px
   .md-toolbar
     .md-button
       margin 0 !important
@@ -395,15 +395,16 @@
           min-height 24px
           font-size 24px
           margin auto
-  .md-chip
-    font-weight bold
+    .md-numeric
+      .md-table-cell-container
+          justify-content flex-end !important
   .logo
     margin-right 10px
     width 30px
     height auto
   /* chrome autofill */
-  input:-webkit-autofill
-    -webkit-box-shadow 0 0 0px 1000px lightgray inset !important
+  .md-input-container .md-icon:after
+    background inherit !important
   
   /* OPACITY */
   #toolbar

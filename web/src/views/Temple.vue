@@ -16,7 +16,7 @@
 
 <script>
   import factory from '../factories/faction'
-  import vuex from '../vuex/vuex.js'
+  import vuex from '../vuex/vuex'
 
   export default {
     data () {

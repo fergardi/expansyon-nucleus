@@ -11,7 +11,7 @@
                 md-input-container
                   label Email
                   md-input(type="email", v-model="credentials.email", required)
-                md-input-container
+                md-input-container(md-has-password)
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
               md-card-content.center
@@ -28,9 +28,13 @@
                 md-input-container
                   label Email
                   md-input(type="mail", v-model="information.email", required)
-                md-input-container
+                md-input-container(md-has-password)
                   label Password
                   md-input(type="password", v-model="information.password", required)
+                md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
+                  label Password
+                  md-input(type="password", v-model="information.repeat", required)
+                  span.md-error Passwords must match
                 md-input-container
                   label Name
                   md-input(type="text", v-model="information.username", required)
@@ -56,7 +60,8 @@
         information: {
           username: 'fergardi',
           email: 'test@test.com',
-          password: 'test'
+          password: 'test',
+          repeat: 'test'
         },
         logging: false,
         registering: false
@@ -81,6 +86,11 @@
         .then((response) => {
           this.registering = false
         })
+      }
+    },
+    computed: {
+      match () {
+        return this.information.password === this.information.repeat
       }
     },
     destroyed () {
