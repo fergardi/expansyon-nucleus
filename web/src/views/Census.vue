@@ -1,6 +1,6 @@
 <template lang="pug">
   md-table-card
-    md-table(md-sort="influence")
+    md-table(md-sort="influence", v-on:sort="order")
 
       md-table-header
         md-table-row
@@ -9,8 +9,9 @@
           md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
 
       md-table-body
-        md-table-row(v-for="player in filtered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
-          md-table-cell {{ player.name }}
+        md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
+          md-table-cell
+            md-chip(v-bind:class="player.class") {{ player.name }}
           md-table-cell(md-numeric)
             md-chip {{ player.influence }}
           md-table-cell(md-numeric)
@@ -44,13 +45,16 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex'
   import factory from '../factories/player'
+  import _ from 'lodash'
+  import vuex from '../vuex/vuex'
 
   export default {
     data () {
       return {
         players: [],
+        field: 'influence',
+        direction: 'desc',
         selected: {},
         message: {
           subject: '',
@@ -81,6 +85,10 @@
       send () {
         // TODO
         this.close('form')
+      },
+      order (column) {
+        this.field = column.name
+        this.direction = column.type
       }
     },
     computed: {
@@ -91,15 +99,13 @@
         return this.players.filter((player) => {
           return player.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      ordered () {
+        return _.orderBy(this.filtered, this.field, this.direction)
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
-  @media only screen and (max-width 768px)
-    .hide
-      display none !important
-    td
-      font-size 0.8em !important
 </style>

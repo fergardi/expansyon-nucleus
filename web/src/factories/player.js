@@ -3,9 +3,21 @@ var factions = [
   'JITH'
 ]
 
+var classes = [
+  'red',
+  'green',
+  'indigo',
+  'purple',
+  'yellow',
+  'cyan'
+]
+
 const factory = {
   name () {
     return 'Name'
+  },
+  class () {
+    return classes[Math.floor(Math.random() * classes.length)]
   },
   faction () {
     return factions[Math.floor(Math.random() * factions.length)]
@@ -16,6 +28,7 @@ const factory = {
   build () {
     var player = {
       name: factory.name(),
+      class: factory.class(),
       faction: factory.faction(),
       planets: factory.number(),
       fleet: factory.number(),

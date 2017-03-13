@@ -560,4 +560,8 @@
         top 0
         pointer-events auto
         transform translate3d(0, 0, 0) !important
+        
+  @media only screen and (max-width 768px)
+    .hide
+      display none !important
 </style>

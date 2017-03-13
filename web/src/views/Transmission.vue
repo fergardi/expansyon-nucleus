@@ -1,6 +1,6 @@
 <template lang="pug">
   md-table-card
-    md-table(md-sort="date")
+    md-table(md-sort="date", v-on:sort="order")
 
       md-table-header
         md-table-row
@@ -10,7 +10,7 @@
           md-table-head(md-sort-by="date", md-numeric, md-tooltip="Date of the transmission") Date
 
       md-table-body
-        md-table-row(v-for="message in filtered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+        md-table-row(v-for="message in ordered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
           md-table-cell {{ message.title }}
           md-table-cell {{ message.from }}
           md-table-cell.hide {{ message.text | lorem }}
@@ -28,13 +28,16 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex'
   import factory from '../factories/message'
+  import _ from 'lodash'
+  import vuex from '../vuex/vuex'
 
   export default {
     data () {
       return {
         messages: [],
+        field: 'date',
+        direction: 'desc',
         selected: {}
       }
     },
@@ -57,6 +60,10 @@
       remove () {
         // TODO
         this.close()
+      },
+      order (column) {
+        this.field = column.name
+        this.direction = column.type
       }
     },
     computed: {
@@ -67,15 +74,13 @@
         return this.messages.filter((message) => {
           return message.title.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      ordered () {
+        return _.orderBy(this.filtered, this.field, this.direction)
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
-  @media only screen and (max-width 768px)
-    .hide
-      display none !important
-    td
-      font-size 0.8em !important
 </style>
