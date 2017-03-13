@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="branch.class")
         md-card-header
           .md-title {{ branch.name }}
-        md-card-content.center.background
+        md-card-content.center
           md-layout.center
             md-layout.center(v-for="(skill, index) in branch.skills", v-bind:md-flex-xlarge="layout(index)", v-bind:md-flex-large="layout(index)", v-bind:md-flex-small="layout(index)", v-bind:md-flex-xsmall="layout(index)")
               md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)")

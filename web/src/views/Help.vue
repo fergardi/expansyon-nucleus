@@ -52,5 +52,5 @@
   .md-card
     .md-card-header
       .md-title
-        text-align left
+        text-align left !important
 </style>

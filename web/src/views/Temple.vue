@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="faction.class")
         md-card-header
           .md-title {{ faction.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="faction.image")
         md-card-content.center
           span {{ faction.description | lorem }}

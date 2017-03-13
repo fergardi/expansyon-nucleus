@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="selected.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="selected.size")
@@ -14,6 +14,9 @@
           md-progress(v-bind:md-progress="selected.oil")
           md-progress(v-bind:md-progress="selected.energy")
           md-progress(v-bind:md-progress="selected.influence")
+        md-card-content.center
+          md-chip(v-if="selected.moon") Moon
+          md-chip(v-if="selected.station") Station
         md-card-content.center
           span {{ selected.description | lorem }}
 
@@ -57,7 +60,7 @@
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="select(planet)")
         md-card-header
           .md-title {{ planet.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="planet.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="planet.size")
@@ -66,6 +69,9 @@
           md-progress(v-bind:md-progress="planet.oil")
           md-progress(v-bind:md-progress="planet.energy")
           md-progress(v-bind:md-progress="planet.influence")
+        md-card-content.center
+          md-chip(v-if="planet.moon") Moon
+          md-chip(v-if="planet.station") Station
         md-card-content.center
           span {{ planet.description | lorem }}
 </template>

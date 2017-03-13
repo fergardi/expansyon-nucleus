@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="sale.class")
         md-card-header
           .md-title {{ sale.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="sale.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="sale.size", v-if="sale.size")

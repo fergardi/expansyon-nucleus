@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="selected.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="selected.metal")
@@ -46,7 +46,7 @@
       md-card.md-primary.card(v-bind:class="building.class", md-with-hover, v-on:click.native="select(building)")
         md-card-header
           .md-title {{ building.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="building.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="building.metal")

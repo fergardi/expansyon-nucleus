@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="planet.class")
         md-card-header
           .md-title {{ planet.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="planet.image")
         md-card-content.no-padding
           md-progress(v-bind:md-progress="planet.size")
@@ -14,6 +14,9 @@
           md-progress(v-bind:md-progress="planet.oil")
           md-progress(v-bind:md-progress="planet.energy")
           md-progress(v-bind:md-progress="planet.influence")
+        md-card-content.center
+          md-chip(v-if="planet.moon") Moon
+          md-chip(v-if="planet.station") Station
         md-card-content.center
           span {{ planet.description | lorem }}
 </template>

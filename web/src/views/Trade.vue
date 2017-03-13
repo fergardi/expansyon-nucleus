@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="selected.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="selected.size", v-if="selected.size")
@@ -48,7 +48,7 @@
       md-card.md-primary.card(v-bind:class="item.class", md-with-hover, v-on:click.native="select(item)")
         md-card-header
           .md-title {{ item.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="item.image")
         md-card-content.no-padding.center(v-if="item.size")
           md-progress(v-bind:md-progress="item.size", v-if="item.size")

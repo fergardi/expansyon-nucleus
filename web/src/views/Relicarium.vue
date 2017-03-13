@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="artifact.class")
         md-card-header
           .md-title {{ artifact.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="artifact.image")
         md-card-content.center
           span {{ artifact.description | lorem }}

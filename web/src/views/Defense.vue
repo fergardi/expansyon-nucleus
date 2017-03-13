@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="selected.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="selected.attack")
@@ -46,7 +46,7 @@
       md-card.md-primary.card(v-bind:class="tower.class", md-with-hover, v-on:click.native="select(tower)")
         md-card-header
           .md-title {{ tower.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="tower.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="tower.attack")

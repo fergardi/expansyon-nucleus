@@ -1,4 +1,4 @@
-import { Doughnut, Radar, Bar } from 'vue-chartjs'
+import { Doughnut } from 'vue-chartjs'
 
 const pie = Doughnut.extend({
   props: ['data'],
@@ -7,38 +7,9 @@ const pie = Doughnut.extend({
       options: {
         legend: {
           display: false
-        }
-      }
-    }
-  },
-  mounted () {
-    this.renderChart(this.data, this.options)
-  }
-})
-
-const radar = Radar.extend({
-  props: ['data'],
-  data () {
-    return {
-      options: {
-        legend: {
-          display: false
-        }
-      }
-    }
-  },
-  mounted () {
-    this.renderChart(this.data, this.options)
-  }
-})
-
-const bar = Bar.extend({
-  props: ['data'],
-  data () {
-    return {
-      options: {
-        legend: {
-          display: false
+        },
+        animation: {
+          animateRotate: false
         }
       }
     }
@@ -49,7 +20,5 @@ const bar = Bar.extend({
 })
 
 module.exports = {
-  pie: pie,
-  radar: radar,
-  bar: bar
+  pie: pie
 }

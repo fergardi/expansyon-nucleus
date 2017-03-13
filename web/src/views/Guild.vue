@@ -70,4 +70,9 @@
 </script>
 
 <style lang="stylus" scoped>
+  @media only screen and (max-width 768px)
+    .hide
+      display none !important
+    td
+      font-size 0.8em !important
 </style>

@@ -63,6 +63,9 @@ const factory = {
   number () {
     return 10 + Math.floor(Math.random() * 70) // [10, 70)
   },
+  boolean () {
+    return Math.floor(Math.random() * 10) >= 5
+  },
   total (planet) {
     return planet.size + planet.metal + planet.crystal + planet.oil + planet.energy + planet.influence
   },
@@ -74,7 +77,9 @@ const factory = {
       crystal: factory.number(),
       oil: factory.number(),
       energy: factory.number(),
-      influence: factory.number()
+      influence: factory.number(),
+      moon: factory.boolean(),
+      station: factory.boolean()
     }
     factory.type(planet)
     return planet

@@ -7,7 +7,7 @@
         md-tab.no-padding#login(md-label="Login")
           form(v-on:submit.prevent="login()")
             md-card.md-primary.card.no-padding
-              md-card-content.background
+              md-card-content
                 md-input-container
                   label Email
                   md-input(type="email", v-model="credentials.email", required)
@@ -24,7 +24,7 @@
         md-tab.no-padding#register(md-label="Register")
           form(v-on:submit.prevent="register()")
             md-card.md-primary.card.no-padding
-              md-card-content.background
+              md-card-content
                 md-input-container
                   label Email
                   md-input(type="mail", v-model="information.email", required)

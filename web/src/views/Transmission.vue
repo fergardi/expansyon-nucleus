@@ -9,7 +9,7 @@
           md-table-head(md-sort-by="date", md-numeric) Date
 
       md-table-body
-        md-table-row.background(v-for="message in filtered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+        md-table-row(v-for="message in filtered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
           md-table-cell {{ message.title }}
           md-table-cell {{ message.from }}
           md-table-cell.md-numeric {{ message.date | date }}
@@ -71,4 +71,9 @@
 </script>
 
 <style lang="stylus" scoped>
+  @media only screen and (max-width 768px)
+    .hide
+      display none !important
+    td
+      font-size 0.8em !important
 </style>

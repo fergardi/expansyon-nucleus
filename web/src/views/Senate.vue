@@ -5,7 +5,7 @@
       md-card.md-primary.card(v-bind:class="referendum.class")
         md-card-header
           .md-title {{ referendum.name }}
-        md-card-media.background
+        md-card-media
           img(v-bind:src="referendum.image")
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="referendum.metal")

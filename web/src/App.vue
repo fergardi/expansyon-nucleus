@@ -314,7 +314,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    background: url("img/background.jpg") no-repeat center center fixed;
+    background url("img/background.jpg") no-repeat center center fixed
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -331,7 +331,7 @@
     height 100%
   .content
     margin 0 !important
-    height: 100%
+    height 100%
     scroll-behavior smooth !important
   .md-chip
     margin-right 5px
@@ -346,8 +346,6 @@
         height 100%
         overflow auto
     .md-toolbar
-      background-size: cover;
-      box-sizing: border-box;
       .md-account-header
         a:not(.md-button)
           color inherit
@@ -384,15 +382,15 @@
     .md-table-cell
       .md-button
         .md-icon
-          width: 24px;
-          min-width: 24px;
-          height: 24px;
-          min-height: 24px;
-          font-size: 24px;
-          margin: auto;
-  /* Change the white to any color ;) */
+          width 24px
+          min-width 24px
+          height 24px
+          min-height 24px
+          font-size 24px
+          margin auto
+  /* chrome autofill */
   input:-webkit-autofill
-    -webkit-box-shadow: 0 0 0px 1000px lightgray inset !important;
+    -webkit-box-shadow 0 0 0px 1000px lightgray inset !important
   
   /* OPACITY */
   #toolbar
@@ -402,8 +400,6 @@
     opacity 0.90
   .md-table-card.md-card
     background-color rgba(255,255,255,0.90) !important
-    td
-      font-size 0.8em
 
   /* CARDS */
   .md-layout
@@ -412,8 +408,6 @@
   .md-card.card
     width 100%
     margin 4px
-    .background
-      background-color lighten(#263238, 10) !important
     .md-card-header
       .md-title
         font-size 18px
@@ -428,68 +422,107 @@
       img
         height 140px
         padding 10px
-    &.green
-      .md-card-header
-        color #4CAF50
-      .md-progress-track
-      .md-chip
-        background-color #4CAF50 !important
-    &.purple
-      .md-card-header
-        color #9C27B0
-      .md-progress-track
-      .md-chip
-        background-color #9C27B0 !important
-    &.indigo
-      .md-card-header
-        color #3F51B5
-      .md-progress-track
-      .md-chip
-        background-color #3F51B5 !important
-    &.yellow
-      .md-card-header
-        color #FFEB3B
-      .md-progress-track
-      .md-chip
-        background-color #FFEB3B !important
-    &.cyan
-      .md-card-header
-        color #00BCD4
-      .md-progress-track
-      .md-chip
-        background-color #00BCD4 !important
-    &.red
-      .md-card-header
-        color #D50000
-      .md-progress-track
-      .md-chip
-        background-color #D50000 !important
-    &.orange
-      .md-card-header
-        color #FF9800
-      .md-progress-track
-      .md-chip
-        background-color #FF9800 !important
-    &.pink
-      .md-card-header
-        color #E91E63
-      .md-progress-track
-      .md-chip
-        background-color #E91E63 !important
-    &.grey
-      .md-card-header
-        color #EEEEEE
-      .md-progress-track
-      .md-chip
-        background-color #EEEEEE !important
         
-    /* REFERENDUM */
-    .md-progress.green
-      .md-progress-track
-        background-color #4CAF50 !important
-    .md-progress.red
-      .md-progress-track
-        background-color #D50000 !important
+  /* COLORS */
+  green = #4CAF50
+  purple = #9C27B0
+  indigo = #3F51B5
+  yellow = #FFEB3B
+  cyan = #00BCD4
+  red = #D50000
+  orange = #FF9800
+  pink = #E91E63
+  grey = #EEEEEE
+  .green
+    .md-card-header
+      color green !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color green !important
+      color white
+      font-weight bold
+  .purple
+    .md-card-header
+      color purple !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color purple !important
+      color white
+      font-weight bold
+  .indigo
+    .md-card-header
+      color indigo !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color indigo !important
+      color white
+      font-weight bold
+  .yellow
+    .md-card-header
+      color yellow !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color yellow !important
+      color black
+      font-weight bold
+  .cyan
+    .md-card-header
+      color cyan !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color cyan !important
+      color black
+      font-weight bold
+  .red
+    .md-card-header
+      color red !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color red !important
+      color white
+      font-weight bold
+  .orange
+    .md-card-header
+      color orange !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color orange !important
+      color black
+      font-weight bold
+  .pink
+    .md-card-header
+      color pink !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color pink !important
+      color black
+      font-weight bold
+  .grey
+    .md-card-header
+      color grey !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color grey !important
+      color black
+      font-weight bold
 
   /* ANIMATION TRANSITION */
   /*base code*/
@@ -519,7 +552,7 @@
     
   /* MEDIA QUERIES */
   // sidebars appearing on desktop
-  @media only screen and (min-width 1080px)
+  @media only screen and (min-width 1280px)
     .app
       padding-left 304px
       padding-right 304px
