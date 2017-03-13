@@ -5,7 +5,6 @@
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="open('left')")
           md-icon chevron_right
-        img.logo(v-bind:src="image")
         h2.md-title {{ name }}
         md-input-container.flex
           md-input(type="search", placeholder="Search...", v-model="search")
@@ -311,9 +310,6 @@
       },
       name () {
         return vuex.state.name
-      },
-      image () {
-        return vuex.state.image
       }
     }
   }
@@ -398,10 +394,7 @@
     .md-numeric
       .md-table-cell-container
           justify-content flex-end !important
-  .logo
-    margin-right 10px
-    width 30px
-    height auto
+
   /* chrome autofill */
   .md-input-container .md-icon:after
     background inherit !important
@@ -491,7 +484,7 @@
     .md-chip
     &.md-chip
       background-color cyan !important
-      color white !important
+      color black !important
   .red
     .md-card-header
       color red !important
@@ -557,7 +550,7 @@
     
   /* MEDIA QUERIES */
   // sidebars appearing on desktop
-  @media only screen and (min-width 1280px)
+  @media only screen and (min-width 1080px)
     .app
       padding-left 304px
       padding-right 304px

@@ -7,7 +7,7 @@
   "private": false,
   "scripts": {
     "watchify": "watchify -vd -p [ browserify-hmr -p 12345 -u localhost:12345 ] -e src/main.js -o dist/build.js -t [ eslintify --extension js --extension vue --formatter stylish --quiet-ignored ]",
-    "serve": "http-server -p 56789 -o -s -c 1",
+    "serve": "http-server -p 23456 -o -s -c 1",
     "dev": "npm-run-all --parallel watchify serve",
     "test": "karma start karma.config.js",
     "build": "cross-env NODE_ENV=production browserify -g envify src/main.js | uglifyjs -c warnings=false -m > dist/build.js",

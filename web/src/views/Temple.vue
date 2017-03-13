@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import factory from '../factories/faction'
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
 
   export default {
@@ -25,9 +25,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 6; i++) {
-        this.factions.push(factory.build())
-      }
+      api.getFactions()
+      .then((response) => {
+        this.factions = response
+      })
     },
     mounted () {
       vuex.state.name = 'Guild'

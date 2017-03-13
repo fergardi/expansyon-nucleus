@@ -65,8 +65,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/planet'
 
   export default {
     data () {
@@ -76,7 +76,7 @@
           class: 'grey',
           name: 'SELECT PLANET',
           image: 'https://image.flaticon.com/icons/svg/202/202483.svg',
-          description: 'Choose an item to sell'
+          description: 'Choose a planet to attack'
         },
         fighter: 0,
         cruiser: 0,
@@ -84,9 +84,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 20; i++) {
-        this.planets.push(factory.build())
-      }
+      api.getPlanets()
+      .then((planets) => {
+        this.planets = planets
+      })
     },
     mounted () {
       vuex.state.name = 'Explore'
