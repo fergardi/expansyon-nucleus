@@ -19,6 +19,9 @@
           md-progress(v-bind:md-progress="selected.defense", v-if="selected.defense")
           md-progress(v-bind:md-progress="selected.speed", v-if="selected.speed")
         md-card-content.center
+          md-chip(v-if="selected.moon") Moon
+          md-chip(v-if="selected.station") Station
+        md-card-content.center
           span(v-if="selected.description") {{ selected.description | lorem }}
 
     md-layout(md-flex-xlarge="75", md-flex-large="66", md-flex-small="50", md-flex-xsmall="100")
@@ -44,25 +47,28 @@
             md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="!valid")
               md-icon done
 
-    md-layout(v-for="item in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="item.class", md-with-hover, v-on:click.native="select(item)")
+    md-layout(v-for="sale in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
+      md-card.md-primary.card(v-bind:class="sale.class", md-with-hover, v-on:click.native="select(sale)")
         md-card-header
-          .md-title {{ item.name }}
+          .md-title {{ sale.name }}
         md-card-media
-          img(v-bind:src="item.image")
-        md-card-content.no-padding.center(v-if="item.size")
-          md-progress(v-bind:md-progress="item.size", v-if="item.size")
-          md-progress(v-bind:md-progress="item.metal", v-if="item.metal")
-          md-progress(v-bind:md-progress="item.crystal", v-if="item.crystal")
-          md-progress(v-bind:md-progress="item.oil", v-if="item.oil")
-          md-progress(v-bind:md-progress="item.energy", v-if="item.energy")
-          md-progress(v-bind:md-progress="item.influence", v-if="item.influence")
-        md-card-content.no-padding.center(v-if="item.attack")
-          md-progress(v-bind:md-progress="item.attack", v-if="item.attack")
-          md-progress(v-bind:md-progress="item.defense", v-if="item.defense")
-          md-progress(v-bind:md-progress="item.speed", v-if="item.speed")
-        md-card-content.center(v-if="item.description")
-          span(v-if="item.description") {{ item.description | lorem }}
+          img(v-bind:src="sale.image")
+        md-card-content.no-padding.center(v-if="sale.size")
+          md-progress(v-bind:md-progress="sale.size", v-if="sale.size")
+          md-progress(v-bind:md-progress="sale.metal", v-if="sale.metal")
+          md-progress(v-bind:md-progress="sale.crystal", v-if="sale.crystal")
+          md-progress(v-bind:md-progress="sale.oil", v-if="sale.oil")
+          md-progress(v-bind:md-progress="sale.energy", v-if="sale.energy")
+          md-progress(v-bind:md-progress="sale.influence", v-if="sale.influence")
+        md-card-content.no-padding.center(v-if="sale.attack")
+          md-progress(v-bind:md-progress="sale.attack", v-if="sale.attack")
+          md-progress(v-bind:md-progress="sale.defense", v-if="sale.defense")
+          md-progress(v-bind:md-progress="sale.speed", v-if="sale.speed")
+        md-card-content.center
+          md-chip(v-if="sale.moon") Moon
+          md-chip(v-if="sale.station") Station
+        md-card-content.center(v-if="sale.description")
+          span(v-if="sale.description") {{ sale.description | lorem }}
           
 </template>
 

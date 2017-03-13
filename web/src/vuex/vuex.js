@@ -7,7 +7,8 @@ const vuex = new Vuex.Store({
   state: {
     fullscreen: false,
     name: '',
-    search: ''
+    search: '',
+    image: 'https://image.flaticon.com/icons/svg/124/124558.svg'
   }
 })
 

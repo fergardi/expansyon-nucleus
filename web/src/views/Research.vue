@@ -43,9 +43,12 @@
         return index > 0 ? 33 : 100
       },
       up (skill) {
-        if (skill.level < 10) skill.level++
+        if (skill.level < skill.max) skill.level++
       },
       reset (branch) {
+        branch.skills.forEach((skill) => {
+          skill.level = skill.min
+        })
       },
       save (branch) {
       }
@@ -67,13 +70,18 @@
   .md-button.skill
     padding 5px
     display flex
+    align-items center
+    justify-content center
     .md-icon
       font-family Roboto,Noto Sans,Noto,sans-serif
       background-color rgba(0,0,0,0.8)
       border-radius 50%
-      font-size 18px
-      min-width: 18px
-      width: 18px
-      height: 18px
-      min-height: 18px
+      font-size 14px
+      min-width 20px
+      width 20px
+      height 20px
+      min-height 20px
+      display flex
+      align-items center
+      justify-content center
 </style>

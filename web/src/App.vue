@@ -1,9 +1,11 @@
 <template lang="pug">
   .app
+
     md-whiteframe
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="open('left')")
           md-icon chevron_right
+        img.logo(v-bind:src="image")
         h2.md-title {{ name }}
         md-input-container.flex
           md-input(type="search", placeholder="Search...", v-model="search")
@@ -12,9 +14,10 @@
 
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
       md-whiteframe
-        md-toolbar.md-account-header#left
+        md-toolbar#left.md-account-header.center
           md-avatar.md-large
-            img(src="https://image.flaticon.com/icons/svg/148/148908.svg")
+            img(src="https://image.flaticon.com/icons/svg/190/190279.svg")
+          h2.md-title Universe
       md-list.md-dense.scrollcable
         template(v-for="section in left")
           md-subheader {{ section.header }}
@@ -31,9 +34,10 @@
 
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
-        md-toolbar.md-account-header#right
+        md-toolbar#right.md-account-header.center
           md-avatar.md-large
-            img(src="https://image.flaticon.com/icons/svg/196/196682.svg")
+            img(src="https://image.flaticon.com/icons/svg/124/124558.svg")
+          h2.md-title Resources
       md-list.md-dense.scrollable
         template(v-for="section in right")
           md-subheader {{ section.header }}
@@ -86,35 +90,6 @@
             ]
           },
           {
-            header: 'Technonoly',
-            items: [
-              {
-                url: '/research',
-                icon: 'school',
-                title: 'Research',
-                quantity: 2
-              },
-              {
-                url: '/hangar',
-                icon: 'flight',
-                title: 'Hangar',
-                quantity: 87362
-              },
-              {
-                url: '/Infrastructure',
-                icon: 'build',
-                title: 'Infrastructure',
-                quantity: 1792
-              },
-              {
-                url: '/defense',
-                icon: 'track_changes',
-                title: 'Defense',
-                quantity: 172
-              }
-            ]
-          },
-          {
             header: 'Strategy',
             items: [
               {
@@ -140,6 +115,35 @@
                 icon: 'account_balance',
                 title: 'Temple',
                 quantity: 6
+              }
+            ]
+          },
+          {
+            header: 'Technonoly',
+            items: [
+              {
+                url: '/research',
+                icon: 'school',
+                title: 'Research',
+                quantity: 2
+              },
+              {
+                url: '/hangar',
+                icon: 'flight',
+                title: 'Hangar',
+                quantity: 87362
+              },
+              {
+                url: '/Infrastructure',
+                icon: 'build',
+                title: 'Infrastructure',
+                quantity: 1792
+              },
+              {
+                url: '/defense',
+                icon: 'track_changes',
+                title: 'Defense',
+                quantity: 172
               }
             ]
           },
@@ -306,6 +310,9 @@
       },
       name () {
         return vuex.state.name
+      },
+      image () {
+        return vuex.state.image
       }
     }
   }
@@ -336,7 +343,16 @@
   .md-chip
     margin-right 5px
     margin-bottom 5px
+  .md-toolbar
+    .md-button
+      margin 0 !important
   .md-sidenav
+    .md-toolbar
+      .md-avatar
+        width 100%
+        margin-bottom 10px
+      .md-title
+        display inline-block
     .md-sidenav-content
       height 100%
       overflow hidden
@@ -345,16 +361,7 @@
       .md-list
         height 100%
         overflow auto
-    .md-toolbar
-      .md-account-header
-        a:not(.md-button)
-          color inherit
-        .md-avatar-list
-          .md-list-item-container
-            align-items center
-          .md-avatar
-            .md-icon
-              border-radius 50%
+            
     .md-list-item:not(.md-avatar-list)
       .router-link-active
         background-color rgba(153, 153, 153, 0.2)
@@ -388,6 +395,12 @@
           min-height 24px
           font-size 24px
           margin auto
+  .md-chip
+    font-weight bold
+  .logo
+    margin-right 10px
+    width 30px
+    height auto
   /* chrome autofill */
   input:-webkit-autofill
     -webkit-box-shadow 0 0 0px 1000px lightgray inset !important
@@ -441,8 +454,7 @@
     .md-chip
     &.md-chip
       background-color green !important
-      color white
-      font-weight bold
+      color white !important
   .purple
     .md-card-header
       color purple !important
@@ -451,8 +463,7 @@
     .md-chip
     &.md-chip
       background-color purple !important
-      color white
-      font-weight bold
+      color white !important
   .indigo
     .md-card-header
       color indigo !important
@@ -461,8 +472,7 @@
     .md-chip
     &.md-chip
       background-color indigo !important
-      color white
-      font-weight bold
+      color white !important
   .yellow
     .md-card-header
       color yellow !important
@@ -471,8 +481,7 @@
     .md-chip
     &.md-chip
       background-color yellow !important
-      color black
-      font-weight bold
+      color black !important
   .cyan
     .md-card-header
       color cyan !important
@@ -481,8 +490,7 @@
     .md-chip
     &.md-chip
       background-color cyan !important
-      color black
-      font-weight bold
+      color white !important
   .red
     .md-card-header
       color red !important
@@ -491,8 +499,7 @@
     .md-chip
     &.md-chip
       background-color red !important
-      color white
-      font-weight bold
+      color white !important
   .orange
     .md-card-header
       color orange !important
@@ -501,8 +508,7 @@
     .md-chip
     &.md-chip
       background-color orange !important
-      color black
-      font-weight bold
+      color black !important
   .pink
     .md-card-header
       color pink !important
@@ -511,8 +517,7 @@
     .md-chip
     &.md-chip
       background-color pink !important
-      color black
-      font-weight bold
+      color black !important
   .grey
     .md-card-header
       color grey !important
@@ -521,8 +526,7 @@
     .md-chip
     &.md-chip
       background-color grey !important
-      color black
-      font-weight bold
+      color black !important
 
   /* ANIMATION TRANSITION */
   /*base code*/

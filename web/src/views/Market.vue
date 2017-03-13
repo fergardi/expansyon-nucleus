@@ -19,6 +19,9 @@
           md-progress(v-bind:md-progress="sale.defense", v-if="sale.defense")
           md-progress(v-bind:md-progress="sale.speed", v-if="sale.speed")
         md-card-content.center
+          md-chip(v-if="sale.moon") Moon
+          md-chip(v-if="sale.station") Station
+        md-card-content.center
           span(v-if="sale.description") {{ sale.description | lorem }}
         md-card-content.center
           md-button.md-raised.md-fab.md-mini.md-accent

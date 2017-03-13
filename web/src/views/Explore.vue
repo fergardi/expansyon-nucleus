@@ -8,12 +8,12 @@
         md-card-media
           img(v-bind:src="selected.image")
         md-card-content.no-padding.center
-          md-progress(v-bind:md-progress="selected.size")
-          md-progress(v-bind:md-progress="selected.metal")
-          md-progress(v-bind:md-progress="selected.crystal")
-          md-progress(v-bind:md-progress="selected.oil")
-          md-progress(v-bind:md-progress="selected.energy")
-          md-progress(v-bind:md-progress="selected.influence")
+          md-progress(v-bind:md-progress="selected.size", v-if="selected.size")
+          md-progress(v-bind:md-progress="selected.metal", v-if="selected.metal")
+          md-progress(v-bind:md-progress="selected.crystal", v-if="selected.crystal")
+          md-progress(v-bind:md-progress="selected.oil", v-if="selected.oil")
+          md-progress(v-bind:md-progress="selected.energy", v-if="selected.energy")
+          md-progress(v-bind:md-progress="selected.influence", v-if="selected.influence")
         md-card-content.center
           md-chip(v-if="selected.moon") Moon
           md-chip(v-if="selected.station") Station
@@ -38,18 +38,6 @@
               label Bomber
               md-input(type="number", v-model="bomber", required)
               md-icon bubble_chart
-            md-input-container
-              label Orbiter
-              md-input(type="number", v-model="orbiter", required)
-              md-icon camera
-            md-input-container
-              label Carrier
-              md-input(type="number", v-model="carrier", required)
-              md-icon storage
-            md-input-container
-              label Recycler
-              md-input(type="number", v-model="recycler", required)
-              md-icon cached
 
             md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="!valid")
               md-icon close
@@ -92,10 +80,7 @@
         },
         fighter: 0,
         cruiser: 0,
-        bomber: 0,
-        orbiter: 0,
-        carrier: 0,
-        recycler: 0
+        bomber: 0
       }
     },
     created () {

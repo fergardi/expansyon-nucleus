@@ -24,13 +24,18 @@ const factory = {
   class () {
     return classes[Math.floor(Math.random() * classes.length)]
   },
+  number () {
+    return 0 + Math.floor(Math.random() * 10) // [0, 10)
+  },
   skill (quantity) {
     var skills = []
     for (var i = 0; i < quantity; i++) {
       skills.push({
         image: factory.image(),
         name: 'NAME',
-        level: 0
+        level: factory.number(),
+        min: 0,
+        max: 10
       })
     }
     return skills
