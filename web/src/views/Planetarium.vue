@@ -22,8 +22,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/planet'
 
   export default {
     data () {
@@ -32,9 +32,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 2; i++) {
-        this.planets.push(factory.build())
-      }
+      api.getPlanets()
+      .then((data) => {
+        this.planets = data
+      })
     },
     mounted () {
       vuex.state.name = 'Planetarium'

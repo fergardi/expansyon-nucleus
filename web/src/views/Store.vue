@@ -15,8 +15,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/artifact'
 
   export default {
     data () {
@@ -25,9 +25,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 8; i++) {
-        this.artifacts.push(factory.build())
-      }
+      api.getArtifacts()
+      .then((data) => {
+        this.artifacts = data
+      })
     },
     mounted () {
       vuex.state.name = 'Store'

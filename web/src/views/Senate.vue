@@ -8,12 +8,15 @@
         md-card-media
           img(v-bind:src="referendum.image")
         md-card-content.no-padding.center
-          md-progress(v-bind:md-progress="referendum.metal")
-          md-progress(v-bind:md-progress="referendum.crystal")
-          md-progress(v-bind:md-progress="referendum.oil")
-          md-progress(v-bind:md-progress="referendum.attack")
-          md-progress(v-bind:md-progress="referendum.defense")
-          md-progress(v-bind:md-progress="referendum.speed")
+          md-progress(v-bind:md-progress="referendum.metal", v-bind:class="referendum.metal >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.crystal", v-bind:class="referendum.crystal >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.oil", v-bind:class="referendum.oil >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.size", v-bind:class="referendum.size >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.energy", v-bind:class="referendum.energy >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.influence", v-bind:class="referendum.influence >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.attack", v-bind:class="referendum.attack >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.defense", v-bind:class="referendum.defense >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
         md-card-content.center
           span {{ referendum.description | lorem }}
         md-card-content.center
@@ -24,8 +27,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/referendum'
 
   export default {
     data () {
@@ -34,9 +37,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 3; i++) {
-        this.referendums.push(factory.build())
-      }
+      api.getReferendums()
+      .then((data) => {
+        this.referendums = data
+      })
     },
     mounted () {
       vuex.state.name = 'Senate'

@@ -15,6 +15,42 @@ const api = {
     .then((response) => {
       return response.data
     })
+  },
+  getShips: () => {
+    return axios.get(`${url}/ship`)
+    .then((response) => {
+      return response.data
+    })
+  },
+  getBuildings: () => {
+    return axios.get(`${url}/building`)
+    .then((response) => {
+      return response.data
+    })
+  },
+  getTowers: () => {
+    return axios.get(`${url}/tower`)
+    .then((response) => {
+      return response.data
+    })
+  },
+  getArtifacts: () => {
+    return axios.get(`${url}/artifact`)
+    .then((response) => {
+      return response.data
+    })
+  },
+  getReferendums: () => {
+    return axios.get(`${url}/referendum`)
+    .then((response) => {
+      return response.data
+    })
+  },
+  getMissions: () => {
+    return axios.get(`${url}/mission`)
+    .then((response) => {
+      return response.data
+    })
   }
 }
 

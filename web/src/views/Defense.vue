@@ -57,8 +57,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/tower'
 
   export default {
     data () {
@@ -76,9 +76,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 3; i++) {
-        this.towers.push(factory.build())
-      }
+      api.getTowers()
+      .then((data) => {
+        this.towers = data
+      })
     },
     mounted () {
       vuex.state.name = 'Infrastructure'

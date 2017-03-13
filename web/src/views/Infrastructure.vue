@@ -57,8 +57,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/building'
 
   export default {
     data () {
@@ -68,7 +68,7 @@
           class: 'grey',
           name: 'SELECT BUILDING',
           image: 'https://image.flaticon.com/icons/svg/202/202483.svg',
-          description: 'Choose an item to sell'
+          description: 'Choose an item to build'
         },
         metal: 0,
         crystal: 0,
@@ -76,9 +76,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 6; i++) {
-        this.buildings.push(factory.build())
-      }
+      api.getBuildings()
+      .then((data) => {
+        this.buildings = data
+      })
     },
     mounted () {
       vuex.state.name = 'Infrastructure'

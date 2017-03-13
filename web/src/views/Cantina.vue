@@ -53,8 +53,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/mission'
 
   export default {
     data () {
@@ -64,7 +64,7 @@
           class: 'grey',
           name: 'SELECT MISSION',
           image: 'https://image.flaticon.com/icons/svg/202/202483.svg',
-          description: 'Choose an item to sell'
+          description: 'Choose a mission'
         },
         fighter: 0,
         cruiser: 0,
@@ -72,9 +72,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 3; i++) {
-        this.missions.push(factory.build())
-      }
+      api.getMissions()
+      .then((data) => {
+        this.missions = data
+      })
     },
     mounted () {
       vuex.state.name = 'Cantina'

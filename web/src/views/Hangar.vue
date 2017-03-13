@@ -57,8 +57,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/ship'
 
   export default {
     data () {
@@ -76,9 +76,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 6; i++) {
-        this.ships.push(factory.build())
-      }
+      api.getShips()
+      .then((data) => {
+        this.ships = data
+      })
     },
     mounted () {
       vuex.state.name = 'Hangar'

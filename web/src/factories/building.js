@@ -22,7 +22,7 @@ const factory = {
     var building = {
       image: factory.image(),
       name: 'BUILDING',
-      building: 'Description',
+      description: 'Description',
       metal: factory.number(),
       crystal: factory.number(),
       oil: factory.number(),
