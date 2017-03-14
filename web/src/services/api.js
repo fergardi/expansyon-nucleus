@@ -51,6 +51,12 @@ const api = {
     .then((response) => {
       return response.data
     })
+  },
+  getUsers: () => {
+    return axios.get(`${url}/user`)
+    .then((response) => {
+      return response.data
+    })
   }
 }
 

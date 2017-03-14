@@ -1,13 +1,13 @@
+import constants from '../config/constants'
 import axios from 'axios'
 
-// fake api
-var url = 'https://reqres.in/api/login'
+const url = constants.api
 
 const auth = {
   logged: false,
   token: null,
   login: (credentials) => {
-    return axios.post(url, credentials)
+    return axios.post(`${url}/user/login`, credentials)
     .then((response) => {
       if (response.status === 200) {
         auth.logged = true
@@ -21,7 +21,7 @@ const auth = {
     auth.token = null
   },
   register: (information) => {
-    return axios.post(url, information)
+    return axios.post(`${url}/user/register`, information)
     .then((response) => {
       return response
     })
