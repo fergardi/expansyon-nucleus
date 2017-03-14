@@ -14,12 +14,12 @@
                 md-input-container(md-has-password)
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
-              md-card-content.center
-                md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="logging")
-                  md-icon close
-                md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="logging")
-                  md-icon(v-if="!logging") done
-                  md-icon.spin(v-else) autorenew
+                .center
+                  md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="logging")
+                    md-icon close
+                  md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="logging")
+                    md-icon(v-if="!logging") done
+                    md-icon.spin(v-else) autorenew
 
         md-tab.no-padding#register(md-label="Register")
           form(v-on:submit.prevent="register()")
@@ -27,7 +27,7 @@
               md-card-content
                 md-input-container
                   label Email
-                  md-input(type="mail", v-model="information.email", required)
+                  md-input(type="email", v-model="information.email", required, v-bind:class="{ 'md-input-invalid' : found }")
                 md-input-container(md-has-password)
                   label Password
                   md-input(type="password", v-model="information.password", required)
@@ -37,16 +37,17 @@
                   span.md-error Passwords must match
                 md-input-container
                   label Name
-                  md-input(type="text", v-model="information.username", required)
-              md-card-content.center
-                md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="registering")
-                  md-icon clear
-                md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="registering")
-                  md-icon(v-if="!registering") done
-                  md-icon.spin(v-else) autorenew
+                  md-input(type="text", v-model="information.name", required)
+                .center
+                  md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="registering")
+                    md-icon clear
+                  md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="registering")
+                    md-icon(v-if="!registering") done
+                    md-icon.spin(v-else) autorenew
 </template>
 
 <script>
+  import api from '../services/api'
   import auth from '../services/auth'
   import vuex from '../vuex/vuex'
 
@@ -58,13 +59,14 @@
           password: 'test'
         },
         information: {
-          username: 'fergardi',
           email: 'test@test.com',
           password: 'test',
-          repeat: 'test'
+          repeat: 'test',
+          name: 'fergardi'
         },
         logging: false,
-        registering: false
+        registering: false,
+        found: false
       }
     },
     mounted () {
@@ -91,6 +93,12 @@
     computed: {
       match () {
         return this.information.password === this.information.repeat
+      },
+      found () { // TODO
+        api.checkEmail(this.information.email)
+        .then((data) => {
+          return data.status === 200
+        })
       }
     },
     destroyed () {
