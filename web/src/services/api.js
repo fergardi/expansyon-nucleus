@@ -52,8 +52,8 @@ const api = {
       return response.data
     })
   },
-  getUsers: () => {
-    return axios.get(`${url}/user`)
+  getPlayers: () => {
+    return axios.get(`${url}/player`)
     .then((response) => {
       return response.data
     })

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import factory from '../factories/player'
+  import api from '../services/api'
   import _ from 'lodash'
   import vuex from '../vuex/vuex'
 
@@ -63,9 +63,10 @@
       }
     },
     created () {
-      for (var i = 0; i < 20; i++) {
-        this.players.push(factory.build())
-      }
+      api.getPlayers()
+      .then((data) => {
+        this.players = data
+      })
     },
     mounted () {
       vuex.state.name = 'Census'
