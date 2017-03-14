@@ -7,6 +7,16 @@
           .md-title {{ faction.name }}
         md-card-media
           img(v-bind:src="faction.image")
+        md-card-content.no-padding
+          md-progress(v-bind:md-progress="faction.metal")
+          md-progress(v-bind:md-progress="faction.crystal")
+          md-progress(v-bind:md-progress="faction.oil")
+          md-progress(v-bind:md-progress="faction.size")
+          md-progress(v-bind:md-progress="faction.energy")
+          md-progress(v-bind:md-progress="faction.influence")
+          md-progress(v-bind:md-progress="faction.attack")
+          md-progress(v-bind:md-progress="faction.defense")
+          md-progress(v-bind:md-progress="faction.speed")
         md-card-content.center
           span {{ faction.description | lorem }}
         md-card-content.center

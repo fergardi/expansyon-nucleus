@@ -7,7 +7,7 @@
           .md-title {{ selected.name }}
         md-card-media
           img(v-bind:src="selected.image")
-        md-card-content.no-padding.center
+        md-card-content.no-padding
           md-progress(v-bind:md-progress="selected.metal")
           md-progress(v-bind:md-progress="selected.crystal")
           md-progress(v-bind:md-progress="selected.oil")

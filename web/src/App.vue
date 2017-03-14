@@ -407,6 +407,8 @@
     opacity 0.90
   .md-table-card.md-card
     background-color rgba(255,255,255,0.90) !important
+  .md-progress
+    background-color rgba(255,255,255,0.10) !important
 
   /* CARDS */
   .md-layout
