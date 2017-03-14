@@ -59,7 +59,7 @@ const api = {
     })
   },
   checkEmail: (email) => {
-    return axios.post(`${url}/user/email`, email)
+    return axios.post(`${url}/user/email`, { email: email })
     .then((response) => {
       return response
     })

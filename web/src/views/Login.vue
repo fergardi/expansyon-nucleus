@@ -25,14 +25,15 @@
           form(v-on:submit.prevent="register()")
             md-card.md-primary.card.no-padding
               md-card-content
-                md-input-container
+                md-input-container(v-bind:class="{ 'md-input-invalid' : found }")
                   label Email
-                  md-input(type="email", v-model="information.email", required, v-bind:class="{ 'md-input-invalid' : found }")
+                  md-input(type="email", v-model.lazy="information.email", required)
+                  span.md-error Email already in use
                 md-input-container(md-has-password)
                   label Password
                   md-input(type="password", v-model="information.password", required)
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
-                  label Password
+                  label Repeat password
                   md-input(type="password", v-model="information.repeat", required)
                   span.md-error Passwords must match
                 md-input-container
@@ -41,7 +42,7 @@
                 .center
                   md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="registering")
                     md-icon clear
-                  md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="registering")
+                  md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="registering || found")
                     md-icon(v-if="!registering") done
                     md-icon.spin(v-else) autorenew
 </template>
@@ -59,10 +60,10 @@
           password: 'test'
         },
         information: {
-          email: 'test@test.com',
-          password: 'test',
-          repeat: 'test',
-          name: 'fergardi'
+          email: '',
+          password: '',
+          repeat: '',
+          name: ''
         },
         logging: false,
         registering: false,
@@ -90,15 +91,20 @@
         })
       }
     },
+    watch: {
+      'information.email': function (email) {
+        api.checkEmail(email)
+        .then((response) => {
+          this.found = false
+        })
+        .catch((response) => {
+          this.found = true
+        })
+      }
+    },
     computed: {
       match () {
         return this.information.password === this.information.repeat
-      },
-      found () { // TODO
-        api.checkEmail(this.information.email)
-        .then((data) => {
-          return data.status === 200
-        })
       }
     },
     destroyed () {
