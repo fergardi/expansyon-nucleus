@@ -90,7 +90,7 @@
       })
     },
     mounted () {
-      vuex.state.name = 'Explore'
+      vuex.state.title = 'Explore'
     },
     methods: {
       select (item) {

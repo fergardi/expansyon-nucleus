@@ -69,7 +69,7 @@
       })
     },
     mounted () {
-      vuex.state.name = 'Census'
+      vuex.state.title = 'Census'
     },
     methods: {
       info (player) {

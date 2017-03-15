@@ -78,7 +78,7 @@
       })
     },
     mounted () {
-      vuex.state.name = 'Cantina'
+      vuex.state.title = 'Cantina'
     },
     methods: {
       select (item) {

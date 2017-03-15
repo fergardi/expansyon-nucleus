@@ -31,7 +31,7 @@
       })
     },
     mounted () {
-      vuex.state.name = 'Store'
+      vuex.state.title = 'Store'
     },
     computed: {
       search () {

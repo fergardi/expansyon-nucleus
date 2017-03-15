@@ -32,13 +32,13 @@
       }
     },
     created () {
-      api.getPlanets()
-      .then((data) => {
-        this.planets = data
+      api.getUser(vuex.state.user.id)
+      .then((user) => {
+        this.planets = user.Player.Planets
       })
     },
     mounted () {
-      vuex.state.name = 'Planetarium'
+      vuex.state.title = 'Planetarium'
     },
     computed: {
       search () {

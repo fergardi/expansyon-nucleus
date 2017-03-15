@@ -35,7 +35,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Profile'
+      vuex.state.title = 'Profile'
     },
     methods: {
       change () {

@@ -50,7 +50,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Guild'
+      vuex.state.title = 'Guild'
     },
     methods: {
       popup (guild) {

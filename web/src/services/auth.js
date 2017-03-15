@@ -1,24 +1,25 @@
 import constants from '../config/constants'
 import axios from 'axios'
+import vuex from '../vuex/vuex'
 
 const url = constants.api
 
 const auth = {
-  logged: false,
-  token: null,
   login: (credentials) => {
     return axios.post(`${url}/user/login`, credentials)
     .then((response) => {
       if (response.status === 200) {
-        auth.logged = true
-        auth.token = response.data.token
+        vuex.state.user.logged = true
+        vuex.state.user.token = response.data.token
+        vuex.state.user.id = response.data.id
       }
       return response
     })
   },
   logout: () => {
-    auth.logged = false
-    auth.token = null
+    vuex.state.user.logged = false
+    vuex.state.user.token = null
+    vuex.state.user.id = 0
   },
   register: (information) => {
     return axios.post(`${url}/user/register`, information)

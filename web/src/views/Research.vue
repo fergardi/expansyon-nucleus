@@ -31,7 +31,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Research'
+      vuex.state.title = 'Research'
     },
     created () {
       for (let i = 0; i < 3; i++) {

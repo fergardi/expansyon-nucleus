@@ -101,7 +101,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Trade'
+      vuex.state.title = 'Trade'
     },
     methods: {
       select (item) {

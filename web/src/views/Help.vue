@@ -33,7 +33,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Help'
+      vuex.state.title = 'Help'
     },
     computed: {
       search () {

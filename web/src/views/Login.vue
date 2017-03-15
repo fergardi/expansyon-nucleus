@@ -71,7 +71,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Expansyon'
+      vuex.state.title = 'Expansyon'
       vuex.state.fullscreen = true
     },
     methods: {
@@ -80,7 +80,7 @@
         auth.login(this.credentials)
         .then((response) => {
           this.logging = false
-          if (auth.logged) this.$router.push('/status')
+          if (vuex.state.user.logged) this.$router.push('/status')
         })
       },
       register () {

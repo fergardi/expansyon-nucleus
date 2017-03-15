@@ -309,7 +309,7 @@
         return vuex.state.fullscreen
       },
       name () {
-        return vuex.state.name
+        return vuex.state.title
       }
     }
   }
@@ -486,7 +486,7 @@
     .md-chip
     &.md-chip
       background-color cyan !important
-      color black !important
+      color white !important
   .red
     .md-card-header
       color red !important

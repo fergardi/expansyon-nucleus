@@ -27,7 +27,7 @@ import Help from './views/Help.vue'
 import Login from './views/Login.vue'
 import Splash from './views/Splash.vue'
 
-import auth from './services/auth'
+import vuex from './vuex/vuex'
 
 // router
 Vue.use(VueRouter)
@@ -62,7 +62,6 @@ var router = new VueRouter({
 
 // secured routes
 const security = [
-/* development
   'planetarium',
   'market',
   'trade',
@@ -82,7 +81,6 @@ const security = [
   'status',
   'profile',
   'help'
-*/
 ]
 
 // material
@@ -131,7 +129,7 @@ router.beforeEach((to, from, next) => {
     if (document.getElementById('scroll')) document.getElementById('scroll').scrollIntoView(true)
     // Main.close('left')
     // Main.close('right')
-    if ((security.indexOf(to.name) !== -1) && !auth.logged) {
+    if ((security.indexOf(to.name) !== -1) && !vuex.state.user.logged) {
       router.push({ path: '/login' })
     } else {
       return next()

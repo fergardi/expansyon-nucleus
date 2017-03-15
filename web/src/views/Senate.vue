@@ -43,7 +43,7 @@
       })
     },
     mounted () {
-      vuex.state.name = 'Senate'
+      vuex.state.title = 'Senate'
     },
     computed: {
       search () {

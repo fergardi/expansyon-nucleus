@@ -82,7 +82,7 @@
       })
     },
     mounted () {
-      vuex.state.name = 'Hangar'
+      vuex.state.title = 'Hangar'
     },
     methods: {
       select (item) {

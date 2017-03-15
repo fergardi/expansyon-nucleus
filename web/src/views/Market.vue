@@ -48,7 +48,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Market'
+      vuex.state.title = 'Market'
     },
     computed: {
       search () {

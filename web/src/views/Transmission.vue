@@ -47,7 +47,7 @@
       }
     },
     mounted () {
-      vuex.state.name = 'Transmission'
+      vuex.state.title = 'Transmission'
     },
     methods: {
       popup (message) {

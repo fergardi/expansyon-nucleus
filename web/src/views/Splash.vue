@@ -18,7 +18,7 @@
 
   export default {
     mounted () {
-      vuex.state.name = 'Splash'
+      vuex.state.title = 'Splash'
       vuex.state.fullscreen = true
     },
     destroyed () {

@@ -58,6 +58,12 @@ const api = {
       return response.data
     })
   },
+  getUser: (id) => {
+    return axios.get(`${url}/user/${id}`)
+    .then((response) => {
+      return response.data
+    })
+  },
   checkEmail: (email) => {
     return axios.post(`${url}/user/email`, { email: email })
     .then((response) => {

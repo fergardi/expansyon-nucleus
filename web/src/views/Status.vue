@@ -26,10 +26,10 @@
           span.total {{ ships.total }}
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card.grey
+      md-card.md-primary.card
         md-card-header
           .md-title Resources
-        md-card-content.center
+        md-card-content.no-padding.center
           md-progress.green(v-bind:md-progress="resources.metal")
           md-progress.green(v-bind:md-progress="resources.crystal")
           md-progress.green(v-bind:md-progress="resources.oil")
@@ -38,10 +38,10 @@
           md-progress.green(v-bind:md-progress="resources.influence")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card.grey
+      md-card.md-primary.card
         md-card-header
           .md-title {{ referendum.name }}
-        md-card-content.center
+        md-card-content.no-padding.center
           md-progress(v-bind:md-progress="referendum.metal", v-bind:class="referendum.metal >= 50 ? 'green' : 'red'")
           md-progress(v-bind:md-progress="referendum.crystal", v-bind:class="referendum.crystal >= 50 ? 'green' : 'red'")
           md-progress(v-bind:md-progress="referendum.oil", v-bind:class="referendum.oil >= 50 ? 'green' : 'red'")
@@ -53,10 +53,10 @@
           md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card.grey
+      md-card.md-primary.card(v-bind:class="faction.class")
         md-card-header
           .md-title {{ faction.name }}
-        md-card-content.center
+        md-card-content.no-padding.center
           md-progress.green(v-bind:md-progress="faction.metal", v-if="faction.metal > 0")
           md-progress.green(v-bind:md-progress="faction.crystal", v-if="faction.crystal > 0")
           md-progress.green(v-bind:md-progress="faction.oil", v-if="faction.oil > 0")
@@ -70,8 +70,7 @@
 
 <script>
   import { pie } from '../components/chart'
-  import factionFactory from '../factories/faction'
-  import referendumFactory from '../factories/referendum'
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
 
   export default {
@@ -178,11 +177,17 @@
       }
     },
     created () {
-      this.referendum = referendumFactory.build()
-      this.faction = factionFactory.build()
+      api.getReferendums()
+      .then((referendums) => {
+        this.referendum = referendums[0]
+      })
+      api.getUser(vuex.state.user.id)
+      .then((user) => {
+        this.faction = user.Player.Faction
+      })
     },
     mounted () {
-      vuex.state.name = 'Status'
+      vuex.state.title = 'Status'
     }
   }
 </script>

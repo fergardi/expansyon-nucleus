@@ -25,13 +25,13 @@
       }
     },
     created () {
-      api.getArtifacts()
-      .then((data) => {
-        this.artifacts = data
+      api.getUser(vuex.state.user.id)
+      .then((user) => {
+        this.artifacts = user.Player.Artifacts
       })
     },
     mounted () {
-      vuex.state.name = 'Relicarium'
+      vuex.state.title = 'Relicarium'
     },
     computed: {
       search () {

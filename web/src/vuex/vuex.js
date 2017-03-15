@@ -6,8 +6,13 @@ Vue.use(Vuex)
 const vuex = new Vuex.Store({
   state: {
     fullscreen: false,
-    name: '',
-    search: ''
+    title: '',
+    search: '',
+    user: {
+      logged: false,
+      token: null,
+      id: 0
+    }
   }
 })
 
