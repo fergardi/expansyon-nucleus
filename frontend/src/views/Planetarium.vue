@@ -18,7 +18,7 @@
           md-chip(v-if="planet.moon") Moon
           md-chip(v-if="planet.station") Station
         md-card-content.center
-          span {{ planet.description | lorem }}
+          span {{ planet.description }}
 </template>
 
 <script>
@@ -32,9 +32,9 @@
       }
     },
     created () {
-      api.getUser(vuex.state.user.id)
-      .then((user) => {
-        this.planets = user.Player.Planets
+      api.getPlayer(vuex.state.player.id)
+      .then((player) => {
+        this.planets = player.Planets
       })
     },
     mounted () {

@@ -64,8 +64,8 @@
     },
     created () {
       api.getPlayers()
-      .then((data) => {
-        this.players = data
+      .then((players) => {
+        this.players = players
       })
     },
     mounted () {

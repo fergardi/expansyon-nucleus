@@ -77,8 +77,8 @@
     },
     created () {
       api.getShips()
-      .then((data) => {
-        this.ships = data
+      .then((ships) => {
+        this.ships = ships
       })
     },
     mounted () {

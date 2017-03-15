@@ -53,7 +53,7 @@
           md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="faction.class")
+      md-card.md-primary.card(v-bind:class="faction.class", v-if="faction")
         md-card-header
           .md-title {{ faction.name }}
         md-card-content.no-padding.center
@@ -66,6 +66,11 @@
           md-progress.green(v-bind:md-progress="faction.attack", v-if="faction.attack > 0")
           md-progress.green(v-bind:md-progress="faction.defense", v-if="faction.defense > 0")
           md-progress.green(v-bind:md-progress="faction.speed", v-if="faction.speed > 0")
+      md-card.md-primary.card(v-else)
+        md-card-header
+          .md-title Faction
+        md-card-content.center
+          md-button.md-raised.md-accent(href="#/temple") Join a faction
 </template>
 
 <script>
@@ -181,9 +186,9 @@
       .then((referendums) => {
         this.referendum = referendums[0]
       })
-      api.getUser(vuex.state.user.id)
-      .then((user) => {
-        this.faction = user.Player.Faction
+      api.getPlayer(vuex.state.player.id)
+      .then((player) => {
+        this.faction = player.Faction
       })
     },
     mounted () {

@@ -25,9 +25,9 @@
       }
     },
     created () {
-      api.getUser(vuex.state.user.id)
-      .then((user) => {
-        this.artifacts = user.Player.Artifacts
+      api.getPlayer(vuex.state.player.id)
+      .then((player) => {
+        this.artifacts = player.Artifacts
       })
     },
     mounted () {

@@ -6,23 +6,23 @@ const url = constants.api
 
 const auth = {
   login: (credentials) => {
-    return axios.post(`${url}/user/login`, credentials)
+    return axios.post(`${url}/player/login`, credentials)
     .then((response) => {
       if (response.status === 200) {
-        vuex.state.user.logged = true
-        vuex.state.user.token = response.data.token
-        vuex.state.user.id = response.data.id
+        vuex.state.player.logged = true
+        vuex.state.player.token = response.data.token
+        vuex.state.player.id = response.data.id
       }
       return response
     })
   },
   logout: () => {
-    vuex.state.user.logged = false
-    vuex.state.user.token = null
-    vuex.state.user.id = 0
+    vuex.state.player.logged = false
+    vuex.state.player.token = null
+    vuex.state.player.id = 0
   },
   register: (information) => {
-    return axios.post(`${url}/user/register`, information)
+    return axios.post(`${url}/player/register`, information)
     .then((response) => {
       return response
     })

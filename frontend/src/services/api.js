@@ -10,8 +10,8 @@ const api = {
       return response.data
     })
   },
-  getPlanets: () => {
-    return axios.get(`${url}/planet`)
+  getPlanets: (id) => {
+    return axios.get(`${url}/planet/${id}`)
     .then((response) => {
       return response.data
     })
@@ -58,8 +58,8 @@ const api = {
       return response.data
     })
   },
-  getUser: (id) => {
-    return axios.get(`${url}/user/${id}`)
+  getPlayer: (id) => {
+    return axios.get(`${url}/player/${id}`)
     .then((response) => {
       return response.data
     })

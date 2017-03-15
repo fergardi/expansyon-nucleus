@@ -73,8 +73,8 @@
     },
     created () {
       api.getMissions()
-      .then((data) => {
-        this.missions = data
+      .then((missions) => {
+        this.missions = missions
       })
     },
     mounted () {

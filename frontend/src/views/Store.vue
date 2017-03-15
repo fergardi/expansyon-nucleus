@@ -26,8 +26,8 @@
     },
     created () {
       api.getArtifacts()
-      .then((data) => {
-        this.artifacts = data
+      .then((artifacts) => {
+        this.artifacts = artifacts
       })
     },
     mounted () {

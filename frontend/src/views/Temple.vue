@@ -37,8 +37,8 @@
     },
     created () {
       api.getFactions()
-      .then((response) => {
-        this.factions = response
+      .then((factions) => {
+        this.factions = factions
       })
     },
     mounted () {

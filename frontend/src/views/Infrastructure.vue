@@ -77,8 +77,8 @@
     },
     created () {
       api.getBuildings()
-      .then((data) => {
-        this.buildings = data
+      .then((buildings) => {
+        this.buildings = buildings
       })
     },
     mounted () {

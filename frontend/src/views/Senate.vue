@@ -38,8 +38,8 @@
     },
     created () {
       api.getReferendums()
-      .then((data) => {
-        this.referendums = data
+      .then((referendums) => {
+        this.referendums = referendums
       })
     },
     mounted () {

@@ -77,8 +77,8 @@
     },
     created () {
       api.getTowers()
-      .then((data) => {
-        this.towers = data
+      .then((towers) => {
+        this.towers = towers
       })
     },
     mounted () {
