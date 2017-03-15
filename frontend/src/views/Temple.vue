@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
 
-    md-layout(v-for="faction in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(v-for="faction in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 
       md-card.md-primary.card(v-bind:class="faction.class")
         md-card-header

@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
 
-    md-layout(md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
@@ -14,7 +14,7 @@
         md-card-content.center
           span {{ selected.description | lorem }}
 
-    md-layout(md-flex-xlarge="75", md-flex-large="66", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="75", md-flex-large="66", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
           .md-title Build
@@ -42,7 +42,7 @@
             md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="!valid")
               md-icon done
 
-    md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="ship.class", md-with-hover, v-on:click.native="select(ship)")
         md-card-header
           .md-title {{ ship.name }}
