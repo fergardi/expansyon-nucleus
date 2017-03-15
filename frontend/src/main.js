@@ -129,7 +129,7 @@ router.beforeEach((to, from, next) => {
     if (document.getElementById('scroll')) document.getElementById('scroll').scrollIntoView(true)
     // Main.close('left')
     // Main.close('right')
-    if ((security.indexOf(to.name) !== -1) && !vuex.state.player.logged) {
+    if ((security.indexOf(to.name) !== -1) && !vuex.state.logged) {
       router.push({ path: '/login' })
     } else {
       return next()

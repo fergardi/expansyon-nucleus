@@ -8,11 +8,9 @@ const vuex = new Vuex.Store({
     fullscreen: false,
     title: '',
     search: '',
-    user: {
-      logged: false,
-      token: null,
-      id: 0
-    }
+    logged: false,
+    token: null,
+    id: 0
   }
 })
 

@@ -80,7 +80,7 @@
         auth.login(this.credentials)
         .then((response) => {
           this.logging = false
-          if (vuex.state.player.logged) this.$router.push('/status')
+          if (vuex.state.logged) this.$router.push('/status')
         })
       },
       register () {
