@@ -1,33 +1,73 @@
 <template lang="pug">
   md-table-card
-    md-table(md-sort="date", v-on:sort="order")
 
-      md-table-header
-        md-table-row
-          md-table-head(md-sort-by="From.name", md-tooltip="Origin of the transmission") From
-          md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
-          md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
-          md-table-head.hide(md-sort-by="date", md-numeric, md-tooltip="Date of the transmission") Date
+    md-tabs.md-fixed(v-on:change="clear")
+      md-tab#received.no-padding(md-label="Received")
 
-      md-table-body
-        md-table-row(v-for="message in ordered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
-          md-table-cell
-            md-chip(v-bind:class="color(message.From.Faction)") {{ message.From.name }}
-          md-table-cell {{ message.subject }}
-          md-table-cell.hide {{ message.text }}
-          md-table-cell.hide.md-numeric {{ message.datetime | date }}
+        md-table(md-sort="datetime", v-on:sort="order")
+          md-table-header
+            md-table-row
+              md-table-head(md-sort-by="From.name", md-tooltip="Origin of the transmission") From
+              md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
+              md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
+              md-table-head.hide(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
 
-      md-dialog(ref='popup')
-        md-dialog-title {{ selected.subject }}
-        md-dialog-content 
-          md-chip(v-bind:class="color(selected.From.Faction)") {{ selected.From.name }}
-        md-dialog-content {{ selected.datetime | date }}
-        md-dialog-content {{ selected.text }}
-        md-dialog-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="remove()")
-            md-icon delete
-          md-button.md-icon-button.md-accent(v-on:click.native="close()")
-            md-icon done
+          md-table-body
+            md-table-row(v-for="message in receivedOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+              md-table-cell
+                md-chip(v-bind:class="color(message)") {{ message.From.name }}
+              md-table-cell {{ message.subject }}
+              md-table-cell.hide {{ message.text }}
+              md-table-cell.hide.md-numeric {{ message.datetime | date }}
+
+      md-tab#sent.no-padding(md-label="Sent")
+
+        md-table(md-sort="datetime", v-on:sort="order")
+          md-table-header
+            md-table-row
+              md-table-head(md-sort-by="From.name", md-tooltip="Origin of the transmission") From
+              md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
+              md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
+              md-table-head.hide(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
+
+          md-table-body
+            md-table-row(v-for="message in sentOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+              md-table-cell
+                md-chip(v-bind:class="color(message)") {{ message.To.name }}
+              md-table-cell {{ message.subject }}
+              md-table-cell.hide {{ message.text }}
+              md-table-cell.hide.md-numeric {{ message.datetime | date }}
+
+      md-tab#new(md-label="New")
+
+        form(v-on:submit.stop.prevent="send")
+          md-input-container
+            label To
+            md-select(name="to", id="to", v-model="to")
+              md-option(v-for="player in players", v-bind:value="player.id") {{ player.name }}
+          md-input-container
+            label Subject
+            md-input(type="text", v-model="message.subject", placeholder="Subject", required)
+          md-input-container
+            label Text
+            md-textarea(v-model="message.text", placeholder="Text", maxlength="140", required)
+          .center
+            md-button.md-raised.md-fab.md-mini.md-warn(type="reset")
+              md-icon clear
+            md-button.md-raised.md-fab.md-mini.md-accent(type="submit")
+              md-icon done
+
+    md-dialog(ref='popup')
+      md-dialog-title {{ selected.subject }}
+      md-dialog-content {{ selected.text }}
+      md-dialog-content
+        md-chip(v-bind:class="color(selected)") {{ selected.From.name || selected.To.name }}
+        md-chip {{ selected.datetime | date }}
+      md-dialog-actions
+        md-button.md-icon-button.md-warn(v-on:click.native="remove()")
+          md-icon delete
+        md-button.md-icon-button.md-accent(v-on:click.native="close()")
+          md-icon done
 </template>
 
 <script>
@@ -38,20 +78,32 @@
   export default {
     data () {
       return {
-        messages: [],
+        players: [],
+        received: [],
+        sent: [],
         field: 'date',
         direction: 'desc',
         selected: {
-          From: {}
+          subject: '',
+          text: '',
+          From: {},
+          To: {}
+        },
+        message: {
+          text: ''
         }
       }
     },
     created () {
+      api.getPlayers()
+      .then((players) => {
+        this.players = players
+      })
       api.getPlayer(vuex.state.player.id)
       .then((player) => {
-        this.messages = player.Received
+        this.received = player.Received
+        this.sent = player.Sent
       })
-      console.log(this.messages)
     },
     mounted () {
       vuex.state.title = 'Transmission'
@@ -72,25 +124,45 @@
         this.field = column.name
         this.direction = column.type
       },
-      color (faction) {
-        return faction ? faction.class : 'grey'
+      color (message) {
+        return message.From
+          ? message.From.faction
+            ? message.From.faction.class
+            : ''
+          : message.To.faction
+            ? message.To.faction.class
+            : ''
+      },
+      clear () {
+        vuex.state.search = ''
       }
     },
     computed: {
       search () {
         return vuex.state.search
       },
-      filtered () {
-        return this.messages.filter((message) => {
+      receivedFiltered () {
+        return this.received.filter((message) => {
           return message.From.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 || message.subject.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
-      ordered () {
-        return _.orderBy(this.filtered, this.field, this.direction)
+      receivedOrdered () {
+        return _.orderBy(this.receivedFiltered, this.field, this.direction)
+      },
+      sentFiltered () {
+        return this.sent.filter((message) => {
+          return message.To.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 || message.subject.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+        })
+      },
+      sentOrdered () {
+        return _.orderBy(this.sentFiltered, this.field, this.direction)
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
+  .md-dialog
+    .md-title
+      word-wrap break-word
 </style>

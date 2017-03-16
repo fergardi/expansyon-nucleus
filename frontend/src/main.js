@@ -122,6 +122,9 @@ Vue.filter('date', (date) => {
 Vue.filter('lorem', (string) => {
   return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 })
+Vue.filter('truncate', (string, max) => {
+  return string.substring(0, max) + '...'
+})
 
 // scroll to top and close sidebar
 router.beforeEach((to, from, next) => {

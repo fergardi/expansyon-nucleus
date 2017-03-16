@@ -378,9 +378,15 @@
   .removed
     display none
   .right
+    align-items center
     float right
+    text-align right
+    justify-content right
   .left
+    align-items center
     float left
+    text-align left
+    justify-content left
   .md-table
     .md-table-cell
       .md-button
@@ -564,6 +570,14 @@
         transform translate3d(0, 0, 0) !important
         
   @media only screen and (max-width 768px)
+    #toolbar
+      .md-title
+        font-size 16px
+    .md-dialog
+      .md-dialog-title
+        padding 16px 16px 0
+      .md-dialog-content
+        padding 0 16px 16px
     .hide
       display none !important
     table

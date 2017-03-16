@@ -18,16 +18,16 @@
           md-table-cell(md-numeric)
             md-chip {{ guild.members }}
 
-      md-dialog(ref='popup')
-        md-dialog-title {{ selected.name }}
-        md-dialog-content {{ selected.description | lorem }}
-        md-dialog-content
-          md-chip {{ selected.members }} members
-        md-dialog-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="close()")
-            md-icon close
-          md-button.md-icon-button.md-accent(v-on:click.native="apply()")
-            md-icon person_add
+    md-dialog(ref='popup')
+      md-dialog-title {{ selected.name }}
+      md-dialog-content {{ selected.description | lorem }}
+      md-dialog-content
+        md-chip {{ selected.members }} members
+      md-dialog-actions
+        md-button.md-icon-button.md-warn(v-on:click.native="close()")
+          md-icon close
+        md-button.md-icon-button.md-accent(v-on:click.native="apply()")
+          md-icon person_add
 </template>
 
 <script>
