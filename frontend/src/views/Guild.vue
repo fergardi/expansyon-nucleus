@@ -12,7 +12,7 @@
           md-button.md-icon-button.md-accent(v-on:click.native="apply()")
             md-icon person_add
 
-    md-tabs.md-fixed(v-on:change="clear")
+    md-tabs(md-fixed, v-on:change="clear")
       md-tab#guilds.no-padding(md-label="Guilds")
 
         md-table(md-sort="influence", v-on:sort="order")
@@ -39,8 +39,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import _ from 'lodash'
-  import factory from '../factories/guild'
   import vuex from '../vuex/vuex'
 
   export default {
@@ -53,12 +53,13 @@
       }
     },
     created () {
-      for (var i = 0; i < 20; i++) {
-        this.guilds.push(factory.build())
-      }
+      api.getGuilds()
+      .then((guilds) => {
+        this.guilds = guilds
+      })
     },
     mounted () {
-      vuex.state.title = 'Temple'
+      vuex.state.title = 'Guild'
     },
     methods: {
       popup (guild) {

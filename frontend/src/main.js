@@ -60,6 +60,7 @@ var router = new VueRouter({
 
 // secured routes
 const security = [
+  'empire',
   'planetarium',
   'market',
   'store',
@@ -75,7 +76,6 @@ const security = [
   'census',
   'guild',
   'transmission',
-  'status',
   'profile',
   'help'
 ]

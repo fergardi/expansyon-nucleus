@@ -6,9 +6,10 @@
         md-button.md-icon-button.toggler(v-on:click.native="open('left')")
           md-icon chevron_right
         h2.md-title {{ name }}
-        md-input-container.flex
+        md-input-container.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-input(type="search", placeholder="Search...", v-model="search")
-          md-icon search    
+          span.md-error Results are being filtered
+          md-icon search
         md-button.md-icon-button.toggler(v-on:click.native="open('right')")
           md-icon chevron_left
 
@@ -37,7 +38,7 @@
         md-toolbar#right.md-account-header.center
           md-avatar.md-large
             img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
-          h2.md-title Resources
+          h2.md-title Home
       md-list.md-dense.scrollable
         template(v-for="section in right")
           md-subheader {{ section.header }}

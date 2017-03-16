@@ -1,8 +1,19 @@
 <template lang="pug">
   md-layout
+
+    md-dialog(ref='vote')
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content {{ selected.description }}
+        md-card-content.center
+          md-chip.pink {{ selected.aether | price }} Aether
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="vote()", v-bind:disabled="!can")
+            md-icon done
     
     md-layout(v-for="referendum in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="referendum.class")
+      md-card.md-primary.card(v-bind:class="referendum.class", md-with-hover, v-on:click.native="select(referendum)")
         md-card-header
           .md-title {{ referendum.name }}
         md-card-media
@@ -18,12 +29,9 @@
           md-progress(v-bind:md-progress="referendum.defense", v-bind:class="referendum.defense >= 50 ? 'green' : 'red'")
           md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
         md-card-content.center
-          span {{ referendum.description | lorem }}
+          span {{ referendum.description }}
         md-card-content.center
-          md-button.md-raised.md-fab.md-mini.md-warn
-            md-icon close
-          md-button.md-raised.md-fab.md-mini.md-accent
-            md-icon done
+          md-chip.pink {{ referendum.aether | price }} Aether
 </template>
 
 <script>
@@ -33,7 +41,10 @@
   export default {
     data () {
       return {
-        referendums: []
+        referendums: [],
+        selected: {
+          aether: 0
+        }
       }
     },
     created () {
@@ -45,6 +56,22 @@
     mounted () {
       vuex.state.title = 'Senate'
     },
+    methods: {
+      open () {
+        this.$refs['vote'].open()
+      },
+      close () {
+        this.$refs['vote'].close()
+      },
+      select (referendum) {
+        this.selected = referendum
+        this.open()
+      },
+      vote () {
+        // TODO
+        this.close()
+      }
+    },
     computed: {
       search () {
         return vuex.state.search
@@ -53,6 +80,9 @@
         return this.referendums.filter((referendum) => {
           return referendum.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      can () {
+        return true
       }
     }
   }

@@ -5,17 +5,17 @@
       md-card.md-primary
         md-card-header
           .md-title {{ selected.subject }}
-        md-card-content {{ selected.text }}
+        md-card-content {{ selected.text | lorem }}
         md-card-content
           md-chip(v-bind:class="color(selected)") {{ selected.From.name || selected.To.name }}
-          md-chip {{ selected.datetime | date }}
+          md-chip.grey {{ selected.datetime | date }}
         md-card-actions
           md-button.md-icon-button.md-warn(v-on:click.native="remove()")
             md-icon delete
-          md-button.md-icon-button.md-accent(v-on:click.native="close()")
-            md-icon done
+          md-button.md-icon-button.md-accent(v-on:click.native="reply()")
+            md-icon reply
 
-    md-tabs.md-fixed(v-on:change="clear")
+    md-tabs(md-fixed, v-on:change="clear")
       md-tab#received.no-padding(md-label="Received")
 
         md-table(md-sort="datetime", v-on:sort="order")
@@ -31,7 +31,7 @@
               md-table-cell
                 md-chip(v-bind:class="color(message)") {{ message.From.name }}
               md-table-cell {{ message.subject }}
-              md-table-cell.hide {{ message.text }}
+              md-table-cell.hide {{ message.text | lorem }}
               md-table-cell.hide.md-numeric {{ message.datetime | date }}
 
             md-table-row(v-if="!receivedOrdered.length")
@@ -42,7 +42,7 @@
         md-table(md-sort="datetime", v-on:sort="order")
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="From.name", md-tooltip="Origin of the transmission") From
+              md-table-head(md-sort-by="To.name", md-tooltip="Destination of the transmission") To
               md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
               md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
               md-table-head.hide(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
@@ -52,7 +52,7 @@
               md-table-cell
                 md-chip(v-bind:class="color(message)") {{ message.To.name }}
               md-table-cell {{ message.subject }}
-              md-table-cell.hide {{ message.text }}
+              md-table-cell.hide {{ message.text | lorem }}
               md-table-cell.hide.md-numeric {{ message.datetime | date }}
 
             md-table-row(v-if="!sentOrdered.length")
@@ -92,14 +92,10 @@
         field: 'date',
         direction: 'desc',
         selected: {
-          subject: '',
-          text: '',
           From: {},
           To: {}
         },
-        message: {
-          text: ''
-        }
+        message: {}
       }
     },
     created () {
@@ -128,6 +124,10 @@
         // TODO
         this.close()
       },
+      reply () {
+        // TODO
+        this.close()
+      },
       order (column) {
         this.field = column.name
         this.direction = column.type
@@ -136,10 +136,10 @@
         return message.From
           ? message.From.faction
             ? message.From.faction.class
-            : ''
+            : 'grey'
           : message.To.faction
             ? message.To.faction.class
-            : ''
+            : 'grey'
       },
       clear () {
         vuex.state.search = ''

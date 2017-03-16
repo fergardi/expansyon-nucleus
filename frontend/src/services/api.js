@@ -58,6 +58,12 @@ const api = {
       return response.data
     })
   },
+  getGuilds: () => {
+    return axios.get(`${url}/guild`)
+    .then((response) => {
+      return response.data
+    })
+  },
   getPlayers: () => {
     return axios.get(`${url}/player`)
     .then((response) => {

@@ -55,7 +55,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Guild'
+      vuex.state.title = 'Temple'
     },
     methods: {
       open () {
