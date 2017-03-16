@@ -17,31 +17,18 @@
           md-table-cell(md-numeric)
             md-chip {{ player.planets }}
 
-      md-dialog(ref="info")
-        md-dialog-title {{ selected.name }}
-        md-dialog-content {{ selected.faction }}
-        md-dialog-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="close('info')")
-            md-icon close
-          md-button.md-icon-button.md-accent(v-on:click.native="form()")
-            md-icon send
-
-      md-dialog(ref="form")
-        md-dialog-title Send message
-        md-dialog-content {{ selected.name }}
-        md-dialog-content
-          form
-            md-input-container
-              label Subject
-              md-input(type="text", v-model="message.subject")
-            md-input-container
-              label Text
-              md-textarea(v-model="message.text")
-        md-dialog-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="close('form')")
-            md-icon close
-          md-button.md-icon-button.md-accent(v-on:click.native="send()")
-            md-icon done
+    md-dialog(ref="info")
+      md-dialog-title {{ selected.name }}
+      md-dialog-content(v-if="selected.Faction")
+        md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
+      md-dialog-content
+        md-chip {{ player.influence }} influence
+        md-chip {{ player.planets }} planets
+      md-dialog-actions
+        md-button.md-icon-button.md-accent
+          md-icon person_add
+        md-button.md-icon-button.md-accent(href="#/transmission")
+          md-icon send
 </template>
 
 <script>
@@ -55,10 +42,8 @@
         players: [],
         field: 'influence',
         direction: 'desc',
-        selected: {},
-        message: {
-          subject: '',
-          text: ''
+        selected: {
+          Faction: {}
         }
       }
     },
@@ -78,14 +63,6 @@
       },
       close (ref) {
         this.$refs[ref].close()
-      },
-      form () {
-        this.close('info')
-        this.$refs['form'].open()
-      },
-      send () {
-        // TODO
-        this.close('form')
       },
       order (column) {
         this.field = column.name

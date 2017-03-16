@@ -414,6 +414,7 @@
   .md-table-card.md-card
     background-color rgba(255,255,255,0.90) !important
   .md-progress
+  .md-card-media
     background-color rgba(255,255,255,0.10) !important
 
   /* CARDS */

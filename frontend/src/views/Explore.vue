@@ -14,7 +14,7 @@
           md-progress(v-bind:md-progress="selected.oil", v-if="selected.oil")
           md-progress(v-bind:md-progress="selected.energy", v-if="selected.energy")
           md-progress(v-bind:md-progress="selected.influence", v-if="selected.influence")
-        md-card-content.center
+        md-card-content.center(v-if="selected.moon || selected.station")
           md-chip(v-if="selected.moon") Moon
           md-chip(v-if="selected.station") Station
         md-card-content.center
@@ -57,7 +57,7 @@
           md-progress(v-bind:md-progress="planet.oil")
           md-progress(v-bind:md-progress="planet.energy")
           md-progress(v-bind:md-progress="planet.influence")
-        md-card-content.center
+        md-card-content.center(v-if="selected.moon || selected.station")
           md-chip(v-if="planet.moon") Moon
           md-chip(v-if="planet.station") Station
         md-card-content.center
