@@ -12,7 +12,7 @@
 
     md-layout(v-for="faction in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 
-      md-card.md-primary.card(v-bind:class="faction.class")
+      md-card.md-primary.card(v-bind:class="faction.class", md-with-hover, v-on:click.native="select(faction)")
         md-card-header
           .md-title {{ faction.name }}
         md-card-media
@@ -29,11 +29,8 @@
           md-progress(v-bind:md-progress="faction.speed")
         md-card-content.center
           span {{ faction.description }}
-        md-card-content.padding.center
+        md-card-content.center
           md-chip.pink {{ faction.aether | price }} Aether
-        md-card-content.padding.center
-          md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="select(faction)")
-            md-icon done
 </template>
 
 <script>

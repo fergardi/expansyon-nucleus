@@ -7,13 +7,14 @@
         md-dialog-content
             md-input-container
               label Quantity
-              md-input(type="number", v-model="quantity")
+              md-input(type="number", v-model="quantity", required)
+              md-icon add
         md-dialog-content.center
           md-chip {{ (selected.metal * quantity) | price }} Metal
           md-chip {{ (selected.crystal * quantity) | price }} Crystal
           md-chip {{ (selected.oil * quantity) | price }} Oil
         md-dialog-actions
-          md-button.md-icon-button.md-accent(type="submit",v-bind:disabled="!can")
+          md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="!can")
             md-icon done
 
     md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")

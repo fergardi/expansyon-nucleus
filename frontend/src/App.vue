@@ -312,7 +312,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    background url("img/background.jpg") no-repeat center center fixed
+    // background url("img/background.jpg") no-repeat center center fixed
     background-size cover
     box-sizing border-box
     user-select none !important

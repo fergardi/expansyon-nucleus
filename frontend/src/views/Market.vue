@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
   
-    md-dialog(ref='confirm')
+    md-dialog(ref='buy')
       md-dialog-title {{ item(selected).name }}
       md-dialog-content {{ item(selected).description }}
       md-dialog-content.center
@@ -15,34 +15,34 @@
 
     md-layout(v-for="sale in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 
-      md-card.md-primary.card(v-bind:class="item(sale).class")
+      md-card.md-primary.card(v-bind:class="item(sale).class", md-with-hover, v-on:click.native="select(sale)")
         md-card-header
           .md-title {{ item(sale).name }}
         md-card-media
           img(v-bind:src="item(sale).image")
-        md-card-content.no-padding.center
+        md-card-content.no-padding.center(v-if="sale.Planet")
           md-progress(v-bind:md-progress="item(sale).metal", v-if="item(sale).metal")
           md-progress(v-bind:md-progress="item(sale).crystal", v-if="item(sale).crystal")
           md-progress(v-bind:md-progress="item(sale).oil", v-if="item(sale).oil")
           md-progress(v-bind:md-progress="item(sale).size", v-if="item(sale).size")
           md-progress(v-bind:md-progress="item(sale).energy", v-if="item(sale).energy")
           md-progress(v-bind:md-progress="item(sale).influence", v-if="item(sale).influence")
+        md-card-content.no-padding.center(v-if="sale.Artifact")
+          // TODO
+        md-card-content.no-padding.center(v-if="sale.Ship")
           md-progress(v-bind:md-progress="item(sale).attack", v-if="item(sale).attack")
           md-progress(v-bind:md-progress="item(sale).defense", v-if="item(sale).defense")
           md-progress(v-bind:md-progress="item(sale).speed", v-if="item(sale).speed")
-        md-card-content.padding.center(v-if="item(sale).moon || item(sale).station")
+        md-card-content.center(v-if="item(sale).moon || item(sale).station")
           md-chip(v-if="item(sale).moon") Moon
           md-chip(v-if="item(sale).station") Station
         md-card-content.center(v-if="item(sale).description")
           span {{ item(sale).description }}
-        md-card-content.padding.center
+        md-card-content.center
           md-chip(v-if="sale.metal > 0") {{ sale.metal | price }} Metal
           md-chip(v-if="sale.crystal > 0") {{ sale.crystal | price }} Crystal
           md-chip(v-if="sale.oil > 0") {{ sale.oil | price }} Oil
           md-chip.pink(v-if="sale.aether > 0") {{ sale.aether | price }} Aether
-        md-card-content.padding.center
-          md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="select(sale)")
-            md-icon done
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -72,10 +72,10 @@
     },
     methods: {
       open () {
-        this.$refs['confirm'].open()
+        this.$refs['buy'].open()
       },
       close () {
-        this.$refs['confirm'].close()
+        this.$refs['buy'].close()
       },
       select (sale) {
         this.selected = sale
