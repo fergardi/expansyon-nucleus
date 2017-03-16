@@ -21,7 +21,8 @@
 
       md-table-body
         md-table-row(v-for="guild in ordered", md-auto-select, v-bind:md-item="guild", v-on:click.native="popup(guild)")
-          md-table-cell {{ guild.name }}
+          md-table-cell
+            md-chip {{ guild.name }}
           md-table-cell.hide {{ guild.description | lorem }}
           md-table-cell(md-numeric)
             md-chip {{ guild.influence }}

@@ -9,7 +9,7 @@
           img(v-bind:src="artifact.image")
         md-card-content.center
           span {{ artifact.description | lorem }}
-        md-card-content.center
+        md-card-content.padding.center
           md-button.md-raised.md-fab.md-mini.md-accent
             md-icon done
 </template>

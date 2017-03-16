@@ -14,11 +14,11 @@
           md-progress(v-bind:md-progress="selected.oil", v-if="selected.oil")
           md-progress(v-bind:md-progress="selected.energy", v-if="selected.energy")
           md-progress(v-bind:md-progress="selected.influence", v-if="selected.influence")
-        md-card-content.center(v-if="selected.moon || selected.station")
+        md-card-content.padding.center(v-if="selected.moon || selected.station")
           md-chip(v-if="selected.moon") Moon
           md-chip(v-if="selected.station") Station
         md-card-content.center
-          span {{ selected.description | lorem }}
+          span {{ selected.description }}
 
     md-layout(md-flex-xlarge="75", md-flex-large="66", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -57,11 +57,11 @@
           md-progress(v-bind:md-progress="planet.oil")
           md-progress(v-bind:md-progress="planet.energy")
           md-progress(v-bind:md-progress="planet.influence")
-        md-card-content.center(v-if="selected.moon || selected.station")
+        md-card-content.padding.center(v-if="selected.moon || selected.station")
           md-chip(v-if="planet.moon") Moon
           md-chip(v-if="planet.station") Station
         md-card-content.center
-          span {{ planet.description | lorem }}
+          span {{ planet.description }}
 </template>
 
 <script>

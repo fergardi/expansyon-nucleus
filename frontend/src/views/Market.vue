@@ -20,7 +20,7 @@
         md-card-content.padding.center(v-if="item(sale).moon || item(sale).station")
           md-chip(v-if="item(sale).moon") Moon
           md-chip(v-if="item(sale).station") Station
-        md-card-content.padding.center(v-if="item(sale).description")
+        md-card-content.center(v-if="item(sale).description")
           span {{ item(sale).description }}
         md-card-content.padding.center
           md-chip(v-if="sale.metal > 0") {{ sale.metal | price }} Metal

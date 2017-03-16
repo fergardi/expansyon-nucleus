@@ -85,7 +85,7 @@
                 url: '/store',
                 icon: 'store',
                 title: 'Store',
-                quantity: 8
+                quantity: null
               }
             ]
           },
@@ -102,7 +102,7 @@
                 url: '/cantina',
                 icon: 'local_bar',
                 title: 'Cantina',
-                quantity: 3
+                quantity: null
               },
               {
                 url: '/relicarium',
@@ -114,7 +114,7 @@
                 url: '/temple',
                 icon: 'account_balance',
                 title: 'Temple',
-                quantity: 6
+                quantity: null
               }
             ]
           },
@@ -125,7 +125,7 @@
                 url: '/research',
                 icon: 'school',
                 title: 'Research',
-                quantity: 2
+                quantity: 23
               },
               {
                 url: '/hangar',
@@ -154,7 +154,7 @@
                 url: '/senate',
                 icon: 'gavel',
                 title: 'Senate',
-                quantity: 3
+                quantity: null
               },
               {
                 url: '/census',
@@ -172,7 +172,7 @@
                 url: '/transmission',
                 icon: 'wifi',
                 title: 'Transmission',
-                quantity: 2
+                quantity: 23
               }
             ]
           },
@@ -204,11 +204,6 @@
                 quantity: 300
               },
               {
-                icon: 'home',
-                title: 'Size',
-                quantity: 300
-              },
-              {
                 icon: 'apps',
                 title: 'Metal',
                 quantity: 300
@@ -221,6 +216,11 @@
               {
                 icon: 'opacity',
                 title: 'Oil',
+                quantity: 300
+              },
+              {
+                icon: 'home',
+                title: 'Size',
                 quantity: 300
               },
               {

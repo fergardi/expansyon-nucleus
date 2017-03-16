@@ -27,7 +27,7 @@
           md-progress(v-bind:md-progress="faction.attack")
           md-progress(v-bind:md-progress="faction.defense")
           md-progress(v-bind:md-progress="faction.speed")
-        md-card-content.padding.center
+        md-card-content.center
           span {{ faction.description }}
         md-card-content.padding.center
           md-chip.pink {{ faction.aether | price }} Aether
