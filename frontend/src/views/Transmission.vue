@@ -2,16 +2,18 @@
   md-table-card
 
     md-dialog(ref='popup')
-      md-dialog-title {{ selected.subject }}
-      md-dialog-content {{ selected.text }}
-      md-dialog-content
-        md-chip(v-bind:class="color(selected)") {{ selected.From.name || selected.To.name }}
-        md-chip {{ selected.datetime | date }}
-      md-dialog-actions
-        md-button.md-icon-button.md-warn(v-on:click.native="remove()")
-          md-icon delete
-        md-button.md-icon-button.md-accent(v-on:click.native="close()")
-          md-icon done
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.subject }}
+        md-card-content {{ selected.text }}
+        md-card-content
+          md-chip(v-bind:class="color(selected)") {{ selected.From.name || selected.To.name }}
+          md-chip {{ selected.datetime | date }}
+        md-card-actions
+          md-button.md-icon-button.md-warn(v-on:click.native="remove()")
+            md-icon delete
+          md-button.md-icon-button.md-accent(v-on:click.native="close()")
+            md-icon done
 
     md-tabs.md-fixed(v-on:change="clear")
       md-tab#received.no-padding(md-label="Received")

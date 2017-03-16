@@ -2,17 +2,19 @@
   md-table-card
 
     md-dialog(ref="info")
-      md-dialog-title {{ selected.name }}
-      md-dialog-content(v-if="selected.Faction")
-        md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
-      md-dialog-content
-        md-chip {{ selected.influence }} influence
-        md-chip {{ selected.planets }} planets
-      md-dialog-actions
-        md-button.md-icon-button.md-accent(v-on:click.native="friend()")
-          md-icon person_add
-        md-button.md-icon-button.md-accent(v-on:click.native="send()")
-          md-icon send
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content(v-if="selected.Faction")
+          md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
+        md-card-content
+          md-chip {{ selected.influence }} influence
+          md-chip {{ selected.planets }} planets
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="friend()")
+            md-icon person_add
+          md-button.md-icon-button.md-accent(v-on:click.native="send()")
+            md-icon send
 
     md-table(md-sort="influence", v-on:sort="order")
 

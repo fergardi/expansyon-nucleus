@@ -2,19 +2,20 @@
   md-layout
 
     md-dialog(ref='build')
-      form(v-on:submit.stop.prevent="build()")
-        md-dialog-title {{ selected.name }}
-        md-dialog-content
-            md-input-container
-              label Quantity
-              md-input(type="number", v-model="quantity", required)
-              md-icon add
-        md-dialog-content.center
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content
+          md-input-container
+            label Quantity
+            md-input(type="number", v-model="quantity", required)
+            md-icon add
+        md-card-content.center
           md-chip {{ (selected.metal * quantity) | price }} Metal
           md-chip {{ (selected.crystal * quantity) | price }} Crystal
           md-chip {{ (selected.oil * quantity) | price }} Oil
-        md-dialog-actions
-          md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="!can")
+        md-card-actions
+          md-button.md-input-button.md-accent(v-on:click.native="build()", v-bind:disabled="!can")
             md-icon done
 
     md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")

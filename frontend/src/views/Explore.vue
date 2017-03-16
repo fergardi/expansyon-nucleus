@@ -2,23 +2,25 @@
   md-layout
 
     md-dialog(ref='attack')
-      md-dialog-title {{ selected.name }}
-      md-dialog-content
-        md-input-container
-          label Fighter
-          md-input(type="number", v-model="fighter", required)
-          md-icon send
-        md-input-container
-          label Cruiser
-          md-input(type="number", v-model="cruiser", required)
-          md-icon toys
-        md-input-container
-          label Bomber
-          md-input(type="number", v-model="bomber", required)
-          md-icon bubble_chart
-      md-dialog-actions
-        md-button.md-icon-button.md-accent(v-on:click.native="attack()", v-bind:disabled="!can")
-          md-icon done
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content
+          md-input-container
+            label Fighter
+            md-input(type="number", v-model="fighter", required)
+            md-icon send
+          md-input-container
+            label Cruiser
+            md-input(type="number", v-model="cruiser", required)
+            md-icon toys
+          md-input-container
+            label Bomber
+            md-input(type="number", v-model="bomber", required)
+            md-icon bubble_chart
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="attack()", v-bind:disabled="!can")
+            md-icon done
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="select(planet)")

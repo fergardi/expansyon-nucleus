@@ -1,11 +1,20 @@
 <template lang="pug">
   md-layout
-    
+
+    md-dialog(ref='learn')
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content Are you sure to learn this skilltree?
+        md-card-content.right
+          md-button.md-raised.md-icon-button.md-accent(v-on:click.native="learn()")
+            md-icon done
+
     md-layout(v-for="branch in tree", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="branch.class")
         md-card-header
           .md-title {{ branch.name }}
-        md-card-media.center
+        md-card-content.center.background.padding
           md-layout.center
             md-layout.center(v-for="(skill, index) in branch.skills", v-bind:md-flex-xlarge="layout(index)", v-bind:md-flex-large="layout(index)", v-bind:md-flex-small="layout(index)", v-bind:md-flex-xsmall="layout(index)")
               md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)")
@@ -16,7 +25,7 @@
         md-card-content.center
           md-button.md-raised.md-fab.md-mini.md-warn(v-on:click.native="reset(branch)")
             md-icon refresh
-          md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="save(branch)")
+          md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="select(branch)")
             md-icon done
 </template>
 
@@ -27,7 +36,8 @@
   export default {
     data () {
       return {
-        tree: []
+        tree: [],
+        selected: {}
       }
     },
     mounted () {
@@ -50,7 +60,19 @@
           skill.level = skill.min
         })
       },
-      save (branch) {
+      open () {
+        this.$refs['learn'].open()
+      },
+      close () {
+        this.$refs['learn'].close()
+      },
+      select (branch) {
+        this.selected = branch
+        this.open()
+      },
+      learn (branch) {
+        // TODO
+        this.close()
       }
     },
     computed: {

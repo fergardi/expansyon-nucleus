@@ -312,7 +312,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    // background url("img/background.jpg") no-repeat center center fixed
+    background url("img/background.jpg") no-repeat center center fixed
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -409,7 +409,10 @@
     background-color rgba(255,255,255,0.90) !important
   .md-progress
   .md-card-media
+  .background
     background-color rgba(255,255,255,0.10) !important
+  .md-dialog
+    background-color inherit !important
 
   /* CARDS */
   .md-layout
@@ -442,7 +445,7 @@
   red = #D50000
   orange = #FF9800
   pink = #E91E63
-  grey = #EEEEEE
+  grey = #E0E0E0
   .green
     .md-card-header
       color green !important
@@ -568,11 +571,6 @@
     #toolbar
       .md-title
         font-size 16px
-    .md-dialog
-      .md-dialog-title
-        padding 16px 16px 0
-      .md-dialog-content
-        padding 0 16px 16px
     .hide
       display none !important
     table

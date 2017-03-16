@@ -2,13 +2,15 @@
   md-layout
 
     md-dialog(ref='buy')
-      md-dialog-title {{ selected.name }}
-      md-dialog-content {{ selected.description }}
-      md-dialog-content.center
-        md-chip.pink {{ selected.aether | price }} Aether
-      md-dialog-actions
-        md-button.md-icon-button.md-accent(v-on:click.native="buy()", v-bind:disabled="!can")
-          md-icon done
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content {{ selected.description }}
+        md-card-content.center
+          md-chip.pink {{ selected.aether | price }} Aether
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="buy()", v-bind:disabled="!can")
+            md-icon done
     
     md-layout(v-for="artifact in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="artifact.class", md-with-hover, v-on:click.native="select(artifact)")

@@ -2,13 +2,15 @@
   md-table-card
 
     md-dialog(ref='popup')
-      md-dialog-title {{ selected.name }}
-      md-dialog-content {{ selected.description | lorem }}
-      md-dialog-content
-        md-chip {{ selected.members }} members
-      md-dialog-actions
-        md-button.md-icon-button.md-accent(v-on:click.native="apply()")
-          md-icon person_add
+      md-card.md-primary
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content {{ selected.description | lorem }}
+        md-card-content
+          md-chip {{ selected.members }} members
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="apply()")
+            md-icon person_add
 
     md-table(md-sort="influence", v-on:sort="order")
       
@@ -50,7 +52,7 @@
       }
     },
     mounted () {
-      vuex.state.title = 'Guild'
+      vuex.state.title = 'Temple'
     },
     methods: {
       popup (guild) {
