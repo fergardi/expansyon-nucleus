@@ -16,22 +16,28 @@
           md-button.md-icon-button.md-accent(v-on:click.native="send()")
             md-icon send
 
-    md-table(md-sort="influence", v-on:sort="order")
+    md-tabs.md-fixed(v-on:change="clear")
+      md-tab#players.no-padding(md-label="Players")
 
-      md-table-header
-        md-table-row
-          md-table-head(md-sort-by="name", md-tooltip="Name of the player") Name
-          md-table-head(md-sort-by="influence", md-numeric, md-tooltip="Ammount of influence of the player") Influence
-          md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
+        md-table(md-sort="influence", v-on:sort="order")
 
-      md-table-body
-        md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
-          md-table-cell
-            md-chip(v-bind:class="player.class") {{ player.name }}
-          md-table-cell(md-numeric)
-            md-chip {{ player.influence }}
-          md-table-cell(md-numeric)
-            md-chip {{ player.planets }}
+          md-table-header
+            md-table-row
+              md-table-head(md-sort-by="name", md-tooltip="Name of the player") Name
+              md-table-head(md-sort-by="influence", md-numeric, md-tooltip="Ammount of influence of the player") Influence
+              md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
+
+          md-table-body
+            md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
+              md-table-cell
+                md-chip(v-bind:class="player.class") {{ player.name }}
+              md-table-cell(md-numeric)
+                md-chip {{ player.influence }}
+              md-table-cell(md-numeric)
+                md-chip {{ player.planets }}
+
+      md-tab#friends(md-label="Friends")
+        p TODO
 </template>
 
 <script>
@@ -81,6 +87,9 @@
       send () {
         // TODO
         this.close()
+      },
+      clear () {
+        vuex.state.search = ''
       }
     },
     computed: {
