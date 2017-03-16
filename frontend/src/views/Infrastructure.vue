@@ -29,7 +29,11 @@
           md-progress(v-bind:md-progress="building.crystal")
           md-progress(v-bind:md-progress="building.oil")
         md-card-content.center
-          span {{ building.description | lorem }}
+          span {{ building.description }}
+        md-card-content.center
+          md-chip {{ building.metal | price }} Metal
+          md-chip {{ building.crystal | price }} Crystal
+          md-chip {{ building.oil | price }} Oil
 </template>
 
 <script>

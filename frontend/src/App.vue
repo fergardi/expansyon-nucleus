@@ -331,9 +331,8 @@
     margin 0 !important
     height 100%
     scroll-behavior smooth !important
-  .md-chip + .md-chip
-    margin-left 5px
-    margin-bottom 5px
+  .md-chip
+    margin 2px
   .md-toolbar
     .md-button
       margin 0 !important

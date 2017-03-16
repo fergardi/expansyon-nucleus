@@ -13,6 +13,7 @@
             md-icon done
     
     md-layout(v-for="artifact in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
+    
       md-card.md-primary.card(v-bind:class="artifact.class", md-with-hover, v-on:click.native="select(artifact)")
         md-card-header
           .md-title {{ artifact.name }}
@@ -20,6 +21,8 @@
           img(v-bind:src="artifact.image")
         md-card-content.center
           span {{ artifact.description }}
+        md-card-content.center
+          md-chip.pink {{ artifact.aether | price }} Aether
 </template>
 
 <script>

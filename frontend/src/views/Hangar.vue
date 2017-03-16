@@ -29,7 +29,7 @@
           md-progress(v-bind:md-progress="ship.defense")
           md-progress(v-bind:md-progress="ship.speed")
         md-card-content.center
-          span {{ ship.description | lorem }}
+          span {{ ship.description }}
         md-card-content.center
           md-chip {{ ship.metal | price }} Metal
           md-chip {{ ship.crystal | price }} Crystal
