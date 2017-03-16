@@ -1,5 +1,18 @@
 <template lang="pug">
   md-layout
+  
+    md-dialog(ref='confirm')
+      md-dialog-title {{ item(selected).name }}
+      md-dialog-content {{ item(selected).description }}
+      md-dialog-content.center
+        md-chip(v-if="selected.metal > 0") {{ selected.metal | price }} Metal
+        md-chip(v-if="selected.crystal > 0") {{ selected.crystal | price }} Crystal
+        md-chip(v-if="selected.oil > 0") {{ selected.oil | price }} Oil
+        md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | price }} Aether
+      md-dialog-actions
+        md-button.md-icon-button.md-accent(v-on:click.native="buy()")
+          md-icon done
+
     md-layout(v-for="sale in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 
       md-card.md-primary.card(v-bind:class="item(sale).class")
@@ -35,18 +48,6 @@
       md-card.md-primary.card
         md-card-header
           .md-title No items to buy.
-
-    md-dialog(ref='confirm')
-      md-dialog-title {{ item(selected).name }}
-      md-dialog-content {{ item(selected).description }}
-      md-dialog-content.center
-        md-chip(v-if="selected.metal > 0") {{ selected.metal | price }} Metal
-        md-chip(v-if="selected.crystal > 0") {{ selected.crystal | price }} Crystal
-        md-chip(v-if="selected.oil > 0") {{ selected.oil | price }} Oil
-        md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | price }} Aether
-      md-dialog-actions
-        md-button.md-icon-button.md-accent(v-on:click.native="buy()")
-          md-icon done
 </template>
 
 <script>

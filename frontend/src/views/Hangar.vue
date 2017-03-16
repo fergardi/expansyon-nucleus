@@ -1,46 +1,20 @@
 <template lang="pug">
   md-layout
 
-    md-layout(md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="selected.class")
-        md-card-header
-          .md-title {{ selected.name }}
-        md-card-media
-          img(v-bind:src="selected.image")
-        md-card-content.no-padding.center
-          md-progress(v-bind:md-progress="selected.attack")
-          md-progress(v-bind:md-progress="selected.defense")
-          md-progress(v-bind:md-progress="selected.speed")
-        md-card-content.center
-          span {{ selected.description | lorem }}
-
-    md-layout(md-flex-xlarge="75", md-flex-large="66", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card
-        md-card-header
-          .md-title Build
-        md-card-content
-          form.center(novalidate, v-on:submit.stop.prevent="build()")
+    md-dialog(ref='build')
+      form(v-on:submit.stop.prevent="build()")
+        md-dialog-title {{ selected.name }}
+        md-dialog-content
             md-input-container
               label Quantity
-              md-input(type="number", v-model="quantity", required)
-              md-icon equalizer
-            md-input-container
-              label Metal
-              md-input(type="number", v-model="metal", readonly, disabled)
-              md-icon apps
-            md-input-container
-              label Crystal
-              md-input(type="number", v-model="crystal", readonly, disabled)
-              md-icon texture
-            md-input-container
-              label Oil
-              md-input(type="number", v-model="oil", readonly, disabled)
-              md-icon opacity
-
-            md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="!valid")
-              md-icon close
-            md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="!valid")
-              md-icon done
+              md-input(type="number", v-model="quantity")
+        md-dialog-content.center
+          md-chip {{ (selected.metal * quantity) | price }} Metal
+          md-chip {{ (selected.crystal * quantity) | price }} Crystal
+          md-chip {{ (selected.oil * quantity) | price }} Oil
+        md-dialog-actions
+          md-button.md-icon-button.md-accent(type="submit",v-bind:disabled="!can")
+            md-icon done
 
     md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="ship.class", md-with-hover, v-on:click.native="select(ship)")
@@ -54,6 +28,10 @@
           md-progress(v-bind:md-progress="ship.speed")
         md-card-content.center
           span {{ ship.description | lorem }}
+        md-card-content.center
+          md-chip {{ ship.metal | price }} Metal
+          md-chip {{ ship.crystal | price }} Crystal
+          md-chip {{ ship.oil | price }} Oil
 </template>
 
 <script>
@@ -64,15 +42,11 @@
     data () {
       return {
         ships: [],
-        selected: {
-          class: 'grey',
-          name: 'SELECT SHIP',
-          image: 'https://image.flaticon.com/icons/svg/202/202483.svg',
-          description: 'Choose an item to sell'
-        },
+        selected: {},
         metal: 0,
         crystal: 0,
-        oil: 0
+        oil: 0,
+        quantity: 0
       }
     },
     created () {
@@ -85,12 +59,19 @@
       vuex.state.title = 'Hangar'
     },
     methods: {
-      select (item) {
-        this.selected = item
-        if (document.getElementById('scroll')) document.getElementById('scroll').scrollIntoView(true)
+      open () {
+        this.$refs['build'].open()
+      },
+      close () {
+        this.$refs['build'].close()
+      },
+      select (ship) {
+        this.selected = ship
+        this.open()
       },
       build () {
-        console.log('Selling ' + this.selected)
+        // TODO
+        this.close()
       }
     },
     computed: {
@@ -102,8 +83,8 @@
           return ship.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
-      valid () {
-        return true
+      can () {
+        return true // TODO
       }
     }
   }
