@@ -5,9 +5,9 @@ import VueMaterial from 'vue-material'
 import moment from 'moment'
 
 import App from './App.vue'
+import Empire from './views/Empire.vue'
 import Planetarium from './views/Planetarium.vue'
 import Market from './views/Market.vue'
-import Trade from './views/Trade.vue'
 import Store from './views/Store.vue'
 import Research from './views/Research.vue'
 import Hangar from './views/Hangar.vue'
@@ -21,7 +21,6 @@ import Senate from './views/Senate.vue'
 import Census from './views/Census.vue'
 import Guild from './views/Guild.vue'
 import Transmission from './views/Transmission.vue'
-import Status from './views/Status.vue'
 import Profile from './views/Profile.vue'
 import Help from './views/Help.vue'
 import Login from './views/Login.vue'
@@ -35,9 +34,9 @@ Vue.use(VueRouter)
 var router = new VueRouter({
   routes: [
     { path: '/', redirect: '/login' },
+    { path: '/empire', component: Empire, name: 'empire' },
     { path: '/planetarium', component: Planetarium, name: 'planetarium' },
     { path: '/market', component: Market, name: 'market' },
-    { path: '/trade', component: Trade, name: 'trade' },
     { path: '/store', component: Store, name: 'store' },
     { path: '/research', component: Research, name: 'research' },
     { path: '/hangar', component: Hangar, name: 'hangar' },
@@ -51,12 +50,11 @@ var router = new VueRouter({
     { path: '/census', component: Census, name: 'census' },
     { path: '/guild', component: Guild, name: 'guild' },
     { path: '/transmission', component: Transmission, name: 'transmission' },
-    { path: '/status', component: Status, name: 'status' },
     { path: '/profile', component: Profile, name: 'profile' },
     { path: '/help', component: Help, name: 'help' },
     { path: '/login', component: Login, name: 'login' },
     { path: '/splash', component: Splash, name: 'splash' },
-    { path: '*', redirect: '/' }
+    { path: '*', redirect: '/empire' }
   ]
 })
 
@@ -64,7 +62,6 @@ var router = new VueRouter({
 const security = [
   'planetarium',
   'market',
-  'trade',
   'store',
   'research',
   'hangar',

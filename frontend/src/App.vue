@@ -64,6 +64,12 @@
             header: 'Economy',
             items: [
               {
+                url: '/empire',
+                icon: 'equalizer',
+                title: 'Empire',
+                quantity: null
+              },
+              {
                 url: '/planetarium',
                 icon: 'language',
                 title: 'Planetarium',
@@ -74,12 +80,6 @@
                 icon: 'shopping_basket',
                 title: 'Market',
                 quantity: 8
-              },
-              {
-                url: '/trade',
-                icon: 'attach_money',
-                title: 'Trade',
-                quantity: 54
               },
               {
                 url: '/store',
@@ -177,14 +177,8 @@
             ]
           },
           {
-            header: 'Empire',
+            header: 'Other',
             items: [
-              {
-                url: '/status',
-                icon: 'equalizer',
-                title: 'Status',
-                quantity: null
-              },
               {
                 url: '/profile',
                 icon: 'person',
@@ -318,7 +312,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    // background url("img/background.jpg") no-repeat center center fixed
+    background url("img/background.jpg") no-repeat center center fixed
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -358,10 +352,9 @@
       .md-list
         height 100%
         overflow auto
-            
-    .md-list-item:not(.md-avatar-list)
-      .router-link-active
-        background-color rgba(153, 153, 153, 0.2)
+        .md-list-item:not(.md-avatar-list)
+          .router-link-active
+            background-color rgba(153, 153, 153, 0.2)
   .flex
     display flex
     flex 1
@@ -369,25 +362,25 @@
     padding 0 !important
     margin 0 !important
   .padding
-    padding 4px
+    padding 4px !important
   .center
-    align-items center
-    text-align center
-    justify-content center
+    align-items center !important
+    text-align center !important
+    justify-content center !important
   .hidden
-    visibility hidden
+    visibility hidden !important
   .removed
-    display none
+    display none !important
   .right
-    align-items center
-    float right
-    text-align right
-    justify-content right
+    align-items center !important
+    float right !important
+    text-align right !important
+    justify-content right !important
   .left
-    align-items center
-    float left
-    text-align left
-    justify-content left
+    align-items center !important
+    float left !important
+    text-align left !important
+    justify-content left !important
   .md-table
     .md-table-cell
       .md-button
@@ -411,7 +404,7 @@
   .md-sidenav-content
   .md-card
   .md-table-card
-    opacity 0.90
+    opacity 0.95
   .md-table-card.md-card
     background-color rgba(255,255,255,0.90) !important
   .md-progress

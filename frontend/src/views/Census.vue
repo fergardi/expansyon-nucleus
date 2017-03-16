@@ -1,5 +1,19 @@
 <template lang="pug">
   md-table-card
+
+    md-dialog(ref="info")
+      md-dialog-title {{ selected.name }}
+      md-dialog-content(v-if="selected.Faction")
+        md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
+      md-dialog-content
+        md-chip {{ selected.influence }} influence
+        md-chip {{ selected.planets }} planets
+      md-dialog-actions
+        md-button.md-icon-button.md-accent(v-on:click.native="friend()")
+          md-icon person_add
+        md-button.md-icon-button.md-accent(v-on:click.native="send()")
+          md-icon send
+
     md-table(md-sort="influence", v-on:sort="order")
 
       md-table-header
@@ -16,19 +30,6 @@
             md-chip {{ player.influence }}
           md-table-cell(md-numeric)
             md-chip {{ player.planets }}
-
-    md-dialog(ref="info")
-      md-dialog-title {{ selected.name }}
-      md-dialog-content(v-if="selected.Faction")
-        md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
-      md-dialog-content
-        md-chip {{ selected.influence }} influence
-        md-chip {{ selected.planets }} planets
-      md-dialog-actions
-        md-button.md-icon-button.md-accent
-          md-icon person_add
-        md-button.md-icon-button.md-accent(href="#/transmission")
-          md-icon send
 </template>
 
 <script>
@@ -59,14 +60,25 @@
     methods: {
       info (player) {
         this.selected = player
+        this.open()
+      },
+      open () {
         this.$refs['info'].open()
       },
-      close (ref) {
-        this.$refs[ref].close()
+      close () {
+        this.$refs['info'].close()
       },
       order (column) {
         this.field = column.name
         this.direction = column.type
+      },
+      friend () {
+        // TODO
+        this.close()
+      },
+      send () {
+        // TODO
+        this.close()
       }
     },
     computed: {

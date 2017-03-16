@@ -17,17 +17,17 @@
           md-progress(v-bind:md-progress="item(sale).attack", v-if="item(sale).attack")
           md-progress(v-bind:md-progress="item(sale).defense", v-if="item(sale).defense")
           md-progress(v-bind:md-progress="item(sale).speed", v-if="item(sale).speed")
-        md-card-content.center(v-if="item(sale).moon || item(sale).station")
+        md-card-content.padding.center(v-if="item(sale).moon || item(sale).station")
           md-chip(v-if="item(sale).moon") Moon
           md-chip(v-if="item(sale).station") Station
-        md-card-content.center(v-if="item(sale).description")
+        md-card-content.padding.center(v-if="item(sale).description")
           span {{ item(sale).description }}
-        md-card-content.center
+        md-card-content.padding.center
           md-chip(v-if="sale.metal > 0") {{ sale.metal | price }} Metal
           md-chip(v-if="sale.crystal > 0") {{ sale.crystal | price }} Crystal
           md-chip(v-if="sale.oil > 0") {{ sale.oil | price }} Oil
           md-chip.pink(v-if="sale.aether > 0") {{ sale.aether | price }} Aether
-        md-card-content.center
+        md-card-content.padding.center
           md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="select(sale)")
             md-icon done
 

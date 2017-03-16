@@ -1,5 +1,15 @@
 <template lang="pug">
   md-table-card
+
+    md-dialog(ref='popup')
+      md-dialog-title {{ selected.name }}
+      md-dialog-content {{ selected.description | lorem }}
+      md-dialog-content
+        md-chip {{ selected.members }} members
+      md-dialog-actions
+        md-button.md-icon-button.md-accent(v-on:click.native="apply()")
+          md-icon person_add
+
     md-table(md-sort="influence", v-on:sort="order")
       
       md-table-header
@@ -17,15 +27,6 @@
             md-chip {{ guild.influence }}
           md-table-cell(md-numeric)
             md-chip {{ guild.members }}
-
-    md-dialog(ref='popup')
-      md-dialog-title {{ selected.name }}
-      md-dialog-content {{ selected.description | lorem }}
-      md-dialog-content
-        md-chip {{ selected.members }} members
-      md-dialog-actions
-        md-button.md-icon-button.md-accent(v-on:click.native="apply()")
-          md-icon person_add
 </template>
 
 <script>
@@ -61,6 +62,10 @@
       order (column) {
         this.field = column.name
         this.direction = column.type
+      },
+      apply () {
+        // TODO
+        this.close()
       }
     },
     computed: {
