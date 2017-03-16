@@ -119,11 +119,11 @@ Vue.material.registerTheme({
 Vue.filter('date', (date) => {
   return moment(date).format('DD/MM/YY HH:mm:ss')
 })
+Vue.filter('price', (price) => {
+  return price.toLocaleString()
+})
 Vue.filter('lorem', (string) => {
   return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-})
-Vue.filter('truncate', (string, max) => {
-  return string.substring(0, max) + '...'
 })
 
 // scroll to top and close sidebar

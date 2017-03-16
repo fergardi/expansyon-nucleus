@@ -14,11 +14,10 @@
           md-progress(v-bind:md-progress="selected.oil", v-if="selected.oil")
           md-progress(v-bind:md-progress="selected.energy", v-if="selected.energy")
           md-progress(v-bind:md-progress="selected.influence", v-if="selected.influence")
-        md-card-content.no-padding.center
           md-progress(v-bind:md-progress="selected.attack", v-if="selected.attack")
           md-progress(v-bind:md-progress="selected.defense", v-if="selected.defense")
           md-progress(v-bind:md-progress="selected.speed", v-if="selected.speed")
-        md-card-content.center
+        md-card-content.center(v-if="selected.moon || selected.station")
           md-chip(v-if="selected.moon") Moon
           md-chip(v-if="selected.station") Station
         md-card-content.center
@@ -53,22 +52,21 @@
           .md-title {{ sale.name }}
         md-card-media
           img(v-bind:src="sale.image")
-        md-card-content.no-padding.center(v-if="sale.size")
+        md-card-content.no-padding.center
           md-progress(v-bind:md-progress="sale.size", v-if="sale.size")
           md-progress(v-bind:md-progress="sale.metal", v-if="sale.metal")
           md-progress(v-bind:md-progress="sale.crystal", v-if="sale.crystal")
           md-progress(v-bind:md-progress="sale.oil", v-if="sale.oil")
           md-progress(v-bind:md-progress="sale.energy", v-if="sale.energy")
           md-progress(v-bind:md-progress="sale.influence", v-if="sale.influence")
-        md-card-content.no-padding.center(v-if="sale.attack")
           md-progress(v-bind:md-progress="sale.attack", v-if="sale.attack")
           md-progress(v-bind:md-progress="sale.defense", v-if="sale.defense")
           md-progress(v-bind:md-progress="sale.speed", v-if="sale.speed")
-        md-card-content.center
+        md-card-content.center(v-if="sale.moon || sale.station")
           md-chip(v-if="sale.moon") Moon
           md-chip(v-if="sale.station") Station
         md-card-content.center(v-if="sale.description")
-          span(v-if="sale.description") {{ sale.description | lorem }}
+          span {{ sale.description | lorem }}
           
 </template>
 
@@ -86,7 +84,10 @@
           class: 'grey',
           name: 'SELL ITEM',
           image: 'https://image.flaticon.com/icons/svg/202/202483.svg',
-          description: 'Choose an item to sell'
+          description: 'Choose an item to sell',
+          Planet: {},
+          Artifact: {},
+          Ship: {}
         },
         metal: 0,
         crystal: 0,

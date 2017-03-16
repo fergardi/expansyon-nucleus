@@ -52,6 +52,12 @@ const api = {
       return response.data
     })
   },
+  getSales: () => {
+    return axios.get(`${url}/sale`)
+    .then((response) => {
+      return response.data
+    })
+  },
   getPlayers: () => {
     return axios.get(`${url}/player`)
     .then((response) => {

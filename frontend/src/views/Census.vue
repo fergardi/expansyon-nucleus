@@ -22,8 +22,8 @@
       md-dialog-content(v-if="selected.Faction")
         md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
       md-dialog-content
-        md-chip {{ player.influence }} influence
-        md-chip {{ player.planets }} planets
+        md-chip {{ selected.influence }} influence
+        md-chip {{ selected.planets }} planets
       md-dialog-actions
         md-button.md-icon-button.md-accent
           md-icon person_add

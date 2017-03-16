@@ -318,7 +318,7 @@
 <style lang="stylus">
   /* COMMON */
   body
-    background url("img/background.jpg") no-repeat center center fixed
+    // background url("img/background.jpg") no-repeat center center fixed
     background-size cover
     box-sizing border-box
     user-select none !important
@@ -339,6 +339,7 @@
     scroll-behavior smooth !important
   .md-chip + .md-chip
     margin-left 5px
+    margin-bottom 5px
   .md-toolbar
     .md-button
       margin 0 !important
@@ -520,7 +521,7 @@
     .md-chip
     &.md-chip
       background-color pink !important
-      color black !important
+      color white !important
   .grey
     .md-card-header
       color grey !important
