@@ -25,7 +25,7 @@
       }
     },
     created () {
-      api.getPlayer(vuex.state.id)
+      api.getPlayer(vuex.state.player.id)
       .then((player) => {
         this.artifacts = player.Artifacts
       })

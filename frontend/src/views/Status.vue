@@ -186,7 +186,7 @@
       .then((referendums) => {
         this.referendum = referendums[0]
       })
-      api.getPlayer(vuex.state.id)
+      api.getPlayer(vuex.state.player.id)
       .then((player) => {
         this.faction = player.Faction
       })

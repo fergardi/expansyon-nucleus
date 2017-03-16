@@ -84,7 +84,7 @@
       }
     },
     created () {
-      api.getPlanets(vuex.state.id)
+      api.getPlanets(vuex.state.player.id)
       .then((planets) => {
         this.planets = planets
       })

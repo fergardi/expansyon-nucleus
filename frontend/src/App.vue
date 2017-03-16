@@ -566,4 +566,9 @@
   @media only screen and (max-width 768px)
     .hide
       display none !important
+    table
+      th
+      td
+      .md-chip
+        font-size 0.8em !important
 </style>
