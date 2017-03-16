@@ -24,7 +24,7 @@
               md-table-head(md-sort-by="From.name", md-tooltip="Origin of the transmission") From
               md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
               md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
-              md-table-head.hide(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
+              md-table-head(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
 
           md-table-body
             md-table-row(v-for="message in receivedOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
@@ -32,7 +32,7 @@
                 md-chip(v-bind:class="color(message)") {{ message.From.name }}
               md-table-cell {{ message.subject }}
               md-table-cell.hide {{ message.text | lorem }}
-              md-table-cell.hide.md-numeric {{ message.datetime | date }}
+              md-table-cell.md-numeric {{ message.datetime | date }}
 
             md-table-row(v-if="!receivedOrdered.length")
               md-table-cell You have no messages.
@@ -45,7 +45,7 @@
               md-table-head(md-sort-by="To.name", md-tooltip="Destination of the transmission") To
               md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
               md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
-              md-table-head.hide(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
+              md-table-head(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
 
           md-table-body
             md-table-row(v-for="message in sentOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
@@ -53,7 +53,7 @@
                 md-chip(v-bind:class="color(message)") {{ message.To.name }}
               md-table-cell {{ message.subject }}
               md-table-cell.hide {{ message.text | lorem }}
-              md-table-cell.hide.md-numeric {{ message.datetime | date }}
+              md-table-cell.md-numeric {{ message.datetime | date }}
 
             md-table-row(v-if="!sentOrdered.length")
               md-table-cell You have no messages.
@@ -63,7 +63,7 @@
         form(v-on:submit.stop.prevent="send")
           md-input-container
             label To
-            md-select(name="to", id="to", v-model="to")
+            md-select(name="to", id="to", v-model="to", required)
               md-option(v-for="player in players", v-bind:value="player.id") {{ player.name }}
           md-input-container
             label Subject
