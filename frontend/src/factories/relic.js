@@ -23,13 +23,13 @@ const factory = {
     return classes[Math.floor(Math.random() * classes.length)]
   },
   build () {
-    var artifact = {
+    var relic = {
       image: factory.image(),
       name: 'ITEM',
       description: 'Description',
       class: factory.class()
     }
-    return artifact
+    return relic
   }
 }
 

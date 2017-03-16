@@ -12,17 +12,17 @@
           md-button.md-icon-button.md-accent(v-on:click.native="buy()", v-bind:disabled="!can")
             md-icon done
     
-    md-layout(v-for="artifact in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     
-      md-card.md-primary.card(v-bind:class="artifact.class", md-with-hover, v-on:click.native="select(artifact)")
+      md-card.md-primary.card(v-bind:class="relic.class", md-with-hover, v-on:click.native="select(relic)")
         md-card-header
-          .md-title {{ artifact.name }}
+          .md-title {{ relic.name }}
         md-card-media
-          img(v-bind:src="artifact.image")
+          img(v-bind:src="relic.image")
         md-card-content.center
-          span {{ artifact.description }}
+          span {{ relic.description }}
         md-card-content.center
-          md-chip.pink {{ artifact.aether | price }} Aether
+          md-chip.pink {{ relic.aether | price }} Aether
 </template>
 
 <script>
@@ -32,16 +32,16 @@
   export default {
     data () {
       return {
-        artifacts: [],
+        relics: [],
         selected: {
           aether: 0
         }
       }
     },
     created () {
-      api.getArtifacts()
-      .then((artifacts) => {
-        this.artifacts = artifacts
+      api.getRelics()
+      .then((relics) => {
+        this.relics = relics
       })
     },
     mounted () {
@@ -54,8 +54,8 @@
       close () {
         this.$refs['buy'].close()
       },
-      select (artifact) {
-        this.selected = artifact
+      select (relic) {
+        this.selected = relic
         this.open()
       },
       buy () {
@@ -68,8 +68,8 @@
         return vuex.state.search
       },
       filtered () {
-        return this.artifacts.filter((artifact) => {
-          return artifact.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+        return this.relics.filter((relic) => {
+          return relic.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {

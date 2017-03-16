@@ -29,7 +29,7 @@
           md-progress(v-bind:md-progress="item(sale).size", v-if="item(sale).size")
           md-progress(v-bind:md-progress="item(sale).energy", v-if="item(sale).energy")
           md-progress(v-bind:md-progress="item(sale).influence", v-if="item(sale).influence")
-        md-card-content.no-padding.center(v-if="sale.Artifact")
+        md-card-content.no-padding.center(v-if="sale.Relic")
           // TODO
         md-card-content.no-padding.center(v-if="sale.Ship")
           md-progress(v-bind:md-progress="item(sale).attack", v-if="item(sale).attack")
@@ -84,7 +84,7 @@
         this.open()
       },
       item (sale) {
-        return sale.Planet || sale.Ship || sale.Artifact || {}
+        return sale.Planet || sale.Ship || sale.Relic || {}
       },
       buy () {
         // TODO
@@ -97,8 +97,8 @@
       },
       filtered () {
         return this.sales.filter((sale) => {
-          return sale.Artifact
-            ? sale.Artifact.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return sale.Relic
+            ? sale.Relic.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
             : sale.Planet
               ? sale.Planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
               : sale.Ship.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1

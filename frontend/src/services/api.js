@@ -34,8 +34,8 @@ const api = {
       return response.data
     })
   },
-  getArtifacts: () => {
-    return axios.get(`${url}/artifact`)
+  getRelics: () => {
+    return axios.get(`${url}/relic`)
     .then((response) => {
       return response.data
     })

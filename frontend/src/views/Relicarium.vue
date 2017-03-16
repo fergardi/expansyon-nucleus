@@ -1,14 +1,14 @@
 <template lang="pug">
   md-layout
     
-    md-layout(v-for="artifact in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="artifact.class")
+    md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
+      md-card.md-primary.card(v-bind:class="relic.class")
         md-card-header
-          .md-title {{ artifact.name }}
+          .md-title {{ relic.name }}
         md-card-media
-          img(v-bind:src="artifact.image")
+          img(v-bind:src="relic.image")
         md-card-content.center
-          span {{ artifact.description | lorem }}
+          span {{ relic.description | lorem }}
         md-card-content.center
           md-button.md-raised.md-fab.md-mini.md-accent
             md-icon done
@@ -16,7 +16,7 @@
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title You have no artifacts.
+          .md-title You have no relics.
 </template>
 
 <script>
@@ -26,13 +26,13 @@
   export default {
     data () {
       return {
-        artifacts: []
+        relics: []
       }
     },
     created () {
       api.getPlayer(vuex.state.player.id)
       .then((player) => {
-        this.artifacts = player.Artifacts
+        this.relics = player.Relics
       })
     },
     mounted () {
@@ -43,8 +43,8 @@
         return vuex.state.search
       },
       filtered () {
-        return this.artifacts.filter((artifact) => {
-          return artifact.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+        return this.relics.filter((relic) => {
+          return relic.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       }
     }
