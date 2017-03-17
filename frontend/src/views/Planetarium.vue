@@ -5,6 +5,8 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
+        md-card-content.center
+          span {{ selected.description }}
         md-card-actions
           md-button.md-icon-button.md-accent(v-on:click.native="close()")
             md-icon done

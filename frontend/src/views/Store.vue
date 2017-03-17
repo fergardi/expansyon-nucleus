@@ -19,6 +19,10 @@
           .md-title {{ relic.name }}
         md-card-media
           img(v-bind:src="relic.image")
+        md-card-content.center(v-if="relic.moon || relic.station || relic.planet")
+          md-chip(v-if="relic.moon") Moon
+          md-chip(v-if="relic.station") Station
+          md-chip(v-if="relic.planet") Planet
         md-card-content.center
           span {{ relic.description }}
         md-card-content.center
