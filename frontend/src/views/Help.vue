@@ -6,10 +6,9 @@
         template(v-for="section in filtered")
           md-card-header
             .md-title {{ section.title }}
-          md-card-content
-            p {{ section.content | lorem }}
+          md-card-content {{ section.content | lorem }}
           md-card-media
-            md-image(v-bind:md-src="section.image")
+            img(v-for="image in section.images", v-bind:src="image.url")
 </template>
 
 <script>
@@ -22,82 +21,146 @@
           {
             title: 'Empire',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Planetarium',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Market',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Store',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Explore',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Cantina',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Relicarium',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Temple',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Research',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Hangar',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Infrastructure',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Defense',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Senate',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Census',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Guild',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           },
           {
             title: 'Transmission',
             content: 'dsa',
-            image: ''
+            images: [
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' },
+              { url: 'https://image.flaticon.com/icons/svg/124/124558.svg' }
+            ]
           }
         ]
       }

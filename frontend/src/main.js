@@ -127,8 +127,6 @@ Vue.filter('lorem', (string) => {
 router.beforeEach((to, from, next) => {
   Vue.nextTick(() => {
     if (document.getElementById('main')) document.getElementById('main').scrollIntoView(true)
-    // Main.close('left')
-    // Main.close('right')
     if ((security.indexOf(to.name) !== -1) && !vuex.state.player.logged) {
       router.push({ path: '/login' })
     } else {
