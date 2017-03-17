@@ -2,13 +2,13 @@
   md-table-card
 
     md-dialog(ref='popup')
-      md-card.md-primary
+      md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.subject }}
         md-card-content {{ selected.text | lorem }}
         md-card-content
           md-chip(v-bind:class="color(selected)") {{ selected.From.name || selected.To.name }}
-          md-chip.grey {{ selected.datetime | date }}
+          md-chip {{ selected.datetime | date }}
         md-card-actions
           md-button.md-icon-button.md-warn(v-on:click.native="remove()")
             md-icon delete

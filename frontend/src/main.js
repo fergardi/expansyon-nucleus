@@ -126,7 +126,7 @@ Vue.filter('lorem', (string) => {
 // scroll to top and close sidebar
 router.beforeEach((to, from, next) => {
   Vue.nextTick(() => {
-    if (document.getElementById('scroll')) document.getElementById('scroll').scrollIntoView(true)
+    if (document.getElementById('main')) document.getElementById('main').scrollIntoView(true)
     // Main.close('left')
     // Main.close('right')
     if ((security.indexOf(to.name) !== -1) && !vuex.state.player.logged) {

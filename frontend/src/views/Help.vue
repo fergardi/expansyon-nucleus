@@ -20,13 +20,83 @@
       return {
         sections: [
           {
-            title: 'Title',
-            content: 'content1',
+            title: 'Empire',
+            content: 'dsa',
             image: ''
           },
           {
-            title: 'Title',
-            content: 'content2',
+            title: 'Planetarium',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Market',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Store',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Explore',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Cantina',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Relicarium',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Temple',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Research',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Hangar',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Infrastructure',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Defense',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Senate',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Census',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Guild',
+            content: 'dsa',
+            image: ''
+          },
+          {
+            title: 'Transmission',
+            content: 'dsa',
             image: ''
           }
         ]

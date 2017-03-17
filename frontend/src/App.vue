@@ -48,8 +48,8 @@
             span {{ item.title }}
             md-chip {{ item.quantity }}
 
-    .main.padding
-      router-view#scroll.content.animation.fadeIn
+    .main.padding#main
+      router-view.content.animation.fadeIn.scrollable
 </template>
 
 <script>
@@ -395,6 +395,10 @@
       .md-table-cell-container
           justify-content flex-end !important
 
+  .scrollable
+    overflow-y auto
+    height 100%
+
   /* chrome autofill */
   .md-input-container .md-icon:after
     background inherit !important
@@ -412,6 +416,7 @@
   .background
     background-color rgba(255,255,255,0.10) !important
   .md-dialog
+  .md-list
     background-color inherit !important
 
   /* CARDS */

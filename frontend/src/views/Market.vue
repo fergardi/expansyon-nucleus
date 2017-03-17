@@ -2,7 +2,7 @@
   md-layout
   
     md-dialog(ref='buy')
-      md-card.md-primary
+      md-card.md-primary(v-bind:class="item(selected).class")
         md-card-header
           .md-title {{ item(selected).name }}
         md-card-content {{ item(selected).description }}

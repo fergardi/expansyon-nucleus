@@ -2,14 +2,14 @@
   md-table-card
 
     md-dialog(ref="info")
-      md-card.md-primary
+      md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.name }}
         md-card-content(v-if="selected.Faction")
           md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
         md-card-content
-          md-chip.grey {{ selected.influence }} influence
-          md-chip.grey {{ selected.planets }} planets
+          md-chip {{ selected.influence }} influence
+          md-chip {{ selected.planets }} planets
         md-card-actions
           md-button.md-icon-button.md-warn(v-on:click.native="enemy()")
             md-icon person_add

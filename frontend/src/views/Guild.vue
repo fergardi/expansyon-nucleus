@@ -1,8 +1,17 @@
 <template lang="pug">
   md-table-card
 
+    md-dialog(ref='confirm')
+      md-card.md-primary.grey
+        md-card-header
+          .md-title Leave guild
+        md-card-content Are you sure to leave this guild?
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="leave()")
+            md-icon done
+
     md-dialog(ref='popup')
-      md-card.md-primary
+      md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.name }}
         md-card-content {{ selected.description | lorem }}
@@ -34,8 +43,25 @@
               md-table-cell(md-numeric)
                 md-chip {{ guild.members }}
 
-      md-tab#myguild(md-label="My guild")
-       p TODO
+      md-tab#myguild.no-padding(md-label="My guild")
+        md-list
+          md-list-item
+            .md-title {{ guild.name }}
+          md-list-item
+            md-icon trending_up
+            span Ranking
+            md-chip {{ guild.ranking }}
+          md-list-item
+            md-icon person_add
+            span Members
+            md-chip {{ guild.members }}
+          md-list-item
+            md-icon star
+            span Influence
+            md-chip {{ guild.influence }}
+        .center
+          md-button.md-raised.md-warn.md-fab.md-mini(v-on:click.native="confirm()")
+            md-icon close
 </template>
 
 <script>
@@ -47,15 +73,25 @@
     data () {
       return {
         guilds: [],
+        guild: {
+          name: 'Guild',
+          members: 0,
+          influence: 0,
+          ranking: 0
+        },
+        selected: {},
         field: 'influence',
-        direction: 'desc',
-        selected: {}
+        direction: 'desc'
       }
     },
     created () {
       api.getGuilds()
       .then((guilds) => {
         this.guilds = guilds
+      })
+      api.getPlayer(vuex.state.player.id)
+      .then((player) => {
+        // this.guild = player.Guild
       })
     },
     mounted () {
@@ -76,6 +112,13 @@
       apply () {
         // TODO
         this.close()
+      },
+      confirm () {
+        this.$refs['confirm'].open()
+      },
+      leave () {
+        // TODO
+        this.$refs['confirm'].close()
       },
       clear () {
         vuex.state.search = ''
