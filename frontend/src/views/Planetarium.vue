@@ -1,8 +1,17 @@
 <template lang="pug">
   md-layout
+
+    md-dialog(ref='info')
+      md-card.md-primary(v-bind:class="selected.class")
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="close()")
+            md-icon done
+
     md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     
-      md-card.md-primary.card(v-bind:class="planet.class")
+      md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="info(planet)")
         md-card-header
           .md-title {{ planet.name }}
         md-card-media
@@ -33,7 +42,8 @@
   export default {
     data () {
       return {
-        planets: []
+        planets: [],
+        selected: {}
       }
     },
     created () {
@@ -44,6 +54,15 @@
     },
     mounted () {
       vuex.state.title = 'Planetarium'
+    },
+    methods: {
+      info (planet) {
+        this.selected = planet
+        this.$refs['info'].open()
+      },
+      close () {
+        this.$refs['info'].close()
+      }
     },
     computed: {
       search () {
