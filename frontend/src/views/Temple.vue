@@ -2,7 +2,7 @@
   md-layout
 
     md-dialog(ref='confirm')
-      md-card.md-primary
+      md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
         md-card-content {{ selected.description }}
