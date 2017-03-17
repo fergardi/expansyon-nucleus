@@ -1,13 +1,13 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='learn')
+    md-dialog(ref='save')
       md-card.md-primary
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content Are you sure to learn this skilltree?
+        md-card-content Are you sure to save this skilltree?
         md-card-content.right
-          md-button.md-raised.md-icon-button.md-accent(v-on:click.native="learn()")
+          md-button.md-raised.md-icon-button.md-accent(v-on:click.native="save()")
             md-icon done
 
     md-layout(v-for="branch in tree", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
@@ -30,8 +30,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
   import vuex from '../vuex/vuex'
-  import factory from '../factories/tree'
 
   export default {
     data () {
@@ -44,9 +44,10 @@
       vuex.state.title = 'Research'
     },
     created () {
-      for (let i = 0; i < 3; i++) {
-        this.tree.push(factory.build())
-      }
+      api.getTree()
+      .then((tree) => {
+        this.tree = tree
+      })
     },
     methods: {
       layout (index) {
@@ -61,16 +62,16 @@
         })
       },
       open () {
-        this.$refs['learn'].open()
+        this.$refs['save'].open()
       },
       close () {
-        this.$refs['learn'].close()
+        this.$refs['save'].close()
       },
       select (branch) {
         this.selected = branch
         this.open()
       },
-      learn (branch) {
+      save (branch) {
         // TODO
         this.close()
       }

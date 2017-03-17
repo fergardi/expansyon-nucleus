@@ -64,6 +64,12 @@ const api = {
       return response.data
     })
   },
+  getTree: () => {
+    return axios.get(`${url}/skill/tree`)
+    .then((response) => {
+      return response.data
+    })
+  },
   getPlayers: () => {
     return axios.get(`${url}/player`)
     .then((response) => {
