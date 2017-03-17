@@ -30,8 +30,8 @@
 </template>
 
 <script>
-  import api from '../services/api'
   import vuex from '../vuex/vuex'
+  import factory from '../factories/tree'
 
   export default {
     data () {
@@ -44,10 +44,9 @@
       vuex.state.title = 'Research'
     },
     created () {
-      api.getTree()
-      .then((tree) => {
-        this.tree = tree
-      })
+      for (let i = 0; i < 3; i++) {
+        this.tree.push(factory.build())
+      }
     },
     methods: {
       layout (index) {
