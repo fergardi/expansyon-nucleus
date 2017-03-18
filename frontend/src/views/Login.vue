@@ -5,13 +5,15 @@
       md-tabs(md-fixed)
 
         md-tab.no-padding#login(md-label="Login")
-          form(v-on:submit.prevent="login()")
+          form(v-on:submit.stop.prevent="login()", autocomplete="off")
             md-card.md-primary.card.no-padding
               md-card-content
                 md-input-container
+                  md-icon mail
                   label Email
                   md-input(type="email", v-model="credentials.email", required)
                 md-input-container(md-has-password)
+                  md-icon lock
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
                 .center
@@ -22,21 +24,25 @@
                     md-icon.spin(v-else) autorenew
 
         md-tab.no-padding#register(md-label="Register")
-          form(v-on:submit.prevent="register()")
+          form(v-on:submit.stop.prevent="register()")
             md-card.md-primary.card.no-padding
               md-card-content
                 md-input-container(v-bind:class="{ 'md-input-invalid' : found }")
+                  md-icon mail
                   label Email
                   md-input(type="email", v-model.lazy="information.email", required)
                   span.md-error Email already in use
                 md-input-container(md-has-password)
+                  md-icon lock_open
                   label Password
                   md-input(type="password", v-model="information.password", required)
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
+                  md-icon lock
                   label Repeat password
                   md-input(type="password", v-model="information.repeat", required)
                   span.md-error Passwords must match
                 md-input-container
+                  md-icon person
                   label Name
                   md-input(type="text", v-model="information.name", required)
                 .center
@@ -114,6 +120,15 @@
 </script>
 
 <style lang="stylus" scoped>
+  /*
+  input:-webkit-autofill
+  input:-webkit-autofill:hover
+  input:-webkit-autofill:focus
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: rgba(255, 255, 255, .87);;
+  }
+  */
   .login
     display flex
     align-items center

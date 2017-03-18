@@ -7,9 +7,9 @@
           .md-title {{ selected.name }}
         md-card-content
           md-input-container
+            md-icon add
             label Quantity
             md-input(type="number", v-model="quantity", required)
-            md-icon add
         md-card-content.center
           md-chip {{ (selected.metal * quantity) | price }} Metal
           md-chip {{ (selected.crystal * quantity) | price }} Crystal

@@ -7,17 +7,17 @@
           .md-title {{ selected.name }}
         md-card-content
           md-input-container
+            md-icon send
             label Fighter
             md-input(type="number", v-model="fighter", required)
-            md-icon send
           md-input-container
+            md-icon toys
             label Cruiser
             md-input(type="number", v-model="cruiser", required)
-            md-icon toys
           md-input-container
+            md-icon bubble_chart
             label Bomber
             md-input(type="number", v-model="bomber", required)
-            md-icon bubble_chart
         md-card-actions
           md-button.md-icon-button.md-accent(v-on:click.native="attack()", v-bind:disabled="!can")
             md-icon done

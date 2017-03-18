@@ -7,12 +7,18 @@
           .md-title Change password
         md-card-content.center
           form(v-on:submit.prevent="change()")
-            md-input-container
+            md-input-container(md-has-password)
+              md-icon lock
               label Old password
               md-input(type="password", v-model="outdated", required)
-            md-input-container
+            md-input-container(md-has-password)
+              md-icon lock_open
               label New password
               md-input(type="password", v-model="updated", required)
+            md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
+              md-icon lock
+              label Repeat password
+              md-input(type="password", v-model="repeat", required)
             md-button.md-raised.md-fab.md-mini.md-warn(type="reset")
               md-icon close
             md-button.md-raised.md-fab.md-mini.md-accent(type="submit")
@@ -31,6 +37,7 @@
       return {
         outdated: '',
         updated: '',
+        repeat: '',
         theme: true
       }
     },
@@ -45,6 +52,9 @@
     computed: {
       search () {
         return vuex.state.search
+      },
+      match () {
+        return this.updated === this.repeat
       }
     },
     watch: {
