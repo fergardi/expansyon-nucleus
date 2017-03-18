@@ -5,7 +5,7 @@
       md-tabs(md-fixed)
 
         md-tab.no-padding#login(md-label="Login")
-          form(v-on:submit.stop.prevent="login()", autocomplete="off")
+          form(v-on:submit.stop.prevent="login()")
             md-card.md-primary.card.no-padding
               md-card-content
                 md-input-container
@@ -120,15 +120,16 @@
 </script>
 
 <style lang="stylus" scoped>
-  /*
-  input:-webkit-autofill
-  input:-webkit-autofill:hover
-  input:-webkit-autofill:focus
-  input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: rgba(255, 255, 255, .87);;
+  @-webkit-keyframes autofill {
+    to {
+      color: white;
+      background: transparent;
+    }
   }
-  */
+  input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+  }
   .login
     display flex
     align-items center
