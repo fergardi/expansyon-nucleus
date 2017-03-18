@@ -36,7 +36,7 @@
               md-table-cell(md-numeric)
                 md-chip {{ player.planets }}
 
-      md-tab#friends(md-label="Friends")
+      md-tab#friends.no-padding(md-label="Friends")
         
         md-table(md-sort="influence", v-on:sort="order")
 
@@ -55,7 +55,7 @@
               md-table-cell(md-numeric)
                 md-chip {{ player.planets }}
 
-      md-tab#enemies(md-label="Enemies")
+      md-tab#enemies.no-padding(md-label="Enemies")
         
         md-table(md-sort="influence", v-on:sort="order")
 

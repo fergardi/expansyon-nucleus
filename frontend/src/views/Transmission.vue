@@ -7,7 +7,7 @@
           .md-title {{ selected.subject }}
         md-card-content {{ selected.text | lorem }}
         md-card-content
-          md-chip(v-bind:class="color(selected)") {{ selected.From.name || selected.To.name }}
+          md-chip(v-bind:class="color(selected)") {{ name(selected) }}
           md-chip {{ selected.datetime | date }}
         md-card-actions
           md-button.md-icon-button.md-warn(v-on:click.native="remove()")
@@ -84,6 +84,7 @@
   import vuex from '../vuex/vuex'
 
   export default {
+    name: 'Transmission',
     data () {
       return {
         players: [],
@@ -140,6 +141,11 @@
           : message.To.faction
             ? message.To.faction.class
             : 'grey'
+      },
+      name (message) {
+        return message.From
+          ? message.From.name
+          : message.To.name
       },
       clear () {
         vuex.state.search = ''
