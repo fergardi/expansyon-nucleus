@@ -15,7 +15,7 @@
           md-button.md-icon-button.md-accent(v-on:click.native="reply()")
             md-icon reply
 
-    md-tabs(md-fixed, v-on:change="clear")
+    md-tabs(md-fixed, md-dynamic-height=false, v-on:change="clear")
       md-tab#received.no-padding(md-label="Received")
 
         md-table(md-sort="datetime", v-on:sort="order")

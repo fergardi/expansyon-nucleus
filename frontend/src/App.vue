@@ -20,18 +20,129 @@
             img(src="https://image.flaticon.com/icons/svg/190/190279.svg")
           h2.md-title Universe
       md-list.md-dense.scrollcable
-        template(v-for="section in left")
-          md-subheader {{ section.header }}
-          md-list-item(v-for="item in section.items")
-            router-link(exact, v-bind:to="item.url", v-on:click.native="clear()")
-              md-avatar
-                md-icon.md-primary {{ item.icon }}
-              span {{ item.title }}
-              md-chip(v-if="item.quantity") {{ item.quantity }}
-        md-list-item(v-on:click.native="logout()")
+        md-subheader Economy
+        md-list-item
+          router-link(exact, to="/empire", v-on:click.native="clear()")
             md-avatar
-              md-icon.md-primary lock
-            span Disconnect
+              md-icon.md-primary equalizer
+            span Empire
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/planetarium", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary language
+            span Planetarium
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/market", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary shopping_basket
+            span Market
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/store", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary store
+            span Store
+            md-chip 0
+        md-subheader Strategy
+        md-list-item
+          router-link(exact, to="/explore", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary search
+            span Explore
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/cantina", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary local_bar
+            span Cantina
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/relicarium", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary all_inclusive
+            span Relicarium
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/temple", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary account_balance
+            span Temple
+            md-chip 0
+        md-subheader Technology
+        md-list-item
+          router-link(exact, to="/research", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary school
+            span Research
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/hangar", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary build
+            span Hangar
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/Infrastructure", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary settings
+            span Infrastructure
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/defense", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary track_changes
+            span Defense
+            md-chip 0
+        md-subheader Diplomacy
+        md-list-item
+          router-link(exact, to="/senate", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary gavel
+            span Senate
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/census", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary group
+            span Census
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/guild", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary security
+            span Guild
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/transmission", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary wifi
+            span Transmission
+            md-chip 0
+        md-subheader Other
+        md-list-item
+          router-link(exact, to="/achievement", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary star
+            span Achievement
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/profile", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary person
+            span Profile
+            md-chip 0
+        md-list-item
+          router-link(exact, to="/help", v-on:click.native="clear()")
+            md-avatar
+              md-icon.md-primary chrome_reader_mode
+            span Help
+            md-chip 0
+        md-list-item(v-on:click.native="logout()")
+          md-avatar
+            md-icon.md-primary lock
+          span Disconnect
 
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
@@ -40,13 +151,73 @@
             img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
           h2.md-title Home
       md-list.md-dense.scrollable
-        template(v-for="section in right")
-          md-subheader {{ section.header }}
-          md-list-item(v-for="item in section.items")
-            md-avatar
-              md-icon.md-primary {{ item.icon }}
-            span {{ item.title }}
-            md-chip {{ item.quantity }}
+        md-subheader Resources
+        md-list-item
+          md-avatar
+            md-icon.md-primary hourglass_full
+          span Turns
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary apps
+          span Metal
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary texture
+          span Crystal
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary opacity
+          span Oil
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary home
+          span Size
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary flash_on
+          span Energy
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary star
+          span Influence
+          md-chip 0
+        md-subheader Fleet
+        md-list-item
+          md-avatar
+            md-icon.md-primary send
+          span Fighter
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary toys
+          span Cruiser
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary bubble_chart
+          span Bomber
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary camera
+          span Orbiter
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary storage
+          span Carrier
+          md-chip 0
+        md-list-item
+          md-avatar
+            md-icon.md-primary cached
+          span Recycler
+          md-chip 0
 
     .main.padding#main
       router-view.content.animation.fadeIn.scrollable
@@ -59,219 +230,7 @@
   export default {
     data () {
       return {
-        search: '',
-        left: [
-          {
-            header: 'Economy',
-            items: [
-              {
-                url: '/empire',
-                icon: 'equalizer',
-                title: 'Empire',
-                quantity: null
-              },
-              {
-                url: '/planetarium',
-                icon: 'language',
-                title: 'Planetarium',
-                quantity: 2
-              },
-              {
-                url: '/market',
-                icon: 'shopping_basket',
-                title: 'Market',
-                quantity: 8
-              },
-              {
-                url: '/store',
-                icon: 'store',
-                title: 'Store',
-                quantity: null
-              }
-            ]
-          },
-          {
-            header: 'Strategy',
-            items: [
-              {
-                url: '/explore',
-                icon: 'search',
-                title: 'Explore',
-                quantity: 8
-              },
-              {
-                url: '/cantina',
-                icon: 'local_bar',
-                title: 'Cantina',
-                quantity: null
-              },
-              {
-                url: '/relicarium',
-                icon: 'all_inclusive',
-                title: 'Relicarium',
-                quantity: 3
-              },
-              {
-                url: '/temple',
-                icon: 'account_balance',
-                title: 'Temple',
-                quantity: null
-              }
-            ]
-          },
-          {
-            header: 'Technonoly',
-            items: [
-              {
-                url: '/research',
-                icon: 'school',
-                title: 'Research',
-                quantity: 23
-              },
-              {
-                url: '/hangar',
-                icon: 'flight',
-                title: 'Hangar',
-                quantity: 87362
-              },
-              {
-                url: '/Infrastructure',
-                icon: 'build',
-                title: 'Infrastructure',
-                quantity: 1792
-              },
-              {
-                url: '/defense',
-                icon: 'track_changes',
-                title: 'Defense',
-                quantity: 172
-              }
-            ]
-          },
-          {
-            header: 'Diplomacy',
-            items: [
-              {
-                url: '/senate',
-                icon: 'gavel',
-                title: 'Senate',
-                quantity: null
-              },
-              {
-                url: '/census',
-                icon: 'group',
-                title: 'Census',
-                quantity: 172
-              },
-              {
-                url: '/guild',
-                icon: 'security',
-                title: 'Guild',
-                quantity: 2
-              },
-              {
-                url: '/transmission',
-                icon: 'wifi',
-                title: 'Transmission',
-                quantity: 23
-              }
-            ]
-          },
-          {
-            header: 'Other',
-            items: [
-              {
-                url: '/profile',
-                icon: 'person',
-                title: 'Profile',
-                quantity: null
-              },
-              {
-                url: '/help',
-                icon: 'chrome_reader_mode',
-                title: 'Help',
-                quantity: null
-              }
-            ]
-          }
-        ],
-        right: [
-          {
-            header: 'Resources',
-            items: [
-              {
-                icon: 'hourglass_full',
-                title: 'Turns',
-                quantity: 300
-              },
-              {
-                icon: 'apps',
-                title: 'Metal',
-                quantity: 300
-              },
-              {
-                icon: 'texture',
-                title: 'Crystal',
-                quantity: 300
-              },
-              {
-                icon: 'opacity',
-                title: 'Oil',
-                quantity: 300
-              },
-              {
-                icon: 'home',
-                title: 'Size',
-                quantity: 300
-              },
-              {
-                icon: 'flash_on',
-                title: 'Energy',
-                quantity: 300
-              },
-              {
-                icon: 'star',
-                title: 'Influence',
-                quantity: 300
-              }
-            ]
-          },
-          {
-            header: 'Fleet',
-            items: [
-              {
-                icon: 'send',
-                title: 'Fighter',
-                quantity: 1234
-              },
-              {
-                icon: 'toys',
-                title: 'Cruiser',
-                quantity: 234
-              },
-              {
-                icon: 'bubble_chart',
-                title: 'Bomber',
-                quantity: 23
-              },
-              {
-                icon: 'camera',
-                title: 'Orbiter',
-                quantity: 456
-              },
-              {
-                icon: 'storage',
-                title: 'Carrier',
-                quantity: 12
-              },
-              {
-                icon: 'cached',
-                title: 'Recycler',
-                quantity: 2
-              }
-            ]
-          }
-        ]
+        search: ''
       }
     },
     methods: {
@@ -395,6 +354,11 @@
       .md-table-cell-container
           justify-content flex-end !important
 
+  .md-tabs
+    .md-tabs-content
+      overflow hidden
+      .md-tabs-wrapper
+        overflow hidden
   .scrollable
     overflow-y auto
     height 100%

@@ -1,0 +1,93 @@
+<template lang="pug">
+  md-layout
+
+    md-dialog(ref='info')
+      md-card.md-primary(v-bind:class="selected.class")
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content.center
+          md-chip.pink {{ selected.aether | price }} Aether
+        md-card-actions
+          md-button.md-input-button.md-accent(v-on:click.native="close()")
+            md-icon done
+
+    md-layout(v-for="achievement in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
+      md-card.md-primary.card(v-bind:class="achievement.class", md-with-hover, v-on:click.native="select(achievement)")
+        md-card-header
+          .md-title {{ achievement.name }}
+        md-card-media
+          img(v-bind:src="achievement.image")
+        md-card-content.no-padding.center
+          md-progress(v-bind:md-progress="achievement.progress")
+        md-card-content.center
+          md-chip.pink {{ achievement.aether | price }} Aether
+        md-card-content.center
+          span {{ achievement.description }}
+</template>
+
+<script>
+  // import api from '../services/api'
+  import vuex from '../vuex/vuex'
+
+  export default {
+    data () {
+      return {
+        achievements: [],
+        selected: {
+          aether: 0
+        }
+      }
+    },
+    created () {
+      /*
+      api.getAchievements()
+      .then((achievements) => {
+        this.achievements = achievements
+      })
+      */
+      this.achievements = [{
+        name: 'Example',
+        description: 'Description',
+        image: 'https://image.flaticon.com/icons/svg/148/148768.svg',
+        class: 'red',
+        progress: 33,
+        aether: 20
+      }]
+    },
+    mounted () {
+      vuex.state.title = 'Achievement'
+    },
+    methods: {
+      open () {
+        this.$refs['info'].open()
+      },
+      close () {
+        this.$refs['info'].close()
+      },
+      select (achievement) {
+        this.selected = achievement
+        this.open()
+      },
+      info () {
+        // TODO
+        this.close()
+      }
+    },
+    computed: {
+      search () {
+        return vuex.state.search
+      },
+      filtered () {
+        return this.achievements.filter((achievement) => {
+          return achievement.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+        })
+      },
+      can () {
+        return true // TODO
+      }
+    }
+  }
+</script>
+
+<style lang="stylus" scoped>
+</style>

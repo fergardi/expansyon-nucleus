@@ -71,7 +71,8 @@
           .md-title Faction
         md-card-content.center
           p No faction yet
-          router-link.md-raised.md-accent(tag="md-button", exact, to="/temple") Join a faction
+          router-link(exact, to="/temple")
+            md-button.md-raised.md-accent Join a faction
 </template>
 
 <script>
