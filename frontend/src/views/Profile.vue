@@ -1,9 +1,20 @@
 <template lang="pug">
   md-layout
+
+    md-dialog(ref='confirm')
+      md-card.md-primary
+        md-card-header
+          .md-title Confirm
+        md-card-content
+          span Are you sure to change your password?
+        md-card-actions
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="change()") Change
+
     md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
 
       md-card.md-primary.card
-        form(v-on:submit.stop.prevent="change()")
+        form(v-on:submit.stop.prevent="open()")
           md-card-header
             .md-title Change password
           md-card-content.center
@@ -20,10 +31,8 @@
                 label Repeat password
                 md-input(type="password", v-model="repeat", required)
           md-card-actions
-            md-button.md-icon-button.md-warn(type="reset")
-              md-icon clear
-            md-button.md-icon-button.md-accent(type="submit")
-              md-icon done
+            md-button.md-dense.md-warn(type="reset") Clear
+            md-button.md-dense.md-accent(type="submit") Change
           md-card-header
             .md-title Change theme color
           md-card-content
@@ -46,8 +55,15 @@
       vuex.commit('title', 'Profile')
     },
     methods: {
+      open () {
+        this.$refs['confirm'].open()
+      },
+      close () {
+        this.$refs['confirm'].close()
+      },
       change () {
-        console.log(this.outdated, this.updated)
+        // TODO
+        this.close()
       }
     },
     computed: {

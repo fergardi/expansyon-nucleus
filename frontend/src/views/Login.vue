@@ -17,11 +17,8 @@
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
               md-card-actions
-                md-button.md-icon-button.md-accent(v-bind:disabled="logging")
-                  md-icon(v-if="!logging") lock_open
-                md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="logging")
-                  md-icon(v-if="!logging") done
-                  md-icon.spin(v-else) autorenew
+                md-button.md-dense.md-warn(v-bind:disabled="logging") Forgot password
+                md-button.md-dense.md-accent(type="submit", v-bind:disabled="logging") Connect
 
         md-tab.no-padding#register(md-label="Register")
           form(v-on:submit.stop.prevent="register()")
@@ -48,11 +45,8 @@
                   md-input(type="text", v-model="information.name", required)
                   span.md-error Name already in use
               md-card-actions
-                md-button.md-icon-button.md-warn(type="reset", v-bind:class="{ hidden: registering }")
-                  md-icon clear
-                md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="registering || email || name || !match || !secure")
-                  md-icon(v-if="!registering") done
-                  md-icon.spin(v-else) autorenew
+                md-button.md-dense.md-warn(type="reset", v-bind:class="{ hidden: registering }") Clear
+                md-button.md-dense.md-accent(type="submit", v-bind:disabled="registering || email || name || !match || !secure") Register
 </template>
 
 <script>

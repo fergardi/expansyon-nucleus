@@ -7,8 +7,8 @@
           .md-title Leave guild
         md-card-content Are you sure to leave this guild?
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="leave()")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="cancel()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="leave()") Leave
 
     md-dialog(ref='popup')
       md-card.md-primary.grey
@@ -18,8 +18,8 @@
         md-card-content
           md-chip {{ selected.members }} members
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="apply()")
-            md-icon person_add
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="apply()") Join
 
     md-tabs(md-fixed, v-on:change="clear")
       md-tab#guilds.no-padding(md-label="Guilds")
@@ -60,8 +60,7 @@
             span Influence
             md-chip {{ guild.influence }}
         .right
-          md-button.md-icon-button.md-mini(v-on:click.native="confirm()")
-            md-icon close
+          md-button.md-dense.md-accent(v-on:click.native="confirm()") Leave
 </template>
 
 <script>
@@ -115,6 +114,9 @@
       },
       confirm () {
         this.$refs['confirm'].open()
+      },
+      cancel () {
+        this.$refs['confirm'].close()
       },
       leave () {
         // TODO

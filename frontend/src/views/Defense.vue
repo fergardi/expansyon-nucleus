@@ -10,13 +10,13 @@
             md-icon add
             label Quantity
             md-input(type="number", v-model="quantity", required)
-        md-card-content.center
+        md-card-content
           md-chip {{ (selected.metal * quantity) | price }} Metal
           md-chip {{ (selected.crystal * quantity) | price }} Crystal
           md-chip {{ (selected.oil * quantity) | price }} Oil
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="build()", v-bind:disabled="!can")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="build()", v-bind:disabled="!can") Build
 
     md-layout(v-for="tower in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="tower.class", md-with-hover, v-on:click.native="select(tower)")
@@ -24,13 +24,13 @@
           .md-title {{ tower.name }}
         md-card-media
           img(v-bind:src="tower.image")
-        md-card-content.no-padding.center
+        md-card-content.no-padding
           md-progress(v-bind:md-progress="tower.attack")
           md-progress(v-bind:md-progress="tower.defense")
           md-progress(v-bind:md-progress="tower.speed")
-        md-card-content.center
+        md-card-content
           span {{ tower.description }}
-        md-card-content.center
+        md-card-content
           md-chip {{ tower.metal | price }} Metal
           md-chip {{ tower.crystal | price }} Crystal
           md-chip {{ tower.oil | price }} Oil

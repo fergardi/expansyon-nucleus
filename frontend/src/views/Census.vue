@@ -11,10 +11,9 @@
           md-chip {{ selected.influence }} influence
           md-chip {{ selected.planets }} planets
         md-card-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="enemy()")
-            md-icon person_add
-          md-button.md-icon-button.md-accent(v-on:click.native="friend()")
-            md-icon person_add
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="enemy()") Enemy
+          md-button.md-dense.md-accent(v-on:click.native="friend()") Friend
 
     md-tabs(md-fixed, v-on:change="clear")
       md-tab#players.no-padding(md-label="Players")

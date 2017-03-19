@@ -10,10 +10,9 @@
           md-chip(v-bind:class="color(selected)") {{ name(selected) }}
           md-chip {{ selected.datetime | date }}
         md-card-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="remove")
-            md-icon delete
-          md-button.md-icon-button.md-accent(v-on:click.native="reply")
-            md-icon reply
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-warn(v-on:click.native="remove") Delete
+          md-button.md-dense.md-accent(v-on:click.native="reply") Reply
 
     md-tabs(md-fixed)
       md-tab#received.no-padding(md-label="Received")
@@ -71,11 +70,9 @@
           md-input-container
             label Text
             md-textarea(v-model="message.text", placeholder="Text", maxlength="140", required)
-          .right
-            md-button.md-icon-button.md-warn(type="reset")
-              md-icon clear
-            md-button.md-icon-button.md-accent(type="submit")
-              md-icon done
+          md-card-actions
+            md-button.md-dense.md-warn(type="reset") Clear
+            md-button.md-dense.md-accent(type="submit") Send
 </template>
 
 <script>

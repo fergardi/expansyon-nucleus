@@ -2,13 +2,13 @@
   md-layout
 
     md-dialog(ref='save')
-      md-card.md-primary
+      md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
         md-card-content Are you sure to save this skilltree?
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="save()")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="save()") Learn
 
     md-layout(v-for="branch in tree", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="branch.class")
@@ -23,10 +23,8 @@
         md-card-content
           span {{ branch.description | lorem }}
         md-card-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="reset(branch)")
-            md-icon refresh
-          md-button.md-icon-button.md-accent(v-on:click.native="select(branch)")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="reset(branch)") Reset
+          md-button.md-dense.md-accent(v-on:click.native="select(branch)") Learn
 </template>
 
 <script>

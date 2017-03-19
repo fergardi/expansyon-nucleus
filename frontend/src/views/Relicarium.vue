@@ -8,8 +8,8 @@
         md-card-content
           span {{ selected.description }}
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="activate()")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="activate()") Activate
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 
@@ -18,11 +18,12 @@
           .md-title {{ relic.name }}
         md-card-media
           img(v-bind:src="relic.image")
-        md-card-content.center
-          span {{ relic.description | lorem }}
-        md-card-content.center
-          md-button.md-raised.md-fab.md-mini.md-accent
-            md-icon done
+        md-card-content.center(v-if="relic.moon || relic.station || relic.planet")
+          md-chip(v-if="relic.moon") Moon
+          md-chip(v-if="relic.station") Station
+          md-chip(v-if="relic.planet") Planet
+        md-card-content
+          span {{ relic.description }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -50,7 +51,7 @@
     mounted () {
       vuex.commit('title', 'Relicarium')
     },
-    metdhos: {
+    methods: {
       open () {
         this.$refs['confirm'].open()
       },

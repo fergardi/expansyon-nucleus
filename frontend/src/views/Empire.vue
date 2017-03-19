@@ -71,8 +71,9 @@
           .md-title Faction
         md-card-content.center
           p No faction yet
+        md-card-actions
           router-link(exact, to="/temple")
-            md-button.md-raised.md-accent Join a faction
+            md-button.md-dense.md-accent Join
 </template>
 
 <script>

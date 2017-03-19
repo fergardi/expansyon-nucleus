@@ -6,14 +6,14 @@
         md-card-header
           .md-title {{ item(selected).name }}
         md-card-content {{ item(selected).description }}
-        md-card-content.center
+        md-card-content
           md-chip(v-if="selected.metal > 0") {{ selected.metal | price }} Metal
           md-chip(v-if="selected.crystal > 0") {{ selected.crystal | price }} Crystal
           md-chip(v-if="selected.oil > 0") {{ selected.oil | price }} Oil
           md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | price }} Aether
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="buy()")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="buy()") Buy
 
     md-layout(v-for="sale in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 
@@ -22,7 +22,7 @@
           .md-title {{ item(sale).name }}
         md-card-media
           img(v-bind:src="item(sale).image")
-        md-card-content.no-padding.center(v-if="sale.Planet")
+        md-card-content.no-padding(v-if="sale.Planet")
           md-progress(v-bind:md-progress="item(sale).metal", v-if="item(sale).metal")
           md-progress(v-bind:md-progress="item(sale).crystal", v-if="item(sale).crystal")
           md-progress(v-bind:md-progress="item(sale).oil", v-if="item(sale).oil")
@@ -31,16 +31,16 @@
           md-progress(v-bind:md-progress="item(sale).influence", v-if="item(sale).influence")
         md-card-content.no-padding.center(v-if="sale.Relic")
           // TODO
-        md-card-content.no-padding.center(v-if="sale.Ship")
+        md-card-content.no-padding(v-if="sale.Ship")
           md-progress(v-bind:md-progress="item(sale).attack", v-if="item(sale).attack")
           md-progress(v-bind:md-progress="item(sale).defense", v-if="item(sale).defense")
           md-progress(v-bind:md-progress="item(sale).speed", v-if="item(sale).speed")
         md-card-content.center(v-if="item(sale).moon || item(sale).station")
           md-chip(v-if="item(sale).moon") Moon
           md-chip(v-if="item(sale).station") Station
-        md-card-content.center(v-if="item(sale).description")
+        md-card-content(v-if="item(sale).description")
           span {{ item(sale).description }}
-        md-card-content.center
+        md-card-content
           md-chip(v-if="sale.metal > 0") {{ sale.metal | price }} Metal
           md-chip(v-if="sale.crystal > 0") {{ sale.crystal | price }} Crystal
           md-chip(v-if="sale.oil > 0") {{ sale.oil | price }} Oil

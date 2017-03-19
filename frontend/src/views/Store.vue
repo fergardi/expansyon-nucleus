@@ -6,11 +6,11 @@
         md-card-header
           .md-title {{ selected.name }}
         md-card-content {{ selected.description }}
-        md-card-content.center
+        md-card-content
           md-chip.pink {{ selected.aether | price }} Aether
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="buy()", v-bind:disabled="!can")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") Buy
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     
@@ -23,9 +23,9 @@
           md-chip(v-if="relic.moon") Moon
           md-chip(v-if="relic.station") Station
           md-chip(v-if="relic.planet") Planet
-        md-card-content.center
+        md-card-content
           span {{ relic.description }}
-        md-card-content.center
+        md-card-content
           md-chip.pink {{ relic.aether | price }} Aether
 </template>
 

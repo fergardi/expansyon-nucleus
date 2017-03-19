@@ -5,11 +5,10 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content.center
+        md-card-content
           md-chip.pink {{ selected.aether | price }} Aether
         md-card-actions
-          md-button.md-input-button.md-accent(v-on:click.native="close()")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
 
     md-layout(v-for="achievement in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="achievement.class", md-with-hover, v-on:click.native="select(achievement)")
@@ -17,12 +16,12 @@
           .md-title {{ achievement.name }}
         md-card-media
           img(v-bind:src="achievement.image")
-        md-card-content.no-padding.center
+        md-card-content.no-padding
           md-progress(v-bind:md-progress="achievement.progress")
-        md-card-content.center
-          md-chip.pink {{ achievement.aether | price }} Aether
-        md-card-content.center
+        md-card-content
           span {{ achievement.description }}
+        md-card-content
+          md-chip.pink {{ achievement.aether | price }} Aether
 </template>
 
 <script>

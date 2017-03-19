@@ -10,13 +10,13 @@
             md-icon add
             label Quantity
             md-input(type="number", v-model="quantity", required)
-        md-card-content.center
+        md-card-content
           md-chip {{ (selected.metal * quantity) | price }} Metal
           md-chip {{ (selected.crystal * quantity) | price }} Crystal
           md-chip {{ (selected.oil * quantity) | price }} Oil
         md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="build()", v-bind:disabled="!can")
-            md-icon done
+          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-accent(v-on:click.native="build()", v-bind:disabled="!can") Build
 
     md-layout(v-for="building in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="building.class", md-with-hover, v-on:click.native="select(building)")
@@ -24,13 +24,13 @@
           .md-title {{ building.name }}
         md-card-media
           img(v-bind:src="building.image")
-        md-card-content.no-padding.center
+        md-card-content.no-padding
           md-progress(v-bind:md-progress="building.metal")
           md-progress(v-bind:md-progress="building.crystal")
           md-progress(v-bind:md-progress="building.oil")
-        md-card-content.center
+        md-card-content
           span {{ building.description }}
-        md-card-content.center
+        md-card-content
           md-chip {{ building.metal | price }} Metal
           md-chip {{ building.crystal | price }} Crystal
           md-chip {{ building.oil | price }} Oil

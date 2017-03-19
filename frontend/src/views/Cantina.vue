@@ -20,10 +20,9 @@
               label Bomber
               md-input(type="number", v-model="bomber", required)
           md-card-actions
-            md-button.md-icon-button.md-warn(type="reset")
-              md-icon clear
-            md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="!can")
-              md-icon done
+            md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+            md-button.md-dense.md-warn(type="reset") Clear
+            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") Attack
 
     md-layout(v-for="mission in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="mission.class", md-with-hover, v-on:click.native="select(mission)")
