@@ -83,7 +83,7 @@
         auth.login(this.credentials)
         .then((response) => {
           this.logging = false
-          if (this.logged) this.$router.push('/research') // TODO development route
+          if (vuex.state.account.logged) this.$router.push('/research') // TODO development route
         })
       },
       register () {
@@ -122,9 +122,6 @@
       },
       secure () {
         return true
-      },
-      logged () {
-        return vuex.state.player.logged
       }
     },
     destroyed () {

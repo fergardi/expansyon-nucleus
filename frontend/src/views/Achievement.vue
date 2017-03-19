@@ -6,7 +6,7 @@
         md-card-header
           .md-title {{ selected.name }}
         md-card-content
-          md-chip.pink {{ selected.aether | price }} Aether
+          md-chip.pink {{ selected.aether | format }} Aether
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
 
@@ -21,7 +21,7 @@
         md-card-content
           span {{ achievement.description }}
         md-card-content
-          md-chip.pink {{ achievement.aether | price }} Aether
+          md-chip.pink {{ achievement.aether | format }} Aether
 </template>
 
 <script>

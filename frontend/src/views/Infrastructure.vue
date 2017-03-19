@@ -11,9 +11,9 @@
             label Quantity
             md-input(type="number", v-model="quantity", required)
         md-card-content
-          md-chip {{ (selected.metal * quantity) | price }} Metal
-          md-chip {{ (selected.crystal * quantity) | price }} Crystal
-          md-chip {{ (selected.oil * quantity) | price }} Oil
+          md-chip {{ (selected.metal * quantity) | format }} Metal
+          md-chip {{ (selected.crystal * quantity) | format }} Crystal
+          md-chip {{ (selected.oil * quantity) | format }} Oil
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="build()", v-bind:disabled="!can") Build
@@ -31,9 +31,9 @@
         md-card-content
           span {{ building.description }}
         md-card-content
-          md-chip {{ building.metal | price }} Metal
-          md-chip {{ building.crystal | price }} Crystal
-          md-chip {{ building.oil | price }} Oil
+          md-chip {{ building.metal | format }} Metal
+          md-chip {{ building.crystal | format }} Crystal
+          md-chip {{ building.oil | format }} Oil
 </template>
 
 <script>

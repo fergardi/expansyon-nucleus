@@ -4,8 +4,7 @@
     md-dialog(ref='info')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
-          .md-title {{ selected.name }}-{{ selected.total }}
-        md-card-content
+          .md-title {{ selected.name }} {{ selected.total }}
           span {{ selected.description }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
@@ -14,7 +13,7 @@
     
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="info(planet)")
         md-card-header
-          .md-title {{ planet.name }}
+          .md-title {{ planet.name }} {{ planet.total }}
         md-card-media
           img(v-bind:src="planet.image")
         md-card-content.no-padding

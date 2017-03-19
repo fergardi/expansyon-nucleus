@@ -119,8 +119,8 @@ Vue.material.registerTheme({
 Vue.filter('date', (date) => {
   return moment(date).format('DD/MM/YY HH:mm:ss')
 })
-Vue.filter('price', (price) => {
-  return price.toLocaleString()
+Vue.filter('format', (number) => {
+  return number.toLocaleString()
 })
 Vue.filter('lorem', (string) => {
   return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -132,7 +132,7 @@ router.beforeEach((to, from, next) => {
     Main.clear()
     vuex.commit('clear')
     if (document.getElementById('main')) document.getElementById('main').scrollIntoView(true)
-    if ((security.indexOf(to.name) !== -1) && !vuex.state.player.logged) {
+    if ((security.indexOf(to.name) !== -1) && !vuex.state.account.logged) {
       router.push({ path: '/login' })
     } else {
       return next()

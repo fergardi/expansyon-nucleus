@@ -7,7 +7,7 @@
           .md-title {{ selected.name }}
         md-card-content {{ selected.description }}
         md-card-content
-          md-chip.pink {{ selected.aether | price }} Aether
+          md-chip.pink {{ selected.aether | format }} Aether
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") Buy
@@ -26,7 +26,7 @@
         md-card-content
           span {{ relic.description }}
         md-card-content
-          md-chip.pink {{ relic.aether | price }} Aether
+          md-chip.pink {{ relic.aether | format }} Aether
 </template>
 
 <script>

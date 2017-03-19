@@ -4,13 +4,15 @@
     md-dialog(ref='buy')
       md-card.md-primary(v-bind:class="item(selected).class")
         md-card-header
-          .md-title {{ item(selected).name }}
+          .md-title
+            span {{ item(selected).name }}
+            span(v-if="selected.quantity > 0")  ({{ selected.quantity | format }})
         md-card-content {{ item(selected).description }}
         md-card-content
-          md-chip(v-if="selected.metal > 0") {{ selected.metal | price }} Metal
-          md-chip(v-if="selected.crystal > 0") {{ selected.crystal | price }} Crystal
-          md-chip(v-if="selected.oil > 0") {{ selected.oil | price }} Oil
-          md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | price }} Aether
+          md-chip(v-if="selected.metal > 0") {{ selected.metal | format }} Metal
+          md-chip(v-if="selected.crystal > 0") {{ selected.crystal | format }} Crystal
+          md-chip(v-if="selected.oil > 0") {{ selected.oil | format }} Oil
+          md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | format }} Aether
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="buy()") Buy
@@ -19,7 +21,9 @@
 
       md-card.md-primary.card(v-bind:class="item(sale).class", md-with-hover, v-on:click.native="select(sale)")
         md-card-header
-          .md-title {{ item(sale).name }}
+          .md-title
+            span {{ item(sale).name }}
+            span(v-if="sale.quantity > 0")  ({{ sale.quantity | format }})
         md-card-media
           img(v-bind:src="item(sale).image")
         md-card-content.no-padding(v-if="sale.Planet")
@@ -41,10 +45,10 @@
         md-card-content(v-if="item(sale).description")
           span {{ item(sale).description }}
         md-card-content
-          md-chip(v-if="sale.metal > 0") {{ sale.metal | price }} Metal
-          md-chip(v-if="sale.crystal > 0") {{ sale.crystal | price }} Crystal
-          md-chip(v-if="sale.oil > 0") {{ sale.oil | price }} Oil
-          md-chip.pink(v-if="sale.aether > 0") {{ sale.aether | price }} Aether
+          md-chip(v-if="sale.metal > 0") {{ sale.metal | format }} Metal
+          md-chip(v-if="sale.crystal > 0") {{ sale.crystal | format }} Crystal
+          md-chip(v-if="sale.oil > 0") {{ sale.oil | format }} Oil
+          md-chip.pink(v-if="sale.aether > 0") {{ sale.aether | format }} Aether
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card

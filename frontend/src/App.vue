@@ -268,6 +268,9 @@
       },
       name () {
         return vuex.state.title
+      },
+      player () {
+        return vuex.state.player
       }
     }
   }
@@ -396,6 +399,7 @@
     width 100%
     margin 4px
     .md-card-header
+      margin 0
       .md-title
         font-size 18px
         text-align center

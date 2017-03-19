@@ -8,7 +8,7 @@ const vuex = new Vuex.Store({
     fullscreen: false,
     title: '',
     search: '',
-    player: {
+    account: {
       logged: false,
       token: null,
       id: 0
@@ -31,14 +31,14 @@ const vuex = new Vuex.Store({
       state.search = ''
     },
     login (state, info) {
-      state.player.logged = true
-      state.player.token = info.token
-      state.player.id = info.id
+      state.account.logged = true
+      state.account.token = info.token
+      state.account.id = info.id
     },
     logout (state) {
-      state.player.logged = false
-      state.player.token = null
-      state.player.id = 0
+      state.account.logged = false
+      state.account.token = null
+      state.account.id = 0
     }
   }
 })
