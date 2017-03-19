@@ -83,7 +83,7 @@
         auth.login(this.credentials)
         .then((response) => {
           this.logging = false
-          if (vuex.state.account.logged) this.$router.push('/research') // TODO development route
+          if (vuex.state.account.logged) this.$router.push('/planetarium') // TODO development route
         })
       },
       register () {
