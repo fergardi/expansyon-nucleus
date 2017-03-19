@@ -28,6 +28,9 @@
           md-progress(v-bind:md-progress="building.metal")
           md-progress(v-bind:md-progress="building.crystal")
           md-progress(v-bind:md-progress="building.oil")
+          md-progress(v-bind:md-progress="building.energy")
+          md-progress(v-bind:md-progress="building.shield")
+          md-progress(v-bind:md-progress="building.storage")
         md-card-content
           span {{ building.description }}
         md-card-content
