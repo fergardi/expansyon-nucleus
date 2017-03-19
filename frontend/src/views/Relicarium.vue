@@ -63,7 +63,11 @@
         this.open()
       },
       activate () {
-        // TODO
+        api.activateRelic(vuex.state.player.id, this.selected.id)
+        .then((player) => {
+          this.relics = player.Relics
+          // TODO snackbar
+        })
         this.close()
       }
     },

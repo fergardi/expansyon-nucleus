@@ -93,6 +93,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  activateRelic: (player, relic) => {
+    return axios.get(`${url}/player/${player}/relic/${relic}`)
+    .then((response) => {
+      return response.data
+    })
   }
 }
 
