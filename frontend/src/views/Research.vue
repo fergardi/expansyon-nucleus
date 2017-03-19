@@ -6,8 +6,8 @@
         md-card-header
           .md-title {{ selected.name }}
         md-card-content Are you sure to save this skilltree?
-        md-card-content.right
-          md-button.md-raised.md-icon-button.md-accent(v-on:click.native="save()")
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="save()")
             md-icon done
 
     md-layout(v-for="branch in tree", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
@@ -20,12 +20,12 @@
               md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)")
                 img(v-bind:src="skill.image")
                 md-icon {{ skill.level }}
-        md-card-content.center
+        md-card-content
           span {{ branch.description | lorem }}
-        md-card-content.center
-          md-button.md-raised.md-fab.md-mini.md-warn(v-on:click.native="reset(branch)")
+        md-card-actions
+          md-button.md-icon-button.md-warn(v-on:click.native="reset(branch)")
             md-icon refresh
-          md-button.md-raised.md-fab.md-mini.md-accent(v-on:click.native="select(branch)")
+          md-button.md-icon-button.md-accent(v-on:click.native="select(branch)")
             md-icon done
 </template>
 
@@ -41,7 +41,7 @@
       }
     },
     mounted () {
-      vuex.state.title = 'Research'
+      vuex.commit('title', 'Research')
     },
     created () {
       for (let i = 0; i < 3; i++) {

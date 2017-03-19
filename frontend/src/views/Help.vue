@@ -166,7 +166,7 @@
       }
     },
     mounted () {
-      vuex.state.title = 'Help'
+      vuex.commit('title', 'Help')
     },
     computed: {
       search () {

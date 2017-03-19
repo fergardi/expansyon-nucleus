@@ -55,7 +55,7 @@
       }]
     },
     mounted () {
-      vuex.state.title = 'Achievement'
+      vuex.commit('title', 'Achievement')
     },
     methods: {
       open () {

@@ -9,17 +9,13 @@ const auth = {
     return axios.post(`${url}/player/login`, credentials)
     .then((response) => {
       if (response.status === 200) {
-        vuex.state.player.logged = true
-        vuex.state.player.token = response.data.token
-        vuex.state.player.id = response.data.id
+        vuex.commit('login', { token: response.data.token, id: response.data.id })
       }
       return response
     })
   },
   logout: () => {
-    vuex.state.player.logged = false
-    vuex.state.player.token = null
-    vuex.state.player.id = 0
+    vuex.commit('logout')
   },
   register: (information) => {
     return axios.post(`${url}/player/register`, information)

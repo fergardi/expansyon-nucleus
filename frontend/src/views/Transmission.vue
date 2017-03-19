@@ -10,12 +10,12 @@
           md-chip(v-bind:class="color(selected)") {{ name(selected) }}
           md-chip {{ selected.datetime | date }}
         md-card-actions
-          md-button.md-icon-button.md-warn(v-on:click.native="remove()")
+          md-button.md-icon-button.md-warn(v-on:click.native="remove")
             md-icon delete
-          md-button.md-icon-button.md-accent(v-on:click.native="reply()")
+          md-button.md-icon-button.md-accent(v-on:click.native="reply")
             md-icon reply
 
-    md-tabs(md-fixed, md-dynamic-height=false, v-on:change="clear")
+    md-tabs(md-fixed)
       md-tab#received.no-padding(md-label="Received")
 
         md-table(md-sort="datetime", v-on:sort="order")
@@ -71,10 +71,10 @@
           md-input-container
             label Text
             md-textarea(v-model="message.text", placeholder="Text", maxlength="140", required)
-          .center
-            md-button.md-raised.md-fab.md-mini.md-warn(type="reset")
+          .right
+            md-button.md-icon-button.md-warn(type="reset")
               md-icon clear
-            md-button.md-raised.md-fab.md-mini.md-accent(type="submit")
+            md-button.md-icon-button.md-accent(type="submit")
               md-icon done
 </template>
 
@@ -111,7 +111,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Transmission'
+      vuex.commit('title', 'Transmission')
     },
     methods: {
       popup (message) {
@@ -146,9 +146,6 @@
         return message.From
           ? message.From.name
           : message.To.name
-      },
-      clear () {
-        vuex.state.search = ''
       }
     },
     computed: {

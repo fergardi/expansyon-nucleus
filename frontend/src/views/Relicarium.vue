@@ -1,8 +1,19 @@
 <template lang="pug">
   md-layout
+
+    md-dialog(ref='confirm')
+      md-card.md-primary(v-bind:class="selected.class")
+        md-card-header
+          .md-title {{ selected.name }}
+        md-card-content
+          span {{ selected.description }}
+        md-card-actions
+          md-button.md-icon-button.md-accent(v-on:click.native="activate()")
+            md-icon done
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="relic.class")
+
+      md-card.md-primary.card(v-bind:class="relic.class", md-with-hover, v-on:click.native="select(relic)")
         md-card-header
           .md-title {{ relic.name }}
         md-card-media
@@ -26,7 +37,8 @@
   export default {
     data () {
       return {
-        relics: []
+        relics: [],
+        selected: {}
       }
     },
     created () {
@@ -36,7 +48,23 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Relicarium'
+      vuex.commit('title', 'Relicarium')
+    },
+    metdhos: {
+      open () {
+        this.$refs['confirm'].open()
+      },
+      close () {
+        this.$refs['confirm'].close()
+      },
+      select (relic) {
+        this.selected = relic
+        this.open()
+      },
+      activate () {
+        // TODO
+        this.close()
+      }
     },
     computed: {
       search () {

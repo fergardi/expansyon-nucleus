@@ -16,41 +16,43 @@
                   md-icon lock
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
-                .center
-                  md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="logging")
-                    md-icon close
-                  md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="logging")
-                    md-icon(v-if="!logging") done
-                    md-icon.spin(v-else) autorenew
+              md-card-actions
+                md-button.md-icon-button.md-accent(v-bind:disabled="logging")
+                  md-icon(v-if="!logging") lock_open
+                md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="logging")
+                  md-icon(v-if="!logging") done
+                  md-icon.spin(v-else) autorenew
 
         md-tab.no-padding#register(md-label="Register")
           form(v-on:submit.stop.prevent="register()")
             md-card.md-primary.card.no-padding
               md-card-content
-                md-input-container(v-bind:class="{ 'md-input-invalid' : found }")
+                md-input-container(v-bind:class="{ 'md-input-invalid' : email }")
                   md-icon mail
                   label Email
                   md-input(type="email", v-model.lazy="information.email", required)
                   span.md-error Email already in use
-                md-input-container(md-has-password)
-                  md-icon lock_open
+                md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !secure }")
+                  md-icon lock_outline
                   label Password
                   md-input(type="password", v-model="information.password", required)
+                  span.md-error Password insecure
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
                   md-icon lock
                   label Repeat password
                   md-input(type="password", v-model="information.repeat", required)
                   span.md-error Passwords must match
-                md-input-container
+                md-input-container(v-bind:class="{ 'md-input-invalid' : name }")
                   md-icon person
                   label Name
                   md-input(type="text", v-model="information.name", required)
-                .center
-                  md-button.md-raised.md-fab.md-mini.md-warn(type="reset", v-bind:disabled="registering")
-                    md-icon clear
-                  md-button.md-raised.md-fab.md-mini.md-accent(type="submit", v-bind:disabled="registering || found")
-                    md-icon(v-if="!registering") done
-                    md-icon.spin(v-else) autorenew
+                  span.md-error Name already in use
+              md-card-actions
+                md-button.md-icon-button.md-warn(type="reset", v-bind:class="{ hidden: registering }")
+                  md-icon clear
+                md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="registering || email || name || !match || !secure")
+                  md-icon(v-if="!registering") done
+                  md-icon.spin(v-else) autorenew
 </template>
 
 <script>
@@ -71,14 +73,15 @@
           repeat: '',
           name: ''
         },
+        email: false,
+        name: false,
         logging: false,
-        registering: false,
-        found: false
+        registering: false
       }
     },
     mounted () {
-      vuex.state.title = 'Expansyon'
-      vuex.state.fullscreen = true
+      vuex.commit('title', 'Expansyon')
+      vuex.commit('enablefullscreen')
     },
     methods: {
       login () {
@@ -86,49 +89,67 @@
         auth.login(this.credentials)
         .then((response) => {
           this.logging = false
-          if (vuex.state.player.logged) this.$router.push('/research') // TODO development route
+          if (this.logged) this.$router.push('/research') // TODO development route
         })
       },
       register () {
-        this.registering = true
-        auth.register(this.information)
-        .then((response) => {
-          this.registering = false
-        })
+        if (!this.email && !this.name && this.match && this.secure) {
+          this.registering = true
+          auth.register(this.information)
+          .then((response) => {
+            this.registering = false
+          })
+        }
       }
     },
     watch: {
       'information.email': function (email) {
         api.checkEmail(email)
         .then((response) => {
-          this.found = false
+          this.email = false
         })
         .catch((response) => {
-          this.found = true
+          this.email = true
+        })
+      },
+      'information.name': function (name) {
+        api.checkName(name)
+        .then((response) => {
+          this.name = false
+        })
+        .catch((response) => {
+          this.name = true
         })
       }
     },
     computed: {
       match () {
         return this.information.password === this.information.repeat
+      },
+      secure () {
+        return true
+      },
+      logged () {
+        return vuex.state.player.logged
       }
     },
     destroyed () {
-      vuex.state.fullscreen = false
+      vuex.commit('disablefullscreen')
     }
   }
 </script>
 
 <style lang="stylus" scoped>
+  // remove autofill color
   @-webkit-keyframes autofill {
     to {
-      color: white;
-      background: transparent;
+      color white
+      background transparent
     }
   }
   input:-webkit-autofill {
-    -webkit-animation-name: autofill;
-    -webkit-animation-fill-mode: both;
+    -webkit-animation-name autofill
+    -webkit-animation-fill-mode both
   }
   .login
     display flex

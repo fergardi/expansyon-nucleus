@@ -59,8 +59,8 @@
             md-icon star
             span Influence
             md-chip {{ guild.influence }}
-        .center
-          md-button.md-raised.md-warn.md-fab.md-mini(v-on:click.native="confirm()")
+        .right
+          md-button.md-icon-button.md-mini(v-on:click.native="confirm()")
             md-icon close
 </template>
 
@@ -95,7 +95,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Guild'
+      vuex.commit('title', 'Guild')
     },
     methods: {
       popup (guild) {

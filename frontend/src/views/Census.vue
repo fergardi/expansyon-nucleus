@@ -98,7 +98,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Census'
+      vuex.commit('title', 'Census')
     },
     methods: {
       info (player) {

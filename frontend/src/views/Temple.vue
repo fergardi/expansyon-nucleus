@@ -55,7 +55,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Temple'
+      vuex.commit('title', 'Temple')
     },
     methods: {
       open () {

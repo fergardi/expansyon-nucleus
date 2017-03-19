@@ -3,30 +3,31 @@
     md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
 
       md-card.md-primary.card
-        md-card-header
-          .md-title Change password
-        md-card-content.center
-          form(v-on:submit.prevent="change()")
-            md-input-container(md-has-password)
-              md-icon lock
-              label Old password
-              md-input(type="password", v-model="outdated", required)
-            md-input-container(md-has-password)
-              md-icon lock_open
-              label New password
-              md-input(type="password", v-model="updated", required)
-            md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
-              md-icon lock
-              label Repeat password
-              md-input(type="password", v-model="repeat", required)
-            md-button.md-raised.md-fab.md-mini.md-warn(type="reset")
-              md-icon close
-            md-button.md-raised.md-fab.md-mini.md-accent(type="submit")
+        form(v-on:submit.stop.prevent="change()")
+          md-card-header
+            .md-title Change password
+          md-card-content.center
+              md-input-container(md-has-password)
+                md-icon lock_outline
+                label Old password
+                md-input(type="password", v-model="outdated", required)
+              md-input-container(md-has-password)
+                md-icon lock_open
+                label New password
+                md-input(type="password", v-model="updated", required)
+              md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
+                md-icon lock
+                label Repeat password
+                md-input(type="password", v-model="repeat", required)
+          md-card-actions
+            md-button.md-icon-button.md-warn(type="reset")
+              md-icon clear
+            md-button.md-icon-button.md-accent(type="submit")
               md-icon done
-        md-card-header
-          .md-title Change theme color
-        md-card-content.center
-          md-switch(v-model="theme", name="theme", id="theme") Light/Dark
+          md-card-header
+            .md-title Change theme color
+          md-card-content
+            md-switch(v-model="theme", name="theme", id="theme") Light/Dark
 </template>
 
 <script>
@@ -42,7 +43,7 @@
       }
     },
     mounted () {
-      vuex.state.title = 'Profile'
+      vuex.commit('title', 'Profile')
     },
     methods: {
       change () {

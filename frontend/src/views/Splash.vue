@@ -37,11 +37,11 @@
 
   export default {
     mounted () {
-      vuex.state.title = 'Splash'
-      vuex.state.fullscreen = true
+      vuex.commit('title', 'Splash')
+      vuex.commit('enablefullscreen')
     },
     destroyed () {
-      vuex.state.fullscreen = false
+      vuex.commit('disablefullscreen')
     }
   }
 </script>

@@ -194,7 +194,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Empire'
+      vuex.commit('title', 'Empire')
     }
   }
 </script>

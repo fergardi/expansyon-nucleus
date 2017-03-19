@@ -57,7 +57,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Infrastructure'
+      vuex.commit('title', 'Infrastructure')
     },
     methods: {
       open () {

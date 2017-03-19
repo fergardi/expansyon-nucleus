@@ -58,7 +58,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Hangar'
+      vuex.commit('title', 'Hangar')
     },
     methods: {
       open () {

@@ -34,7 +34,7 @@ Vue.use(VueRouter)
 // routes
 var router = new VueRouter({
   routes: [
-    { path: '/', redirect: '/splash' },
+    { path: '/', redirect: '/login' },
     { path: '/empire', component: Empire, name: 'empire' },
     { path: '/planetarium', component: Planetarium, name: 'planetarium' },
     { path: '/market', component: Market, name: 'market' },
@@ -79,7 +79,8 @@ const security = [
   'guild',
   'transmission',
   'achievement',
-  'profile'
+  'profile',
+  'help'
 ]
 
 // material
@@ -128,6 +129,8 @@ Vue.filter('lorem', (string) => {
 // scroll to top and close sidebar
 router.beforeEach((to, from, next) => {
   Vue.nextTick(() => {
+    Main.clear()
+    vuex.commit('clear')
     if (document.getElementById('main')) document.getElementById('main').scrollIntoView(true)
     if ((security.indexOf(to.name) !== -1) && !vuex.state.player.logged) {
       router.push({ path: '/login' })
@@ -138,7 +141,7 @@ router.beforeEach((to, from, next) => {
 })
 
 // main app
-let Main = Vue.component('app', App) // eslint-disable-line
+let Main = Vue.component('app', App)
 Main = new Main({
   el: '#app',
   router

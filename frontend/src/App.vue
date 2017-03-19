@@ -22,119 +22,119 @@
       md-list.md-dense.scrollcable
         md-subheader Economy
         md-list-item
-          router-link(exact, to="/empire", v-on:click.native="clear()")
+          router-link(exact, to="/empire", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary equalizer
             span Empire
             md-chip 0
         md-list-item
-          router-link(exact, to="/planetarium", v-on:click.native="clear()")
+          router-link(exact, to="/planetarium", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary language
             span Planetarium
             md-chip 0
         md-list-item
-          router-link(exact, to="/market", v-on:click.native="clear()")
+          router-link(exact, to="/market", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary shopping_basket
             span Market
             md-chip 0
         md-list-item
-          router-link(exact, to="/store", v-on:click.native="clear()")
+          router-link(exact, to="/store", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary store
             span Store
             md-chip 0
         md-subheader Strategy
         md-list-item
-          router-link(exact, to="/explore", v-on:click.native="clear()")
+          router-link(exact, to="/explore", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary search
             span Explore
             md-chip 0
         md-list-item
-          router-link(exact, to="/cantina", v-on:click.native="clear()")
+          router-link(exact, to="/cantina", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary local_bar
             span Cantina
             md-chip 0
         md-list-item
-          router-link(exact, to="/relicarium", v-on:click.native="clear()")
+          router-link(exact, to="/relicarium", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary all_inclusive
             span Relicarium
             md-chip 0
         md-list-item
-          router-link(exact, to="/temple", v-on:click.native="clear()")
+          router-link(exact, to="/temple", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary account_balance
             span Temple
             md-chip 0
         md-subheader Technology
         md-list-item
-          router-link(exact, to="/research", v-on:click.native="clear()")
+          router-link(exact, to="/research", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary school
             span Research
             md-chip 0
         md-list-item
-          router-link(exact, to="/hangar", v-on:click.native="clear()")
+          router-link(exact, to="/hangar", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary build
             span Hangar
             md-chip 0
         md-list-item
-          router-link(exact, to="/Infrastructure", v-on:click.native="clear()")
+          router-link(exact, to="/Infrastructure", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary settings
             span Infrastructure
             md-chip 0
         md-list-item
-          router-link(exact, to="/defense", v-on:click.native="clear()")
+          router-link(exact, to="/defense", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary track_changes
             span Defense
             md-chip 0
         md-subheader Diplomacy
         md-list-item
-          router-link(exact, to="/senate", v-on:click.native="clear()")
+          router-link(exact, to="/senate", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary gavel
             span Senate
             md-chip 0
         md-list-item
-          router-link(exact, to="/census", v-on:click.native="clear()")
+          router-link(exact, to="/census", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary group
             span Census
             md-chip 0
         md-list-item
-          router-link(exact, to="/guild", v-on:click.native="clear()")
+          router-link(exact, to="/guild", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary security
             span Guild
             md-chip 0
         md-list-item
-          router-link(exact, to="/transmission", v-on:click.native="clear()")
+          router-link(exact, to="/transmission", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary wifi
             span Transmission
             md-chip 0
         md-subheader Other
         md-list-item
-          router-link(exact, to="/achievement", v-on:click.native="clear()")
+          router-link(exact, to="/achievement", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary star
             span Achievement
             md-chip 0
         md-list-item
-          router-link(exact, to="/profile", v-on:click.native="clear()")
+          router-link(exact, to="/profile", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary person
             span Profile
             md-chip 0
         md-list-item
-          router-link(exact, to="/help", v-on:click.native="clear()")
+          router-link(exact, to="/help", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary chrome_reader_mode
             span Help
@@ -230,7 +230,7 @@
   export default {
     data () {
       return {
-        search: ''
+        search: vuex.state.search
       }
     },
     methods: {
@@ -243,19 +243,23 @@
       close (ref) {
         if (ref && this.$refs[ref]) this.$refs[ref].close()
       },
-      clear () {
+      collapse () {
         this.$refs['left'].close()
         this.$refs['right'].close()
+      },
+      clear () {
+        this.search = ''
       },
       logout () {
         auth.logout()
         this.clear()
+        this.collapse()
         this.$router.push('/login')
       }
     },
     watch: {
       search (string) {
-        vuex.state.search = string
+        vuex.commit('search', string)
       }
     },
     computed: {
@@ -372,7 +376,8 @@
   .md-sidenav-content
   .md-card
   .md-table-card
-    opacity 0.95
+  .md-tabs-navigation
+    opacity 0.90
   .md-table-card.md-card
     background-color rgba(255,255,255,0.90) !important
   .md-progress
@@ -404,6 +409,8 @@
       img
         height 140px
         padding 10px
+    .md-card-actions
+      padding 16px
         
   /* COLORS */
   green = #4CAF50

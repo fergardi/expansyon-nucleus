@@ -83,7 +83,13 @@ const api = {
     })
   },
   checkEmail: (email) => {
-    return axios.post(`${url}/user/email`, { email: email })
+    return axios.post(`${url}/player/email`, { email: email })
+    .then((response) => {
+      return response
+    })
+  },
+  checkName: (name) => {
+    return axios.post(`${url}/player/name`, { name: name })
     .then((response) => {
       return response
     })

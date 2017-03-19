@@ -54,7 +54,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Senate'
+      vuex.commit('title', 'Senate')
     },
     methods: {
       open () {

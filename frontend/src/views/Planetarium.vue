@@ -55,7 +55,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Planetarium'
+      vuex.commit('title', 'Planetarium')
     },
     methods: {
       info (planet) {

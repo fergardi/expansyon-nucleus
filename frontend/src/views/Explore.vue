@@ -3,24 +3,27 @@
 
     md-dialog(ref='attack')
       md-card.md-primary(v-bind:class="selected.class")
-        md-card-header
-          .md-title {{ selected.name }}
-        md-card-content
-          md-input-container
-            md-icon send
-            label Fighter
-            md-input(type="number", v-model="fighter", required)
-          md-input-container
-            md-icon toys
-            label Cruiser
-            md-input(type="number", v-model="cruiser", required)
-          md-input-container
-            md-icon bubble_chart
-            label Bomber
-            md-input(type="number", v-model="bomber", required)
-        md-card-actions
-          md-button.md-icon-button.md-accent(v-on:click.native="attack()", v-bind:disabled="!can")
-            md-icon done
+        form(v-on:submit.stop.prevent="attack")
+          md-card-header
+            .md-title {{ selected.name }}
+          md-card-content
+            md-input-container
+              md-icon send
+              label Fighter
+              md-input(type="number", v-model="fighter", required)
+            md-input-container
+              md-icon toys
+              label Cruiser
+              md-input(type="number", v-model="cruiser", required)
+            md-input-container
+              md-icon bubble_chart
+              label Bomber
+              md-input(type="number", v-model="bomber", required)
+          md-card-actions
+            md-button.md-icon-button.md-warn(type="reset")
+              md-icon clear
+            md-button.md-icon-button.md-accent(type="submit", v-bind:disabled="!can")
+              md-icon done
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="select(planet)")
@@ -63,7 +66,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Explore'
+      vuex.commit('title', 'Explore')
     },
     methods: {
       open () {

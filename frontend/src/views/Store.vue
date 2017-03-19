@@ -49,7 +49,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Store'
+      vuex.commit('title', 'Store')
     },
     methods: {
       open () {

@@ -70,7 +70,7 @@
       })
     },
     mounted () {
-      vuex.state.title = 'Market'
+      vuex.commit('title', 'Market')
     },
     methods: {
       open () {
