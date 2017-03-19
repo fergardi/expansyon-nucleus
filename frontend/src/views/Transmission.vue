@@ -101,7 +101,7 @@
       .then((players) => {
         this.players = players
       })
-      api.getPlayer(vuex.state.player.id)
+      api.getPlayer(vuex.state.account.id)
       .then((player) => {
         this.received = player.Received
         this.sent = player.Sent

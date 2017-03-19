@@ -399,8 +399,8 @@
     width 100%
     margin 4px
     .md-card-header
-      margin 0
       .md-title
+        margin 0 !important
         font-size 18px
         text-align center
         font-weight bold

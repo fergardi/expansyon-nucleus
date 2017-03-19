@@ -5,9 +5,9 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }} {{ selected.total }}
-          span {{ selected.description }}
+        md-card-content {{ selected.description }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-warn(v-on:click.native="close()") Close
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     
@@ -26,7 +26,7 @@
         md-card-content.center(v-if="planet.moon || planet.station")
           md-chip(v-if="planet.moon") Moon
           md-chip(v-if="planet.station") Station
-        md-card-content.center
+        md-card-content
           span {{ planet.description }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
@@ -47,7 +47,7 @@
       }
     },
     created () {
-      api.getPlayer(vuex.state.player.id)
+      api.getPlayer(vuex.state.account.id)
       .then((player) => {
         this.planets = player.Planets
       })

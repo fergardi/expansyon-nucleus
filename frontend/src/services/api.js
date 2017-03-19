@@ -97,7 +97,7 @@ const api = {
   activateRelic: (player, relic) => {
     return axios.get(`${url}/player/${player}/relic/${relic}`)
     .then((response) => {
-      return response.data
+      return response
     })
   }
 }

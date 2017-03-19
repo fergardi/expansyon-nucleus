@@ -1,6 +1,10 @@
 <template lang="pug">
   md-layout
 
+    md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
+      span {{ alert }}
+      md-button.md-dense.md-accent(v-on:click.native="dismiss()") Close
+
     md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
@@ -39,11 +43,12 @@
     data () {
       return {
         relics: [],
-        selected: {}
+        selected: {},
+        alert: ''
       }
     },
     created () {
-      api.getPlayer(vuex.state.player.id)
+      api.getPlayer(vuex.state.account.id)
       .then((player) => {
         this.relics = player.Relics
       })
@@ -63,12 +68,23 @@
         this.open()
       },
       activate () {
-        api.activateRelic(vuex.state.player.id, this.selected.id)
-        .then((player) => {
-          this.relics = player.Relics
-          // TODO snackbar
+        api.activateRelic(vuex.state.account.id, this.selected.id)
+        .then((response) => {
+          api.getPlayer(vuex.state.account.id)
+          .then((player) => {
+            this.relics = player.Relics
+            this.close()
+            this.alert = 'Relic successfully activated'
+            this.$refs['alert'].open()
+          })
         })
-        this.close()
+        .catch((error) => {
+          this.alert = error
+          this.$refs['alert'].open()
+        })
+      },
+      dismiss () {
+        this.$refs['alert'].close()
       }
     },
     computed: {

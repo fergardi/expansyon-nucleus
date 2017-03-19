@@ -88,7 +88,7 @@
       .then((guilds) => {
         this.guilds = guilds
       })
-      api.getPlayer(vuex.state.player.id)
+      api.getPlayer(vuex.state.account.id)
       .then((player) => {
         // this.guild = player.Guild
       })

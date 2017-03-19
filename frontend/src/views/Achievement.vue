@@ -8,7 +8,7 @@
         md-card-content
           md-chip.pink {{ selected.aether | format }} Aether
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-warn(v-on:click.native="close()") Close
 
     md-layout(v-for="achievement in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="achievement.class", md-with-hover, v-on:click.native="select(achievement)")
