@@ -17,7 +17,7 @@
                   label Password
                   md-input(type="password", v-model="credentials.password", required)
               md-card-actions
-                md-button.md-dense.md-warn(v-bind:disabled="logging") Forgot password
+                md-button.md-dense.md-warn(v-bind:disabled="logging") Forgot
                 md-button.md-dense.md-accent(type="submit", v-bind:disabled="logging") Connect
 
         md-tab.no-padding#register(md-label="Register")

@@ -376,9 +376,9 @@
   .md-sidenav-content
   .md-card
   .md-table-card
-  // .md-tabs-navigation
     opacity 0.90
   .md-table-card.md-card
+  .md-menu-content > .md-list
     background-color rgba(255,255,255,0.90) !important
   .md-progress
   .md-card-media
