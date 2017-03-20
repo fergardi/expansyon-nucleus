@@ -26,119 +26,116 @@
             md-avatar
               md-icon.md-primary equalizer
             span Empire
-            md-chip 0
         md-list-item
           router-link(exact, to="/planetarium", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary language
             span Planetarium
-            md-chip 0
+            md-chip {{ player.planetarium | format }}
         md-list-item
           router-link(exact, to="/market", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary shopping_basket
             span Market
-            md-chip 0
+            md-chip {{ player.market | format }}
         md-list-item
           router-link(exact, to="/store", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary store
             span Store
-            md-chip 0
+            md-chip {{ player.store | format }}
         md-subheader Strategy
         md-list-item
           router-link(exact, to="/explore", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary search
             span Explore
-            md-chip 0
+            md-chip {{ player.explore | format }}
         md-list-item
           router-link(exact, to="/cantina", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary local_bar
             span Cantina
-            md-chip 0
+            md-chip {{ player.cantina | format }}
         md-list-item
           router-link(exact, to="/relicarium", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary all_inclusive
             span Relicarium
-            md-chip 0
+            md-chip {{ player.relicarium | format }}
         md-list-item
           router-link(exact, to="/temple", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary account_balance
             span Temple
-            md-chip 0
+            md-chip {{ player.temple | format }}
         md-subheader Technology
         md-list-item
           router-link(exact, to="/research", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary school
             span Research
-            md-chip 0
+            md-chip {{ player.research | format }}
         md-list-item
           router-link(exact, to="/hangar", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary build
             span Hangar
-            md-chip 0
+            md-chip {{ player.hangar | format }}
         md-list-item
           router-link(exact, to="/Infrastructure", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary settings
             span Infrastructure
-            md-chip 0
+            md-chip {{ player.infrastructure | format }}
         md-list-item
           router-link(exact, to="/defense", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary track_changes
             span Defense
-            md-chip 0
+            md-chip {{ player.defense | format }}
         md-subheader Diplomacy
         md-list-item
           router-link(exact, to="/senate", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary gavel
             span Senate
-            md-chip 0
+            md-chip {{ player.senate | format }}
         md-list-item
           router-link(exact, to="/census", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary group
             span Census
-            md-chip 0
+            md-chip {{ player.census | format }}
         md-list-item
           router-link(exact, to="/guild", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary security
             span Guild
-            md-chip 0
+            md-chip {{ player.guild | format }}
         md-list-item
           router-link(exact, to="/transmission", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary wifi
             span Transmission
-            md-chip 0
+            md-chip {{ player.transmission | format }}
         md-subheader Other
         md-list-item
           router-link(exact, to="/achievement", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary star
             span Achievement
-            md-chip 0
+            md-chip {{ player.achievement | format }}
         md-list-item
           router-link(exact, to="/profile", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary person
             span Profile
-            md-chip 0
         md-list-item
           router-link(exact, to="/help", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary chrome_reader_mode
             span Help
-            md-chip 0
         md-list-item(v-on:click.native="logout()")
           md-avatar
             md-icon.md-primary lock
@@ -156,68 +153,68 @@
           md-avatar
             md-icon.md-primary hourglass_full
           span Turns
-          md-chip 0
+          md-chip {{ player.turns | format }}
         md-list-item
           md-avatar
             md-icon.md-primary apps
           span Metal
-          md-chip 0
+          md-chip {{ player.metal | format }}
         md-list-item
           md-avatar
             md-icon.md-primary texture
           span Crystal
-          md-chip 0
+          md-chip {{ player.crystal | format }}
         md-list-item
           md-avatar
             md-icon.md-primary opacity
           span Oil
-          md-chip 0
+          md-chip {{ player.oil | format }}
         md-list-item
           md-avatar
             md-icon.md-primary home
           span Size
-          md-chip 0
+          md-chip {{ player.size | format }}
         md-list-item
           md-avatar
             md-icon.md-primary flash_on
           span Energy
-          md-chip 0
+          md-chip {{ player.energy | format }}
         md-list-item
           md-avatar
             md-icon.md-primary star
           span Influence
-          md-chip 0
+          md-chip {{ player.influence | format }}
         md-subheader Fleet
         md-list-item
           md-avatar
             md-icon.md-primary send
           span Fighter
-          md-chip 0
+          md-chip {{ player.fighters | format }}
         md-list-item
           md-avatar
             md-icon.md-primary toys
           span Cruiser
-          md-chip 0
+          md-chip {{ player.cruisers | format }}
         md-list-item
           md-avatar
             md-icon.md-primary bubble_chart
           span Bomber
-          md-chip 0
+          md-chip {{ player.bombers | format }}
         md-list-item
           md-avatar
             md-icon.md-primary camera
           span Orbiter
-          md-chip 0
+          md-chip {{ player.orbiters | format }}
         md-list-item
           md-avatar
             md-icon.md-primary storage
           span Carrier
-          md-chip 0
+          md-chip {{ player.carriers | format }}
         md-list-item
           md-avatar
             md-icon.md-primary cached
           span Recycler
-          md-chip 0
+          md-chip {{ player.recyclers | format }}
 
     .main.padding#main
       router-view.content.animation.fadeIn.scrollable

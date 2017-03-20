@@ -117,9 +117,11 @@ Vue.material.registerTheme({
 
 // filter
 Vue.filter('date', (date) => {
-  return moment(date).format('DD/MM/YY HH:mm:ss')
+  var datetime = date || new Date()
+  return moment(datetime).format('DD/MM/YY HH:mm:ss')
 })
-Vue.filter('format', (number) => {
+Vue.filter('format', (quantity) => {
+  var number = quantity || 0
   return number.toLocaleString()
 })
 Vue.filter('lorem', (string) => {

@@ -12,7 +12,8 @@ const store = new Vuex.Store({
       logged: false,
       token: null,
       id: 0
-    }
+    },
+    player: {}
   },
   mutations: {
     enablefullscreen (state) {
@@ -39,6 +40,9 @@ const store = new Vuex.Store({
       state.account.logged = false
       state.account.token = null
       state.account.id = 0
+    },
+    player (state, player) {
+      state.player = player
     }
   }
 })
