@@ -54,7 +54,7 @@
             md-avatar
               md-icon.md-primary search
             span Exploration
-            md-chip {{ player.explore | format }}
+            md-chip {{ player.exploration | format }}
         md-list-item
           router-link(exact, to="/cantina", v-on:click.native="collapse()")
             md-avatar
@@ -188,7 +188,7 @@
             md-icon.md-primary star
           span Influence
           md-chip {{ player.influence | format }}
-        md-subheader Fleet
+        md-subheader Hangar
         md-list-item
           md-avatar
             md-icon.md-primary send
@@ -219,6 +219,53 @@
             md-icon.md-primary cached
           span Recycler
           md-chip {{ player.recycler | format }}
+        md-subheader Infrastructure
+        md-list-item
+          md-avatar
+            md-icon.md-primary send
+          span Furnace
+          md-chip {{ player.furnace | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary toys
+          span Factory
+          md-chip {{ player.factory | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary bubble_chart
+          span Refinery
+          md-chip {{ player.refinery | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary camera
+          span Plant
+          md-chip {{ player.plant | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary storage
+          span Barrier
+          md-chip {{ player.barrier | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary cached
+          span Warehouse
+          md-chip {{ player.warehouse | format }}
+        md-subheader Defense
+        md-list-item
+          md-avatar
+            md-icon.md-primary send
+          span Turret
+          md-chip {{ player.turret | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary toys
+          span Railgun
+          md-chip {{ player.railgun | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary bubble_chart
+          span Cannon
+          md-chip {{ player.cannon | format }}
 
     .main.padding#main
       router-view.content.animation.fadeIn.scrollable
@@ -270,9 +317,17 @@
           store.commit('player', player)
         })
       },
-      planets () {
-        this.alert = 'You have new Planets to Explore'
-        this.$refs['alert'].open()
+      exploration () {
+        this.alert = 'There are new Planets to explore in the universe'
+        if (!this.fullscreen) this.$refs['alert'].open()
+      },
+      cantina () {
+        this.alert = 'There are new Missions to accept in the cantina'
+        if (!this.fullscreen) this.$refs['alert'].open()
+      },
+      senate () {
+        this.alert = 'There are new Referendums to vote for in the senate'
+        if (!this.fullscreen) this.$refs['alert'].open()
       }
     },
     watch: {

@@ -21,7 +21,7 @@
     md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="ship.class", md-with-hover, v-on:click.native="select(ship)")
         md-card-header
-          .md-title {{ ship.name }}
+          .md-title {{ ship.name }} ({{ ship.PlayerShip.quantity | format }})
         md-card-media
           img(v-bind:src="ship.image")
         md-card-content.no-padding.center
@@ -52,15 +52,23 @@
       }
     },
     created () {
-      api.getShips()
-      .then((ships) => {
-        this.ships = ships
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Hangar')
     },
+    sockets: {
+      hangar () {
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getPlayer(store.state.player.id)
+        .then((player) => {
+          this.ships = player.Ships
+        })
+      },
       open () {
         this.$refs['build'].open()
       },

@@ -54,15 +54,23 @@
       }
     },
     created () {
-      api.getBuildings()
-      .then((buildings) => {
-        this.buildings = buildings
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Infrastructure')
     },
+    sockets: {
+      infrastructure () {
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getPlayer(store.state.player.id)
+        .then((player) => {
+          this.buildings = player.Buildings
+        })
+      },
       open () {
         this.$refs['build'].open()
       },
