@@ -13,7 +13,7 @@ import Research from './views/Research.vue'
 import Hangar from './views/Hangar.vue'
 import Infrastructure from './views/Infrastructure.vue'
 import Defense from './views/Defense.vue'
-import Explore from './views/Explore.vue'
+import Exploration from './views/Exploration.vue'
 import Cantina from './views/Cantina.vue'
 import Relicarium from './views/Relicarium.vue'
 import Temple from './views/Temple.vue'
@@ -43,7 +43,7 @@ var router = new VueRouter({
     { path: '/hangar', component: Hangar, name: 'hangar' },
     { path: '/infrastructure', component: Infrastructure, name: 'infrastructure' },
     { path: '/defense', component: Defense, name: 'defense' },
-    { path: '/explore', component: Explore, name: 'explore' },
+    { path: '/exploration', component: Exploration, name: 'exploration' },
     { path: '/cantina', component: Cantina, name: 'cantina' },
     { path: '/relicarium', component: Relicarium, name: 'relicarium' },
     { path: '/temple', component: Temple, name: 'temple' },
@@ -70,7 +70,7 @@ const security = [
   'hangar',
   'infrastructure',
   'defense',
-  'explore',
+  'exploration',
   'cantina',
   'relicarium',
   'temple',

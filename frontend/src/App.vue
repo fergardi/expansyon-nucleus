@@ -46,10 +46,10 @@
             md-chip {{ player.store | format }}
         md-subheader Strategy
         md-list-item
-          router-link(exact, to="/explore", v-on:click.native="collapse()")
+          router-link(exact, to="/exploration", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary search
-            span Explore
+            span Exploration
             md-chip {{ player.explore | format }}
         md-list-item
           router-link(exact, to="/cantina", v-on:click.native="collapse()")
@@ -83,7 +83,7 @@
             span Hangar
             md-chip {{ player.hangar | format }}
         md-list-item
-          router-link(exact, to="/Infrastructure", v-on:click.native="collapse()")
+          router-link(exact, to="/infrastructure", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary settings
             span Infrastructure
@@ -189,32 +189,32 @@
           md-avatar
             md-icon.md-primary send
           span Fighter
-          md-chip {{ player.fighters | format }}
+          md-chip {{ player.fighter | format }}
         md-list-item
           md-avatar
             md-icon.md-primary toys
           span Cruiser
-          md-chip {{ player.cruisers | format }}
+          md-chip {{ player.cruiser | format }}
         md-list-item
           md-avatar
             md-icon.md-primary bubble_chart
           span Bomber
-          md-chip {{ player.bombers | format }}
+          md-chip {{ player.bomber | format }}
         md-list-item
           md-avatar
             md-icon.md-primary camera
           span Orbiter
-          md-chip {{ player.orbiters | format }}
+          md-chip {{ player.orbiter | format }}
         md-list-item
           md-avatar
             md-icon.md-primary storage
           span Carrier
-          md-chip {{ player.carriers | format }}
+          md-chip {{ player.carrier | format }}
         md-list-item
           md-avatar
             md-icon.md-primary cached
           span Recycler
-          md-chip {{ player.recyclers | format }}
+          md-chip {{ player.recycler | format }}
 
     .main.padding#main
       router-view.content.animation.fadeIn.scrollable

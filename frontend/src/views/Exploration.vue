@@ -65,7 +65,7 @@
       })
     },
     mounted () {
-      store.commit('title', 'Explore')
+      store.commit('title', 'Exploration')
     },
     methods: {
       open () {
