@@ -30,11 +30,11 @@
           .md-title {{ mission.name }}
         md-card-media
           img(v-bind:src="mission.image")
-        md-card-content.no-padding.center
+        md-card-content.no-padding
           md-progress(v-bind:md-progress="mission.attack")
           md-progress(v-bind:md-progress="mission.defense")
           md-progress(v-bind:md-progress="mission.speed")
-        md-card-content.center
+        md-card-content
           span {{ mission.description | lorem }}
 </template>
 

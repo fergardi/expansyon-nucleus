@@ -5,8 +5,9 @@
       md-card.md-primary
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content {{ selected.description }}
         md-card-content
+          span {{ selected.description }}
+        md-card-content.center
           md-chip.pink {{ selected.aether | format }} Aether
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
@@ -25,7 +26,7 @@
           md-chip(v-if="relic.planet") Planet
         md-card-content
           span {{ relic.description }}
-        md-card-content
+        md-card-content.center
           md-chip.pink {{ relic.aether | format }} Aether
 </template>
 

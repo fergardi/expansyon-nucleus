@@ -10,7 +10,7 @@
             md-icon add
             label Quantity
             md-input(type="number", v-model="quantity", required)
-        md-card-content
+        md-card-content.center
           md-chip {{ (selected.metal * quantity) | format }} Metal
           md-chip {{ (selected.crystal * quantity) | format }} Crystal
           md-chip {{ (selected.oil * quantity) | format }} Oil
@@ -33,7 +33,7 @@
           md-progress(v-bind:md-progress="building.storage")
         md-card-content
           span {{ building.description }}
-        md-card-content
+        md-card-content.center
           md-chip {{ building.metal | format }} Metal
           md-chip {{ building.crystal | format }} Crystal
           md-chip {{ building.oil | format }} Oil

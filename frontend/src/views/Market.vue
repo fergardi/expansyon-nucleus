@@ -7,8 +7,9 @@
           .md-title
             span {{ item(selected).name }}
             span(v-if="selected.quantity > 0")  ({{ selected.quantity | format }})
-        md-card-content {{ item(selected).description }}
         md-card-content
+          span {{ item(selected).description }}
+        md-card-content.center
           md-chip(v-if="selected.metal > 0") {{ selected.metal | format }} Metal
           md-chip(v-if="selected.crystal > 0") {{ selected.crystal | format }} Crystal
           md-chip(v-if="selected.oil > 0") {{ selected.oil | format }} Oil
@@ -44,7 +45,7 @@
           md-chip(v-if="item(sale).station") Station
         md-card-content(v-if="item(sale).description")
           span {{ item(sale).description }}
-        md-card-content
+        md-card-content.center
           md-chip(v-if="sale.metal > 0") {{ sale.metal | format }} Metal
           md-chip(v-if="sale.crystal > 0") {{ sale.crystal | format }} Crystal
           md-chip(v-if="sale.oil > 0") {{ sale.oil | format }} Oil

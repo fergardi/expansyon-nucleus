@@ -5,7 +5,8 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content Are you sure to save this skilltree?
+        md-card-content
+          span Are you sure to save this skilltree?
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="save()") Learn

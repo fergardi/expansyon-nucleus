@@ -5,8 +5,9 @@
       md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.subject }}
-        md-card-content {{ selected.text | lorem }}
         md-card-content
+          span {{ selected.text | lorem }}
+        md-card-content.center
           md-chip(v-bind:class="color(selected)") {{ name(selected) }}
           md-chip {{ selected.datetime | date }}
         md-card-actions

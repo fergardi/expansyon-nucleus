@@ -59,7 +59,7 @@
             md-icon star
             span Influence
             md-chip {{ guild.influence }}
-        .right
+        md-card-actions
           md-button.md-dense.md-accent(v-on:click.native="confirm()") Leave
 </template>
 

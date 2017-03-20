@@ -5,8 +5,9 @@
       md-card.md-primary
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content {{ selected.description }}
         md-card-content
+          span {{ selected.description }}
+        md-card-content.center
           md-chip.pink {{ selected.aether | format }} Aether
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
@@ -30,7 +31,7 @@
           md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
         md-card-content
           span {{ referendum.description }}
-        md-card-content
+        md-card-content.center
           md-chip.pink {{ referendum.aether | format }} Aether
 </template>
 

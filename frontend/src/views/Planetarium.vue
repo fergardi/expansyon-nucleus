@@ -5,7 +5,8 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }} {{ selected.total }}
-        md-card-content {{ selected.description }}
+        md-card-content
+          span {{ selected.description }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Close
 

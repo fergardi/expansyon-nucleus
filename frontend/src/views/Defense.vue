@@ -30,7 +30,7 @@
           md-progress(v-bind:md-progress="tower.speed")
         md-card-content
           span {{ tower.description }}
-        md-card-content
+        md-card-content.center
           md-chip {{ tower.metal | format }} Metal
           md-chip {{ tower.crystal | format }} Crystal
           md-chip {{ tower.oil | format }} Oil

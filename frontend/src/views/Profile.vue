@@ -17,19 +17,19 @@
         form(v-on:submit.stop.prevent="open()")
           md-card-header
             .md-title Change password
-          md-card-content.center
-              md-input-container(md-has-password)
-                md-icon lock_outline
-                label Old password
-                md-input(type="password", v-model="outdated", required)
-              md-input-container(md-has-password)
-                md-icon lock_open
-                label New password
-                md-input(type="password", v-model="updated", required)
-              md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
-                md-icon lock
-                label Repeat password
-                md-input(type="password", v-model="repeat", required)
+          md-card-content
+            md-input-container(md-has-password)
+              md-icon lock_outline
+              label Old password
+              md-input(type="password", v-model="outdated", required)
+            md-input-container(md-has-password)
+              md-icon lock_open
+              label New password
+              md-input(type="password", v-model="updated", required)
+            md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
+              md-icon lock
+              label Repeat password
+              md-input(type="password", v-model="repeat", required)
           md-card-actions
             md-button.md-dense.md-warn(type="reset") Clear
             md-button.md-dense.md-accent(type="submit") Change

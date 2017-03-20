@@ -6,7 +6,8 @@
         template(v-for="section in filtered")
           md-card-header
             .md-title {{ section.title }}
-          md-card-content {{ section.content | lorem }}
+          md-card-content
+            span {{ section.content | lorem }}
           md-card-media
             img(v-for="image in section.images", v-bind:src="image.url")
 </template>

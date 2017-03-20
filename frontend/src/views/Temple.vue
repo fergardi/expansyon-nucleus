@@ -5,8 +5,9 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content {{ selected.description }}
         md-card-content
+          span {{ selected.description }}
+        md-card-content.center
           md-chip.pink {{ selected.aether | format }} Aether
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
@@ -31,7 +32,7 @@
           md-progress(v-bind:md-progress="faction.speed")
         md-card-content
           span {{ faction.description }}
-        md-card-content
+        md-card-content.center
           md-chip.pink {{ faction.aether | format }} Aether
 </template>
 
