@@ -53,15 +53,24 @@
       }
     },
     created () {
-      api.getMissions()
-      .then((missions) => {
-        this.missions = missions
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Cantina')
     },
+    sockets: {
+      cantina () {
+        this.close()
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getMissions()
+        .then((missions) => {
+          this.missions = missions
+        })
+      },
       open () {
         this.$refs['attack'].open()
       },

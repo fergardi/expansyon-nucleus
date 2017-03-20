@@ -49,15 +49,24 @@
       }
     },
     created () {
-      api.getReferendums()
-      .then((referendums) => {
-        this.referendums = referendums
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Senate')
     },
+    sockets: {
+      senate () {
+        this.close()
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getReferendums()
+        .then((referendums) => {
+          this.referendums = referendums
+        })
+      },
       open () {
         this.$refs['vote'].open()
       },

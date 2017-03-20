@@ -65,7 +65,7 @@
       store.commit('title', 'Exploration')
     },
     sockets: {
-      planets () {
+      exploration () {
         this.close()
         this.refresh()
       }
