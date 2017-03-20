@@ -1,6 +1,10 @@
 <template lang="pug">
   .app
 
+    md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
+      span {{ alert }}
+      md-button.md-dense.md-accent(v-on:click.native="dismiss()") Close
+
     md-whiteframe
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="open('left')")
@@ -222,12 +226,14 @@
 
 <script>
   import auth from './services/auth'
+  import api from './services/api'
   import store from './vuex/store'
 
   export default {
     data () {
       return {
-        search: store.state.search
+        search: store.state.search,
+        alert: ''
       }
     },
     methods: {
@@ -239,6 +245,9 @@
       },
       close (ref) {
         if (ref && this.$refs[ref]) this.$refs[ref].close()
+      },
+      dismiss () {
+        this.$refs['alert'].close()
       },
       collapse () {
         this.$refs['left'].close()
@@ -252,6 +261,18 @@
         this.clear()
         this.collapse()
         this.$router.push('/login')
+      }
+    },
+    sockets: {
+      player () {
+        api.getPlayer(store.state.account.id)
+        .then((player) => {
+          store.commit('player', player)
+        })
+      },
+      planets () {
+        this.alert = 'You have new Planets to Explore'
+        this.$refs['alert'].open()
       }
     },
     watch: {

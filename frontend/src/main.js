@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
+import VueSocketio from 'vue-socket.io'
 
 import moment from 'moment'
 
@@ -28,6 +29,10 @@ import Login from './views/Login.vue'
 import Splash from './views/Splash.vue'
 
 import store from './vuex/store'
+import constants from './config/constants'
+
+// socketio
+Vue.use(VueSocketio, constants.socket)
 
 // router
 Vue.use(VueRouter)

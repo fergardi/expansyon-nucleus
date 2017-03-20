@@ -59,15 +59,24 @@
       }
     },
     created () {
-      api.getPlanets(store.state.account.id)
-      .then((planets) => {
-        this.planets = planets
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Exploration')
     },
+    sockets: {
+      planets () {
+        this.close()
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getPlanets(store.state.account.id)
+        .then((planets) => {
+          this.planets = planets
+        })
+      },
       open () {
         this.$refs['attack'].open()
       },
