@@ -79,7 +79,7 @@
 <script>
   import { pie } from '../components/chart'
   import api from '../services/api'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     components: { pie },
@@ -189,13 +189,13 @@
       .then((referendums) => {
         this.referendum = referendums[0]
       })
-      api.getPlayer(vuex.state.account.id)
+      api.getPlayer(store.state.account.id)
       .then((player) => {
         this.faction = player.Faction
       })
     },
     mounted () {
-      vuex.commit('title', 'Empire')
+      store.commit('title', 'Empire')
     }
   }
 </script>

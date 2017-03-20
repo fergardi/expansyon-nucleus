@@ -33,15 +33,15 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     mounted () {
-      vuex.commit('title', 'Splash')
-      vuex.commit('enablefullscreen')
+      store.commit('title', 'Splash')
+      store.commit('enablefullscreen')
     },
     destroyed () {
-      vuex.commit('disablefullscreen')
+      store.commit('disablefullscreen')
     }
   }
 </script>

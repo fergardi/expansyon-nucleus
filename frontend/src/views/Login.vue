@@ -52,7 +52,7 @@
 <script>
   import api from '../services/api'
   import auth from '../services/auth'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -74,8 +74,8 @@
       }
     },
     mounted () {
-      vuex.commit('title', 'Expansyon')
-      vuex.commit('enablefullscreen')
+      store.commit('title', 'Expansyon')
+      store.commit('enablefullscreen')
     },
     methods: {
       login () {
@@ -83,7 +83,7 @@
         auth.login(this.credentials)
         .then((response) => {
           this.logging = false
-          if (vuex.state.account.logged) this.$router.push('/planetarium') // TODO development route
+          if (store.state.account.logged) this.$router.push('/planetarium') // TODO development route
         })
       },
       register () {
@@ -125,7 +125,7 @@
       }
     },
     destroyed () {
-      vuex.commit('disablefullscreen')
+      store.commit('disablefullscreen')
     }
   }
 </script>

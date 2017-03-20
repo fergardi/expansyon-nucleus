@@ -57,7 +57,7 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
   import api from '../services/api'
 
   export default {
@@ -74,7 +74,7 @@
       })
     },
     mounted () {
-      vuex.commit('title', 'Market')
+      store.commit('title', 'Market')
     },
     methods: {
       open () {
@@ -97,7 +97,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.sales.filter((sale) => {

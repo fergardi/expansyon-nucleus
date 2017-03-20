@@ -27,7 +27,7 @@ import Help from './views/Help.vue'
 import Login from './views/Login.vue'
 import Splash from './views/Splash.vue'
 
-import vuex from './vuex/vuex'
+import store from './vuex/store'
 
 // router
 Vue.use(VueRouter)
@@ -130,9 +130,9 @@ Vue.filter('lorem', (string) => {
 router.beforeEach((to, from, next) => {
   Vue.nextTick(() => {
     Main.clear()
-    vuex.commit('clear')
+    store.commit('clear')
     if (document.getElementById('main')) document.getElementById('main').scrollIntoView(true)
-    if ((security.indexOf(to.name) !== -1) && !vuex.state.account.logged) {
+    if ((security.indexOf(to.name) !== -1) && !store.state.account.logged) {
       router.push({ path: '/login' })
     } else {
       return next()

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
   import factory from '../factories/tree'
 
   export default {
@@ -39,7 +39,7 @@
       }
     },
     mounted () {
-      vuex.commit('title', 'Research')
+      store.commit('title', 'Research')
     },
     created () {
       for (let i = 0; i < 3; i++) {
@@ -75,7 +75,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.trees.filter((branch) => {

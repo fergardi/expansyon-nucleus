@@ -37,7 +37,7 @@
 
 <script>
   import api from '../services/api'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -47,13 +47,13 @@
       }
     },
     created () {
-      api.getPlayer(vuex.state.account.id)
+      api.getPlayer(store.state.account.id)
       .then((player) => {
         this.planets = player.Planets
       })
     },
     mounted () {
-      vuex.commit('title', 'Planetarium')
+      store.commit('title', 'Planetarium')
     },
     methods: {
       info (planet) {
@@ -66,7 +66,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.planets.filter((planet) => {

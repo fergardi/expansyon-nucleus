@@ -41,7 +41,7 @@
 
 <script>
   import api from '../services/api'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -60,7 +60,7 @@
       })
     },
     mounted () {
-      vuex.commit('title', 'Infrastructure')
+      store.commit('title', 'Infrastructure')
     },
     methods: {
       open () {
@@ -80,7 +80,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.buildings.filter((building) => {

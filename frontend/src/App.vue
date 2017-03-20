@@ -225,12 +225,12 @@
 
 <script>
   import auth from './services/auth'
-  import vuex from './vuex/vuex'
+  import store from './vuex/store'
 
   export default {
     data () {
       return {
-        search: vuex.state.search
+        search: store.state.search
       }
     },
     methods: {
@@ -259,18 +259,18 @@
     },
     watch: {
       search (string) {
-        vuex.commit('search', string)
+        store.commit('search', string)
       }
     },
     computed: {
       fullscreen () {
-        return vuex.state.fullscreen
+        return store.state.fullscreen
       },
       name () {
-        return vuex.state.title
+        return store.state.title
       },
       player () {
-        return vuex.state.player
+        return store.state.player
       }
     }
   }

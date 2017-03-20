@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -52,7 +52,7 @@
       }
     },
     mounted () {
-      vuex.commit('title', 'Profile')
+      store.commit('title', 'Profile')
     },
     methods: {
       open () {
@@ -68,7 +68,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       match () {
         return this.updated === this.repeat

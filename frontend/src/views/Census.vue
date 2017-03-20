@@ -77,7 +77,7 @@
 <script>
   import api from '../services/api'
   import _ from 'lodash'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -97,7 +97,7 @@
       })
     },
     mounted () {
-      vuex.commit('title', 'Census')
+      store.commit('title', 'Census')
     },
     methods: {
       info (player) {
@@ -123,12 +123,12 @@
         this.close()
       },
       clear () {
-        vuex.state.search = ''
+        store.state.search = ''
       }
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.players.filter((player) => {

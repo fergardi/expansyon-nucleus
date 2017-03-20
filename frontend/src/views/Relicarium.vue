@@ -37,7 +37,7 @@
 
 <script>
   import api from '../services/api'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -48,13 +48,13 @@
       }
     },
     created () {
-      api.getPlayer(vuex.state.account.id)
+      api.getPlayer(store.state.account.id)
       .then((player) => {
         this.relics = player.Relics
       })
     },
     mounted () {
-      vuex.commit('title', 'Relicarium')
+      store.commit('title', 'Relicarium')
     },
     methods: {
       open () {
@@ -68,9 +68,9 @@
         this.open()
       },
       activate () {
-        api.activateRelic(vuex.state.account.id, this.selected.id)
+        api.activateRelic(store.state.account.id, this.selected.id)
         .then((response) => {
-          api.getPlayer(vuex.state.account.id)
+          api.getPlayer(store.state.account.id)
           .then((player) => {
             this.relics = player.Relics
             this.close()
@@ -89,7 +89,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.relics.filter((relic) => {

@@ -66,7 +66,7 @@
 <script>
   import api from '../services/api'
   import _ from 'lodash'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -88,13 +88,13 @@
       .then((guilds) => {
         this.guilds = guilds
       })
-      api.getPlayer(vuex.state.account.id)
+      api.getPlayer(store.state.account.id)
       .then((player) => {
         // this.guild = player.Guild
       })
     },
     mounted () {
-      vuex.commit('title', 'Guild')
+      store.commit('title', 'Guild')
     },
     methods: {
       popup (guild) {
@@ -123,12 +123,12 @@
         this.$refs['confirm'].close()
       },
       clear () {
-        vuex.state.search = ''
+        store.state.search = ''
       }
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       filtered () {
         return this.guilds.filter((guild) => {

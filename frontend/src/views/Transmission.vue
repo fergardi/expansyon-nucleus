@@ -78,7 +78,7 @@
 <script>
   import api from '../services/api'
   import _ from 'lodash'
-  import vuex from '../vuex/vuex'
+  import store from '../vuex/store'
 
   export default {
     name: 'Transmission',
@@ -101,14 +101,14 @@
       .then((players) => {
         this.players = players
       })
-      api.getPlayer(vuex.state.account.id)
+      api.getPlayer(store.state.account.id)
       .then((player) => {
         this.received = player.Received
         this.sent = player.Sent
       })
     },
     mounted () {
-      vuex.commit('title', 'Transmission')
+      store.commit('title', 'Transmission')
     },
     methods: {
       popup (message) {
@@ -147,7 +147,7 @@
     },
     computed: {
       search () {
-        return vuex.state.search
+        return store.state.search
       },
       receivedFiltered () {
         return this.received.filter((message) => {
