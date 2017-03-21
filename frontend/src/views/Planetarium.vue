@@ -51,7 +51,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Planetarium')
+      store.commit('title', 'title.planetarium')
     },
     sockets: {
       planetarium () {

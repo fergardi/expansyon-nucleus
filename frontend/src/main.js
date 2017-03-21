@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
 import VueSocketio from 'vue-socket.io'
+import VueInternationalization from 'vue-i18n'
 
 import moment from 'moment'
 
@@ -30,12 +31,21 @@ import Splash from './views/Splash.vue'
 
 import store from './vuex/store'
 import constants from './config/constants'
+import i18n from './services/i18n'
 
 // socketio
 Vue.use(VueSocketio, constants.socket)
 
+// i18n
+Vue.use(VueInternationalization)
+Vue.config.lang = 'en'
+Object.keys(i18n).forEach(function (lang) {
+  Vue.locale(lang, i18n[lang])
+})
+
 // router
 Vue.use(VueRouter)
+
 // routes
 var router = new VueRouter({
   routes: [
@@ -131,6 +141,9 @@ Vue.filter('format', (quantity) => {
 })
 Vue.filter('lorem', (string) => {
   return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+})
+Vue.filter('i18n', (string) => {
+  return Vue.t(string)
 })
 
 // scroll to top and close sidebar

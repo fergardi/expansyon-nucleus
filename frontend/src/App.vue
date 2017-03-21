@@ -9,7 +9,7 @@
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="left()")
           md-icon chevron_right
-        h2.md-title {{ name }}
+        h2.md-title {{ title | i18n }}
         md-input-container.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-input(type="search", placeholder="Search...", v-model="search")
           span.md-error Results are being filtered
@@ -123,18 +123,16 @@
               md-icon.md-primary wifi
             span Transmission
             md-chip {{ player.transmission | format }}
+        md-subheader Language
+        md-list-item(v-on:click.native="localize('es')")
+          md-avatar
+            md-icon.md-primary translate
+          span {{ 'language.spanish' | i18n }}
+        md-list-item(v-on:click.native="localize('en')")
+          md-avatar
+            md-icon.md-primary translate
+          span {{ 'language.english' | i18n }}
         md-subheader Other
-        md-list-item
-          router-link(exact, to="/achievement", v-on:click.native="collapse()")
-            md-avatar
-              md-icon.md-primary star
-            span Achievement
-            md-chip {{ player.achievement | format }}
-        md-list-item
-          router-link(exact, to="/profile", v-on:click.native="collapse()")
-            md-avatar
-              md-icon.md-primary person
-            span Profile
         md-list-item
           router-link(exact, to="/help", v-on:click.native="collapse()")
             md-avatar
@@ -272,6 +270,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import auth from './services/auth'
   import api from './services/api'
   import store from './vuex/store'
@@ -284,6 +283,10 @@
       }
     },
     methods: {
+      localize (lang) {
+        Vue.config.lang = lang
+        this.collapse()
+      },
       left () {
         this.$refs['left'].open()
       },
@@ -347,7 +350,7 @@
       fullscreen () {
         return store.state.fullscreen
       },
-      name () {
+      title () {
         return store.state.title
       },
       player () {

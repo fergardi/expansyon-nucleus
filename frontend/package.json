@@ -19,6 +19,7 @@
     "moment": "^2.17.1",
     "vue": "^2.0.1",
     "vue-chartjs": "^2.5.0",
+    "vue-i18n": "^5.0.2",
     "vue-loader": "^10.0.2",
     "vue-material": "*",
     "vue-router": "^2.1.1",
@@ -61,7 +62,7 @@
     "pug-lint-vue": "^0.1.2",
     "stylus": "^0.54.5",
     "uglify-js": "^2.5.0",
-    "uglifycss": "0.0.25",
+    "uglifycss": "^0.0.25",
     "vue-template-compiler": "^2.1.8",
     "vueify": "^9.4.0",
     "watchify": "^3.4.0"
