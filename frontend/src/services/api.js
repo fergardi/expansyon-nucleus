@@ -53,6 +53,12 @@ const api = {
       return response.data
     })
   },
+  getStore: () => {
+    return axios.get(`${url}/relic/store`, { headers: { 'Authorization': 'Bearer ' + store.state.account.token }})
+    .then((response) => {
+      return response.data
+    })
+  },
   getSales: () => {
     return axios.get(`${url}/sale`, { headers: { 'Authorization': 'Bearer ' + store.state.account.token }})
     .then((response) => {

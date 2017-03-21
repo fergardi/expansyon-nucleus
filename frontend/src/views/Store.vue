@@ -44,7 +44,7 @@
       }
     },
     created () {
-      api.getRelics()
+      api.getStore()
       .then((relics) => {
         this.relics = relics
       })
