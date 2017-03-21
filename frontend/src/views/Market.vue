@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
   
-    md-dialog(ref='buy')
+    md-dialog(ref='info')
       md-card.md-primary(v-bind:class="item(selected).class")
         md-card-header
           .md-title
@@ -78,15 +78,15 @@
       store.commit('title', 'Market')
     },
     methods: {
-      open () {
-        this.$refs['buy'].open()
+      info () {
+        this.$refs['info'].open()
       },
       close () {
-        this.$refs['buy'].close()
+        this.$refs['info'].close()
       },
       select (sale) {
         this.selected = sale
-        this.open()
+        this.info()
       },
       item (sale) {
         return sale.Planet || sale.Ship || sale.Relic || {}

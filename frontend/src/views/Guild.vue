@@ -84,25 +84,35 @@
       }
     },
     created () {
-      api.getGuilds()
-      .then((guilds) => {
-        this.guilds = guilds
-      })
-      api.getPlayer(store.state.account.id)
-      .then((player) => {
-        // this.guild = player.Guild
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Guild')
     },
+    sockets: {
+      guild () {
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getGuilds()
+        .then((guilds) => {
+          this.guilds = guilds
+        })
+        api.getPlayer(store.state.account.id)
+        .then((player) => {
+          // TODO
+          // this.guild = player.Guild
+        })
+      },
       popup (guild) {
         this.selected = guild
         this.$refs['popup'].open()
       },
       close () {
         this.$refs['popup'].close()
+        this.$refs['confirm'].close()
       },
       order (column) {
         this.field = column.name
@@ -113,14 +123,11 @@
         this.close()
       },
       confirm () {
-        this.$refs['confirm'].open()
-      },
-      cancel () {
-        this.$refs['confirm'].close()
+        this.$refs['popup'].open()
       },
       leave () {
         // TODO
-        this.$refs['confirm'].close()
+        this.close()
       },
       clear () {
         store.state.search = ''

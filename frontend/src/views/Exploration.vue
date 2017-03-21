@@ -1,27 +1,27 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='attack')
+    md-dialog(ref='form')
       md-card.md-primary(v-bind:class="selected.class")
-        form(v-on:submit.stop.prevent="attack")
+        form(v-on:submit.stop.prevent="attack()")
           md-card-header
             .md-title {{ selected.name }}
           md-card-content
             md-input-container
               md-icon send
               label Fighter
-              md-input(type="number", v-model="fighter", required)
+              md-input(type="number", v-model="fighter", min="0", required)
             md-input-container
               md-icon toys
               label Cruiser
-              md-input(type="number", v-model="cruiser", required)
+              md-input(type="number", v-model="cruiser", min="0", required)
             md-input-container
               md-icon bubble_chart
               label Bomber
-              md-input(type="number", v-model="bomber", required)
+              md-input(type="number", v-model="bomber", min="0", required)
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-            md-button.md-dense.md-warn(type="reset") Clear
+            md-button.md-dense.md-warn(v-on:click.native="clear()") Clear
             md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") Attack
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
@@ -40,7 +40,7 @@
         md-card-content.center(v-if="planet.moon || planet.station")
           md-chip(v-if="planet.moon") Moon
           md-chip(v-if="planet.station") Station
-        md-card-content.center
+        md-card-content
           span {{ planet.description }}
 </template>
 
@@ -77,15 +77,20 @@
           this.planets = planets
         })
       },
-      open () {
-        this.$refs['attack'].open()
+      form () {
+        this.$refs['form'].open()
       },
       close () {
-        this.$refs['attack'].close()
+        this.$refs['form'].close()
+      },
+      clear () {
+        this.fighter = 0
+        this.cruiser = 0
+        this.bomber = 0
       },
       select (planet) {
         this.selected = planet
-        this.open()
+        this.form()
       },
       attack () {
         // TODO

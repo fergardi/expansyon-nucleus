@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='save')
+    md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
@@ -59,15 +59,15 @@
           skill.level = skill.min
         })
       },
-      open () {
-        this.$refs['save'].open()
+      confirm () {
+        this.$refs['confirm'].open()
       },
       close () {
-        this.$refs['save'].close()
+        this.$refs['confirm'].close()
       },
       select (branch) {
         this.selected = branch
-        this.open()
+        this.confirm()
       },
       save (branch) {
         // TODO

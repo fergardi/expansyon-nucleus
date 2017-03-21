@@ -57,7 +57,7 @@
       store.commit('title', 'Achievement')
     },
     methods: {
-      open () {
+      info () {
         this.$refs['info'].open()
       },
       close () {
@@ -65,11 +65,7 @@
       },
       select (achievement) {
         this.selected = achievement
-        this.open()
-      },
-      info () {
-        // TODO
-        this.close()
+        this.info()
       }
     },
     computed: {

@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='buy')
+    md-dialog(ref='confirm')
       md-card.md-primary
         md-card-header
           .md-title {{ selected.name }}
@@ -53,15 +53,15 @@
       store.commit('title', 'Store')
     },
     methods: {
-      open () {
-        this.$refs['buy'].open()
+      confirm () {
+        this.$refs['confirm'].open()
       },
       close () {
-        this.$refs['buy'].close()
+        this.$refs['confirm'].close()
       },
       select (relic) {
         this.selected = relic
-        this.open()
+        this.confirm()
       },
       buy () {
         // TODO

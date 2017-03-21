@@ -2,19 +2,19 @@
   .app
 
     md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
-      span {{ alert }}
+      span {{ message }}
       md-button.md-dense.md-accent(v-on:click.native="dismiss()") Close
 
     md-whiteframe
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
-        md-button.md-icon-button.toggler(v-on:click.native="open('left')")
+        md-button.md-icon-button.toggler(v-on:click.native="left()")
           md-icon chevron_right
         h2.md-title {{ name }}
         md-input-container.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-input(type="search", placeholder="Search...", v-model="search")
           span.md-error Results are being filtered
           md-icon search
-        md-button.md-icon-button.toggler(v-on:click.native="open('right')")
+        md-button.md-icon-button.toggler(v-on:click.native="right()")
           md-icon chevron_left
 
     md-sidenav.md-left.md-fixed(ref="left", v-if="!fullscreen")
@@ -280,18 +280,18 @@
     data () {
       return {
         search: store.state.search,
-        alert: ''
+        message: ''
       }
     },
     methods: {
-      open (ref) {
-        if (ref && this.$refs[ref]) this.$refs[ref].open()
+      left () {
+        this.$refs['left'].open()
       },
-      toggle (ref) {
-        if (ref && this.$refs[ref]) this.$refs[ref].toggle()
+      right () {
+        this.$refs['right'].open()
       },
-      close (ref) {
-        if (ref && this.$refs[ref]) this.$refs[ref].close()
+      alert () {
+        this.$refs['alert'].open()
       },
       dismiss () {
         this.$refs['alert'].close()
@@ -312,22 +312,30 @@
     },
     sockets: {
       player () {
-        api.getPlayer(store.state.account.id)
-        .then((player) => {
-          store.commit('player', player)
-        })
+        if (store.state.account.logged && !this.fullscreen) {
+          api.getPlayer(store.state.account.id)
+          .then((player) => {
+            store.commit('player', player)
+            this.message = 'Player updated with new data'
+            this.alert()
+          })
+        }
       },
       exploration () {
-        this.alert = 'There are new Planets to explore in the universe'
-        if (!this.fullscreen) this.$refs['alert'].open()
+        this.message = 'There are new Planets to explore in the universe'
+        if (store.state.account.logged && !this.fullscreen) this.alert()
       },
       cantina () {
-        this.alert = 'There are new Missions to accept in the cantina'
-        if (!this.fullscreen) this.$refs['alert'].open()
+        this.message = 'There are new Missions to accept in the cantina'
+        if (store.state.account.logged && !this.fullscreen) this.alert()
       },
       senate () {
-        this.alert = 'There are new Referendums to vote for in the senate'
-        if (!this.fullscreen) this.$refs['alert'].open()
+        this.message = 'There are new Referendums to vote for in the senate'
+        if (store.state.account.logged && !this.fullscreen) this.alert()
+      },
+      market () {
+        this.message = 'There are new Items to buy in the market'
+        if (store.state.account.logged && !this.fullscreen) this.alert()
       }
     },
     watch: {

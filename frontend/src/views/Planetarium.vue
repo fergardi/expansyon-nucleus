@@ -48,15 +48,24 @@
       }
     },
     created () {
-      api.getPlayer(store.state.account.id)
-      .then((player) => {
-        this.planets = player.Planets
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Planetarium')
     },
+    sockets: {
+      planetarium () {
+        this.close()
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getPlayer(store.state.account.id)
+        .then((player) => {
+          this.planets = player.Planets
+        })
+      },
       info (planet) {
         this.selected = planet
         this.$refs['info'].open()

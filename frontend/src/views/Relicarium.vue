@@ -57,15 +57,19 @@
       store.commit('title', 'Relicarium')
     },
     methods: {
-      open () {
+      confirm () {
         this.$refs['confirm'].open()
       },
       close () {
         this.$refs['confirm'].close()
+        this.$refs['alert'].close()
+      },
+      alert () {
+        this.$refs['alert'].open()
       },
       select (relic) {
         this.selected = relic
-        this.open()
+        this.confirm()
       },
       activate () {
         api.activateRelic(store.state.account.id, this.selected.id)
@@ -74,13 +78,13 @@
           .then((player) => {
             this.relics = player.Relics
             this.close()
-            this.alert = 'Relic successfully activated'
-            this.$refs['alert'].open()
+            this.message = 'Relic successfully activated'
+            this.alert()
           })
         })
         .catch((error) => {
-          this.alert = error
-          this.$refs['alert'].open()
+          this.message = error
+          this.alert()
         })
       },
       dismiss () {

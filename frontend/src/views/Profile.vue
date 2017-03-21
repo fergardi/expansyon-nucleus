@@ -14,7 +14,7 @@
     md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
 
       md-card.md-primary.card
-        form(v-on:submit.stop.prevent="open()")
+        form(v-on:submit.stop.prevent="confirm()")
           md-card-header
             .md-title Change password
           md-card-content
@@ -55,7 +55,7 @@
       store.commit('title', 'Profile')
     },
     methods: {
-      open () {
+      confirm () {
         this.$refs['confirm'].open()
       },
       close () {

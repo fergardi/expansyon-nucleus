@@ -59,7 +59,7 @@
       store.commit('title', 'Temple')
     },
     methods: {
-      open () {
+      confirm () {
         this.$refs['confirm'].open()
       },
       close () {
@@ -67,7 +67,7 @@
       },
       select (faction) {
         this.selected = faction
-        this.open()
+        this.confirm()
       },
       join () {
         // TODO

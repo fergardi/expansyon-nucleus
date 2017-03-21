@@ -1,22 +1,24 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='build')
+    md-dialog(ref='form')
       md-card.md-primary(v-bind:class="selected.class")
-        md-card-header
-          .md-title {{ selected.name }}
-        md-card-content
-          md-input-container
-            md-icon add
-            label Quantity
-            md-input(type="number", v-model="quantity", required)
-        md-card-content.center
-          md-chip {{ (selected.metal * quantity) | format }} Metal
-          md-chip {{ (selected.crystal * quantity) | format }} Crystal
-          md-chip {{ (selected.oil * quantity) | format }} Oil
-        md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-          md-button.md-dense.md-accent(v-on:click.native="build()", v-bind:disabled="!can") Build
+        form(v-on:submit.stop.prevent="build()")
+          md-card-header
+            .md-title {{ selected.name }}
+          md-card-content
+            md-input-container
+              md-icon add
+              label Quantity
+              md-input(type="number", v-model="quantity", min="0", required)
+          md-card-content.center
+            md-chip {{ (selected.metal * quantity) | format }} Metal
+            md-chip {{ (selected.crystal * quantity) | format }} Crystal
+            md-chip {{ (selected.oil * quantity) | format }} Oil
+          md-card-actions
+            md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+            md-button.md-dense.md-warn(v-on:click.native="clear()") Clear
+            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") Build
 
     md-layout(v-for="building in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="building.class", md-with-hover, v-on:click.native="select(building)")
@@ -50,7 +52,8 @@
         selected: {},
         metal: 0,
         crystal: 0,
-        oil: 0
+        oil: 0,
+        quantity: 0
       }
     },
     created () {
@@ -71,15 +74,18 @@
           this.buildings = player.Buildings
         })
       },
-      open () {
-        this.$refs['build'].open()
+      form () {
+        this.$refs['form'].open()
       },
       close () {
-        this.$refs['build'].close()
+        this.$refs['form'].close()
+      },
+      clear () {
+        this.quantity = 0
       },
       select (building) {
         this.selected = building
-        this.open()
+        this.form()
       },
       build () {
         // TODO

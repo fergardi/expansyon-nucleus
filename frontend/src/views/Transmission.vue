@@ -1,7 +1,7 @@
 <template lang="pug">
   md-table-card
 
-    md-dialog(ref='popup')
+    md-dialog(ref='info')
       md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.subject }}
@@ -48,7 +48,7 @@
               md-table-head(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
 
           md-table-body
-            md-table-row(v-for="message in sentOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+            md-table-row(v-for="message in sentOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="select(message)")
               md-table-cell
                 md-chip(v-bind:class="color(message)") {{ message.To.name }}
               md-table-cell {{ message.subject }}
@@ -112,12 +112,12 @@
       store.commit('title', 'Transmission')
     },
     methods: {
-      popup (message) {
+      select (message) {
         this.selected = message
-        this.$refs['popup'].open()
+        this.$refs['info'].open()
       },
       close () {
-        this.$refs['popup'].close()
+        this.$refs['info'].close()
       },
       remove () {
         // TODO

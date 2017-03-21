@@ -15,7 +15,7 @@
                 md-input-container(md-has-password)
                   md-icon lock
                   label Password
-                  md-input(type="password", v-model="credentials.password", required)
+                  md-input(type="password", v-model="credentials.password", minlength="6", required)
               md-card-actions
                 md-button.md-dense.md-warn(v-bind:disabled="logging") Forgot
                 md-button.md-dense.md-accent(type="submit", v-bind:disabled="logging") Connect
@@ -32,17 +32,17 @@
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !secure }")
                   md-icon lock_outline
                   label Password
-                  md-input(type="password", v-model="information.password", required)
+                  md-input(type="password", v-model="information.password", minlength="6", required)
                   span.md-error Password insecure
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
                   md-icon lock
                   label Repeat password
-                  md-input(type="password", v-model="information.repeat", required)
+                  md-input(type="password", v-model="information.repeat", minlength="6", required)
                   span.md-error Passwords must match
                 md-input-container(v-bind:class="{ 'md-input-invalid' : name }")
                   md-icon person
                   label Name
-                  md-input(type="text", v-model="information.name", required)
+                  md-input(type="text", v-model="information.name", minlength="6", required)
                   span.md-error Name already in use
               md-card-actions
                 md-button.md-dense.md-warn(type="reset", v-bind:class="{ hidden: registering }") Clear

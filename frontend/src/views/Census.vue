@@ -91,20 +91,25 @@
       }
     },
     created () {
-      api.getPlayers()
-      .then((players) => {
-        this.players = players
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'Census')
     },
+    sockets: {
+      census () {
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getPlayers()
+        .then((players) => {
+          this.players = players
+        })
+      },
       info (player) {
         this.selected = player
-        this.open()
-      },
-      open () {
         this.$refs['info'].open()
       },
       close () {

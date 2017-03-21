@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='vote')
+    md-dialog(ref='confirm')
       md-card.md-primary
         md-card-header
           .md-title {{ selected.name }}
@@ -67,15 +67,15 @@
           this.referendums = referendums
         })
       },
-      open () {
-        this.$refs['vote'].open()
+      confirm () {
+        this.$refs['confirm'].open()
       },
       close () {
-        this.$refs['vote'].close()
+        this.$refs['confirm'].close()
       },
       select (referendum) {
         this.selected = referendum
-        this.open()
+        this.confirm()
       },
       vote () {
         // TODO
