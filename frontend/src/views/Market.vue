@@ -10,10 +10,10 @@
         md-card-content
           span {{ item(selected).description }}
         md-card-content.center
-          md-chip(v-if="selected.metal > 0") {{ selected.metal | format }} Metal
-          md-chip(v-if="selected.crystal > 0") {{ selected.crystal | format }} Crystal
-          md-chip(v-if="selected.oil > 0") {{ selected.oil | format }} Oil
-          md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | format }} Aether
+          md-chip(v-if="selected.metal > 0") {{ selected.metal | format }} {{ 'resource.metal' | i18n }}
+          md-chip(v-if="selected.crystal > 0") {{ selected.crystal | format }} {{ 'resource.crystal' | i18n }}
+          md-chip(v-if="selected.oil > 0") {{ selected.oil | format }} {{ 'resource.oil' | i18n }}
+          md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="buy()") Buy
@@ -41,15 +41,15 @@
           md-progress(v-bind:md-progress="item(sale).defense", v-if="item(sale).defense")
           md-progress(v-bind:md-progress="item(sale).speed", v-if="item(sale).speed")
         md-card-content.center(v-if="item(sale).moon || item(sale).station")
-          md-chip(v-if="item(sale).moon") Moon
-          md-chip(v-if="item(sale).station") Station
+          md-chip(v-if="item(sale).moon") {{ 'resource.moon' | i18n }}
+          md-chip(v-if="item(sale).station") {{ 'resource.station' | i18n }}
         md-card-content(v-if="item(sale).description")
           span {{ item(sale).description }}
         md-card-content.center
-          md-chip(v-if="sale.metal > 0") {{ sale.metal | format }} Metal
-          md-chip(v-if="sale.crystal > 0") {{ sale.crystal | format }} Crystal
-          md-chip(v-if="sale.oil > 0") {{ sale.oil | format }} Oil
-          md-chip.pink(v-if="sale.aether > 0") {{ sale.aether | format }} Aether
+          md-chip(v-if="sale.metal > 0") {{ sale.metal | format }} {{ 'resource.metal' | i18n }}
+          md-chip(v-if="sale.crystal > 0") {{ sale.crystal | format }} {{ 'resource.crystal' | i18n }}
+          md-chip(v-if="sale.oil > 0") {{ sale.oil | format }} {{ 'resource.oil' | i18n }}
+          md-chip.pink(v-if="sale.aether > 0") {{ sale.aether | format }} {{ 'resource.aether' | i18n }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -103,10 +103,10 @@
       filtered () {
         return this.sales.filter((sale) => {
           return sale.Relic
-            ? sale.Relic.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+            ? this.$t(sale.Relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
             : sale.Planet
               ? sale.Planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-              : sale.Ship.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+              : this.$t(sale.Ship.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       }
     }

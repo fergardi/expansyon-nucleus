@@ -4,11 +4,11 @@
     md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
-          .md-title {{ selected.name }}
+          .md-title {{ selected.name | i18n }}
         md-card-content
           span {{ selected.description }}
         md-card-content.center
-          md-chip.pink {{ selected.aether | format }} Aether
+          md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="join()") Join
@@ -17,7 +17,7 @@
 
       md-card.md-primary.card(v-bind:class="faction.class", md-with-hover, v-on:click.native="select(faction)")
         md-card-header
-          .md-title {{ faction.name }}
+          .md-title {{ faction.name | i18n }}
         md-card-media
           img(v-bind:src="faction.image")
         md-card-content.no-padding
@@ -33,7 +33,7 @@
         md-card-content
           span {{ faction.description }}
         md-card-content.center
-          md-chip.pink {{ faction.aether | format }} Aether
+          md-chip.pink {{ faction.aether | format }} {{ 'resource.aether' | i18n }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -85,7 +85,7 @@
       },
       filtered () {
         return this.factions.filter((faction) => {
-          return faction.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(faction.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       }
     }

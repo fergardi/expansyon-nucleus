@@ -85,7 +85,7 @@
       },
       filtered () {
         return this.tree.filter((branch) => {
-          return branch.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(branch.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       }
     }

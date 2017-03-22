@@ -5,16 +5,16 @@
       md-card.md-primary(v-bind:class="selected.class")
         form(v-on:submit.stop.prevent="build()")
           md-card-header
-            .md-title {{ selected.name }}
+            .md-title {{ selected.name | i18n }}
           md-card-content
             md-input-container
               md-icon add
               label Quantity
               md-input(type="number", v-model="quantity", min="1", required)
           md-card-content
-            md-chip {{ (selected.metal * quantity) | format }} Metal
-            md-chip {{ (selected.crystal * quantity) | format }} Crystal
-            md-chip {{ (selected.oil * quantity) | format }} Oil
+            md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
+            md-chip {{ (selected.crystal * quantity) | format }} {{ 'resource.crystal' | i18n }}
+            md-chip {{ (selected.oil * quantity) | format }} {{ 'resource.oil' | i18n }}
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
             md-button.md-dense.md-warn(v-on:click.native="clear()") Clear
@@ -23,7 +23,7 @@
     md-layout(v-for="tower in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="tower.class", md-with-hover, v-on:click.native="select(tower)")
         md-card-header
-          .md-title {{ tower.name }}
+          .md-title {{ tower.name | i18n }}
         md-card-media
           img(v-bind:src="tower.image")
         md-card-content.no-padding
@@ -33,9 +33,9 @@
         md-card-content
           span {{ tower.description }}
         md-card-content.center
-          md-chip {{ tower.metal | format }} Metal
-          md-chip {{ tower.crystal | format }} Crystal
-          md-chip {{ tower.oil | format }} Oil
+          md-chip {{ tower.metal | format }} {{ 'resource.metal' | i18n }}
+          md-chip {{ tower.crystal | format }} {{ 'resource.crystal' | i18n }}
+          md-chip {{ tower.oil | format }} {{ 'resource.oil' | i18n }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -101,7 +101,7 @@
       },
       filtered () {
         return this.towers.filter((tower) => {
-          return tower.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(tower.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {

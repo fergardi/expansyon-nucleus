@@ -38,7 +38,7 @@ Vue.use(VueSocketio, constants.socket)
 
 // i18n
 Vue.use(VueInternationalization)
-Vue.config.lang = 'en'
+Vue.config.lang = 'es'
 Object.keys(i18n).forEach(function (lang) {
   Vue.locale(lang, i18n[lang])
 })

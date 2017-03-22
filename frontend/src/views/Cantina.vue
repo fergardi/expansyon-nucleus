@@ -102,7 +102,7 @@
       },
       filtered () {
         return this.missions.filter((mission) => {
-          return mission.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(mission.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {

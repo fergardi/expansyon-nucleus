@@ -4,11 +4,11 @@
     md-dialog(ref='confirm')
       md-card.md-primary
         md-card-header
-          .md-title {{ selected.name }}
+          .md-title {{ selected.name | i18n }}
         md-card-content
           span {{ selected.description }}
         md-card-content.center
-          md-chip.pink {{ selected.aether | format }} Aether
+          md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") Buy
@@ -17,17 +17,17 @@
     
       md-card.md-primary.card(v-bind:class="relic.class", md-with-hover, v-on:click.native="select(relic)")
         md-card-header
-          .md-title {{ relic.name }}
+          .md-title {{ relic.name | i18n }}
         md-card-media
           img(v-bind:src="relic.image")
         md-card-content.center(v-if="relic.moon || relic.station || relic.planet")
-          md-chip(v-if="relic.moon") Moon
-          md-chip(v-if="relic.station") Station
-          md-chip(v-if="relic.planet") Planet
+          md-chip(v-if="relic.moon") {{ 'resource.moon' | i18n }}
+          md-chip(v-if="relic.station") {{ 'resource.station' | i18n }}
+          md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
         md-card-content
           span {{ relic.description }}
         md-card-content.center
-          md-chip.pink {{ relic.aether | format }} Aether
+          md-chip.pink {{ relic.aether | format }} {{ 'resource.aether' | i18n }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -79,7 +79,7 @@
       },
       filtered () {
         return this.relics.filter((relic) => {
-          return relic.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {

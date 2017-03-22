@@ -4,49 +4,49 @@
     md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-tabs(md-fixed)
 
-        md-tab.no-padding#login(md-label="Login")
+        md-tab.no-padding#login(v-bind:md-label="$t('tab.login')")
           form(v-on:submit.stop.prevent="login()")
             md-card.md-primary.card.no-padding
               md-card-content
                 md-input-container
                   md-icon mail
-                  label Email
+                  label {{ 'account.email' | i18n }}
                   md-input(type="email", v-model="credentials.email", required)
                 md-input-container(md-has-password)
                   md-icon lock
-                  label Password
+                  label {{ 'account.password' | i18n }}
                   md-input(type="password", v-model="credentials.password", minlength="6", required)
               md-card-actions
-                md-button.md-dense.md-warn(v-bind:disabled="logging") Forgot
-                md-button.md-dense.md-accent(type="submit", v-bind:disabled="logging") Connect
+                md-button.md-dense.md-warn(v-bind:disabled="logging") {{ 'button.forgot' | i18n }}
+                md-button.md-dense.md-accent(type="submit", v-bind:disabled="logging") {{ 'button.accept' | i18n }}
 
-        md-tab.no-padding#register(md-label="Register")
+        md-tab.no-padding#register(v-bind:md-label="$t('tab.register')")
           form(v-on:submit.stop.prevent="register()")
             md-card.md-primary.card.no-padding
               md-card-content
                 md-input-container(v-bind:class="{ 'md-input-invalid' : email }")
                   md-icon mail
-                  label Email
+                  label {{ 'account.email' | i18n }}
                   md-input(type="email", v-model.lazy="information.email", required)
-                  span.md-error Email already in use
+                  span.md-error {{ 'account.unique' | i18n }}
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !secure }")
                   md-icon lock_outline
-                  label Password
+                  label {{ 'account.password' | i18n }}
                   md-input(type="password", v-model="information.password", minlength="6", required)
-                  span.md-error Password insecure
+                  span.md-error {{ 'account.weak' | i18n }}
                 md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : !match }")
                   md-icon lock
-                  label Repeat password
+                  label {{ 'account.repeat' | i18n }}
                   md-input(type="password", v-model="information.repeat", minlength="6", required)
-                  span.md-error Passwords must match
+                  span.md-error {{ 'account.mismatch' | i18n }}
                 md-input-container(v-bind:class="{ 'md-input-invalid' : name }")
                   md-icon person
-                  label Name
+                  label {{ 'account.name' | i18n }}
                   md-input(type="text", v-model="information.name", minlength="6", required)
-                  span.md-error Name already in use
+                  span.md-error {{ 'account.repeated' | i18n }}
               md-card-actions
-                md-button.md-dense.md-warn(type="reset", v-bind:class="{ hidden: registering }") Clear
-                md-button.md-dense.md-accent(type="submit", v-bind:disabled="registering || email || name || !match || !secure") Register
+                md-button.md-dense.md-warn(type="reset", v-bind:class="{ hidden: registering }") {{ 'button.clear' | i18n }}
+                md-button.md-dense.md-accent(type="submit", v-bind:disabled="registering || email || name || !match || !secure") {{ 'button.accept' | i18n }}
 </template>
 
 <script>

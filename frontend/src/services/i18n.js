@@ -4,10 +4,37 @@ const translation = {
       spanish: 'Spanish',
       english: 'English'
     },
+    tab: {
+      login: 'Login',
+      register: 'Register',
+      players: 'Players',
+      friends: 'Friends',
+      enemies: 'Enemies',
+      guilds: 'Guilds',
+      guild: 'Guild',
+      received: 'Received',
+      sent: 'Sent',
+      create: 'Create'
+    },
+    button: {
+      forgot: 'Forgot',
+      accept: 'Accept',
+      cancel: 'Cancel',
+      close: 'Close',
+      clear: 'Clear'
+    },
     account: {
-      login: 'Enter',
-      logout: 'Leave',
-      register: 'Register'
+      login: 'Login',
+      logout: 'Logout',
+      register: 'Register',
+      email: 'Email',
+      unique: 'Email already in use',
+      password: 'Password',
+      weak: 'Insecure password',
+      repeat: 'Repeat password',
+      mismatch: 'Passwords must match',
+      name: 'Name',
+      repeated: 'Name already in use'
     },
     title: {
       universe: 'Universe',
@@ -44,7 +71,12 @@ const translation = {
       infrastructure: 'Infrastructure',
       defense: 'Defense',
       language: 'Language',
-      account: 'Account'
+      account: 'Account',
+      planets: 'Planets',
+      buildings: 'Buildings',
+      ships: 'Ships',
+      referendum: 'Referendum',
+      faction: 'Faction'
     },
     resource: {
       turns: 'Turns',
@@ -53,7 +85,11 @@ const translation = {
       oil: 'Oil',
       size: 'Size',
       energy: 'Energy',
-      influence: 'Influence'
+      influence: 'Influence',
+      planet: 'Planet',
+      moon: 'Moon',
+      station: 'Station',
+      aether: 'Aether'
     },
     ship: {
       fighter: 'Fighter',
@@ -75,6 +111,22 @@ const translation = {
       turret: 'Turret',
       railgun: 'Railgun',
       cannon: 'Cannon'
+    },
+    faction: {
+      scavenger: 'Scavenger',
+      sedi: 'Sedi',
+      jith: 'Jith',
+      merchant: 'Merchant',
+      scholar: 'Scholar',
+      warrior: 'Warrior'
+    },
+    relic: {
+      supernova: 'Supernova',
+      gravitron: 'Gravitron',
+      destroyer: 'Destroyer',
+      shipwreck: 'Shipwreck',
+      portal: 'Portal',
+      timeturner: 'Timeturner'
     }
   },
   es: {
@@ -82,10 +134,37 @@ const translation = {
       spanish: 'Español',
       english: 'Inglés'
     },
+    tab: {
+      login: 'Entrar',
+      register: 'Registro',
+      players: 'Jugadores',
+      friends: 'Amigos',
+      enemies: 'Enemigos',
+      guilds: 'Hermandades',
+      guild: 'Hermandad',
+      received: 'Recibidos',
+      sent: 'Enviados',
+      create: 'Crear'
+    },
+    button: {
+      forgot: 'Recordar',
+      accept: 'Aceptar',
+      cancel: 'Cancelar',
+      close: 'Cerrar',
+      clear: 'Limpiar'
+    },
     account: {
       login: 'Entrar',
       logout: 'Salir',
-      register: 'Registro'
+      register: 'Registro',
+      email: 'Email',
+      unique: 'Email ya en uso',
+      password: 'Contraseña',
+      weak: 'Contraseña débil',
+      repeat: 'Repetir contraseña',
+      mismatch: 'Las contraseñas no coinciden',
+      name: 'Nombre',
+      repeated: 'Nick ya en uso'
     },
     title: {
       universe: 'Universo',
@@ -122,7 +201,12 @@ const translation = {
       infrastructure: 'Infraestructura',
       defense: 'Defensa',
       language: 'Lenguage',
-      account: 'Cuenta'
+      account: 'Cuenta',
+      planets: 'Planetas',
+      buildings: 'Edificios',
+      ships: 'Naves',
+      referendum: 'Referendum',
+      faction: 'Facción'
     },
     resource: {
       turns: 'Turnos',
@@ -131,7 +215,11 @@ const translation = {
       oil: 'Combustible',
       size: 'Tamaño',
       energy: 'Energía',
-      influence: 'Influencia'
+      influence: 'Influencia',
+      planet: 'Planeta',
+      moon: 'Luna',
+      station: 'Estación',
+      aether: 'Éter'
     },
     ship: {
       fighter: 'Caza',
@@ -153,6 +241,22 @@ const translation = {
       turret: 'Torreta',
       railgun: 'Repetidor',
       cannon: 'Cañón'
+    },
+    faction: {
+      scavenger: 'Carroñero',
+      sedi: 'Sedi',
+      jith: 'Jith',
+      merchant: 'Mercader',
+      scholar: 'Escolar',
+      warrior: 'Guerrero'
+    },
+    relic: {
+      supernova: 'Supernova',
+      gravitron: 'Gravitron',
+      destroyer: 'Destructor',
+      shipwreck: 'Naufragio',
+      portal: 'Portal',
+      timeturner: 'Giratiempo'
     }
   }
 }

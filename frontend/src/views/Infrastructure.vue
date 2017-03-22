@@ -5,16 +5,16 @@
       md-card.md-primary(v-bind:class="selected.class")
         form(v-on:submit.stop.prevent="build()")
           md-card-header
-            .md-title {{ selected.name }}
+            .md-title {{ selected.name | i18n }}
           md-card-content
             md-input-container
               md-icon add
               label Quantity
               md-input(type="number", v-model="quantity", min="0", required)
           md-card-content.center
-            md-chip {{ (selected.metal * quantity) | format }} Metal
-            md-chip {{ (selected.crystal * quantity) | format }} Crystal
-            md-chip {{ (selected.oil * quantity) | format }} Oil
+            md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
+            md-chip {{ (selected.crystal * quantity) | format }} {{ 'resource.crystal' | i18n }}
+            md-chip {{ (selected.oil * quantity) | format }} {{ 'resource.oil' | i18n }}
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
             md-button.md-dense.md-warn(v-on:click.native="clear()") Clear
@@ -23,7 +23,7 @@
     md-layout(v-for="building in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="building.class", md-with-hover, v-on:click.native="select(building)")
         md-card-header
-          .md-title {{ building.name }}
+          .md-title {{ building.name | i18n }}
         md-card-media
           img(v-bind:src="building.image")
         md-card-content.no-padding
@@ -36,9 +36,9 @@
         md-card-content
           span {{ building.description }}
         md-card-content.center
-          md-chip {{ building.metal | format }} Metal
-          md-chip {{ building.crystal | format }} Crystal
-          md-chip {{ building.oil | format }} Oil
+          md-chip {{ building.metal | format }} {{ 'resource.metal' | i18n }}
+          md-chip {{ building.crystal | format }} {{ 'resource.crystal' | i18n }}
+          md-chip {{ building.oil | format }} {{ 'resource.oil' | i18n }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
@@ -103,7 +103,7 @@
       },
       filtered () {
         return this.buildings.filter((building) => {
-          return building.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(building.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {

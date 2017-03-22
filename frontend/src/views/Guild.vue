@@ -22,7 +22,7 @@
           md-button.md-dense.md-accent(v-on:click.native="apply()") Join
 
     md-tabs(md-fixed, v-on:change="clear")
-      md-tab#guilds.no-padding(md-label="Guilds")
+      md-tab#guilds.no-padding(v-bind:md-label="$t('tab.guilds')")
 
         md-table(md-sort="influence", v-on:sort="order")
           
@@ -46,7 +46,7 @@
             md-table-row(v-if="!ordered.length")
               md-table-cell No guilds to show.
 
-      md-tab#myguild.no-padding(md-label="My guild")
+      md-tab#myguild.no-padding(v-bind:md-label="$t('tab.guild')")
         md-list
           md-list-item
             .md-title {{ guild.name }}

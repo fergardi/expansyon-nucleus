@@ -130,7 +130,7 @@
         md-toolbar#right.md-account-header.center
           md-avatar.md-large
             img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
-          h2.md-title Home
+          h2.md-title {{ 'title.home' | i18n }}
       md-list.md-dense.scrollable
         md-subheader {{ 'subtitle.resources' | i18n }}
         md-list-item

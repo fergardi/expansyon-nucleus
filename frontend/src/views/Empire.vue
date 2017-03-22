@@ -4,7 +4,7 @@
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title Planets
+          .md-title {{ 'subtitle.planets' | i18n }}
         md-card-content.center.doughnut
           pie(v-bind:data="planets.data")
           span.total {{ planets.total }}
@@ -12,7 +12,7 @@
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title Buildings
+          .md-title {{ 'subtitle.buildings' | i18n }}
         md-card-content.center.doughnut
           pie(v-bind:data="buildings.data")
           span.total {{ buildings.total }}
@@ -20,7 +20,7 @@
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title Ships
+          .md-title {{ 'subtitle.ships' | i18n }}
         md-card-content.center.doughnut
           pie(v-bind:data="ships.data")
           span.total {{ ships.total }}
@@ -28,7 +28,7 @@
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title Resources
+          .md-title {{ 'subtitle.resources' | i18n }}
         md-card-content.no-padding.center
           md-progress.green(v-bind:md-progress="resources.metal")
           md-progress.green(v-bind:md-progress="resources.crystal")
@@ -40,7 +40,7 @@
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title {{ referendum.name }}
+          .md-title {{ referendum.name | i18n }}
         md-card-content.no-padding.center
           md-progress(v-bind:md-progress="referendum.metal", v-bind:class="referendum.metal >= 50 ? 'green' : 'red'")
           md-progress(v-bind:md-progress="referendum.crystal", v-bind:class="referendum.crystal >= 50 ? 'green' : 'red'")
@@ -55,7 +55,7 @@
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="faction.class", v-if="faction")
         md-card-header
-          .md-title {{ faction.name }}
+          .md-title {{ faction.name | i18n }}
         md-card-content.no-padding.center
           md-progress.green(v-bind:md-progress="faction.metal", v-if="faction.metal > 0")
           md-progress.green(v-bind:md-progress="faction.crystal", v-if="faction.crystal > 0")

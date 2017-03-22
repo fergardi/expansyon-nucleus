@@ -16,7 +16,7 @@
           md-button.md-dense.md-accent(v-on:click.native="friend()") Friend
 
     md-tabs(md-fixed, v-on:change="clear")
-      md-tab#players.no-padding(md-label="Players")
+      md-tab#players.no-padding(v-bind:md-label="$t('tab.players')")
 
         md-table(md-sort="influence", v-on:sort="order")
 
@@ -38,7 +38,7 @@
             md-table-row(v-if="!ordered.length")
               md-table-cell No players to show.
 
-      md-tab#friends.no-padding(md-label="Friends")
+      md-tab#friends.no-padding(v-bind:md-label="$t('tab.friends')")
         
         md-table(md-sort="influence", v-on:sort="order")
 
@@ -60,7 +60,7 @@
             md-table-row(v-if="!ordered.length")
               md-table-cell No players to show.
 
-      md-tab#enemies.no-padding(md-label="Enemies")
+      md-tab#enemies.no-padding(v-bind:md-label="$t('tab.enemies')")
         
         md-table(md-sort="influence", v-on:sort="order")
 

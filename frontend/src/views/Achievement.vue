@@ -6,7 +6,7 @@
         md-card-header
           .md-title {{ selected.name }}
         md-card-content
-          md-chip.pink {{ selected.aether | format }} Aether
+          md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") Close
 
@@ -21,7 +21,7 @@
         md-card-content
           span {{ achievement.description }}
         md-card-content
-          md-chip.pink {{ achievement.aether | format }} Aether
+          md-chip.pink {{ achievement.aether | format }} {{ 'resource.aether' | i18n }}
 </template>
 
 <script>
@@ -74,7 +74,7 @@
       },
       filtered () {
         return this.achievements.filter((achievement) => {
-          return achievement.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(achievement.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {

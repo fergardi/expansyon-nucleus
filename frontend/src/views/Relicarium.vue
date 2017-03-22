@@ -8,7 +8,7 @@
     md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
-          .md-title {{ selected.name }}
+          .md-title {{ selected.name | i18n }}
         md-card-content
           span {{ selected.description }}
         md-card-actions
@@ -19,13 +19,13 @@
 
       md-card.md-primary.card(v-bind:class="relic.class", md-with-hover, v-on:click.native="select(relic)")
         md-card-header
-          .md-title {{ relic.name }}
+          .md-title {{ relic.name | i18n }}
         md-card-media
           img(v-bind:src="relic.image")
         md-card-content.center(v-if="relic.moon || relic.station || relic.planet")
-          md-chip(v-if="relic.moon") Moon
-          md-chip(v-if="relic.station") Station
-          md-chip(v-if="relic.planet") Planet
+          md-chip(v-if="relic.moon") {{ 'resource.moon' | i18n }}
+          md-chip(v-if="relic.station") {{ 'resource.station' | i18n }}
+          md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
         md-card-content
           span {{ relic.description }}
 
@@ -97,7 +97,7 @@
       },
       filtered () {
         return this.relics.filter((relic) => {
-          return relic.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return this.$t(relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       }
     }

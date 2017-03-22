@@ -25,8 +25,8 @@
           md-progress(v-bind:md-progress="planet.energy")
           md-progress(v-bind:md-progress="planet.influence")
         md-card-content.center(v-if="planet.moon || planet.station")
-          md-chip(v-if="planet.moon") Moon
-          md-chip(v-if="planet.station") Station
+          md-chip(v-if="planet.moon") {{ 'resource.moon' | i18n }}
+          md-chip(v-if="planet.station") {{ 'resource.station' | i18n }}
         md-card-content
           span {{ planet.description }}
 

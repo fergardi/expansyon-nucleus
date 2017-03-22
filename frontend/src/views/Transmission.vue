@@ -16,7 +16,7 @@
           md-button.md-dense.md-accent(v-on:click.native="reply") Reply
 
     md-tabs(md-fixed)
-      md-tab#received.no-padding(md-label="Received")
+      md-tab#received.no-padding(v-bind:md-label="$t('tab.received')")
 
         md-table(md-sort="datetime", v-on:sort="order")
           md-table-header
@@ -37,7 +37,7 @@
             md-table-row(v-if="!receivedOrdered.length")
               md-table-cell No messages to show.
 
-      md-tab#sent.no-padding(md-label="Sent")
+      md-tab#sent.no-padding(v-bind:md-label="$t('tab.sent')")
 
         md-table(md-sort="datetime", v-on:sort="order")
           md-table-header
@@ -58,7 +58,7 @@
             md-table-row(v-if="!sentOrdered.length")
               md-table-cell No messages to show.
 
-      md-tab#new(md-label="New")
+      md-tab#new(v-bind:md-label="$t('tab.create')")
 
         form(v-on:submit.stop.prevent="send")
           md-input-container
