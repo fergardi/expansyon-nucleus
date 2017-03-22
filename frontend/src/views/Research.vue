@@ -11,7 +11,7 @@
           md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
           md-button.md-dense.md-accent(v-on:click.native="save()") Learn
 
-    md-layout(v-for="branch in tree", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(v-for="branch in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="branch.class")
         md-card-header
           .md-title {{ branch.name }}
@@ -26,6 +26,11 @@
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="reset(branch)") Reset
           md-button.md-dense.md-accent(v-on:click.native="select(branch)") Learn
+
+    md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
+      md-card.md-primary.card
+        md-card-header
+          .md-title No trees to show.
 </template>
 
 <script>
@@ -79,7 +84,7 @@
         return store.state.search
       },
       filtered () {
-        return this.trees.filter((branch) => {
+        return this.tree.filter((branch) => {
           return branch.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       }

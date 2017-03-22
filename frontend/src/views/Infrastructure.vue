@@ -39,6 +39,11 @@
           md-chip {{ building.metal | format }} Metal
           md-chip {{ building.crystal | format }} Crystal
           md-chip {{ building.oil | format }} Oil
+
+    md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
+      md-card.md-primary.card
+        md-card-header
+          .md-title No buildings to show.
 </template>
 
 <script>

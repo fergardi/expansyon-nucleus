@@ -10,10 +10,11 @@
         md-button.md-icon-button.toggler(v-on:click.native="left()")
           md-icon chevron_right
         h2.md-title {{ title | i18n }}
-        md-input-container.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
-          md-input(type="search", placeholder="Search...", v-model="search")
-          span.md-error Results are being filtered
+        md-input-container.search.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-icon search
+          md-input(type="text", placeholder="Search...", v-model="search")
+          md-button.md-icon-button.md-dense(v-on:click.native="clear()")
+            md-icon clear
         md-button.md-icon-button.toggler(v-on:click.native="right()")
           md-icon chevron_left
 
@@ -457,6 +458,13 @@
   /* chrome autofill */
   .md-input-container .md-icon:after
     background inherit !important
+
+  /* search */
+  .search
+    margin 0
+    padding 0
+    min-height 0
+    margin-left 10px !important
   
   /* OPACITY */
   #toolbar

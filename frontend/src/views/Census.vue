@@ -35,6 +35,9 @@
               md-table-cell(md-numeric)
                 md-chip {{ player.planets }}
 
+            md-table-row(v-if="!ordered.length")
+              md-table-cell No players to show.
+
       md-tab#friends.no-padding(md-label="Friends")
         
         md-table(md-sort="influence", v-on:sort="order")
@@ -54,6 +57,9 @@
               md-table-cell(md-numeric)
                 md-chip {{ player.planets }}
 
+            md-table-row(v-if="!ordered.length")
+              md-table-cell No players to show.
+
       md-tab#enemies.no-padding(md-label="Enemies")
         
         md-table(md-sort="influence", v-on:sort="order")
@@ -71,7 +77,10 @@
               md-table-cell(md-numeric)
                 md-chip {{ player.influence }}
               md-table-cell(md-numeric)
-                md-chip {{ player.planets }}       
+                md-chip {{ player.planets }} 
+
+            md-table-row(v-if="!ordered.length")
+              md-table-cell No players to show.
 </template>
 
 <script>

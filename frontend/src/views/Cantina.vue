@@ -36,6 +36,11 @@
           md-progress(v-bind:md-progress="mission.speed")
         md-card-content
           span {{ mission.description | lorem }}
+
+    md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
+      md-card.md-primary.card
+        md-card-header
+          .md-title No missions to show.
 </template>
 
 <script>

@@ -35,7 +35,7 @@
               md-table-cell.md-numeric {{ message.datetime | date }}
 
             md-table-row(v-if="!receivedOrdered.length")
-              md-table-cell You have no messages.
+              md-table-cell No messages to show.
 
       md-tab#sent.no-padding(md-label="Sent")
 
@@ -56,7 +56,7 @@
               md-table-cell.md-numeric {{ message.datetime | date }}
 
             md-table-row(v-if="!sentOrdered.length")
-              md-table-cell You have no messages.
+              md-table-cell No messages to show.
 
       md-tab#new(md-label="New")
 

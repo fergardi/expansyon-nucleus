@@ -10,6 +10,10 @@
             span {{ section.content | lorem }}
           md-card-media
             img(v-for="image in section.images", v-bind:src="image.url")
+
+        template(v-if="!filtered.length")
+          md-card-header
+            .md-title No help to show.
 </template>
 
 <script>
@@ -183,8 +187,4 @@
 </script>
 
 <style lang="stylus" scoped>
-  .md-card
-    .md-card-header
-      .md-title
-        text-align left !important
 </style>
