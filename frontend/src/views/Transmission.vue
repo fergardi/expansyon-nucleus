@@ -109,7 +109,7 @@
       })
     },
     mounted () {
-      store.commit('title', 'Transmission')
+      store.commit('title', 'title.transmission')
     },
     methods: {
       select (message) {

@@ -195,7 +195,7 @@
       })
     },
     mounted () {
-      store.commit('title', 'Empire')
+      store.commit('title', 'title.empire')
     }
   }
 </script>

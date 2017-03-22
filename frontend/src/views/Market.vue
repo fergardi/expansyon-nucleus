@@ -75,7 +75,7 @@
       })
     },
     mounted () {
-      store.commit('title', 'Market')
+      store.commit('title', 'title.market')
     },
     methods: {
       info () {

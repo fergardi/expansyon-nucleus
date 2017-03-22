@@ -62,7 +62,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Hangar')
+      store.commit('title', 'title.hangar')
     },
     sockets: {
       hangar () {

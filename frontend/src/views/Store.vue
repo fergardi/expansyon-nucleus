@@ -55,7 +55,7 @@
       })
     },
     mounted () {
-      store.commit('title', 'Store')
+      store.commit('title', 'title.store')
     },
     methods: {
       confirm () {

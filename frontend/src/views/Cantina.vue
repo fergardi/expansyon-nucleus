@@ -61,7 +61,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Cantina')
+      store.commit('title', 'title.cantina')
     },
     sockets: {
       cantina () {

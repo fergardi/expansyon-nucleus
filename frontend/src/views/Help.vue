@@ -171,7 +171,7 @@
       }
     },
     mounted () {
-      store.commit('title', 'Help')
+      store.commit('title', 'title.help')
     },
     computed: {
       search () {

@@ -90,7 +90,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Guild')
+      store.commit('title', 'title.guild')
     },
     sockets: {
       guild () {

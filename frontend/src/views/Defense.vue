@@ -62,7 +62,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Infrastructure')
+      store.commit('title', 'title.defense')
     },
     sockets: {
       defense () {

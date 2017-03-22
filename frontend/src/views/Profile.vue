@@ -52,7 +52,7 @@
       }
     },
     mounted () {
-      store.commit('title', 'Profile')
+      store.commit('title', 'title.profile')
     },
     methods: {
       confirm () {

@@ -54,7 +54,7 @@
       }]
     },
     mounted () {
-      store.commit('title', 'Achievement')
+      store.commit('title', 'title.achievement')
     },
     methods: {
       info () {

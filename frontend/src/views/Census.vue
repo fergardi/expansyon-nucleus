@@ -103,7 +103,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Census')
+      store.commit('title', 'title.census')
     },
     sockets: {
       census () {

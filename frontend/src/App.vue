@@ -12,7 +12,7 @@
         h2.md-title {{ title | i18n }}
         md-input-container.search.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-icon search
-          md-input(type="text", placeholder="Search...", v-model="search")
+          md-input(type="text", placeholder="...", v-model="search")
           md-button.md-icon-button.md-dense(v-on:click.native="clear()")
             md-icon clear
         md-button.md-icon-button.toggler(v-on:click.native="right()")
@@ -23,126 +23,107 @@
         md-toolbar#left.md-account-header.center
           md-avatar.md-large
             img(src="https://image.flaticon.com/icons/svg/190/190279.svg")
-          h2.md-title Universe
+          h2.md-title {{ 'title.universe' | i18n }}
       md-list.md-dense.scrollcable
-        md-subheader Economy
+        md-subheader {{ 'subtitle.economy' | i18n }}
         md-list-item
           router-link(exact, to="/empire", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary equalizer
-            span Empire
+            span {{ 'title.empire' | i18n }}
         md-list-item
           router-link(exact, to="/planetarium", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary language
-            span Planetarium
+            span {{ 'title.planetarium' | i18n }}
             md-chip {{ player.planetarium | format }}
         md-list-item
           router-link(exact, to="/market", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary shopping_basket
-            span Market
+            span {{ 'title.market' | i18n }}
             md-chip {{ player.market | format }}
         md-list-item
           router-link(exact, to="/store", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary store
-            span Store
+            span {{ 'title.store' | i18n }}
             md-chip {{ player.store | format }}
-        md-subheader Strategy
+        md-subheader {{ 'subtitle.strategy' | i18n }}
         md-list-item
           router-link(exact, to="/exploration", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary search
-            span Exploration
+            span {{ 'title.exploration' | i18n }}
             md-chip {{ player.exploration | format }}
         md-list-item
           router-link(exact, to="/cantina", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary local_bar
-            span Cantina
+            span {{ 'title.cantina' | i18n }}
             md-chip {{ player.cantina | format }}
         md-list-item
           router-link(exact, to="/relicarium", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary all_inclusive
-            span Relicarium
+            span {{ 'title.relicarium' | i18n }}
             md-chip {{ player.relicarium | format }}
         md-list-item
           router-link(exact, to="/temple", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary account_balance
-            span Temple
+            span {{ 'title.temple' | i18n }}
             md-chip {{ player.temple | format }}
-        md-subheader Technology
+        md-subheader {{ 'subtitle.technology' | i18n }}
         md-list-item
           router-link(exact, to="/research", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary school
-            span Research
+            span {{ 'title.research' | i18n }}
             md-chip {{ player.research | format }}
         md-list-item
           router-link(exact, to="/hangar", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary build
-            span Hangar
+            span {{ 'title.hangar' | i18n }}
             md-chip {{ player.hangar | format }}
         md-list-item
           router-link(exact, to="/infrastructure", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary settings
-            span Infrastructure
+            span {{ 'title.infrastructure' | i18n }}
             md-chip {{ player.infrastructure | format }}
         md-list-item
           router-link(exact, to="/defense", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary track_changes
-            span Defense
+            span {{ 'title.defense' | i18n }}
             md-chip {{ player.defense | format }}
-        md-subheader Diplomacy
+        md-subheader {{ 'subtitle.diplomacy' | i18n }}
         md-list-item
           router-link(exact, to="/senate", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary gavel
-            span Senate
+            span {{ 'title.senate' | i18n }}
             md-chip {{ player.senate | format }}
         md-list-item
           router-link(exact, to="/census", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary group
-            span Census
+            span {{ 'title.census' | i18n }}
             md-chip {{ player.census | format }}
         md-list-item
           router-link(exact, to="/guild", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary security
-            span Guild
+            span {{ 'title.guild' | i18n }}
             md-chip {{ player.guild | format }}
         md-list-item
           router-link(exact, to="/transmission", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary wifi
-            span Transmission
+            span {{ 'title.transmission' | i18n }}
             md-chip {{ player.transmission | format }}
-        md-subheader Language
-        md-list-item(v-on:click.native="localize('es')")
-          md-avatar
-            md-icon.md-primary translate
-          span {{ 'language.spanish' | i18n }}
-        md-list-item(v-on:click.native="localize('en')")
-          md-avatar
-            md-icon.md-primary translate
-          span {{ 'language.english' | i18n }}
-        md-subheader Other
-        md-list-item
-          router-link(exact, to="/help", v-on:click.native="collapse()")
-            md-avatar
-              md-icon.md-primary chrome_reader_mode
-            span Help
-        md-list-item(v-on:click.native="logout()")
-          md-avatar
-            md-icon.md-primary lock
-          span Disconnect
 
     md-sidenav.md-right.md-fixed(ref="right", v-if="!fullscreen")
       md-whiteframe
@@ -151,120 +132,139 @@
             img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
           h2.md-title Home
       md-list.md-dense.scrollable
-        md-subheader Resources
+        md-subheader {{ 'subtitle.resources' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary hourglass_full
-          span Turns
+          span {{ 'resource.turns' | i18n }}
           md-chip {{ player.turns | format }}
         md-list-item
           md-avatar
             md-icon.md-primary apps
-          span Metal
+          span {{ 'resource.metal' | i18n }}
           md-chip {{ player.metal | format }}
         md-list-item
           md-avatar
             md-icon.md-primary texture
-          span Crystal
+          span {{ 'resource.crystal' | i18n }}
           md-chip {{ player.crystal | format }}
         md-list-item
           md-avatar
             md-icon.md-primary opacity
-          span Oil
+          span {{ 'resource.oil' | i18n }}
           md-chip {{ player.oil | format }}
         md-list-item
           md-avatar
             md-icon.md-primary home
-          span Size
+          span {{ 'resource.size' | i18n }}
           md-chip {{ player.size | format }}
         md-list-item
           md-avatar
             md-icon.md-primary flash_on
-          span Energy
+          span {{ 'resource.energy' | i18n }}
           md-chip {{ player.energy | format }}
         md-list-item
           md-avatar
             md-icon.md-primary star
-          span Influence
+          span {{ 'resource.influence' | i18n }}
           md-chip {{ player.influence | format }}
-        md-subheader Hangar
+        md-subheader {{ 'subtitle.hangar' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary send
-          span Fighter
+          span {{ 'ship.fighter' | i18n }}
           md-chip {{ player.fighter | format }}
         md-list-item
           md-avatar
             md-icon.md-primary toys
-          span Cruiser
+          span {{ 'ship.cruiser' | i18n }}
           md-chip {{ player.cruiser | format }}
         md-list-item
           md-avatar
             md-icon.md-primary bubble_chart
-          span Bomber
+          span {{ 'ship.bomber' | i18n }}
           md-chip {{ player.bomber | format }}
         md-list-item
           md-avatar
             md-icon.md-primary camera
-          span Orbiter
+          span {{ 'ship.orbiter' | i18n }}
           md-chip {{ player.orbiter | format }}
         md-list-item
           md-avatar
             md-icon.md-primary storage
-          span Carrier
+          span {{ 'ship.carrier' | i18n }}
           md-chip {{ player.carrier | format }}
         md-list-item
           md-avatar
             md-icon.md-primary cached
-          span Recycler
+          span {{ 'ship.recycler' | i18n }}
           md-chip {{ player.recycler | format }}
-        md-subheader Infrastructure
+        md-subheader {{ 'subtitle.infrastructure' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary send
-          span Furnace
+          span {{ 'building.furnace' | i18n }}
           md-chip {{ player.furnace | format }}
         md-list-item
           md-avatar
             md-icon.md-primary toys
-          span Factory
+          span {{ 'building.factory' | i18n }}
           md-chip {{ player.factory | format }}
         md-list-item
           md-avatar
             md-icon.md-primary bubble_chart
-          span Refinery
+          span {{ 'building.refinery' | i18n }}
           md-chip {{ player.refinery | format }}
         md-list-item
           md-avatar
             md-icon.md-primary camera
-          span Plant
+          span {{ 'building.plant' | i18n }}
           md-chip {{ player.plant | format }}
         md-list-item
           md-avatar
             md-icon.md-primary storage
-          span Barrier
+          span {{ 'building.barrier' | i18n }}
           md-chip {{ player.barrier | format }}
         md-list-item
           md-avatar
             md-icon.md-primary cached
-          span Warehouse
+          span {{ 'building.warehouse' | i18n }}
           md-chip {{ player.warehouse | format }}
-        md-subheader Defense
+        md-subheader {{ 'subtitle.defense' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary send
-          span Turret
+          span {{ 'tower.turret' | i18n }}
           md-chip {{ player.turret | format }}
         md-list-item
           md-avatar
             md-icon.md-primary toys
-          span Railgun
+          span {{ 'tower.railgun' | i18n }}
           md-chip {{ player.railgun | format }}
         md-list-item
           md-avatar
             md-icon.md-primary bubble_chart
-          span Cannon
+          span {{ 'tower.cannon' | i18n }}
           md-chip {{ player.cannon | format }}
+        md-subheader {{ 'subtitle.language' | i18n }}
+        md-list-item(v-on:click.native="localize('es')")
+          md-avatar
+            md-icon.md-primary translate
+          span {{ 'language.spanish' | i18n }}
+        md-list-item(v-on:click.native="localize('en')")
+          md-avatar
+            md-icon.md-primary translate
+          span {{ 'language.english' | i18n }}
+        md-subheader {{ 'subtitle.account' | i18n }}
+        md-list-item
+          router-link(exact, to="/help", v-on:click.native="collapse()")
+            md-avatar
+              md-icon.md-primary chrome_reader_mode
+            span {{ 'title.help' | i18n }}
+        md-list-item(v-on:click.native="logout()")
+          md-avatar
+            md-icon.md-primary lock
+          span {{ 'account.logout' | i18n }}
 
     .main.padding#main
       router-view.content.animation.fadeIn.scrollable

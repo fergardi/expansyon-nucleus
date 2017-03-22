@@ -37,7 +37,7 @@
 
   export default {
     mounted () {
-      store.commit('title', 'Splash')
+      store.commit('title', 'title.splash')
       store.commit('enablefullscreen')
     },
     destroyed () {

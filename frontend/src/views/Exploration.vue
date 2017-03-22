@@ -67,7 +67,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Exploration')
+      store.commit('title', 'title.exploration')
     },
     sockets: {
       exploration () {

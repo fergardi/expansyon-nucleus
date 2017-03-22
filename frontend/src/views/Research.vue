@@ -45,7 +45,7 @@
       }
     },
     mounted () {
-      store.commit('title', 'Research')
+      store.commit('title', 'title.research')
     },
     created () {
       for (let i = 0; i < 3; i++) {

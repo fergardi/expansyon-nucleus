@@ -54,7 +54,7 @@
       })
     },
     mounted () {
-      store.commit('title', 'Relicarium')
+      store.commit('title', 'title.relicarium')
     },
     methods: {
       confirm () {

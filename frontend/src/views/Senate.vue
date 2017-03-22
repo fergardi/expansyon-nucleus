@@ -57,7 +57,7 @@
       this.refresh()
     },
     mounted () {
-      store.commit('title', 'Senate')
+      store.commit('title', 'title.senate')
     },
     sockets: {
       senate () {
