@@ -202,48 +202,48 @@
         md-subheader {{ 'subtitle.infrastructure' | i18n }}
         md-list-item
           md-avatar
-            md-icon.md-primary send
+            md-icon.md-primary apps
           span {{ 'building.furnace' | i18n }}
           md-chip {{ player.furnace | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary toys
+            md-icon.md-primary texture
           span {{ 'building.factory' | i18n }}
           md-chip {{ player.factory | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary bubble_chart
+            md-icon.md-primary opacity
           span {{ 'building.refinery' | i18n }}
           md-chip {{ player.refinery | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary camera
+            md-icon.md-primary flash_on
           span {{ 'building.plant' | i18n }}
           md-chip {{ player.plant | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary storage
+            md-icon.md-primary verified_user
           span {{ 'building.barrier' | i18n }}
           md-chip {{ player.barrier | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary cached
+            md-icon.md-primary dashboard
           span {{ 'building.warehouse' | i18n }}
           md-chip {{ player.warehouse | format }}
         md-subheader {{ 'subtitle.defense' | i18n }}
         md-list-item
           md-avatar
-            md-icon.md-primary send
+            md-icon.md-primary gps_off
           span {{ 'tower.turret' | i18n }}
           md-chip {{ player.turret | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary toys
+            md-icon.md-primary gps_not_fixed
           span {{ 'tower.railgun' | i18n }}
           md-chip {{ player.railgun | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary bubble_chart
+            md-icon.md-primary gps_fixed
           span {{ 'tower.cannon' | i18n }}
           md-chip {{ player.cannon | format }}
         md-subheader {{ 'subtitle.language' | i18n }}
