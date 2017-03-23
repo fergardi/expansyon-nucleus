@@ -483,6 +483,10 @@
   .md-list
     background-color inherit !important
 
+  .md-dialog
+    max-width 90%
+    max-height 90%
+
   /* CARDS */
   .md-layout
     // align-items flex-start

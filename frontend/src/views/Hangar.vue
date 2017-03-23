@@ -71,7 +71,7 @@
     },
     methods: {
       refresh () {
-        api.getPlayer(store.state.player.id)
+        api.getPlayer(store.state.account.id)
         .then((player) => {
           this.ships = player.Ships
         })

@@ -4,7 +4,7 @@
     md-dialog(ref='confirm')
       md-card.md-primary
         md-card-header
-          .md-title {{ selected.name }}
+          .md-title {{ selected.name | i18n }}
         md-card-content
           span {{ selected.description }}
         md-card-content.center
@@ -16,7 +16,7 @@
     md-layout(v-for="referendum in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="referendum.class", md-with-hover, v-on:click.native="select(referendum)")
         md-card-header
-          .md-title {{ referendum.name }}
+          .md-title {{ referendum.name | i18n }}
         md-card-media
           img(v-bind:src="referendum.image")
         md-card-content.no-padding
