@@ -3,20 +3,24 @@
 
     md-layout(md-flex-xlarge="33", md-flex-large="50", md-flex-medium="66", md-flex-small="100", md-flex-xsmall="100")
 
+      span.flex.center.title Expansyon
+
       md-tabs(md-fixed)
 
         md-tab.no-padding#login(v-bind:md-label="$t('tab.login')")
           form(v-on:submit.stop.prevent="login()")
             md-card.md-primary.card.no-padding
               md-card-content
-                md-input-container
+                md-input-container(v-bind:class="{ 'md-input-invalid' : error }")
                   md-icon mail
                   label {{ 'account.email' | i18n }}
                   md-input(type="email", v-model="credentials.email", required)
-                md-input-container(md-has-password)
+                  span.md-error {{ 'account.error' | i18n }}
+                md-input-container(md-has-password, v-bind:class="{ 'md-input-invalid' : error }")
                   md-icon lock
                   label {{ 'account.password' | i18n }}
                   md-input(type="password", v-model="credentials.password", minlength="6", required)
+                  span.md-error {{ 'account.error' | i18n }}
               md-card-actions
                 md-button.md-dense.md-warn(v-bind:disabled="logging") {{ 'button.forgot' | i18n }}
                 md-button.md-dense.md-accent(type="submit", v-bind:disabled="logging") {{ 'button.accept' | i18n }}
@@ -71,7 +75,8 @@
         email: false,
         name: false,
         logging: false,
-        registering: false
+        registering: false,
+        error: false
       }
     },
     mounted () {
@@ -80,6 +85,7 @@
     },
     methods: {
       login () {
+        this.error = false
         this.logging = true
         auth.login(this.credentials)
         .then((response) => {
@@ -91,6 +97,10 @@
               this.$router.push('/planetarium') // TODO development route
             })
           }
+        })
+        .catch(() => {
+          this.logging = false
+          this.error = true
         })
       },
       register () {
@@ -138,6 +148,10 @@
 </script>
 
 <style lang="stylus" scoped>
+  .title
+    font-size 3em
+    color rgba(255,255,255,0.87)
+    text-shadow 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1)
   // remove autofill color
   @-webkit-keyframes autofill {
     to {
@@ -151,7 +165,7 @@
   }
   .login
     display flex
-    align-items center
+    align-items space-between
     justify-content center
   .spin
     animation spin 1s infinite linear
