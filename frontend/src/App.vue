@@ -12,7 +12,9 @@
         h2.md-title {{ title | i18n }}
         md-input-container.search.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-icon search
-          md-input(type="text", placeholder="...", v-model="search")
+          label {{ 'filter.search' | i18n }}
+          md-input(type="text", v-model="search")
+          span.md-error {{ 'filter.filtered' | i18n }}
           md-button.md-icon-button.md-dense(v-on:click.native="clear()")
             md-icon clear
         md-button.md-icon-button.toggler(v-on:click.native="right()")
@@ -368,6 +370,7 @@
     background-size cover
     box-sizing border-box
     user-select none !important
+    font-family 'Orbitron', sans-serif
   html
   body
   .app
@@ -461,14 +464,10 @@
 
   /* search */
   .search
-    margin 0
-    padding 0
-    min-height 0
     margin-left 10px !important
   
   /* OPACITY */
   #toolbar
-  .md-sidenav-content
   .md-card
   .md-table-card
     opacity 0.90
@@ -639,6 +638,7 @@
       .toggler
         display none
       .md-sidenav-content
+        opacity 0.90
         top 0
         pointer-events auto
         transform translate3d(0, 0, 0) !important

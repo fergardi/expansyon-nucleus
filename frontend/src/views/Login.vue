@@ -1,7 +1,8 @@
 <template lang="pug">
   md-layout.login.padding
 
-    md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="33", md-flex-large="50", md-flex-medium="66", md-flex-small="100", md-flex-xsmall="100")
+
       md-tabs(md-fixed)
 
         md-tab.no-padding#login(v-bind:md-label="$t('tab.login')")
@@ -136,7 +137,7 @@
   // remove autofill color
   @-webkit-keyframes autofill {
     to {
-      color white
+      color yellow
       background transparent
     }
   }

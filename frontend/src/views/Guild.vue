@@ -44,7 +44,7 @@
                 md-chip {{ guild.members }}
 
             md-table-row(v-if="!ordered.length")
-              md-table-cell No guilds to show.
+              md-table-cell {{ 'filter.nothing' | i18n }}
 
       md-tab#myguild.no-padding(v-bind:md-label="$t('tab.guild')")
         md-list

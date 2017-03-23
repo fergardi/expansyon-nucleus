@@ -4,6 +4,11 @@ const translation = {
       spanish: 'Spanish',
       english: 'English'
     },
+    filter: {
+      search: 'Search...',
+      filtered: 'Filtered results',
+      nothing: 'Nothing found'
+    },
     tab: {
       login: 'Login',
       register: 'Register',
@@ -136,6 +141,11 @@ const translation = {
     language: {
       spanish: 'Español',
       english: 'Inglés'
+    },
+    filter: {
+      search: 'Buscar...',
+      filtered: 'Resultados filtrados',
+      nothing: 'No se ha encontrado nada'
     },
     tab: {
       login: 'Entrar',

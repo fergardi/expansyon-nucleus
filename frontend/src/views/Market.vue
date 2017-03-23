@@ -5,7 +5,7 @@
       md-card.md-primary(v-bind:class="item(selected).class")
         md-card-header
           .md-title
-            span {{ item(selected).name }}
+            span {{ item(selected).name | i18n }}
             span(v-if="selected.quantity > 0")  ({{ selected.quantity | format }})
         md-card-content
           span {{ item(selected).description }}
@@ -23,7 +23,7 @@
       md-card.md-primary.card(v-bind:class="item(sale).class", md-with-hover, v-on:click.native="select(sale)")
         md-card-header
           .md-title
-            span {{ item(sale).name }}
+            span {{ item(sale).name | i18n }}
             span(v-if="sale.quantity > 0")  ({{ sale.quantity | format }})
         md-card-media
           img(v-bind:src="item(sale).image")
@@ -54,7 +54,7 @@
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title No sales to show.
+          .md-title {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>

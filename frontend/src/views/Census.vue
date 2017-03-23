@@ -36,7 +36,7 @@
                 md-chip {{ player.planets }}
 
             md-table-row(v-if="!ordered.length")
-              md-table-cell No players to show.
+              md-table-cell {{ 'filter.nothing' | i18n }}
 
       md-tab#friends.no-padding(v-bind:md-label="$t('tab.friends')")
         
@@ -58,7 +58,7 @@
                 md-chip {{ player.planets }}
 
             md-table-row(v-if="!ordered.length")
-              md-table-cell No players to show.
+              md-table-cell {{ 'filter.nothing' | i18n }}
 
       md-tab#enemies.no-padding(v-bind:md-label="$t('tab.enemies')")
         
@@ -80,7 +80,7 @@
                 md-chip {{ player.planets }} 
 
             md-table-row(v-if="!ordered.length")
-              md-table-cell No players to show.
+              md-table-cell {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>

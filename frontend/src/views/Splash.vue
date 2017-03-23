@@ -1,35 +1,9 @@
 <template lang="pug">
-  md-layout.splash
+  md-layout.splash.padding
 
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="100", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="33", md-flex-large="50", md-flex-medium="66", md-flex-small="100", md-flex-xsmall="100")
 
-      md-card.md-primary.card(md-with-hover)
-        md-card-header
-          .md-title Empire Development
-        md-card-media
-          md-image.pulse(md-src="https://image.flaticon.com/icons/svg/224/224474.svg")
-        md-card-content.center
-          p {{ '' | lorem }}
-
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="100", md-flex-xsmall="100")
-
-      md-card.md-primary.card(md-with-hover)
-        md-card-header
-          .md-title Space Exploration
-        md-card-media
-          md-image.tossing(md-src="https://image.flaticon.com/icons/svg/124/124558.svg")
-        md-card-content.center
-          p {{ '' | lorem }}
-
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="100", md-flex-xsmall="100")
-
-      md-card.md-primary.card(md-with-hover)
-        md-card-header
-          .md-title Ship Battles
-        md-card-media
-          md-image.floating(md-src="https://image.flaticon.com/icons/svg/124/124571.svg")
-        md-card-content.center
-          p {{ '' | lorem }}
+      h2.flex.center.title EXPANSYON
 </template>
 
 <script>
@@ -47,11 +21,9 @@
 </script>
 
 <style lang="stylus" scoped>
-  .splash
-    display flex
-    align-items center
-    justify-content center
-  .image
-    width 100%
-    height auto
+  .title
+    margin-bottom 50px
+    font-size 3em
+    color black
+    text-shadow 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1)
 </style>

@@ -13,7 +13,7 @@
 
         template(v-if="!filtered.length")
           md-card-header
-            .md-title No help to show.
+            .md-title {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>
