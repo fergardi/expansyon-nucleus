@@ -370,7 +370,7 @@
     background-size cover
     box-sizing border-box
     user-select none !important
-    font-family 'Orbitron', sans-serif
+    // font-family 'Orbitron', sans-serif
   html
   body
   .app
