@@ -83,12 +83,8 @@
         auth.login(this.credentials)
         .then((response) => {
           if (store.state.account.logged) {
-            api.getPlayer(store.state.account.id)
-            .then((player) => {
-              this.logging = false
-              store.commit('player', player)
-              this.$router.push('/planetarium') // TODO development route
-            })
+            this.logging = false
+            this.$router.push('/planetarium') // TODO development route
           }
         })
       },

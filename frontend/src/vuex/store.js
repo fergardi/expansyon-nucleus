@@ -10,7 +10,6 @@ const store = new Vuex.Store({
     search: '',
     account: {
       logged: false,
-      token: null,
       id: 0
     },
     player: {}
@@ -23,22 +22,20 @@ const store = new Vuex.Store({
       state.fullscreen = false
     },
     title (state, string) {
-      state.title = string || 'Expansyon'
+      state.title = string
     },
     search (state, string) {
-      state.search = string || ''
+      state.search = string
     },
     clear (state) {
       state.search = ''
     },
-    login (state, info) {
+    login (state, id) {
       state.account.logged = true
-      state.account.token = info.token
-      state.account.id = info.id
+      state.account.id = id
     },
     logout (state) {
       state.account.logged = false
-      state.account.token = null
       state.account.id = 0
     },
     player (state, player) {

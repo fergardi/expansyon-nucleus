@@ -127,6 +127,9 @@ const translation = {
       shipwreck: 'Shipwreck',
       portal: 'Portal',
       timeturner: 'Timeturner'
+    },
+    referendum: {
+      law: 'Referendum'
     }
   },
   es: {
@@ -257,6 +260,9 @@ const translation = {
       shipwreck: 'Naufragio',
       portal: 'Portal',
       timeturner: 'Giratiempo'
+    },
+    referendum: {
+      law: 'Referendum'
     }
   }
 }
