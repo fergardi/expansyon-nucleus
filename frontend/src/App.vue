@@ -370,7 +370,7 @@
     background-size cover
     box-sizing border-box
     user-select none !important
-    // font-family 'Orbitron', sans-serif
+    font-family 'Raleway', sans-serif !important
   html
   body
   .app
@@ -498,7 +498,7 @@
         margin 0 !important
         font-size 18px
         text-align center
-        font-weight bold
+        // font-weight bold
     .md-card-content
       color white
       .md-progress

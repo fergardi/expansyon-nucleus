@@ -265,7 +265,7 @@ const translation = {
     },
     relic: {
       supernova: 'Supernova',
-      gravitron: 'Gravitron',
+      gravitron: 'Gravitrón',
       destroyer: 'Destructor',
       shipwreck: 'Naufragio',
       portal: 'Portal',
