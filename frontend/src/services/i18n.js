@@ -155,8 +155,8 @@ const translation = {
       enemies: 'Enemigos',
       guilds: 'Hermandades',
       guild: 'Hermandad',
-      received: 'Recibidos',
-      sent: 'Enviados',
+      received: 'Recibidas',
+      sent: 'Enviadas',
       create: 'Crear'
     },
     button: {

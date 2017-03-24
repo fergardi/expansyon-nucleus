@@ -23,7 +23,7 @@
     md-layout(v-for="tower in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="tower.class", md-with-hover, v-on:click.native="select(tower)")
         md-card-header
-          .md-title {{ tower.name | i18n }}
+          .md-title {{ tower.name | i18n }} ({{ tower.PlayerTower.quantity | format }})
         md-card-media
           img(v-bind:src="tower.image")
         md-card-content.no-padding
@@ -72,9 +72,9 @@
     },
     methods: {
       refresh () {
-        api.getTowers()
-        .then((towers) => {
-          this.towers = towers
+        api.getPlayer(store.state.account.id)
+        .then((player) => {
+          this.towers = player.Towers
         })
       },
       form () {

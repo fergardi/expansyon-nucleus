@@ -23,7 +23,7 @@
     md-layout(v-for="building in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="building.class", md-with-hover, v-on:click.native="select(building)")
         md-card-header
-          .md-title {{ building.name | i18n }}
+          .md-title {{ building.name | i18n }} ({{ building.PlayerBuilding.quantity | format }})
         md-card-media
           img(v-bind:src="building.image")
         md-card-content.no-padding

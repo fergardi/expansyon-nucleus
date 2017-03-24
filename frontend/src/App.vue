@@ -269,7 +269,7 @@
           span {{ 'account.logout' | i18n }}
 
     .main.padding#main
-      router-view.content.animation.fadeIn.scrollable
+      router-view.content.animation.fadeIn.slower.scrollable
 </template>
 
 <script>
@@ -467,17 +467,18 @@
     margin-left 10px !important
   
   /* OPACITY */
+  percent = 0.85
   #toolbar
   .md-card
   .md-table-card
-    opacity 0.90
+    opacity 0.85
   .md-table-card.md-card
   .md-menu-content > .md-list
-    background-color rgba(255,255,255,0.90) !important
+    background-color rgba(255,255,255,percent) !important
   .md-progress
   .md-card-media
   .background
-    background-color rgba(255,255,255,0.10) !important
+    background-color rgba(255,255,255,1 - percent) !important
   .md-dialog
   .md-list
     background-color inherit !important
@@ -498,7 +499,7 @@
         margin 0 !important
         font-size 18px
         text-align center
-        // font-weight bold
+        font-weight bold
     .md-card-content
       color white
       .md-progress
@@ -614,8 +615,8 @@
     -webkit-animation-iteration-count infinite
     animation-iteration-count infinite
   .animation.slower
-    -webkit-animation-duration 2s
-    animation-duration 2s
+    -webkit-animation-duration 1.5s
+    animation-duration 1.5s
   .animation.faster
     -webkit-animation-duration 0.5s
     animation-duration 0.5s
