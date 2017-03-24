@@ -172,7 +172,7 @@
           md-chip.orange {{ player.turns | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary filter_tilt_shift
+            md-icon.md-primary whatshot
           span {{ 'resource.aether' | i18n }}
           md-chip.pink {{ player.aether | format }}
         md-subheader {{ 'subtitle.hangar' | i18n }}
@@ -503,9 +503,29 @@
     max-height 90%
 
   /* CARDS */
+  border = 8px
+  .rounded-top
+    border-top-left-radius border
+    border-top-right-radius border
+    border-bottom-left-radius 0
+    border-bottom-right-radius 0
+  .rounded-top
+    .md-tabs-navigation
+      border-top-left-radius border
+      border-top-right-radius border
+      border-bottom-left-radius 0
+      border-bottom-right-radius 0
+  .rounded-bottom
+    border-top-left-radius 0 !important
+    border-top-right-radius 0 !important
+    border-bottom-left-radius border
+    border-bottom-right-radius border
   .md-layout
     // align-items flex-start
     // align-content flex-start
+  .md-card
+  .md-table-card
+    border-radius border
   .md-card.card
     width 100%
     margin 4px

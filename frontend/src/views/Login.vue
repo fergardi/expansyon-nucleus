@@ -1,15 +1,13 @@
 <template lang="pug">
   md-layout.login.padding
 
-    md-layout(md-flex-xlarge="33", md-flex-large="50", md-flex-medium="66", md-flex-small="100", md-flex-xsmall="100")
+    md-layout.center(md-flex-xlarge="33", md-flex-large="50", md-flex-medium="66", md-flex-small="100", md-flex-xsmall="100")
 
-      span.flex.center.title Expansyon
-
-      md-tabs(md-fixed)
+      md-tabs.rounded-top(md-fixed)
 
         md-tab.no-padding#login(v-bind:md-label="$t('tab.login')")
           form(v-on:submit.stop.prevent="login()")
-            md-card.md-primary.card.no-padding
+            md-card.md-primary.card.no-padding.rounded-bottom
               md-card-content
                 md-input-container(v-bind:class="{ 'md-input-invalid' : error }")
                   md-icon mail
@@ -27,7 +25,7 @@
 
         md-tab.no-padding#register(v-bind:md-label="$t('tab.register')")
           form(v-on:submit.stop.prevent="register()")
-            md-card.md-primary.card.no-padding
+            md-card.md-primary.card.no-padding.rounded-bottom
               md-card-content
                 md-input-container(v-bind:class="{ 'md-input-invalid' : email }")
                   md-icon mail
@@ -148,11 +146,6 @@
 </script>
 
 <style lang="stylus" scoped>
-  .title
-    font-size 3em
-    color rgba(255,255,255,0.87)
-    text-shadow 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1)
-    font-weight 300
   // remove autofill color
   @-webkit-keyframes autofill {
     to {
