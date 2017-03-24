@@ -1,9 +1,9 @@
 <template lang="pug">
   .app
 
-    md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
-      span {{ message }}
-      md-button.md-dense.md-accent(v-on:click.native="dismiss()") Close
+    md-snackbar(ref="alert", md-duration="50000", md-position="bottom center")
+      span {{ notification.text | i18n }}
+      md-button.md-dense(v-bind:class="notification.class", v-on:click.native="dismiss()") {{ 'button.close' | i18n }}
 
     md-whiteframe
       md-toolbar#toolbar.md-dense(v-if="!fullscreen")
@@ -282,8 +282,17 @@
     data () {
       return {
         search: store.state.search,
-        message: ''
+        notification: {
+          text: '',
+          class: ''
+        }
       }
+    },
+    created () {
+      store.watch((state) => state.notification, () => {
+        this.notification = store.state.notification
+        if (store.state.account.logged) this.alert()
+      })
     },
     methods: {
       localize (lang) {
@@ -322,26 +331,21 @@
           api.getPlayer(store.state.account.id)
           .then((player) => {
             store.commit('player', player)
-            this.message = 'Player updated with new data'
-            this.alert()
+            store.commit('notification', { text: 'Player updated with new data', class: 'md-warn' })
           })
         }
       },
       exploration () {
-        this.message = 'There are new Planets to explore in the universe'
-        if (store.state.account.logged && !this.fullscreen) this.alert()
+        store.commit('notification', { text: 'notification.exploration', class: 'md-warn' })
       },
       cantina () {
-        this.message = 'There are new Missions to accept in the cantina'
-        if (store.state.account.logged && !this.fullscreen) this.alert()
+        store.commit('notification', { text: 'notification.cantina', class: 'md-warn' })
       },
       senate () {
-        this.message = 'There are new Referendums to vote for in the senate'
-        if (store.state.account.logged && !this.fullscreen) this.alert()
+        store.commit('notification', { text: 'notification.senate', class: 'md-warn' })
       },
       market () {
-        this.message = 'There are new Items to buy in the market'
-        if (store.state.account.logged && !this.fullscreen) this.alert()
+        store.commit('notification', { text: 'notification.market', class: 'md-warn' })
       }
     },
     watch: {
@@ -358,6 +362,9 @@
       },
       player () {
         return store.state.player
+      },
+      notification () {
+        return store.state.notification
       }
     }
   }
@@ -467,18 +474,18 @@
     margin-left 10px !important
   
   /* OPACITY */
-  percent = 0.85
+  opacity = 0.85
   #toolbar
   .md-card
   .md-table-card
-    opacity 0.85
+    opacity opacity
   .md-table-card.md-card
   .md-menu-content > .md-list
-    background-color rgba(255,255,255,percent) !important
+    background-color rgba(255,255,255,opacity) !important
   .md-progress
   .md-card-media
   .background
-    background-color rgba(255,255,255,1 - percent) !important
+    background-color rgba(255,255,255,1 - opacity) !important
   .md-dialog
   .md-list
     background-color inherit !important
@@ -511,6 +518,11 @@
         padding 10px
     .md-card-actions
       padding 16px
+
+  // snackbar
+  .md-snackbar
+    .md-button
+      margin 0 !important
         
   /* COLORS */
   green = #4CAF50

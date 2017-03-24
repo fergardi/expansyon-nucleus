@@ -4,6 +4,12 @@ const translation = {
       spanish: 'Spanish',
       english: 'English'
     },
+    notification: {
+      market: 'There are new items in the market',
+      exploration: 'There are new planets in exploration',
+      cantina: 'There are new missions in the cantina',
+      senate: 'There are new referendums in the senate'
+    },
     filter: {
       search: 'Search...',
       filtered: 'Filtered results',
@@ -142,6 +148,12 @@ const translation = {
     language: {
       spanish: 'Español',
       english: 'Inglés'
+    },
+    notification: {
+      market: 'Hay nuevas ofertas en el mercado',
+      exploration: 'Hay nuevos planetas en exploración',
+      cantina: 'Hay nuevas misiones en la cantina',
+      senate: 'Hay nuevos referendums en el senado'
     },
     filter: {
       search: 'Buscar...',

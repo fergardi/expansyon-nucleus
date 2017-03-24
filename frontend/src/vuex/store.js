@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  strict: true,
   state: {
     fullscreen: false,
     title: '',
@@ -12,7 +13,11 @@ const store = new Vuex.Store({
       logged: false,
       id: 0
     },
-    player: {}
+    player: {},
+    notification: {
+      text: '',
+      class: ''
+    }
   },
   mutations: {
     enablefullscreen (state) {
@@ -40,6 +45,9 @@ const store = new Vuex.Store({
     },
     player (state, player) {
       state.player = player
+    },
+    notification (state, notification) {
+      state.notification = notification
     }
   }
 })
