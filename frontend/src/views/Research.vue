@@ -21,7 +21,7 @@
               md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)")
                 img(v-bind:src="skill.image")
                 md-icon {{ skill.level }}
-        md-card-content
+        md-card-content.center
           span {{ branch.description | lorem }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="reset(branch)") Reset

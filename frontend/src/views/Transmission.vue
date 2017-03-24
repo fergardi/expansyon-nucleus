@@ -135,10 +135,10 @@
         return message.From
           ? message.From.faction
             ? message.From.faction.class
-            : 'grey'
+            : ''
           : message.To.faction
             ? message.To.faction.class
-            : 'grey'
+            : ''
       },
       name (message) {
         return message.From

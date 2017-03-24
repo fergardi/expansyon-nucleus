@@ -18,7 +18,7 @@
           img(v-bind:src="achievement.image")
         md-card-content.no-padding
           md-progress(v-bind:md-progress="achievement.progress")
-        md-card-content
+        md-card-content.center
           span {{ achievement.description }}
         md-card-content
           md-chip.pink {{ achievement.aether | format }} {{ 'resource.aether' | i18n }}

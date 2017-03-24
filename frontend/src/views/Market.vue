@@ -43,7 +43,7 @@
         md-card-content.center(v-if="item(sale).moon || item(sale).station")
           md-chip(v-if="item(sale).moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="item(sale).station") {{ 'resource.station' | i18n }}
-        md-card-content(v-if="item(sale).description")
+        md-card-content.center(v-if="item(sale).description")
           span {{ item(sale).description }}
         md-card-content.center
           md-chip(v-if="sale.metal > 0") {{ sale.metal | format }} {{ 'resource.metal' | i18n }}

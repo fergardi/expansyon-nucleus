@@ -26,7 +26,7 @@
           md-chip(v-if="relic.moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="relic.station") {{ 'resource.station' | i18n }}
           md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
-        md-card-content
+        md-card-content.center
           span {{ relic.description }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")

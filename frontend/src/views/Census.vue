@@ -22,7 +22,7 @@
 
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="name") Name
+              md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
               md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 

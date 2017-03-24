@@ -9,7 +9,7 @@
           md-card-content
             md-input-container
               md-icon add
-              label Quantity
+              label {{ 'resource.quantity' | i18n }}
               md-input(type="number", v-model="quantity", min="0", required)
           md-card-content.center
             md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
@@ -33,7 +33,7 @@
           md-progress(v-bind:md-progress="building.energy")
           md-progress(v-bind:md-progress="building.shield")
           md-progress(v-bind:md-progress="building.storage")
-        md-card-content
+        md-card-content.center
           span {{ building.description }}
         md-card-content.center
           md-chip {{ building.metal | format }} {{ 'resource.metal' | i18n }}

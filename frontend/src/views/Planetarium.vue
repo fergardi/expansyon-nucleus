@@ -27,7 +27,7 @@
         md-card-content.center(v-if="planet.moon || planet.station")
           md-chip(v-if="planet.moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="planet.station") {{ 'resource.station' | i18n }}
-        md-card-content
+        md-card-content.center
           span {{ planet.description }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")

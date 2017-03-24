@@ -9,15 +9,15 @@
           md-card-content
             md-input-container
               md-icon send
-              label Fighter
+              label {{ 'ship.fighter' | i18n }}
               md-input(type="number", v-model="fighter", min="0", required)
             md-input-container
               md-icon toys
-              label Cruiser
+              label {{ 'ship.cruiser' | i18n }}
               md-input(type="number", v-model="cruiser", min="0", required)
             md-input-container
               md-icon bubble_chart
-              label Bomber
+              label {{ 'ship.bomber' | i18n }}
               md-input(type="number", v-model="bomber", min="0", required)
             md-card-actions
               md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
@@ -34,7 +34,7 @@
           md-progress(v-bind:md-progress="mission.attack")
           md-progress(v-bind:md-progress="mission.defense")
           md-progress(v-bind:md-progress="mission.speed")
-        md-card-content
+        md-card-content.center
           span {{ mission.description | lorem }}
 
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")

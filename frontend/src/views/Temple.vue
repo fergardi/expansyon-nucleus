@@ -30,7 +30,7 @@
           md-progress(v-bind:md-progress="faction.attack")
           md-progress(v-bind:md-progress="faction.defense")
           md-progress(v-bind:md-progress="faction.speed")
-        md-card-content
+        md-card-content.center
           span {{ faction.description }}
         md-card-content.center
           md-chip.pink {{ faction.aether | format }} {{ 'resource.aether' | i18n }}

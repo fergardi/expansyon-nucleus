@@ -1,7 +1,7 @@
 <template lang="pug">
   .app
 
-    md-snackbar(ref="alert", md-duration="50000", md-position="bottom center")
+    md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
       span {{ notification.text | i18n }}
       md-button.md-dense(v-bind:class="notification.class", v-on:click.native="dismiss()") {{ 'button.close' | i18n }}
 
@@ -137,39 +137,44 @@
         md-subheader {{ 'subtitle.resources' | i18n }}
         md-list-item
           md-avatar
-            md-icon.md-primary hourglass_full
-          span {{ 'resource.turns' | i18n }}
-          md-chip {{ player.turns | format }}
-        md-list-item
-          md-avatar
             md-icon.md-primary apps
           span {{ 'resource.metal' | i18n }}
-          md-chip {{ player.metal | format }}
+          md-chip.indigo {{ player.metal | format }}
         md-list-item
           md-avatar
             md-icon.md-primary texture
           span {{ 'resource.crystal' | i18n }}
-          md-chip {{ player.crystal | format }}
+          md-chip.purple {{ player.crystal | format }}
         md-list-item
           md-avatar
             md-icon.md-primary opacity
           span {{ 'resource.oil' | i18n }}
-          md-chip {{ player.oil | format }}
+          md-chip.red {{ player.oil | format }}
         md-list-item
           md-avatar
             md-icon.md-primary home
           span {{ 'resource.size' | i18n }}
-          md-chip {{ player.size | format }}
+          md-chip.green {{ player.size | format }}
         md-list-item
           md-avatar
             md-icon.md-primary flash_on
           span {{ 'resource.energy' | i18n }}
-          md-chip {{ player.energy | format }}
+          md-chip.cyan {{ player.energy | format }}
         md-list-item
           md-avatar
             md-icon.md-primary star
           span {{ 'resource.influence' | i18n }}
-          md-chip {{ player.influence | format }}
+          md-chip.yellow {{ player.influence | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary hourglass_full
+          span {{ 'resource.turns' | i18n }}
+          md-chip.orange {{ player.turns | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary filter_tilt_shift
+          span {{ 'resource.aether' | i18n }}
+          md-chip.pink {{ player.aether | format }}
         md-subheader {{ 'subtitle.hangar' | i18n }}
         md-list-item
           md-avatar
@@ -395,7 +400,7 @@
     scroll-behavior smooth !important
   .md-chip
     margin 2px
-    box-shadow 0px 1px 1px rgba(0, 0, 0, 0.1) !important
+    box-shadow 0px 2px 2px rgba(0, 0, 0, 0.2) !important
   .md-toolbar
     .md-button
       margin 0 !important
@@ -527,11 +532,11 @@
         
   /* COLORS */
   green = #4CAF50
-  purple = #9C27B0
-  indigo = #3F51B5
+  purple = #AA00FF
+  indigo = #304FFE
   yellow = #FFEB3B
   cyan = #00BCD4
-  red = #D50000
+  red = #F44336
   orange = #FF9800
   pink = #E91E63
   grey = #E0E0E0

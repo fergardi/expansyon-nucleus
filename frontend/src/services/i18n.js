@@ -139,7 +139,8 @@ const translation = {
       planets: 'Planets',
       moon: 'Moon',
       station: 'Station',
-      aether: 'Aether'
+      aether: 'Aether',
+      quantity: 'Quantity'
     },
     ship: {
       fighter: 'Fighter',
@@ -200,8 +201,8 @@ const translation = {
       confirm: 'Estás seguro de abandonar esta hermandad?'
     },
     table: {
-      to: 'De',
-      from: 'Para',
+      to: 'Para',
+      from: 'De',
       subject: 'Asunto',
       text: 'Texto',
       datetime: 'Fecha',
@@ -322,7 +323,8 @@ const translation = {
       planets: 'Planetas',
       moon: 'Luna',
       station: 'Estación',
-      aether: 'Éter'
+      aether: 'Éter',
+      quantity: 'Cantidad'
     },
     ship: {
       fighter: 'Caza',

@@ -29,7 +29,7 @@
           md-progress(v-bind:md-progress="referendum.attack", v-bind:class="referendum.attack >= 50 ? 'green' : 'red'")
           md-progress(v-bind:md-progress="referendum.defense", v-bind:class="referendum.defense >= 50 ? 'green' : 'red'")
           md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
-        md-card-content
+        md-card-content.center
           span {{ referendum.description }}
         md-card-content.center
           md-chip.pink {{ referendum.aether | format }} {{ 'resource.aether' | i18n }}
