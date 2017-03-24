@@ -39,7 +39,8 @@ const translation = {
       repeat: 'Repeat password',
       mismatch: 'Passwords must match',
       name: 'Name',
-      repeated: 'Name already in use'
+      repeated: 'Name already in use',
+      error: 'Incorrect credentials'
     },
     title: {
       universe: 'Universe',
@@ -177,7 +178,8 @@ const translation = {
       repeat: 'Repetir contraseña',
       mismatch: 'Las contraseñas no coinciden',
       name: 'Nombre',
-      repeated: 'Nick ya en uso'
+      repeated: 'Nick ya en uso',
+      error: 'Credenciales incorrectas'
     },
     title: {
       universe: 'Universo',
