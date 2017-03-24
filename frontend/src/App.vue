@@ -336,16 +336,16 @@
         }
       },
       exploration () {
-        store.commit('notification', { text: 'notification.exploration', class: 'md-warn' })
+        store.commit('notification', { text: 'notification.exploration', class: 'md-accent' })
       },
       cantina () {
-        store.commit('notification', { text: 'notification.cantina', class: 'md-warn' })
+        store.commit('notification', { text: 'notification.cantina', class: 'md-accent' })
       },
       senate () {
-        store.commit('notification', { text: 'notification.senate', class: 'md-warn' })
+        store.commit('notification', { text: 'notification.senate', class: 'md-accent' })
       },
       market () {
-        store.commit('notification', { text: 'notification.market', class: 'md-warn' })
+        store.commit('notification', { text: 'notification.market', class: 'md-accent' })
       }
     },
     watch: {
