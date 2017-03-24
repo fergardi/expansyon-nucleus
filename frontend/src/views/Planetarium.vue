@@ -8,7 +8,7 @@
         md-card-content
           span {{ selected.description }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Close
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.close' | i18n }}
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     

@@ -18,7 +18,7 @@
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
             md-button.md-dense.md-warn(v-on:click.native="clear()") {{ 'button.clear' | i18n }}
-            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") Build
+            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") {{ 'button.build' | i18n }}
 
     md-layout(v-for="ship in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="ship.class", md-with-hover, v-on:click.native="select(ship)")

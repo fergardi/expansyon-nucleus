@@ -73,7 +73,7 @@
           p No faction yet
         md-card-actions
           router-link(exact, to="/temple")
-            md-button.md-dense.md-accent Join
+            md-button.md-dense.md-accent {{ 'button.join' | i18n }}
 </template>
 
 <script>

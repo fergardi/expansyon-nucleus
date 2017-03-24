@@ -3,7 +3,7 @@
 
     md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
       span {{ alert }}
-      md-button.md-dense.md-accent(v-on:click.native="dismiss()") Close
+      md-button.md-dense.md-accent(v-on:click.native="dismiss()") {{ 'button.close' | i18n }}
 
     md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
@@ -13,7 +13,7 @@
           span {{ selected.description }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="activate()") Activate
+          md-button.md-dense.md-accent(v-on:click.native="activate()") {{ 'button.activate' | i18n }}
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
 

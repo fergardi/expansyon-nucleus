@@ -65,7 +65,11 @@ const translation = {
       reply: 'Reply',
       join: 'Join',
       leave: 'Leave',
-      vote: 'Vote'
+      vote: 'Vote',
+      build: 'Build',
+      buy: 'Buy',
+      attack: 'Attack',
+      activate: 'Activate'
     },
     account: {
       login: 'Login',
@@ -244,7 +248,11 @@ const translation = {
       reply: 'Responder',
       join: 'Unirse',
       leave: 'Abandonar',
-      vote: 'Votar'
+      vote: 'Votar',
+      build: 'Construir',
+      buy: 'Comprar',
+      attack: 'Atacar',
+      activate: 'Activar'
     },
     account: {
       login: 'Entrar',

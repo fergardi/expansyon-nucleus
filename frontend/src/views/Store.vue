@@ -11,7 +11,7 @@
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") Buy
+          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     
