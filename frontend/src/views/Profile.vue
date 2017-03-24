@@ -8,7 +8,7 @@
         md-card-content
           span Are you sure to change your password?
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="change()") Change
 
     md-layout(md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
@@ -31,7 +31,7 @@
               label Repeat password
               md-input(type="password", v-model="repeat", required)
           md-card-actions
-            md-button.md-dense.md-warn(type="reset") Clear
+            md-button.md-dense.md-warn(type="reset") {{ 'button.clear' | i18n }}
             md-button.md-dense.md-accent(type="submit") Change
           md-card-header
             .md-title Change theme color

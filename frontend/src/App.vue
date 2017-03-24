@@ -269,7 +269,7 @@
           span {{ 'account.logout' | i18n }}
 
     .main.padding#main
-      router-view.content.animation.fadeIn.slower.scrollable
+      router-view.content.animation.fadeIn.scrollable
 </template>
 
 <script>
@@ -395,6 +395,7 @@
     scroll-behavior smooth !important
   .md-chip
     margin 2px
+    box-shadow 0px 1px 1px rgba(0, 0, 0, 0.1) !important
   .md-toolbar
     .md-button
       margin 0 !important
@@ -457,6 +458,8 @@
           justify-content flex-end !important
 
   .md-tabs
+    .md-tab-header
+      text-transform none
     .md-tabs-content
       overflow hidden
       .md-tabs-wrapper
@@ -504,9 +507,7 @@
     .md-card-header
       .md-title
         margin 0 !important
-        font-size 18px
         text-align center
-        font-weight bold
     .md-card-content
       color white
       .md-progress

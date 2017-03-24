@@ -8,12 +8,12 @@
         md-card-content(v-if="selected.Faction")
           md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
         md-card-content
-          md-chip {{ selected.influence }} influence
-          md-chip {{ selected.planets }} planets
+          md-chip {{ selected.influence }} {{ 'resource.influence' | i18n }}
+          md-chip {{ selected.planets }} {{ 'resource.planets' | i18n }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-          md-button.md-dense.md-accent(v-on:click.native="enemy()") Enemy
-          md-button.md-dense.md-accent(v-on:click.native="friend()") Friend
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="enemy()") {{ 'button.enemy' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="friend()") {{ 'button.friend' | i18n }}
 
     md-tabs(md-fixed, v-on:change="clear")
       md-tab#players.no-padding(v-bind:md-label="$t('tab.players')")
@@ -22,17 +22,17 @@
 
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="name", md-tooltip="Name of the player") Name
-              md-table-head(md-sort-by="influence", md-numeric, md-tooltip="Ammount of influence of the player") Influence
-              md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
+              md-table-head(md-sort-by="name") Name
+              md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
+              md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
                 md-chip(v-bind:class="player.class") {{ player.name }}
-              md-table-cell(md-numeric)
+              md-table-cell.md-numeric
                 md-chip {{ player.influence }}
-              md-table-cell(md-numeric)
+              md-table-cell.md-numeric
                 md-chip {{ player.planets }}
 
             md-table-row(v-if="!ordered.length")
@@ -44,9 +44,9 @@
 
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="name", md-tooltip="Name of the player") Name
-              md-table-head(md-sort-by="influence", md-numeric, md-tooltip="Ammount of influence of the player") Influence
-              md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
+              md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
+              md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
@@ -66,18 +66,18 @@
 
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="name", md-tooltip="Name of the player") Name
-              md-table-head(md-sort-by="influence", md-numeric, md-tooltip="Ammount of influence of the player") Influence
-              md-table-head(md-sort-by="planets", md-numeric, md-tooltip="Number of planets of the player") Planets
+              md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
+              md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
                 md-chip(v-bind:class="player.class") {{ player.name }}
-              md-table-cell(md-numeric)
+              md-table-cell.md-numeric
                 md-chip {{ player.influence }}
-              md-table-cell(md-numeric)
-                md-chip {{ player.planets }} 
+              md-table-cell.md-numeric
+                md-chip {{ player.planets }}
 
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}

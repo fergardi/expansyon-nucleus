@@ -20,8 +20,8 @@
               label Bomber
               md-input(type="number", v-model="bomber", min="0", required)
             md-card-actions
-              md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-              md-button.md-dense.md-warn(v-on:click.native="clear()") Clear
+              md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+              md-button.md-dense.md-warn(v-on:click.native="clear()") {{ 'button.clear' | i18n }}
               md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") Attack
 
     md-layout(v-for="mission in filtered", md-flex-xlarge="25", md-flex-medium="50", md-flex-large="33", md-flex-small="50", md-flex-xsmall="100")

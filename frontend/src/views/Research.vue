@@ -8,7 +8,7 @@
         md-card-content
           span Are you sure to save this skilltree?
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="save()") Learn
 
     md-layout(v-for="branch in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")

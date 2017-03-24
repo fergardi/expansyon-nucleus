@@ -4,22 +4,22 @@
     md-dialog(ref='confirm')
       md-card.md-primary.grey
         md-card-header
-          .md-title Leave guild
-        md-card-content Are you sure to leave this guild?
+          .md-title Name
+        md-card-content {{ 'guild.confirm' | i18n }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="cancel()") Cancel
-          md-button.md-dense.md-accent(v-on:click.native="leave()") Leave
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="leave()") {{ 'button.leave' | i18n }}
 
     md-dialog(ref='popup')
       md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content {{ selected.description | lorem }}
+        md-card-content {{ selected.description }}
         md-card-content
-          md-chip {{ selected.members }} members
+          md-chip {{ selected.members }} {{ 'guild.members' | i18n }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-          md-button.md-dense.md-accent(v-on:click.native="apply()") Join
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="apply()") {{ 'button.join' | i18n }}
 
     md-tabs(md-fixed, v-on:change="clear")
       md-tab#guilds.no-padding(v-bind:md-label="$t('tab.guilds')")
@@ -28,19 +28,19 @@
           
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="name", md-tooltip="Name of the guild") Name
-              md-table-head.hide(md-sort-by="description", md-tooltip="Description of the guild") Description
-              md-table-head(md-sort-by="influence", md-tooltip="Influence of the guild") Influence
-              md-table-head(md-sort-by="members", md-numeric, md-tooltip="Members in the guild") Members
+              md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.hide(md-sort-by="description") {{ 'table.description' | i18n }}
+              md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
+              md-table-head.md-numeric(md-sort-by="members") {{ 'table.members' | i18n }}
 
           md-table-body
             md-table-row(v-for="guild in ordered", md-auto-select, v-bind:md-item="guild", v-on:click.native="popup(guild)")
               md-table-cell
                 md-chip {{ guild.name }}
-              md-table-cell.hide {{ guild.description | lorem }}
-              md-table-cell(md-numeric)
+              md-table-cell.hide {{ guild.description }}
+              md-table-cell.md-numeric
                 md-chip {{ guild.influence }}
-              md-table-cell(md-numeric)
+              md-table-cell.md-numeric
                 md-chip {{ guild.members }}
 
             md-table-row(v-if="!ordered.length")
@@ -52,18 +52,18 @@
             .md-title {{ guild.name }}
           md-list-item
             md-icon trending_up
-            span Ranking
+            span {{ 'guild.ranking' | i18n }}
             md-chip {{ guild.ranking }}
           md-list-item
             md-icon person_add
-            span Members
+            span {{ 'guild.members' | i18n }}
             md-chip {{ guild.members }}
           md-list-item
             md-icon star
-            span Influence
+            span {{ 'guild.influence' | i18n }}
             md-chip {{ guild.influence }}
         md-card-actions
-          md-button.md-dense.md-accent(v-on:click.native="confirm()") Leave
+          md-button.md-dense.md-accent(v-on:click.native="confirm()") {{ 'button.leave' | i18n }}
 </template>
 
 <script>
@@ -126,7 +126,7 @@
         this.close()
       },
       confirm () {
-        this.$refs['popup'].open()
+        this.$refs['confirm'].open()
       },
       leave () {
         // TODO

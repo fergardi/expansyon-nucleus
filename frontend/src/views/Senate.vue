@@ -10,8 +10,8 @@
         md-card-content.center
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-          md-button.md-dense.md-accent(v-on:click.native="vote()", v-bind:disabled="!can") Vote
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="vote()", v-bind:disabled="!can") {{ 'button.vote' | i18n }}
     
     md-layout(v-for="referendum in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="referendum.class", md-with-hover, v-on:click.native="select(referendum)")
@@ -37,7 +37,7 @@
     md-layout(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card
         md-card-header
-          .md-title {{ 'search.nothing' | i18n }}
+          .md-title {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>

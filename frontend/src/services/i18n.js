@@ -4,6 +4,30 @@ const translation = {
       spanish: 'Spanish',
       english: 'English'
     },
+    transmission: {
+      to: 'To',
+      from: 'From',
+      subject: 'Subject',
+      text: 'Text'
+    },
+    guild: {
+      ranking: 'Ranking',
+      members: 'Members',
+      influence: 'Influence',
+      confirm: 'Are you sure to leave this guild?'
+    },
+    table: {
+      to: 'To',
+      from: 'From',
+      subject: 'Subject',
+      text: 'Text',
+      datetime: 'Date',
+      name: 'Name',
+      influence: 'Influence',
+      members: 'Members',
+      description: 'Description',
+      planets: 'Planets'
+    },
     notification: {
       market: 'There are new items in the market',
       exploration: 'There are new planets in exploration',
@@ -32,7 +56,16 @@ const translation = {
       accept: 'Accept',
       cancel: 'Cancel',
       close: 'Close',
-      clear: 'Clear'
+      clear: 'Clear',
+      friend: 'Friend',
+      enemy: 'Enemy',
+      send: 'Send',
+      delete: 'Delete',
+      confirm: 'Confirm',
+      reply: 'Reply',
+      join: 'Join',
+      leave: 'Leave',
+      vote: 'Vote'
     },
     account: {
       login: 'Login',
@@ -99,6 +132,7 @@ const translation = {
       energy: 'Energy',
       influence: 'Influence',
       planet: 'Planet',
+      planets: 'Planets',
       moon: 'Moon',
       station: 'Station',
       aether: 'Aether'
@@ -149,6 +183,30 @@ const translation = {
       spanish: 'Español',
       english: 'Inglés'
     },
+    transmission: {
+      to: 'De',
+      from: 'Para',
+      subject: 'Asunto',
+      text: 'Texto'
+    },
+    guild: {
+      ranking: 'Posición',
+      members: 'Miembros',
+      influence: 'Influencia',
+      confirm: 'Estás seguro de abandonar esta hermandad?'
+    },
+    table: {
+      to: 'De',
+      from: 'Para',
+      subject: 'Asunto',
+      text: 'Texto',
+      datetime: 'Fecha',
+      name: 'Nombre',
+      influence: 'Influencia',
+      members: 'Miembros',
+      description: 'Descripción',
+      planets: 'Planetas'
+    },
     notification: {
       market: 'Hay nuevas ofertas en el mercado',
       exploration: 'Hay nuevos planetas en exploración',
@@ -177,7 +235,16 @@ const translation = {
       accept: 'Aceptar',
       cancel: 'Cancelar',
       close: 'Cerrar',
-      clear: 'Limpiar'
+      clear: 'Limpiar',
+      friend: 'Amigo',
+      enemy: 'Enemigo',
+      send: 'Enviar',
+      delete: 'Borrar',
+      confirm: 'Confirmar',
+      reply: 'Responder',
+      join: 'Unirse',
+      leave: 'Abandonar',
+      vote: 'Votar'
     },
     account: {
       login: 'Entrar',
@@ -244,6 +311,7 @@ const translation = {
       energy: 'Energía',
       influence: 'Influencia',
       planet: 'Planeta',
+      planets: 'Planetas',
       moon: 'Luna',
       station: 'Estación',
       aether: 'Éter'

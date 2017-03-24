@@ -11,9 +11,9 @@
           md-chip(v-bind:class="color(selected)") {{ name(selected) }}
           md-chip {{ selected.datetime | date }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") Cancel
-          md-button.md-dense.md-warn(v-on:click.native="remove") Delete
-          md-button.md-dense.md-accent(v-on:click.native="reply") Reply
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-warn(v-on:click.native="remove") {{ 'button.delete' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="reply") {{ 'button.reply' | i18n }}
 
     md-tabs(md-fixed)
       md-tab#received.no-padding(v-bind:md-label="$t('tab.received')")
@@ -21,13 +21,13 @@
         md-table(md-sort="datetime", v-on:sort="order")
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="From.name", md-tooltip="Origin of the transmission") From
-              md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
-              md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
-              md-table-head(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
+              md-table-head(md-sort-by="From.name") {{ 'table.from' | i18n }}
+              md-table-head(md-sort-by="subject") {{ 'table.subject' | i18n }}
+              md-table-head.hide(md-sort-by="text") {{ 'table.text' | i18n }}
+              md-table-head.md-numeric(md-sort-by="datetime") {{ 'table.datetime' | i18n }}
 
           md-table-body
-            md-table-row(v-for="message in receivedOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="popup(message)")
+            md-table-row(v-for="message in receivedOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="select(message)")
               md-table-cell
                 md-chip(v-bind:class="color(message)") {{ message.From.name }}
               md-table-cell {{ message.subject }}
@@ -42,10 +42,10 @@
         md-table(md-sort="datetime", v-on:sort="order")
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="To.name", md-tooltip="Destination of the transmission") To
-              md-table-head(md-sort-by="subject", md-tooltip="Title of the transmission") Subject
-              md-table-head.hide(md-sort-by="text", md-tooltip="Content of the transmission") Text
-              md-table-head(md-sort-by="datetime", md-numeric, md-tooltip="Date of the transmission") Date
+              md-table-head(md-sort-by="To.name") {{ 'table.to' | i18n }}
+              md-table-head(md-sort-by="subject") {{ 'table.subject' | i18n }}
+              md-table-head.hide(md-sort-by="text") {{ 'table.text' | i18n }}
+              md-table-head.md-numeric(md-sort-by="datetime") {{ 'table.datetime' | i18n }}
 
           md-table-body
             md-table-row(v-for="message in sentOrdered", md-auto-select, v-bind:md-item="message", v-on:click.native="select(message)")
@@ -62,18 +62,18 @@
 
         form(v-on:submit.stop.prevent="send")
           md-input-container
-            label To
+            label {{ 'transmission.to' | i18n }}
             md-select(name="to", id="to", v-model="to", required)
               md-option(v-for="player in players", v-bind:value="player.id") {{ player.name }}
           md-input-container
-            label Subject
-            md-input(type="text", v-model="message.subject", placeholder="Subject", required)
+            label {{ 'transmission.from' | i18n }}
+            md-input(type="text", v-model="message.subject", required)
           md-input-container
-            label Text
-            md-textarea(v-model="message.text", placeholder="Text", maxlength="140", required)
+            label {{ 'transmission.text' | i18n }}
+            md-textarea(v-model="message.text", maxlength="140", required)
           md-card-actions
-            md-button.md-dense.md-warn(type="reset") Clear
-            md-button.md-dense.md-accent(type="submit") Send
+            md-button.md-dense.md-warn(type="reset") {{ 'button.clear' | i18n }}
+            md-button.md-dense.md-accent(type="submit") {{ 'button.send' | i18n }}
 </template>
 
 <script>
