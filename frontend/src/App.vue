@@ -85,7 +85,7 @@
             md-avatar
               md-icon.md-primary dialpad
             span {{ 'title.research' | i18n }}
-            md-chip {{ player.research | format }}
+            md-chip {{ player.skills | format }}
         md-list-item
           router-link(exact, to="/hangar", v-on:click.native="collapse()")
             md-avatar
@@ -123,7 +123,7 @@
             md-avatar
               md-icon.md-primary security
             span {{ 'title.guild' | i18n }}
-            md-chip {{ player.guild | format }}
+            md-chip {{ player.guilds | format }}
         md-list-item
           router-link(exact, to="/transmission", v-on:click.native="collapse()")
             md-avatar
