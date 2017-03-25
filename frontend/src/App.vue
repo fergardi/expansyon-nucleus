@@ -24,8 +24,8 @@
       md-whiteframe
         md-toolbar#left.md-account-header.center
           md-avatar.md-large
-            img(src="https://image.flaticon.com/icons/svg/190/190279.svg")
-          h2.md-title {{ 'title.universe' | i18n }}
+            img(src="https://image.flaticon.com/icons/svg/124/124582.svg")
+          h2.md-title {{ 'title.left' | i18n }}
       md-list.md-dense.scrollcable
 
         md-subheader {{ 'subtitle.economy' | i18n }}
@@ -136,7 +136,7 @@
         md-toolbar#right.md-account-header.center
           md-avatar.md-large
             img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
-          h2.md-title {{ 'title.home' | i18n }}
+          h2.md-title {{ 'title.right' | i18n }}
       md-list.md-dense.scrollable
 
         md-subheader {{ 'subtitle.resources' | i18n }}

@@ -87,8 +87,8 @@ const translation = {
       error: 'Incorrect credentials'
     },
     title: {
-      universe: 'Universe',
-      home: 'Home',
+      left: 'Exterior',
+      right: 'Interior',
       achievement: 'Achievement',
       cantina: 'Cantina',
       census: 'Census',
@@ -275,8 +275,8 @@ const translation = {
       error: 'Credenciales incorrectas'
     },
     title: {
-      universe: 'Universo',
-      home: 'Hogar',
+      left: 'Exterior',
+      right: 'Interior',
       achievement: 'Logros',
       cantina: 'Cantina',
       census: 'Censo',
