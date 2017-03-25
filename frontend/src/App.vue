@@ -27,6 +27,7 @@
             img(src="https://image.flaticon.com/icons/svg/190/190279.svg")
           h2.md-title {{ 'title.universe' | i18n }}
       md-list.md-dense.scrollcable
+
         md-subheader {{ 'subtitle.economy' | i18n }}
         md-list-item
           router-link(exact, to="/empire", v-on:click.native="collapse()")
@@ -51,6 +52,7 @@
               md-icon.md-primary store
             span {{ 'title.store' | i18n }}
             md-chip {{ player.store | format }}
+
         md-subheader {{ 'subtitle.strategy' | i18n }}
         md-list-item
           router-link(exact, to="/exploration", v-on:click.native="collapse()")
@@ -76,11 +78,12 @@
               md-icon.md-primary account_balance
             span {{ 'title.temple' | i18n }}
             md-chip {{ player.temple | format }}
+
         md-subheader {{ 'subtitle.technology' | i18n }}
         md-list-item
           router-link(exact, to="/research", v-on:click.native="collapse()")
             md-avatar
-              md-icon.md-primary school
+              md-icon.md-primary dialpad
             span {{ 'title.research' | i18n }}
             md-chip {{ player.research | format }}
         md-list-item
@@ -101,6 +104,7 @@
               md-icon.md-primary track_changes
             span {{ 'title.defense' | i18n }}
             md-chip {{ player.defense | format }}
+
         md-subheader {{ 'subtitle.diplomacy' | i18n }}
         md-list-item
           router-link(exact, to="/senate", v-on:click.native="collapse()")
@@ -134,6 +138,7 @@
             img(src="https://image.flaticon.com/icons/svg/124/124555.svg")
           h2.md-title {{ 'title.home' | i18n }}
       md-list.md-dense.scrollable
+
         md-subheader {{ 'subtitle.resources' | i18n }}
         md-list-item
           md-avatar
@@ -175,6 +180,19 @@
             md-icon.md-primary whatshot
           span {{ 'resource.aether' | i18n }}
           md-chip.pink {{ player.aether | format }}
+
+        md-subheader {{ 'subtitle.level' | i18n }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary school
+          span {{ 'resource.experience' | i18n }}
+          md-chip {{ player.experience | format }}
+        md-list-item
+          md-avatar
+            md-icon.md-primary share
+          span {{ 'resource.skills' | i18n }}
+          md-chip {{ player.skills | format }}
+
         md-subheader {{ 'subtitle.hangar' | i18n }}
         md-list-item
           md-avatar
@@ -198,7 +216,7 @@
           md-chip {{ player.orbiter | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary storage
+            md-icon.md-primary widgets
           span {{ 'ship.carrier' | i18n }}
           md-chip {{ player.carrier | format }}
         md-list-item
@@ -206,6 +224,7 @@
             md-icon.md-primary cached
           span {{ 'ship.recycler' | i18n }}
           md-chip {{ player.recycler | format }}
+
         md-subheader {{ 'subtitle.infrastructure' | i18n }}
         md-list-item
           md-avatar
@@ -237,6 +256,7 @@
             md-icon.md-primary dashboard
           span {{ 'building.warehouse' | i18n }}
           md-chip {{ player.warehouse | format }}
+
         md-subheader {{ 'subtitle.defense' | i18n }}
         md-list-item
           md-avatar
@@ -253,6 +273,7 @@
             md-icon.md-primary gps_fixed
           span {{ 'tower.cannon' | i18n }}
           md-chip {{ player.cannon | format }}
+
         md-subheader {{ 'subtitle.language' | i18n }}
         md-list-item(v-on:click.native="localize('es')")
           md-avatar
@@ -262,6 +283,7 @@
           md-avatar
             md-icon.md-primary translate
           span {{ 'language.english' | i18n }}
+
         md-subheader {{ 'subtitle.account' | i18n }}
         md-list-item
           router-link(exact, to="/help", v-on:click.native="collapse()")
@@ -503,7 +525,7 @@
     max-height 90%
 
   /* CARDS */
-  border = 8px
+  border = 4px
   .rounded-top
     border-top-left-radius border
     border-top-right-radius border
@@ -548,18 +570,18 @@
   // snackbar
   .md-snackbar
     .md-button
-      margin 0 !important
+      margin 0 -16px 0 0 !important
         
   /* COLORS */
-  green = #4CAF50
+  green = #64DD17
   purple = #AA00FF
   indigo = #304FFE
-  yellow = #FFEB3B
-  cyan = #00BCD4
-  red = #F44336
+  yellow = #FFEA00
+  cyan = #00E5FF
+  red = #DD2C00
   orange = #FF9800
   pink = #E91E63
-  grey = #E0E0E0
+  grey = #F5F5F5
   .green
     .md-card-header
       color green !important
@@ -568,7 +590,7 @@
     .md-chip
     &.md-chip
       background-color green !important
-      color white !important
+      color black !important
   .purple
     .md-card-header
       color purple !important
@@ -604,7 +626,7 @@
     .md-chip
     &.md-chip
       background-color cyan !important
-      color white !important
+      color black !important
   .red
     .md-card-header
       color red !important

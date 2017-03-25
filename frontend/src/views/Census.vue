@@ -18,66 +18,66 @@
     md-tabs(md-fixed, v-on:change="clear")
       md-tab#players.no-padding(v-bind:md-label="$t('tab.players')")
 
-        md-table(md-sort="influence", v-on:sort="order")
+        md-table(md-sort="influence", md-sort-type="desc", v-on:sort="order")
 
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.md-numeric(md-sort-by="Planets.length") {{ 'table.planets' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
-              md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
                 md-chip(v-bind:class="player.class") {{ player.name }}
               md-table-cell.md-numeric
-                md-chip {{ player.influence }}
+                md-chip {{ player.Planets.length | format }}
               md-table-cell.md-numeric
-                md-chip {{ player.planets }}
+                md-chip {{ player.influence | format }}
 
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
 
       md-tab#friends.no-padding(v-bind:md-label="$t('tab.friends')")
         
-        md-table(md-sort="influence", v-on:sort="order")
+        md-table(md-sort="influence", md-sort-type="desc", v-on:sort="order")
 
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.md-numeric(md-sort-by="Planets.length") {{ 'table.planets' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
-              md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
                 md-chip(v-bind:class="player.class") {{ player.name }}
-              md-table-cell(md-numeric)
-                md-chip {{ player.influence }}
-              md-table-cell(md-numeric)
-                md-chip {{ player.planets }}
+              md-table-cell.md-numeric
+                md-chip {{ player.Planets.length | format }}
+              md-table-cell.md-numeric
+                md-chip {{ player.influence | format }}
 
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
 
       md-tab#enemies.no-padding(v-bind:md-label="$t('tab.enemies')")
         
-        md-table(md-sort="influence", v-on:sort="order")
+        md-table(md-sort="influence", md-sort-type="desc", v-on:sort="order")
 
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.md-numeric(md-sort-by="Planets.length") {{ 'table.planets' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
-              md-table-head.md-numeric(md-sort-by="planets") {{ 'table.planets' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
                 md-chip(v-bind:class="player.class") {{ player.name }}
               md-table-cell.md-numeric
-                md-chip {{ player.influence }}
+                md-chip {{ player.Planets.length | format }}
               md-table-cell.md-numeric
-                md-chip {{ player.planets }}
+                md-chip {{ player.influence | format }}
 
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}

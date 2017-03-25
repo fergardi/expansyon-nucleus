@@ -125,7 +125,8 @@ const translation = {
       buildings: 'Buildings',
       ships: 'Ships',
       referendum: 'Referendum',
-      faction: 'Faction'
+      faction: 'Faction',
+      level: 'Level'
     },
     resource: {
       turns: 'Turns',
@@ -140,7 +141,9 @@ const translation = {
       moon: 'Moon',
       station: 'Station',
       aether: 'Aether',
-      quantity: 'Quantity'
+      quantity: 'Quantity',
+      experience: 'Experience',
+      skills: 'Skills'
     },
     ship: {
       fighter: 'Fighter',
@@ -309,7 +312,8 @@ const translation = {
       buildings: 'Edificios',
       ships: 'Naves',
       referendum: 'Referendum',
-      faction: 'Facción'
+      faction: 'Facción',
+      level: 'Nivel'
     },
     resource: {
       turns: 'Turnos',
@@ -324,7 +328,9 @@ const translation = {
       moon: 'Luna',
       station: 'Estación',
       aether: 'Éter',
-      quantity: 'Cantidad'
+      quantity: 'Cantidad',
+      experience: 'Experiencia',
+      skills: 'Habilidades'
     },
     ship: {
       fighter: 'Caza',
