@@ -192,8 +192,8 @@ const translation = {
       english: 'Inglés'
     },
     transmission: {
-      to: 'De',
-      from: 'Para',
+      to: 'Para',
+      from: 'De',
       subject: 'Asunto',
       text: 'Texto'
     },

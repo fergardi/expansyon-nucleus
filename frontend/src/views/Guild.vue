@@ -1,22 +1,25 @@
 <template lang="pug">
   md-table-card
 
-    md-dialog(ref='confirm')
+    md-dialog(ref='confirm', v-if="guild")
       md-card.md-primary.grey
         md-card-header
-          .md-title Name
-        md-card-content {{ 'guild.confirm' | i18n }}
+          .md-title {{ guild.name }}
+        md-card-content
+          span {{ 'guild.confirm' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="leave()") {{ 'button.leave' | i18n }}
 
-    md-dialog(ref='popup')
+    md-dialog(ref='info')
       md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content {{ selected.description }}
         md-card-content
-          md-chip {{ selected.members }} {{ 'guild.members' | i18n }}
+          span {{ selected.description }}
+        md-card-content.center
+          md-chip {{ selected.members | format }} {{ 'guild.members' | i18n }}
+          md-chip {{ selected.influence | format }} {{ 'guild.influence' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="apply()") {{ 'button.join' | i18n }}
@@ -24,44 +27,44 @@
     md-tabs(md-fixed, v-on:change="clear")
       md-tab#guilds.no-padding(v-bind:md-label="$t('tab.guilds')")
 
-        md-table(md-sort="influence", v-on:sort="order")
+        md-table(md-sort="influence", md-sort-type="desc", v-on:sort="order")
           
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
               md-table-head.hide(md-sort-by="description") {{ 'table.description' | i18n }}
-              md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
               md-table-head.md-numeric(md-sort-by="members") {{ 'table.members' | i18n }}
+              md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
 
           md-table-body
-            md-table-row(v-for="guild in ordered", md-auto-select, v-bind:md-item="guild", v-on:click.native="popup(guild)")
+            md-table-row(v-for="guild in ordered", md-auto-select, v-bind:md-item="guild", v-on:click.native="info(guild)")
               md-table-cell
                 md-chip {{ guild.name }}
               md-table-cell.hide {{ guild.description }}
               md-table-cell.md-numeric
-                md-chip {{ guild.influence }}
+                md-chip {{ guild.members | format }}
               md-table-cell.md-numeric
-                md-chip {{ guild.members }}
+                md-chip {{ guild.influence | format }}
 
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
 
-      md-tab#myguild.no-padding(v-bind:md-label="$t('tab.guild')")
+      md-tab#myguild.no-padding(v-bind:md-label="$t('tab.guild')", v-if="guild")
         md-list
           md-list-item
             .md-title {{ guild.name }}
           md-list-item
             md-icon trending_up
             span {{ 'guild.ranking' | i18n }}
-            md-chip {{ guild.ranking }}
-          md-list-item
-            md-icon person_add
-            span {{ 'guild.members' | i18n }}
-            md-chip {{ guild.members }}
+            md-chip {{ guild.ranking | format }}
           md-list-item
             md-icon star
             span {{ 'guild.influence' | i18n }}
-            md-chip {{ guild.influence }}
+            md-chip {{ guild.influence | format }}
+          md-list-item
+            md-icon person_add
+            span {{ 'guild.members' | i18n }}
+            md-chip {{ guild.members | format }}
         md-card-actions
           md-button.md-dense.md-accent(v-on:click.native="confirm()") {{ 'button.leave' | i18n }}
 </template>
@@ -75,12 +78,7 @@
     data () {
       return {
         guilds: [],
-        guild: {
-          name: 'Guild',
-          members: 0,
-          influence: 0,
-          ranking: 0
-        },
+        guild: null,
         selected: {},
         field: 'influence',
         direction: 'desc'
@@ -105,16 +103,15 @@
         })
         api.getPlayer(store.state.account.id)
         .then((player) => {
-          // TODO
-          // this.guild = player.Guild
+          if (player.Guild) this.guild = this.guilds.find((guild) => guild.id === player.Guild.id)
         })
       },
-      popup (guild) {
+      info (guild) {
         this.selected = guild
-        this.$refs['popup'].open()
+        this.$refs['info'].open()
       },
       close () {
-        this.$refs['popup'].close()
+        this.$refs['info'].close()
         this.$refs['confirm'].close()
       },
       order (column) {

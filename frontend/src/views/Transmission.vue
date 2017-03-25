@@ -18,7 +18,7 @@
     md-tabs(md-fixed)
       md-tab#received.no-padding(v-bind:md-label="$t('tab.received')")
 
-        md-table(md-sort="datetime", v-on:sort="order")
+        md-table(md-sort="datetime", md-sort-type="desc", v-on:sort="order")
           md-table-header
             md-table-row
               md-table-head(md-sort-by="From.name") {{ 'table.from' | i18n }}
@@ -39,7 +39,7 @@
 
       md-tab#sent.no-padding(v-bind:md-label="$t('tab.sent')")
 
-        md-table(md-sort="datetime", v-on:sort="order")
+        md-table(md-sort="datetime", md-sort-type="desc", v-on:sort="order")
           md-table-header
             md-table-row
               md-table-head(md-sort-by="To.name") {{ 'table.to' | i18n }}
@@ -60,19 +60,19 @@
 
       md-tab#new(v-bind:md-label="$t('tab.create')")
 
-        form(v-on:submit.stop.prevent="send")
+        form(v-on:submit.stop.prevent="send()")
           md-input-container
             label {{ 'transmission.to' | i18n }}
-            md-select(name="to", id="to", v-model="to", required)
+            md-select(name="to", id="to", v-model="message.to", required)
               md-option(v-for="player in players", v-bind:value="player.id") {{ player.name }}
           md-input-container
-            label {{ 'transmission.from' | i18n }}
+            label {{ 'transmission.subject' | i18n }}
             md-input(type="text", v-model="message.subject", required)
           md-input-container
             label {{ 'transmission.text' | i18n }}
             md-textarea(v-model="message.text", maxlength="140", required)
           md-card-actions
-            md-button.md-dense.md-warn(type="reset") {{ 'button.clear' | i18n }}
+            md-button.md-dense.md-warn(v-on:click.native="clear()") {{ 'button.clear' | i18n }}
             md-button.md-dense.md-accent(type="submit") {{ 'button.send' | i18n }}
 </template>
 
@@ -94,18 +94,23 @@
           From: {},
           To: {}
         },
-        message: {}
+        message: {
+          to: null,
+          subject: '',
+          text: ''
+        }
       }
     },
     created () {
-      api.getPlayers()
-      .then((players) => {
-        this.players = players
-      })
       api.getPlayer(store.state.account.id)
       .then((player) => {
         this.received = player.Received
         this.sent = player.Sent
+      })
+      api.getPlayers()
+      .then((players) => {
+        this.players = players
+        this.message.to = store.state.account.id
       })
     },
     mounted () {
@@ -126,6 +131,16 @@
       reply () {
         // TODO
         this.close()
+      },
+      send () {
+        // TODO
+        console.log('sending')
+        this.clear()
+      },
+      clear () {
+        this.message.to = store.state.account.id
+        this.message.subject = ''
+        this.message.text = ''
       },
       order (column) {
         this.field = column.name

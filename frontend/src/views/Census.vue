@@ -5,11 +5,11 @@
       md-card.md-primary.grey
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content(v-if="selected.Faction")
+        md-card-content.center(v-if="selected.Faction")
           md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
-        md-card-content
-          md-chip {{ selected.influence }} {{ 'resource.influence' | i18n }}
-          md-chip {{ selected.planets }} {{ 'resource.planets' | i18n }}
+        md-card-content.center
+          md-chip {{ selected.Planets.length | format }} {{ 'resource.planets' | i18n }}
+          md-chip {{ selected.influence | format }} {{ 'resource.influence' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="enemy()") {{ 'button.enemy' | i18n }}
@@ -95,7 +95,8 @@
         field: 'influence',
         direction: 'desc',
         selected: {
-          Faction: {}
+          Faction: {},
+          Planets: []
         }
       }
     },
