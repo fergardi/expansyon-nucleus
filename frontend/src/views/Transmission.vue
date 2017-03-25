@@ -2,14 +2,14 @@
   md-table-card
 
     md-dialog(ref='info')
-      md-card.md-primary.grey
+      md-card.md-primary
         md-card-header
           .md-title {{ selected.subject }}
         md-card-content
           span {{ selected.text | lorem }}
         md-card-content.center
           md-chip(v-bind:class="color(selected)") {{ name(selected) }}
-          md-chip {{ selected.datetime | date }}
+          md-chip(v-bind:class="color(selected)") {{ selected.datetime | date }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-warn(v-on:click.native="remove") {{ 'button.delete' | i18n }}
@@ -148,11 +148,11 @@
       },
       color (message) {
         return message.From
-          ? message.From.faction
-            ? message.From.faction.class
+          ? message.From.Faction
+            ? message.From.Faction.class
             : ''
-          : message.To.faction
-            ? message.To.faction.class
+          : message.To.Faction
+            ? message.To.Faction.class
             : ''
       },
       name (message) {

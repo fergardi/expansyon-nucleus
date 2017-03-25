@@ -2,11 +2,9 @@
   md-table-card
 
     md-dialog(ref="info")
-      md-card.md-primary.grey
+      md-card.md-primary(v-bind:class="color(selected)")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content.center(v-if="selected.Faction")
-          md-chip(v-bind:class="selected.Faction.class") {{ selected.Faction.name }}
         md-card-content.center
           md-chip {{ selected.Planets.length | format }} {{ 'resource.planets' | i18n }}
           md-chip {{ selected.influence | format }} {{ 'resource.influence' | i18n }}
@@ -23,13 +21,15 @@
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.hide {{ 'table.guild' | i18n }}
               md-table-head.md-numeric(md-sort-by="Planets.length") {{ 'table.planets' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
-                md-chip(v-bind:class="player.class") {{ player.name }}
+                md-chip(v-bind:class="color(player)") {{ player.name }}
+              md-table-cell.hide {{ guild(player) }}
               md-table-cell.md-numeric
                 md-chip {{ player.Planets.length | format }}
               md-table-cell.md-numeric
@@ -45,13 +45,15 @@
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.hide {{ 'table.guild' | i18n }}
               md-table-head.md-numeric(md-sort-by="Planets.length") {{ 'table.planets' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
-                md-chip(v-bind:class="player.class") {{ player.name }}
+                md-chip(v-bind:class="color(player)") {{ player.name }}
+              md-table-cell.hide {{ guild(player) }}
               md-table-cell.md-numeric
                 md-chip {{ player.Planets.length | format }}
               md-table-cell.md-numeric
@@ -67,13 +69,15 @@
           md-table-header
             md-table-row
               md-table-head(md-sort-by="name") {{ 'table.name' | i18n }}
+              md-table-head.hide {{ 'table.guild' | i18n }}
               md-table-head.md-numeric(md-sort-by="Planets.length") {{ 'table.planets' | i18n }}
               md-table-head.md-numeric(md-sort-by="influence") {{ 'table.influence' | i18n }}
 
           md-table-body
             md-table-row(v-for="player in ordered", md-auto-select, v-bind:md-item="player", v-on:click.native="info(player)")
               md-table-cell
-                md-chip(v-bind:class="player.class") {{ player.name }}
+                md-chip(v-bind:class="color(player)") {{ player.name }}
+              md-table-cell.hide {{ guild(player) }}
               md-table-cell.md-numeric
                 md-chip {{ player.Planets.length | format }}
               md-table-cell.md-numeric
@@ -139,6 +143,16 @@
       },
       clear () {
         store.state.search = ''
+      },
+      color (player) {
+        return player.Faction
+          ? player.Faction.class
+          : ''
+      },
+      guild (player) {
+        return player.Guild
+          ? player.Guild.name
+          : ''
       }
     },
     computed: {

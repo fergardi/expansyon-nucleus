@@ -92,7 +92,7 @@
             .then((player) => {
               store.commit('player', player)
               this.logging = false
-              this.$router.push('/transmission') // TODO development route
+              this.$router.push('/census') // TODO development route
             })
           }
         })

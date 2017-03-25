@@ -26,7 +26,8 @@ const translation = {
       influence: 'Influence',
       members: 'Members',
       description: 'Description',
-      planets: 'Planets'
+      planets: 'Planets',
+      guild: 'Guild'
     },
     notification: {
       market: 'There are new items in the market',
@@ -213,7 +214,8 @@ const translation = {
       influence: 'Influencia',
       members: 'Miembros',
       description: 'Descripción',
-      planets: 'Planetas'
+      planets: 'Planetas',
+      guild: 'Hermandad'
     },
     notification: {
       market: 'Hay nuevas ofertas en el mercado',
