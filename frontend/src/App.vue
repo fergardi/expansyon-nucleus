@@ -303,6 +303,7 @@
   import Vue from 'vue'
   import auth from './services/auth'
   import api from './services/api'
+  import notification from './services/notification'
   import store from './vuex/store'
 
   export default {
@@ -364,19 +365,19 @@
         }
       },
       exploration () {
-        store.commit('notification', { text: 'notification.exploration.new', class: 'md-accent' })
+        notification.success('notification.exploration.new')
       },
       cantina () {
-        store.commit('notification', { text: 'notification.cantina.new', class: 'md-accent' })
+        notification.success('notification.cantina.new')
       },
       senate () {
-        store.commit('notification', { text: 'notification.senate.new', class: 'md-accent' })
+        notification.success('notification.senate.new')
       },
       market () {
-        store.commit('notification', { text: 'notification.market.new', class: 'md-accent' })
+        notification.success('notification.market.new')
       },
       store () {
-        store.commit('notification', { text: 'notification.store.new', class: 'md-accent' })
+        notification.success('notification.store.new')
       }
     },
     watch: {

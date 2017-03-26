@@ -55,6 +55,12 @@
     mounted () {
       store.commit('title', 'title.store')
     },
+    sockets: {
+      store () {
+        this.refresh()
+        this.close()
+      }
+    },
     methods: {
       refresh () {
         api.getStore()
@@ -75,15 +81,15 @@
       buy () {
         api.buyStore(store.state.player.id, this.selected.id)
         .then((result) => {
-          this.refresh()
           notification.success('notification.store.ok')
         })
         .catch((error) => {
           console.error(error)
-          this.refresh()
-          notification.warning('notification.store.error')
+          notification.error('notification.store.error')
         })
-        this.close()
+        .then(() => {
+          this.close()
+        })
       },
       can (aether) {
         return store.state.player.aether >= aether

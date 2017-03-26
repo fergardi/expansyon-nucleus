@@ -39,24 +39,13 @@
   export default {
     data () {
       return {
-        relics: [],
-        selected: {},
-        alert: ''
+        selected: {}
       }
-    },
-    created () {
-      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.relicarium')
     },
     methods: {
-      refresh () {
-        api.getPlayer(store.state.account.id)
-        .then((player) => {
-          this.relics = player.Relics
-        })
-      },
       confirm () {
         this.$refs['confirm'].open()
       },
@@ -70,15 +59,15 @@
       activate () {
         api.activateRelic(store.state.account.id, this.selected.id)
         .then((response) => {
-          this.refresh()
           notification.success('notification.relicarium.ok')
         })
         .catch((error) => {
           console.error(error)
-          this.refresh()
-          notification.success('notification.relicarium.error')
+          notification.error('notification.relicarium.error')
         })
-        this.close()
+        .then(() => {
+          this.close()
+        })
       },
       dismiss () {
         this.$refs['alert'].close()
@@ -92,6 +81,9 @@
         return this.relics.filter((relic) => {
           return this.$t(relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      relics () {
+        return store.state.player.Relics
       }
     }
   }
