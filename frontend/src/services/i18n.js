@@ -30,10 +30,31 @@ const translation = {
       guild: 'Guild'
     },
     notification: {
-      market: 'There are new items in the market',
-      exploration: 'There are new planets in exploration',
-      cantina: 'There are new missions in the cantina',
-      senate: 'There are new referendums in the senate'
+      store: {
+        new: 'There are new - in the -',
+        ok: 'Transaction completed',
+        error: 'There has been an error'
+      },
+      market: {
+        new: 'There are new - in the -',
+        ok: 'Transaction completed',
+        error: 'There has been an error'
+      },
+      exploration: {
+        new: 'There are new - in the -',
+        ok: 'Attack sent',
+        error: 'There has been an error'
+      },
+      cantina: {
+        new: 'There are new - in the -',
+        ok: 'Mission started',
+        error: 'There has been an error'
+      },
+      senate: {
+        new: 'There are new - in the -',
+        ok: 'Referendum voted',
+        error: 'There has been an error'
+      }
     },
     filter: {
       search: 'Search...',
@@ -218,10 +239,31 @@ const translation = {
       guild: 'Hermandad'
     },
     notification: {
-      market: 'Hay nuevas ofertas en el mercado',
-      exploration: 'Hay nuevos planetas en exploración',
-      cantina: 'Hay nuevas misiones en la cantina',
-      senate: 'Hay nuevos referendums en el senado'
+      store: {
+        new: 'Hay nuevas ofertas en la tienda',
+        ok: 'Compra finalizada',
+        error: 'Ha ocurrido un error'
+      },
+      market: {
+        new: 'Hay nuevas ofertas en el mercado',
+        ok: 'Compra finalizada',
+        error: 'Ha ocurrido un error'
+      },
+      exploration: {
+        new: 'Hay nuevos planetas en exploración',
+        ok: 'Ataque enviado',
+        error: 'Ha ocurrido un error'
+      },
+      cantina: {
+        new: 'Hay nuevas misiones en la cantina',
+        ok: 'Mision iniciada',
+        error: 'Ha ocurrido un error'
+      },
+      senate: {
+        new: 'Hay nuevos referendums en el senado',
+        ok: 'Votación realizada',
+        error: 'Ha ocurrido un error'
+      }
     },
     filter: {
       search: 'Buscar...',

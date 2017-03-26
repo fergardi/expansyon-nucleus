@@ -87,6 +87,12 @@ const api = {
       return response.data
     })
   },
+  getBattles: () => {
+    return axios.get(`/battle`)
+    .then((response) => {
+      return response.data
+    })
+  },
   checkEmail: (email) => {
     return axios.post(`/player/email`, { email: email })
     .then((response) => {
@@ -95,6 +101,18 @@ const api = {
   },
   checkName: (name) => {
     return axios.post(`/player/name`, { name: name })
+    .then((response) => {
+      return response
+    })
+  },
+  buyMarket: (player, sale) => {
+    return axios.get(`/player/${player}/market/${sale}`)
+    .then((response) => {
+      return response
+    })
+  },
+  buyStore: (player, relic) => {
+    return axios.get(`/player/${player}/store/${relic}`)
     .then((response) => {
       return response
     })

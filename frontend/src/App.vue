@@ -358,21 +358,20 @@
           api.getPlayer(store.state.account.id)
           .then((player) => {
             store.commit('player', player)
-            store.commit('notification', { text: 'Player updated with new data', class: 'md-warn' })
           })
         }
       },
       exploration () {
-        store.commit('notification', { text: 'notification.exploration', class: 'md-accent' })
+        store.commit('notification', { text: 'notification.exploration.new', class: 'md-accent' })
       },
       cantina () {
-        store.commit('notification', { text: 'notification.cantina', class: 'md-accent' })
+        store.commit('notification', { text: 'notification.cantina.new', class: 'md-accent' })
       },
       senate () {
-        store.commit('notification', { text: 'notification.senate', class: 'md-accent' })
+        store.commit('notification', { text: 'notification.senate.new', class: 'md-accent' })
       },
       market () {
-        store.commit('notification', { text: 'notification.market', class: 'md-accent' })
+        store.commit('notification', { text: 'notification.market.new', class: 'md-accent' })
       }
     },
     watch: {
@@ -578,7 +577,7 @@
   indigo = #304FFE
   yellow = #FFEA00
   cyan = #00E5FF
-  red = #DD2C00
+  red = #D50000
   orange = #FF9800
   pink = #E91E63
   grey = #F5F5F5

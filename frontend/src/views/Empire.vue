@@ -100,6 +100,7 @@
             datasets: [
               {
                 data: [1, 2, 3, 4, 5, 6, 7],
+                borderWidth: 0,
                 backgroundColor: [
                   '#4CAF50',
                   '#9C27B0',
@@ -127,6 +128,7 @@
             datasets: [
               {
                 data: [1, 2, 3, 4, 5, 6],
+                borderWidth: 0,
                 backgroundColor: [
                   '#4CAF50',
                   '#9C27B0',
@@ -156,6 +158,7 @@
             datasets: [
               {
                 data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                borderWidth: 0,
                 backgroundColor: [
                   '#4CAF50',
                   '#9C27B0',

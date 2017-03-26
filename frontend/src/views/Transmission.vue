@@ -16,6 +16,24 @@
           md-button.md-dense.md-accent(v-on:click.native="reply") {{ 'button.reply' | i18n }}
 
     md-tabs(md-fixed)
+
+      md-tab#battles.no-padding(v-bind:md-label="$t('tab.battle')")
+        md-table(md-sort="end", md-sort-type="desc", v-on:sort="order")
+          md-table-header
+            md-table-row
+              md-table-head {{ 'table.from' | i18n }} -> {{ 'table.to' | i18n }}
+              md-table-head.md-numeric {{ 'table.start' | i18n }} -> {{ 'table.end' | i18n }}
+
+          md-table-body
+            md-table-row(v-for="battle in battlesOrdered", md-auto-select, v-bind:md-item="battle", v-on:click.native="select(battle)")
+              md-table-cell
+                md-chip(v-bind:class="from(battle)") {{ battle.From.name }}
+                md-chip(v-bind:class="to(battle)") {{ battle.To.name }}
+              md-table-cell.md-numeric {{ battle.start | date }} -> {{ battle.end | date }}
+
+            md-table-row(v-if="!battlesOrdered.length")
+              md-table-cell {{ 'filter.nothing' | i18n }}
+      
       md-tab#received.no-padding(v-bind:md-label="$t('tab.received')")
 
         md-table(md-sort="datetime", md-sort-type="desc", v-on:sort="order")
@@ -86,6 +104,7 @@
     data () {
       return {
         players: [],
+        battles: [],
         received: [],
         sent: [],
         field: 'date',
@@ -106,6 +125,10 @@
       .then((player) => {
         this.received = player.Received
         this.sent = player.Sent
+      })
+      api.getBattles()
+      .then((battles) => {
+        this.battles = battles
       })
       api.getPlayers()
       .then((players) => {
@@ -155,6 +178,16 @@
             ? message.To.Faction.class
             : ''
       },
+      from (battle) {
+        return battle.From.faction
+          ? battle.From.faction.class
+          : ''
+      },
+      to (battle) {
+        return battle.To.faction
+          ? battle.To.faction.class
+          : ''
+      },
       name (message) {
         return message.From
           ? message.From.name
@@ -164,6 +197,14 @@
     computed: {
       search () {
         return store.state.search
+      },
+      battlesFiltered () {
+        return this.battles.filter((battle) => {
+          return battle.To.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 || battle.From.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+        })
+      },
+      battlesOrdered () {
+        return _.orderBy(this.battlesFiltered, this.field, this.direction)
       },
       receivedFiltered () {
         return this.received.filter((message) => {

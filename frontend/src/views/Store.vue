@@ -11,7 +11,7 @@
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can(selected.aether)") {{ 'button.buy' | i18n }}
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
     
@@ -37,6 +37,7 @@
 
 <script>
   import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
@@ -69,8 +70,18 @@
         this.confirm()
       },
       buy () {
-        // TODO
+        api.buyStore(store.state.player.id, this.selected.id)
+        .then((result) => {
+          notification.success('notification.store.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.warning('notification.store.error')
+        })
         this.close()
+      },
+      can (aether) {
+        return store.state.player.aether >= aether
       }
     },
     computed: {
@@ -81,9 +92,6 @@
         return this.relics.filter((relic) => {
           return this.$t(relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
-      },
-      can () {
-        return true
       }
     }
   }

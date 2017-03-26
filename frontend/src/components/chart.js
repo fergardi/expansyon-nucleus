@@ -10,7 +10,8 @@ const pie = Doughnut.extend({
         },
         animation: {
           animateRotate: false
-        }
+        },
+        borderWidth: 0
       }
     }
   },
