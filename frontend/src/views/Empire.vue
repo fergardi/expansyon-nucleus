@@ -56,16 +56,16 @@
       md-card.md-primary.card(v-bind:class="faction.class", v-if="faction")
         md-card-header
           .md-title {{ faction.name | i18n }}
-        md-card-content.no-padding.center
-          md-progress.green(v-bind:md-progress="faction.metal", v-if="faction.metal > 0")
-          md-progress.green(v-bind:md-progress="faction.crystal", v-if="faction.crystal > 0")
-          md-progress.green(v-bind:md-progress="faction.oil", v-if="faction.oil > 0")
-          md-progress.green(v-bind:md-progress="faction.size", v-if="faction.size > 0")
-          md-progress.green(v-bind:md-progress="faction.energy", v-if="faction.energy > 0")
-          md-progress.green(v-bind:md-progress="faction.influence", v-if="faction.influence > 0")
-          md-progress.green(v-bind:md-progress="faction.attack", v-if="faction.attack > 0")
-          md-progress.green(v-bind:md-progress="faction.defense", v-if="faction.defense > 0")
-          md-progress.green(v-bind:md-progress="faction.speed", v-if="faction.speed > 0")
+        md-card-content.no-padding
+          md-progress.green(v-bind:md-progress="faction.metal")
+          md-progress.green(v-bind:md-progress="faction.crystal")
+          md-progress.green(v-bind:md-progress="faction.oil")
+          md-progress.green(v-bind:md-progress="faction.size")
+          md-progress.green(v-bind:md-progress="faction.energy")
+          md-progress.green(v-bind:md-progress="faction.influence")
+          md-progress.green(v-bind:md-progress="faction.attack")
+          md-progress.green(v-bind:md-progress="faction.defense")
+          md-progress.green(v-bind:md-progress="faction.speed")
       md-card.md-primary.card(v-else)
         md-card-header
           .md-title Faction
@@ -192,13 +192,23 @@
       .then((referendums) => {
         this.referendum = referendums[0]
       })
-      api.getPlayer(store.state.account.id)
-      .then((player) => {
-        this.faction = player.Faction
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.empire')
+    },
+    sockets: {
+      player () {
+        this.refresh()
+      }
+    },
+    methods: {
+      refresh () {
+        api.getPlayer(store.state.account.id)
+        .then((player) => {
+          this.faction = player.Faction
+        })
+      }
     }
   }
 </script>

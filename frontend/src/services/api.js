@@ -122,6 +122,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  joinFaction: (player, faction) => {
+    return axios.get(`/player/${player}/faction/${faction}`)
+    .then((response) => {
+      return response
+    })
   }
 }
 

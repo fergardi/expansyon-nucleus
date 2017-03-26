@@ -30,28 +30,37 @@ const translation = {
       guild: 'Guild'
     },
     notification: {
+      temple: {
+        new: 'There are new prices in the temple',
+        ok: 'Transaction completed',
+        error: 'There has been an error'
+      },
+      relicarium: {
+        ok: 'Relic activated',
+        error: 'There has been an error'
+      },
       store: {
-        new: 'There are new - in the -',
+        new: 'There are new prices in the store',
         ok: 'Transaction completed',
         error: 'There has been an error'
       },
       market: {
-        new: 'There are new - in the -',
+        new: 'There are new sales in the market',
         ok: 'Transaction completed',
         error: 'There has been an error'
       },
       exploration: {
-        new: 'There are new - in the -',
+        new: 'There are new planets in exploration',
         ok: 'Attack sent',
         error: 'There has been an error'
       },
       cantina: {
-        new: 'There are new - in the -',
+        new: 'There are new missions in the cantina',
         ok: 'Mission started',
         error: 'There has been an error'
       },
       senate: {
-        new: 'There are new - in the -',
+        new: 'There are new referendums in the senate',
         ok: 'Referendum voted',
         error: 'There has been an error'
       }
@@ -247,6 +256,11 @@ const translation = {
       guild: 'Hermandad'
     },
     notification: {
+      temple: {
+        new: 'Hay nuevos precios en el templo',
+        ok: 'Ingreso correcto',
+        error: 'Ha ocurrido un error'
+      },
       relicarium: {
         ok: 'Reliquia activada',
         error: 'Ha ocurrido un error'
@@ -306,7 +320,7 @@ const translation = {
       delete: 'Borrar',
       confirm: 'Confirmar',
       reply: 'Responder',
-      join: 'Unirse',
+      join: 'Ingresar',
       leave: 'Abandonar',
       vote: 'Votar',
       build: 'Construir',
