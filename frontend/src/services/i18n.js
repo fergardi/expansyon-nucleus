@@ -213,9 +213,6 @@ const translation = {
       portal: 'Portal',
       timeturner: 'Timeturner'
     },
-    referendum: {
-      example: 'Example'
-    },
     tree: {
       attack: 'Attack',
       defense: 'Defense',
@@ -438,9 +435,6 @@ const translation = {
       shipwreck: 'Naufragio',
       portal: 'Portal',
       timeturner: 'Giratiempo'
-    },
-    referendum: {
-      example: 'Ejemplo'
     },
     tree: {
       attack: 'Ataque',

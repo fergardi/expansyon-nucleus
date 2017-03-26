@@ -38,19 +38,19 @@
           md-progress.green(v-bind:md-progress="resources.influence")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="50")
-      md-card.md-primary.card
+      md-card.md-primary.card(v-bind:class="referendum.class")
         md-card-header
-          .md-title {{ referendum.name | i18n }}
+          .md-title {{ referendum.name }}
         md-card-content.no-padding.center
-          md-progress(v-bind:md-progress="referendum.metal", v-bind:class="referendum.metal >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.crystal", v-bind:class="referendum.crystal >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.oil", v-bind:class="referendum.oil >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.size", v-bind:class="referendum.size >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.energy", v-bind:class="referendum.energy >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.influence", v-bind:class="referendum.influence >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.attack", v-bind:class="referendum.attack >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.defense", v-bind:class="referendum.defense >= 50 ? 'green' : 'red'")
-          md-progress(v-bind:md-progress="referendum.speed", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.metal)", v-bind:class="referendum.metal >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.crystal)", v-bind:class="referendum.crystal >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.oil)", v-bind:class="referendum.oil >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.size)", v-bind:class="referendum.size >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.energy)", v-bind:class="referendum.energy >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.influence)", v-bind:class="referendum.influence >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.attack)", v-bind:class="referendum.attack >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.defense)", v-bind:class="referendum.defense >= 50 ? 'green' : 'red'")
+          md-progress(v-bind:md-progress="abs(referendum.speed)", v-bind:class="referendum.speed >= 50 ? 'green' : 'red'")
 
     md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="50")
       md-card.md-primary.card(v-bind:class="faction.class", v-if="faction")
@@ -208,6 +208,9 @@
         .then((player) => {
           this.faction = player.Faction
         })
+      },
+      abs (percent) {
+        return Math.abs(percent)
       }
     }
   }
