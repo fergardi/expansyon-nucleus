@@ -128,6 +128,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  voteReferendum: (player, referendum) => {
+    return axios.get(`/player/${player}/referendum/${referendum}`)
+    .then((response) => {
+      return response
+    })
   }
 }
 

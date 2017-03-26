@@ -11,12 +11,12 @@
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="vote()", v-bind:disabled="!can") {{ 'button.vote' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="vote()", v-bind:disabled="!can(selected.aether)") {{ 'button.vote' | i18n }}
     
     md-layout(v-for="referendum in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="referendum.class", md-with-hover, v-on:click.native="select(referendum)")
         md-card-header
-          .md-title {{ referendum.name | i18n }}
+          .md-title {{ referendum.name | i18n }} ({{ referendum.votes | format }})
         md-card-media
           img(v-bind:src="referendum.image")
         md-card-content.no-padding
@@ -40,6 +40,7 @@
 
 <script>
   import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
@@ -81,8 +82,20 @@
         this.confirm()
       },
       vote () {
-        // TODO
-        this.close()
+        api.voteReferendum(store.state.player.id, this.selected.id)
+        .then((result) => {
+          notification.success('notification.senate.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.senate.error')
+        })
+        .then(() => {
+          this.close()
+        })
+      },
+      can (aether) {
+        return store.state.player.aether >= aether
       }
     },
     computed: {
@@ -93,9 +106,6 @@
         return this.referendums.filter((referendum) => {
           return this.$t(referendum.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
-      },
-      can () {
-        return true
       }
     }
   }
