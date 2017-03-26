@@ -1,10 +1,6 @@
 <template lang="pug">
   md-layout
 
-    md-snackbar(ref="alert", md-duration="5000", md-position="bottom center")
-      span {{ alert }}
-      md-button.md-dense.md-accent(v-on:click.native="dismiss()") {{ 'button.close' | i18n }}
-
     md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
@@ -19,7 +15,7 @@
 
       md-card.md-primary.card(v-bind:class="relic.class", md-with-hover, v-on:click.native="select(relic)")
         md-card-header
-          .md-title {{ relic.name | i18n }}
+          .md-title {{ relic.name | i18n }} ({{ relic.PlayerRelic.quantity | format }})
         md-card-media
           img(v-bind:src="relic.image")
         md-card-content.center(v-if="relic.moon || relic.station || relic.planet")
@@ -37,6 +33,7 @@
 
 <script>
   import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
@@ -48,24 +45,23 @@
       }
     },
     created () {
-      api.getPlayer(store.state.account.id)
-      .then((player) => {
-        this.relics = player.Relics
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.relicarium')
     },
     methods: {
+      refresh () {
+        api.getPlayer(store.state.account.id)
+        .then((player) => {
+          this.relics = player.Relics
+        })
+      },
       confirm () {
         this.$refs['confirm'].open()
       },
       close () {
         this.$refs['confirm'].close()
-        this.$refs['alert'].close()
-      },
-      alert () {
-        this.$refs['alert'].open()
       },
       select (relic) {
         this.selected = relic
@@ -74,18 +70,15 @@
       activate () {
         api.activateRelic(store.state.account.id, this.selected.id)
         .then((response) => {
-          api.getPlayer(store.state.account.id)
-          .then((player) => {
-            this.relics = player.Relics
-            this.close()
-            this.message = 'Relic successfully activated'
-            this.alert()
-          })
+          this.refresh()
+          notification.success('notification.relicarium.ok')
         })
         .catch((error) => {
-          this.message = error
-          this.alert()
+          console.error(error)
+          this.refresh()
+          notification.success('notification.relicarium.error')
         })
+        this.close()
       },
       dismiss () {
         this.$refs['alert'].close()

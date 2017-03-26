@@ -50,15 +50,18 @@
       }
     },
     created () {
-      api.getStore()
-      .then((relics) => {
-        this.relics = relics
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.store')
     },
     methods: {
+      refresh () {
+        api.getStore()
+        .then((relics) => {
+          this.relics = relics
+        })
+      },
       confirm () {
         this.$refs['confirm'].open()
       },
@@ -72,10 +75,12 @@
       buy () {
         api.buyStore(store.state.player.id, this.selected.id)
         .then((result) => {
+          this.refresh()
           notification.success('notification.store.ok')
         })
         .catch((error) => {
           console.error(error)
+          this.refresh()
           notification.warning('notification.store.error')
         })
         this.close()

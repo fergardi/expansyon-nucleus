@@ -239,6 +239,10 @@ const translation = {
       guild: 'Hermandad'
     },
     notification: {
+      relicarium: {
+        ok: 'Reliquia activada',
+        error: 'Ha ocurrido un error'
+      },
       store: {
         new: 'Hay nuevas ofertas en la tienda',
         ok: 'Compra finalizada',

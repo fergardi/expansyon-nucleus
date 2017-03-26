@@ -353,12 +353,14 @@
       }
     },
     sockets: {
-      player () {
+      player (id) {
         if (store.state.account.logged && !this.fullscreen) {
-          api.getPlayer(store.state.account.id)
-          .then((player) => {
-            store.commit('player', player)
-          })
+          if (id === store.state.account.id || id === null) {
+            api.getPlayer(store.state.account.id)
+            .then((player) => {
+              store.commit('player', player)
+            })
+          }
         }
       },
       exploration () {
@@ -372,6 +374,9 @@
       },
       market () {
         store.commit('notification', { text: 'notification.market.new', class: 'md-accent' })
+      },
+      store () {
+        store.commit('notification', { text: 'notification.store.new', class: 'md-accent' })
       }
     },
     watch: {
