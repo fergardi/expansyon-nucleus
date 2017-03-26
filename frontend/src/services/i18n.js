@@ -205,12 +205,15 @@ const translation = {
       timeturner: 'Timeturner'
     },
     referendum: {
-      law: 'Referendum'
+      example: 'Example'
     },
     tree: {
       attack: 'Attack',
       defense: 'Defense',
       utility: 'Utility'
+    },
+    mission: {
+      example: 'Example'
     }
   },
   es: {
@@ -423,12 +426,15 @@ const translation = {
       timeturner: 'Giratiempo'
     },
     referendum: {
-      law: 'Referendum'
+      example: 'Ejemplo'
     },
     tree: {
       attack: 'Ataque',
       defense: 'Defensa',
       utility: 'Utilidad'
+    },
+    mission: {
+      example: 'Ejemplo'
     }
   }
 }
