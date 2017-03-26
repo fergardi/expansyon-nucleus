@@ -22,6 +22,9 @@
           span {{ achievement.description }}
         md-card-content
           md-chip.pink {{ achievement.aether | format }} {{ 'resource.aether' | i18n }}
+
+    md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
+      md-chip.red {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>

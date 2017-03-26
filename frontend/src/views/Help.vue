@@ -11,9 +11,8 @@
           md-card-media
             img(v-for="image in section.images", v-bind:src="image.url")
 
-        template(v-if="!filtered.length")
-          md-card-header
-            .md-title {{ 'filter.nothing' | i18n }}
+    md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
+      md-chip.red {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>
