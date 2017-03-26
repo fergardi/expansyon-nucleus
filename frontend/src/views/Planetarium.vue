@@ -10,7 +10,7 @@
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.close' | i18n }}
 
-    md-layout(v-for="planet in filtered", md-flex-xlarge="25", md-flex-large="33", md-flex-medium="50", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(v-for="planet in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
     
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="info(planet)")
         md-card-header
