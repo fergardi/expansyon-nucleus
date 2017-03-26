@@ -206,6 +206,11 @@ const translation = {
     },
     referendum: {
       law: 'Referendum'
+    },
+    tree: {
+      attack: 'Attack',
+      defense: 'Defense',
+      utility: 'Utility'
     }
   },
   es: {
@@ -419,6 +424,11 @@ const translation = {
     },
     referendum: {
       law: 'Referendum'
+    },
+    tree: {
+      attack: 'Ataque',
+      defense: 'Defensa',
+      utility: 'Utilidad'
     }
   }
 }

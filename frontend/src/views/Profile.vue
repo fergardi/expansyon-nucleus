@@ -33,10 +33,6 @@
           md-card-actions
             md-button.md-dense.md-warn(type="reset") {{ 'button.clear' | i18n }}
             md-button.md-dense.md-accent(type="submit") Change
-          md-card-header
-            .md-title Change theme color
-          md-card-content
-            md-switch(v-model="theme", name="theme", id="theme") Light/Dark
 </template>
 
 <script>
@@ -47,8 +43,7 @@
       return {
         outdated: '',
         updated: '',
-        repeat: '',
-        theme: true
+        repeat: ''
       }
     },
     mounted () {
@@ -72,11 +67,6 @@
       },
       match () {
         return this.updated === this.repeat
-      }
-    },
-    watch: {
-      theme (boolean) {
-        boolean ? this.$material.setCurrentTheme('dark') : this.$material.setCurrentTheme('light')
       }
     }
   }

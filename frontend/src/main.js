@@ -109,25 +109,23 @@ Vue.material.registerTheme({
     },
     accent: 'green',
     warn: 'red'
-  },
-  // light
-  light: {
-    primary: {
-      color: 'blue-grey',
-      hue: '400'
-    },
-    accent: 'green',
-    warn: 'red'
-  },
-  // dark
-  dark: {
+  }
+  /* TODO FIX
+  default: {
     primary: {
       color: 'blue-grey',
       hue: '900'
     },
-    accent: 'green',
-    warn: 'red'
+    accent: {
+      color: 'light-green',
+      hue: 'A700'
+    },
+    warn: {
+      color: 'red',
+      hue: 'A700'
+    }
   }
+  */
 })
 
 // filter
