@@ -35,35 +35,18 @@
 </template>
 
 <script>
-  import api from '../services/api'
   import store from '../vuex/store'
 
   export default {
     data () {
       return {
-        planets: [],
         selected: {}
       }
-    },
-    created () {
-      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.planetarium')
     },
-    sockets: {
-      planetarium () {
-        this.close()
-        this.refresh()
-      }
-    },
     methods: {
-      refresh () {
-        api.getPlayer(store.state.account.id)
-        .then((player) => {
-          this.planets = player.Planets
-        })
-      },
       info (planet) {
         this.selected = planet
         this.$refs['info'].open()
@@ -80,6 +63,9 @@
         return this.planets.filter((planet) => {
           return planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      planets () {
+        return store.state.player.Planets
       }
     }
   }

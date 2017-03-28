@@ -59,7 +59,7 @@
             md-avatar
               md-icon.md-primary search
             span {{ 'title.exploration' | i18n }}
-            md-chip {{ player.exploration | format }}
+            md-chip {{ player.Exploration.length | format }}
         md-list-item
           router-link(exact, to="/cantina", v-on:click.native="collapse()")
             md-avatar

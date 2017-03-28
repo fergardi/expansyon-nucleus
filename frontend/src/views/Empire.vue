@@ -78,7 +78,6 @@
 
 <script>
   import { pie } from '../components/chart'
-  import api from '../services/api'
   import store from '../vuex/store'
 
   export default {
@@ -182,35 +181,23 @@
           size: 23,
           energy: 23,
           influence: 23
-        },
-        referendum: {},
-        faction: {}
+        }
       }
-    },
-    created () {
-      api.getReferendums()
-      .then((referendums) => {
-        this.referendum = referendums[0]
-      })
-      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.empire')
     },
-    sockets: {
-      player () {
-        this.refresh()
-      }
-    },
     methods: {
-      refresh () {
-        api.getPlayer(store.state.account.id)
-        .then((player) => {
-          this.faction = player.Faction
-        })
-      },
       abs (percent) {
         return Math.abs(percent)
+      }
+    },
+    computed: {
+      faction () {
+        return store.state.player.Faction
+      },
+      referendum () {
+        return store.state.player.Referendum
       }
     }
   }

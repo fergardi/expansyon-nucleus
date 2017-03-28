@@ -13,7 +13,9 @@ const store = new Vuex.Store({
       logged: false,
       id: 0
     },
-    player: {},
+    player: {
+      Exploration: []
+    },
     notification: {
       text: '',
       class: ''

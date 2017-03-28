@@ -48,38 +48,21 @@
 </template>
 
 <script>
-  import api from '../services/api'
   import store from '../vuex/store'
 
   export default {
     data () {
       return {
-        planets: [],
         selected: {},
         fighter: 0,
         cruiser: 0,
         bomber: 0
       }
     },
-    created () {
-      this.refresh()
-    },
     mounted () {
       store.commit('title', 'title.exploration')
     },
-    sockets: {
-      exploration () {
-        this.close()
-        this.refresh()
-      }
-    },
     methods: {
-      refresh () {
-        api.getPlanets(store.state.account.id)
-        .then((planets) => {
-          this.planets = planets
-        })
-      },
       form () {
         this.$refs['form'].open()
       },
@@ -105,12 +88,15 @@
         return store.state.search
       },
       filtered () {
-        return this.planets.filter((planet) => {
+        return this.exploration.filter((planet) => {
           return planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       can () {
         return true
+      },
+      exploration () {
+        return store.state.player.Exploration
       }
     }
   }

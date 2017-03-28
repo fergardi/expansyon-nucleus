@@ -45,13 +45,11 @@
 </template>
 
 <script>
-  import api from '../services/api'
   import store from '../vuex/store'
 
   export default {
     data () {
       return {
-        buildings: [],
         selected: {},
         metal: 0,
         crystal: 0,
@@ -59,24 +57,10 @@
         quantity: 0
       }
     },
-    created () {
-      this.refresh()
-    },
     mounted () {
       store.commit('title', 'title.infrastructure')
     },
-    sockets: {
-      infrastructure () {
-        this.refresh()
-      }
-    },
     methods: {
-      refresh () {
-        api.getPlayer(store.state.account.id)
-        .then((player) => {
-          this.buildings = player.Buildings
-        })
-      },
       form () {
         this.$refs['form'].open()
       },
@@ -106,6 +90,9 @@
       },
       can () {
         return true
+      },
+      buildings () {
+        return store.state.player.Buildings
       }
     }
   }

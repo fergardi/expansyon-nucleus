@@ -78,12 +78,6 @@
     data () {
       return {
         guilds: [],
-        guild: {
-          name: '',
-          ranking: 0,
-          influence: 0,
-          members: 0
-        },
         selected: {},
         field: 'influence',
         direction: 'desc'
@@ -105,10 +99,6 @@
         api.getGuilds()
         .then((guilds) => {
           this.guilds = guilds
-        })
-        api.getPlayer(store.state.account.id)
-        .then((player) => {
-          if (player.Guild) this.guild = this.guilds.find((guild) => guild.id === player.Guild.id)
         })
       },
       info (guild) {
@@ -149,6 +139,11 @@
       },
       ordered () {
         return _.orderBy(this.filtered, this.field, this.direction)
+      },
+      guild () {
+        return store.state.player.Guild
+          ? this.guilds.find((guild) => guild.id === store.state.player.Guild.id)
+          : {}
       }
     }
   }
