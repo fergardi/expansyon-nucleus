@@ -26,8 +26,6 @@
           .md-title {{ achievement.name | i18n }}
         md-card-media
           img(v-bind:src="achievement.image")
-        md-card-content.no-padding
-          md-progress(v-bind:md-progress="achievement.progress")
         md-card-content.center
           span {{ achievement.description }}
         md-card-content.center
