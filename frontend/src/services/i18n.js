@@ -157,7 +157,7 @@ const translation = {
       ships: 'Ships',
       referendum: 'Referendum',
       faction: 'Faction',
-      level: 'Level'
+      progress: 'Progress'
     },
     resource: {
       turns: 'Turns',
@@ -174,7 +174,7 @@ const translation = {
       aether: 'Aether',
       quantity: 'Quantity',
       experience: 'Experience',
-      skills: 'Skills'
+      level: 'Level'
     },
     ship: {
       fighter: 'Fighter',
@@ -220,6 +220,17 @@ const translation = {
     },
     mission: {
       example: 'Example'
+    },
+    achievement: {
+      scavenger: 'Scavenger',
+      jeweller: 'Jeweller',
+      prospector: 'Prospector',
+      commander: 'Commander',
+      architect: 'Architect',
+      conqueror: 'Conqueror',
+      engineer: 'Engineer',
+      terraformer: 'Terraformer',
+      scientist: 'Scientist'
     }
   },
   es: {
@@ -380,7 +391,7 @@ const translation = {
       ships: 'Naves',
       referendum: 'Referendum',
       faction: 'Facción',
-      level: 'Nivel'
+      progress: 'Progreso'
     },
     resource: {
       turns: 'Turnos',
@@ -397,7 +408,7 @@ const translation = {
       aether: 'Éter',
       quantity: 'Cantidad',
       experience: 'Experiencia',
-      skills: 'Habilidades'
+      level: 'Nivel'
     },
     ship: {
       fighter: 'Caza',
@@ -443,6 +454,17 @@ const translation = {
     },
     mission: {
       example: 'Ejemplo'
+    },
+    achievement: {
+      scavenger: 'Recolector',
+      jeweller: 'Joyero',
+      prospector: 'Prospector',
+      commander: 'Comandante',
+      architect: 'Arquitecto',
+      conqueror: 'Conquistador',
+      engineer: 'Ingeniero',
+      terraformer: 'Terraformador',
+      scientist: 'Científico'
     }
   }
 }

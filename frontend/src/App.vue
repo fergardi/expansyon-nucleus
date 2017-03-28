@@ -85,7 +85,7 @@
             md-avatar
               md-icon.md-primary dialpad
             span {{ 'title.research' | i18n }}
-            md-chip {{ player.skills | format }}
+            md-chip {{ player.level | format }}
         md-list-item
           router-link(exact, to="/hangar", v-on:click.native="collapse()")
             md-avatar
@@ -181,7 +181,7 @@
           span {{ 'resource.aether' | i18n }}
           md-chip.pink {{ player.aether | format }}
 
-        md-subheader {{ 'subtitle.level' | i18n }}
+        md-subheader {{ 'subtitle.progress' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary school
@@ -190,8 +190,8 @@
         md-list-item
           md-avatar
             md-icon.md-primary share
-          span {{ 'resource.skills' | i18n }}
-          md-chip {{ player.skills | format }}
+          span {{ 'resource.level' | i18n }}
+          md-chip {{ player.level | format }}
 
         md-subheader {{ 'subtitle.hangar' | i18n }}
         md-list-item
