@@ -78,29 +78,28 @@
     data () {
       return {
         guilds: [],
+        guild: {
+          name: '',
+          ranking: 0,
+          influence: 0,
+          members: 0
+        },
         selected: {},
         field: 'influence',
         direction: 'desc'
       }
     },
     created () {
-      this.refresh()
+      api.getGuilds()
+      .then((guilds) => {
+        this.guilds = guilds
+        if (store.state.player.Guild) this.guild = this.guilds.find((guild) => guild.id === store.state.player.Guild.id)
+      })
     },
     mounted () {
       store.commit('title', 'title.guild')
     },
-    sockets: {
-      guild () {
-        this.refresh()
-      }
-    },
     methods: {
-      refresh () {
-        api.getGuilds()
-        .then((guilds) => {
-          this.guilds = guilds
-        })
-      },
       info (guild) {
         this.selected = guild
         this.$refs['info'].open()
@@ -139,11 +138,6 @@
       },
       ordered () {
         return _.orderBy(this.filtered, this.field, this.direction)
-      },
-      guild () {
-        return store.state.player.Guild
-          ? this.guilds.find((guild) => guild.id === store.state.player.Guild.id)
-          : {}
       }
     }
   }
