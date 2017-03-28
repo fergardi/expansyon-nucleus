@@ -23,7 +23,6 @@ import Senate from './views/Senate.vue'
 import Census from './views/Census.vue'
 import Guild from './views/Guild.vue'
 import Transmission from './views/Transmission.vue'
-import Achievement from './views/Achievement.vue'
 import Profile from './views/Profile.vue'
 import Help from './views/Help.vue'
 import Login from './views/Login.vue'
@@ -66,7 +65,6 @@ var router = new VueRouter({
     { path: '/census', component: Census, name: 'census' },
     { path: '/guild', component: Guild, name: 'guild' },
     { path: '/transmission', component: Transmission, name: 'transmission' },
-    { path: '/achievement', component: Achievement, name: 'achievement' },
     { path: '/profile', component: Profile, name: 'profile' },
     { path: '/help', component: Help, name: 'help' },
     { path: '/login', component: Login, name: 'login' },
@@ -93,7 +91,6 @@ const security = [
   'census',
   'guild',
   'transmission',
-  'achievement',
   'profile',
   'help'
 ]

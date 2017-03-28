@@ -286,6 +286,11 @@
 
         md-subheader {{ 'subtitle.account' | i18n }}
         md-list-item
+          router-link(exact, to="/profile", v-on:click.native="collapse()")
+            md-avatar
+              md-icon.md-primary account_circle
+            span {{ 'title.profile' | i18n }}
+        md-list-item
           router-link(exact, to="/help", v-on:click.native="collapse()")
             md-avatar
               md-icon.md-primary chrome_reader_mode
