@@ -1,7 +1,7 @@
 <template lang="pug">
   md-table-card
 
-    md-dialog(ref='confirm', v-if="guild")
+    md-dialog(ref='confirm')
       md-card.md-primary.grey
         md-card-header
           .md-title {{ guild.name }}
@@ -49,7 +49,7 @@
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
 
-      md-tab#myguild.no-padding(v-bind:md-label="$t('tab.guild')", v-if="guild")
+      md-tab#myguild.no-padding(v-bind:md-label="$t('tab.guild')")
         md-list
           md-list-item
             .md-title {{ guild.name }}
@@ -78,7 +78,12 @@
     data () {
       return {
         guilds: [],
-        guild: null,
+        guild: {
+          name: '',
+          ranking: 0,
+          influence: 0,
+          members: 0
+        },
         selected: {},
         field: 'influence',
         direction: 'desc'
