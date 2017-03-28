@@ -724,5 +724,6 @@
       th
       td
       .md-chip
+        margin 0
         font-size 0.8em !important
 </style>
