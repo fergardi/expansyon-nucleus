@@ -15,7 +15,9 @@
 
       md-card.md-primary.card(v-bind:class="relic.class", md-with-hover, v-on:click.native="select(relic)")
         md-card-header
-          .md-title {{ relic.name | i18n }} ({{ relic.PlayerRelic.quantity | format }})
+          .md-title
+            span {{ relic.name | i18n }}
+            md-chip {{ relic.PlayerRelic.quantity | format }}
         md-card-media
           img(v-bind:src="relic.image")
         md-card-content.center(v-if="relic.moon || relic.station || relic.planet")

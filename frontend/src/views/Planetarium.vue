@@ -14,7 +14,9 @@
     
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="info(planet)")
         md-card-header
-          .md-title {{ planet.name }} {{ planet.total }}
+          .md-title
+            span {{ planet.name }}
+            md-chip {{ planet.total | format }}
         md-card-media
           img(v-bind:src="planet.image")
         md-card-content.no-padding

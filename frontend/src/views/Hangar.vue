@@ -23,7 +23,9 @@
     md-layout(v-for="ship in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="ship.class", md-with-hover, v-on:click.native="select(ship)")
         md-card-header
-          .md-title {{ ship.name | i18n }} ({{ ship.PlayerShip.quantity | format }})
+          .md-title
+            span {{ ship.name | i18n }}
+            md-chip {{ ship.PlayerShip.quantity | format }}
         md-card-media
           img(v-bind:src="ship.image")
         md-card-content.no-padding.center

@@ -5,8 +5,6 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content
-          span {{ selected.description }}
         md-card-content.center
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
@@ -16,7 +14,11 @@
     md-layout(v-for="referendum in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="referendum.class", md-with-hover, v-on:click.native="select(referendum)")
         md-card-header
-          .md-title {{ referendum.name }} ({{ referendum.votes | format }})
+          .md-title
+            span {{ referendum.name }}
+            md-chip {{ referendum.total | format }}
+          .md-title
+            md-chip.grey {{ referendum.votes | format }}
         md-card-media
           img(v-bind:src="referendum.image")
         md-card-content.no-padding

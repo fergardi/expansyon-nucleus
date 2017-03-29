@@ -21,10 +21,13 @@
     md-layout(v-for="sale in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
 
       md-card.md-primary.card(v-bind:class="item(sale).class", md-with-hover, v-on:click.native="select(sale)")
-        md-card-header
+        md-card-header.center
           .md-title
             span {{ item(sale).name | i18n }}
-            span(v-if="sale.quantity > 0")  ({{ sale.quantity | format }})
+            md-chip(v-if="sale.quantity > 0") {{ sale.quantity | format }}
+            md-chip(v-if="sale.Planet") {{ sale.Planet.total | format }}
+          .md-title
+            md-chip(v-bind:class="color(sale.Player)") {{ sale.Player.name }}
         md-card-media
           img(v-bind:src="item(sale).image")
         md-card-content.no-padding(v-if="sale.Planet")
@@ -100,6 +103,11 @@
       buy () {
         // TODO
         this.close()
+      },
+      color (player) {
+        return player.Faction
+          ? player.Faction.class
+          : ''
       }
     },
     computed: {

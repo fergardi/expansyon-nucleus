@@ -6,10 +6,10 @@
       md-button.md-dense(v-bind:class="notification.class", v-on:click.native="dismiss()") {{ 'button.close' | i18n }}
 
     md-whiteframe
-      md-toolbar#toolbar.md-dense(v-if="!fullscreen")
+      md-toolbar#toolbar.md-dense.flex(v-if="!fullscreen")
         md-button.md-icon-button.toggler(v-on:click.native="left()")
           md-icon chevron_right
-        h2.md-title {{ title | i18n }}
+        h2.md-title.flex.center {{ title | i18n }}
         md-input-container.search.flex(v-bind:class="{ 'md-input-invalid': search !== '' }")
           md-icon search
           label {{ 'filter.search' | i18n }}
@@ -212,66 +212,66 @@
         md-list-item
           md-avatar
             md-icon.md-primary camera
-          span {{ 'ship.orbiter' | i18n }}
+          span {{ 'ship.orbiter.name' | i18n }}
           md-chip {{ player.orbiter | format }}
         md-list-item
           md-avatar
             md-icon.md-primary widgets
-          span {{ 'ship.carrier' | i18n }}
+          span {{ 'ship.carrier.name' | i18n }}
           md-chip {{ player.carrier | format }}
         md-list-item
           md-avatar
             md-icon.md-primary cached
-          span {{ 'ship.recycler' | i18n }}
+          span {{ 'ship.recycler.name' | i18n }}
           md-chip {{ player.recycler | format }}
 
         md-subheader {{ 'subtitle.infrastructure' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary apps
-          span {{ 'building.furnace' | i18n }}
+          span {{ 'building.furnace.name' | i18n }}
           md-chip {{ player.furnace | format }}
         md-list-item
           md-avatar
             md-icon.md-primary texture
-          span {{ 'building.factory' | i18n }}
+          span {{ 'building.factory.name' | i18n }}
           md-chip {{ player.factory | format }}
         md-list-item
           md-avatar
             md-icon.md-primary opacity
-          span {{ 'building.refinery' | i18n }}
+          span {{ 'building.refinery.name' | i18n }}
           md-chip {{ player.refinery | format }}
         md-list-item
           md-avatar
             md-icon.md-primary flash_on
-          span {{ 'building.plant' | i18n }}
+          span {{ 'building.plant.name' | i18n }}
           md-chip {{ player.plant | format }}
         md-list-item
           md-avatar
             md-icon.md-primary verified_user
-          span {{ 'building.barrier' | i18n }}
+          span {{ 'building.barrier.name' | i18n }}
           md-chip {{ player.barrier | format }}
         md-list-item
           md-avatar
             md-icon.md-primary dashboard
-          span {{ 'building.warehouse' | i18n }}
+          span {{ 'building.warehouse.name' | i18n }}
           md-chip {{ player.warehouse | format }}
 
         md-subheader {{ 'subtitle.defense' | i18n }}
         md-list-item
           md-avatar
             md-icon.md-primary gps_off
-          span {{ 'tower.turret' | i18n }}
+          span {{ 'tower.turret.name' | i18n }}
           md-chip {{ player.turret | format }}
         md-list-item
           md-avatar
             md-icon.md-primary gps_not_fixed
-          span {{ 'tower.railgun' | i18n }}
+          span {{ 'tower.railgun.name' | i18n }}
           md-chip {{ player.railgun | format }}
         md-list-item
           md-avatar
             md-icon.md-primary gps_fixed
-          span {{ 'tower.cannon' | i18n }}
+          span {{ 'tower.cannon.name' | i18n }}
           md-chip {{ player.cannon | format }}
 
         md-subheader {{ 'subtitle.language' | i18n }}
@@ -564,7 +564,11 @@
     .md-card-header
       .md-title
         margin 0 !important
-        text-align center
+        display flex
+        justify-content center
+        align-items center
+        span + .md-chip
+          margin-left 5px
     .md-card-content
       color white
       .md-progress

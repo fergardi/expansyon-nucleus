@@ -23,7 +23,9 @@
     md-layout(v-for="tower in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="tower.class", md-with-hover, v-on:click.native="select(tower)")
         md-card-header
-          .md-title {{ tower.name | i18n }} ({{ tower.PlayerTower.quantity | format }})
+          .md-title
+            span {{ tower.name | i18n }}
+            md-chip {{ tower.PlayerTower.quantity | format }}
         md-card-media
           img(v-bind:src="tower.image")
         md-card-content.no-padding

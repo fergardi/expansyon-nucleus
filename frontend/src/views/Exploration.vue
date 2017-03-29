@@ -27,7 +27,9 @@
     md-layout(v-for="planet in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="select(planet)")
         md-card-header
-          .md-title {{ planet.name }}
+          .md-title
+            span {{ planet.name }}
+            md-chip {{ planet.total | format }}
         md-card-media
           img(v-bind:src="planet.image")
         md-card-content.no-padding.center
