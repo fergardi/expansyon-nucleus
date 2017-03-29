@@ -134,6 +134,24 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  buildShip: (player, ship, quantity) => {
+    return axios.get(`/player/${player}/ship/${ship}/quantity/${quantity}`)
+    .then((response) => {
+      return response
+    })
+  },
+  buildBuilding: (player, building, quantity) => {
+    return axios.get(`/player/${player}/building/${building}/quantity/${quantity}`)
+    .then((response) => {
+      return response
+    })
+  },
+  buildTower: (player, tower, quantity) => {
+    return axios.get(`/player/${player}/tower/${tower}/quantity/${quantity}`)
+    .then((response) => {
+      return response
+    })
   }
 }
 

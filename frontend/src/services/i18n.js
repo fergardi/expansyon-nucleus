@@ -65,6 +65,18 @@ const translation = {
         new: 'There are new referendums in the senate',
         ok: 'Referendum voted',
         error: 'There has been an error'
+      },
+      hangar: {
+        ok: 'Ships built',
+        error: 'There has been an error'
+      },
+      infrastructure: {
+        ok: 'Buildings built',
+        error: 'There has been an error'
+      },
+      defense: {
+        ok: 'Towers built',
+        error: 'There has been an error'
       }
     },
     filter: {
@@ -177,7 +189,8 @@ const translation = {
       aether: 'Aether',
       quantity: 'Quantity',
       experience: 'Experience',
-      level: 'Level'
+      level: 'Level',
+      insufficient: 'Insufficient resources'
     },
     planet: {
       rich: {
@@ -456,6 +469,18 @@ const translation = {
         new: 'Hay nuevos referendums en el senado',
         ok: 'Votación realizada',
         error: 'Ha ocurrido un error'
+      },
+      hangar: {
+        ok: 'Naves construidas',
+        error: 'Ha ocurrido un error'
+      },
+      infrastructure: {
+        ok: 'Edificios construidos',
+        error: 'Ha ocurrido un error'
+      },
+      defense: {
+        ok: 'Torres construidas',
+        error: 'Ha ocurrido un error'
       }
     },
     filter: {
@@ -568,7 +593,8 @@ const translation = {
       aether: 'Éter',
       quantity: 'Cantidad',
       experience: 'Experiencia',
-      level: 'Nivel'
+      level: 'Nivel',
+      insufficient: 'Recursos insuficientes'
     },
     planet: {
       rich: {

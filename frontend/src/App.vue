@@ -731,6 +731,8 @@
     #toolbar
       .md-title
         font-size 16px
+      .md-title + .md-input-container
+        margin-left 10px
     .hide
       display none !important
     table

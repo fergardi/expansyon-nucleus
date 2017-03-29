@@ -9,10 +9,11 @@
               span {{ selected.name | i18n }}
               md-chip {{ selected.PlayerTower.quantity | format }}
           md-card-content
-            md-input-container
+            md-input-container(v-bind:class="{ 'md-input-invalid': !can }")
               md-icon add
               label {{ 'resource.quantity' | i18n }}
-              md-input(type="number", v-model="quantity", min="1", required)
+              md-input(type="number", v-model.number="quantity", min="0", required)
+              span.md-error {{ 'resource.insufficient' | i18n }}
           md-card-content
             md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
             md-chip {{ (selected.crystal * quantity) | format }} {{ 'resource.crystal' | i18n }}
@@ -46,6 +47,8 @@
 </template>
 
 <script>
+  import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
@@ -56,9 +59,6 @@
             quantity: 0
           }
         },
-        metal: 0,
-        crystal: 0,
-        oil: 0,
         quantity: 0
       }
     },
@@ -80,8 +80,18 @@
         this.form()
       },
       build () {
-        // TODO
-        this.close()
+        api.buildTower(store.state.player.id, this.selected.id, this.quantity)
+        .then((result) => {
+          notification.success('notification.defense.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.defense.error')
+        })
+        .then(() => {
+          this.clear()
+          this.close()
+        })
       }
     },
     computed: {
@@ -94,7 +104,7 @@
         })
       },
       can () {
-        return true
+        return this.selected.metal * this.quantity <= store.state.player.metal && this.selected.crystal * this.quantity <= store.state.player.crystal && this.selected.oil * this.quantity <= store.state.player.oil
       },
       towers () {
         return store.state.player.Towers
