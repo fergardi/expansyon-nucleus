@@ -511,7 +511,6 @@
 
   /* search */
   .search
-    margin-left 10px !important
     flex-grow 2
   
   /* OPACITY */
