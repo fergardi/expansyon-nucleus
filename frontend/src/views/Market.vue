@@ -67,15 +67,23 @@
       }
     },
     created () {
-      api.getSales()
-      .then((sales) => {
-        this.sales = sales
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.market')
     },
+    sockets: {
+      market () {
+        this.refresh()
+      }
+    },
     methods: {
+      refresh () {
+        api.getSales()
+        .then((sales) => {
+          this.sales = sales
+        })
+      },
       info () {
         this.$refs['info'].open()
       },

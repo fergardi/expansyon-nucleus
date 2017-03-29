@@ -27,7 +27,9 @@ const translation = {
       members: 'Members',
       description: 'Description',
       planets: 'Planets',
-      guild: 'Guild'
+      guild: 'Guild',
+      start: 'Departure',
+      end: 'Arrival'
     },
     notification: {
       temple: {
@@ -78,6 +80,7 @@ const translation = {
       enemies: 'Enemies',
       guilds: 'Guilds',
       guild: 'Guild',
+      battle: 'Battle',
       received: 'Received',
       sent: 'Sent',
       create: 'Create'
@@ -261,7 +264,9 @@ const translation = {
       members: 'Miembros',
       description: 'Descripción',
       planets: 'Planetas',
-      guild: 'Hermandad'
+      guild: 'Hermandad',
+      start: 'Salida',
+      end: 'Llegada'
     },
     notification: {
       temple: {
@@ -312,9 +317,10 @@ const translation = {
       enemies: 'Enemigos',
       guilds: 'Hermandades',
       guild: 'Hermandad',
-      received: 'Recibidas',
-      sent: 'Enviadas',
-      create: 'Crear'
+      battle: 'Batalla',
+      received: 'Recibido',
+      sent: 'Enviado',
+      create: 'Nuevo'
     },
     button: {
       forgot: 'Recordar',

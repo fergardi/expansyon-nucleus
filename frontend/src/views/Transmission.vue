@@ -21,15 +21,21 @@
         md-table(md-sort="end", md-sort-type="desc", v-on:sort="order")
           md-table-header
             md-table-row
-              md-table-head {{ 'table.from' | i18n }} -> {{ 'table.to' | i18n }}
-              md-table-head.md-numeric {{ 'table.start' | i18n }} -> {{ 'table.end' | i18n }}
+              md-table-head(md-sort-by="From.name") {{ 'table.from' | i18n }}
+              md-table-head.hide(md-sort-by="start") {{ 'table.start' | i18n }}
+              md-table-head(md-sort-by="To.name") {{ 'table.to' | i18n }}
+              md-table-head.hide(md-sort-by="end") {{ 'table.end' | i18n }}
 
           md-table-body
             md-table-row(v-for="battle in battlesOrdered", md-auto-select, v-bind:md-item="battle", v-on:click.native="select(battle)")
               md-table-cell
                 md-chip(v-bind:class="from(battle)") {{ battle.From.name }}
+              md-table-cell.hide
+                md-chip {{ battle.start | date }}
+              md-table-cell
                 md-chip(v-bind:class="to(battle)") {{ battle.To.name }}
-              md-table-cell.md-numeric {{ battle.start | date }} -> {{ battle.end | date }}
+              md-table-cell.hide
+                md-chip {{ battle.end | date }}
 
             md-table-row(v-if="!battlesOrdered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
@@ -103,8 +109,8 @@
     name: 'Transmission',
     data () {
       return {
-        players: [],
         battles: [],
+        players: [],
         received: [],
         sent: [],
         field: 'date',
@@ -179,13 +185,13 @@
             : ''
       },
       from (battle) {
-        return battle.From.faction
-          ? battle.From.faction.class
+        return battle.From.Faction
+          ? battle.From.Faction.class
           : ''
       },
       to (battle) {
-        return battle.To.faction
-          ? battle.To.faction.class
+        return battle.To.Faction
+          ? battle.To.Faction.class
           : ''
       },
       name (message) {

@@ -583,6 +583,7 @@
       margin 0 -16px 0 0 !important
         
   /* COLORS */
+  grey = #F5F5F5
   green = #64DD17
   purple = #AA00FF
   indigo = #304FFE
@@ -591,7 +592,15 @@
   red = #D50000
   orange = #FF9800
   pink = #E91E63
-  grey = #F5F5F5
+  .grey
+    .md-card-header
+      color grey !important
+    .md-progress-track
+    &.md-progress .md-progress-track
+    .md-chip
+    &.md-chip
+      background-color grey !important
+      color black !important
   .green
     .md-card-header
       color green !important
@@ -664,15 +673,6 @@
     &.md-chip
       background-color pink !important
       color white !important
-  .grey
-    .md-card-header
-      color grey !important
-    .md-progress-track
-    &.md-progress .md-progress-track
-    .md-chip
-    &.md-chip
-      background-color grey !important
-      color black !important
 
   /* ANIMATION TRANSITION */
   /*base code*/
