@@ -197,17 +197,17 @@
         md-list-item
           md-avatar
             md-icon.md-primary send
-          span {{ 'ship.fighter' | i18n }}
+          span {{ 'ship.fighter.name' | i18n }}
           md-chip {{ player.fighter | format }}
         md-list-item
           md-avatar
             md-icon.md-primary toys
-          span {{ 'ship.cruiser' | i18n }}
+          span {{ 'ship.cruiser.name' | i18n }}
           md-chip {{ player.cruiser | format }}
         md-list-item
           md-avatar
             md-icon.md-primary bubble_chart
-          span {{ 'ship.bomber' | i18n }}
+          span {{ 'ship.bomber.name' | i18n }}
           md-chip {{ player.bomber | format }}
         md-list-item
           md-avatar
@@ -514,7 +514,7 @@
     margin-left 10px !important
   
   /* OPACITY */
-  opacity = 0.85
+  opacity = 0.90
   #toolbar
   .md-card
   .md-table-card

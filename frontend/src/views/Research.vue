@@ -22,7 +22,7 @@
                 img(v-bind:src="skill.image")
                 md-icon {{ skill.level }}
         md-card-content.center
-          span {{ branch.description | lorem }}
+          span {{ branch.description | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="reset(branch)") Reset
           md-button.md-dense.md-accent(v-on:click.native="select(branch)") Learn

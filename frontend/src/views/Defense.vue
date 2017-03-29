@@ -31,7 +31,7 @@
           md-progress(v-bind:md-progress="tower.defense")
           md-progress(v-bind:md-progress="tower.speed")
         md-card-content.center
-          span {{ tower.description }}
+          span {{ tower.description | i18n }}
         md-card-content.center
           md-chip {{ tower.metal | format }} {{ 'resource.metal' | i18n }}
           md-chip {{ tower.crystal | format }} {{ 'resource.crystal' | i18n }}

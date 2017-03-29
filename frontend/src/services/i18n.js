@@ -179,61 +179,215 @@ const translation = {
       experience: 'Experience',
       level: 'Level'
     },
+    planet: {
+      rich: {
+        name: 'Rich',
+        description: 'Description'
+      },
+      wasted: {
+        name: 'Wasted',
+        description: 'Description'
+      },
+      metal: {
+        name: 'Metal',
+        description: 'Description'
+      },
+      crystal: {
+        name: 'Crystal',
+        description: 'Description'
+      },
+      oil: {
+        name: 'Oil',
+        description: 'Description'
+      },
+      energy: {
+        name: 'Power',
+        description: 'Description'
+      },
+      influence: {
+        name: 'Influence',
+        description: 'Description'
+      },
+      size: {
+        name: 'Size',
+        description: 'Description'
+      }
+    },
     ship: {
-      fighter: 'Fighter',
-      cruiser: 'Cruiser',
-      bomber: 'Bomber',
-      orbiter: 'Orbiter',
-      carrier: 'Carrier',
-      recycler: 'Recycler'
+      fighter: {
+        name: 'Fighter',
+        description: 'Description'
+      },
+      cruiser: {
+        name: 'Cruiser',
+        description: 'Description'
+      },
+      bomber: {
+        name: 'Bomber',
+        description: 'Description'
+      },
+      orbiter: {
+        name: 'Orbiter',
+        description: 'Description'
+      },
+      carrier: {
+        name: 'Carrier',
+        description: 'Description'
+      },
+      recycler: {
+        name: 'Recycler',
+        description: 'Description'
+      }
     },
     building: {
-      furnace: 'Furnace',
-      factory: 'Factory',
-      refinery: 'Refinery',
-      plant: 'Plant',
-      barrier: 'Barrier',
-      warehouse: 'Warehouse'
+      furnace: {
+        name: 'Furnace',
+        description: 'Description'
+      },
+      factory: {
+        name: 'Factory',
+        description: 'Description'
+      },
+      refinery: {
+        name: 'Refinery',
+        description: 'Description'
+      },
+      plant: {
+        name: 'Plant',
+        description: 'Description'
+      },
+      barrier: {
+        name: 'Barrier',
+        description: 'Description'
+      },
+      warehouse: {
+        name: 'Warehouse',
+        description: 'Description'
+      }
     },
     tower: {
-      turret: 'Turret',
-      railgun: 'Railgun',
-      cannon: 'Cannon'
+      turret: {
+        name: 'Turret',
+        description: 'Description'
+      },
+      railgun: {
+        name: 'Railgun',
+        description: 'Description'
+      },
+      cannon: {
+        name: 'Cannon',
+        description: 'Description'
+      }
     },
     faction: {
-      scavenger: 'Scavenger',
-      sedi: 'Sedi',
-      jith: 'Jith',
-      merchant: 'Merchant',
-      scholar: 'Scholar',
-      warrior: 'Warrior'
+      scavenger: {
+        name: 'Scavenger',
+        description: 'Description'
+      },
+      sedi: {
+        name: 'Sedi',
+        description: 'Description'
+      },
+      jith: {
+        name: 'Jith',
+        description: 'Description'
+      },
+      merchant: {
+        name: 'Merchant',
+        description: 'Description'
+      },
+      scholar: {
+        name: 'Scholar',
+        description: 'Description'
+      },
+      warrior: {
+        name: 'Warrior',
+        description: 'Description'
+      }
     },
     relic: {
-      supernova: 'Supernova',
-      gravitron: 'Gravitron',
-      destroyer: 'Destroyer',
-      shipwreck: 'Shipwreck',
-      portal: 'Portal',
-      timeturner: 'Timeturner'
+      supernova: {
+        name: 'Supernova',
+        description: 'Description'
+      },
+      gravitron: {
+        name: 'Gravitron',
+        description: 'Description'
+      },
+      destroyer: {
+        name: 'Destroyer',
+        description: 'Description'
+      },
+      shipwreck: {
+        name: 'Shipwreck',
+        description: 'Description'
+      },
+      portal: {
+        name: 'Portal',
+        description: 'Description'
+      },
+      timeturner: {
+        name: 'Timeturner',
+        description: 'Description'
+      }
     },
     tree: {
-      attack: 'Attack',
-      defense: 'Defense',
-      utility: 'Utility'
+      attack: {
+        name: 'Attack',
+        description: 'Description'
+      },
+      defense: {
+        name: 'Defense',
+        description: 'Description'
+      },
+      utility: {
+        name: 'Utility',
+        description: 'Description'
+      }
     },
     mission: {
-      example: 'Example'
+      example: {
+        name: 'Example',
+        description: 'Description'
+      }
     },
     achievement: {
-      scavenger: 'Scavenger',
-      jeweller: 'Jeweller',
-      prospector: 'Prospector',
-      commander: 'Commander',
-      architect: 'Architect',
-      conqueror: 'Conqueror',
-      engineer: 'Engineer',
-      terraformer: 'Terraformer',
-      scientist: 'Scientist'
+      scavenger: {
+        name: 'Scavenger',
+        description: 'Description'
+      },
+      jeweller: {
+        name: 'Jeweller',
+        description: 'Description'
+      },
+      prospector: {
+        name: 'Prospector',
+        description: 'Description'
+      },
+      commander: {
+        name: 'Commander',
+        description: 'Description'
+      },
+      architect: {
+        name: 'Architect',
+        description: 'Description'
+      },
+      conqueror: {
+        name: 'Conqueror',
+        description: 'Description'
+      },
+      engineer: {
+        name: 'Engineer',
+        description: 'Description'
+      },
+      terraformer: {
+        name: 'Terraformer',
+        description: 'Description'
+      },
+      scientist: {
+        name: 'Scientist',
+        description: 'Description'
+      }
     }
   },
   es: {
@@ -416,61 +570,215 @@ const translation = {
       experience: 'Experiencia',
       level: 'Nivel'
     },
+    planet: {
+      rich: {
+        name: 'Planeta rico',
+        description: 'Description'
+      },
+      wasted: {
+        name: 'Planeta yermo',
+        description: 'Description'
+      },
+      metal: {
+        name: 'Planeta metálico',
+        description: 'Description'
+      },
+      crystal: {
+        name: 'Planeta cristalino',
+        description: 'Description'
+      },
+      oil: {
+        name: 'Planeta aceitoso',
+        description: 'Description'
+      },
+      energy: {
+        name: 'Planeta enérgico',
+        description: 'Description'
+      },
+      influence: {
+        name: 'Planeta poderoso',
+        description: 'Description'
+      },
+      size: {
+        name: 'Planeta enorme',
+        description: 'Description'
+      }
+    },
     ship: {
-      fighter: 'Caza',
-      cruiser: 'Crucero',
-      bomber: 'Bombardero',
-      orbiter: 'Orbitador',
-      carrier: 'Transportador',
-      recycler: 'Reciclador'
+      fighter: {
+        name: 'Caza',
+        description: 'Description'
+      },
+      cruiser: {
+        name: 'Crucero',
+        description: 'Description'
+      },
+      bomber: {
+        name: 'Bombardero',
+        description: 'Description'
+      },
+      orbiter: {
+        name: 'Orbitador',
+        description: 'Description'
+      },
+      carrier: {
+        name: 'Transportador',
+        description: 'Description'
+      },
+      recycler: {
+        name: 'Reciclador',
+        description: 'Description'
+      }
     },
     building: {
-      furnace: 'Forja',
-      factory: 'Factoría',
-      refinery: 'Refinería',
-      plant: 'Planta',
-      barrier: 'Barrera',
-      warehouse: 'Almacén'
+      furnace: {
+        name: 'Forja',
+        description: 'Description'
+      },
+      factory: {
+        name: 'Factoría',
+        description: 'Description'
+      },
+      refinery: {
+        name: 'Refinería',
+        description: 'Description'
+      },
+      plant: {
+        name: 'Planta',
+        description: 'Description'
+      },
+      barrier: {
+        name: 'Barrera',
+        description: 'Description'
+      },
+      warehouse: {
+        name: 'Almacén',
+        description: 'Description'
+      }
     },
     tower: {
-      turret: 'Torreta',
-      railgun: 'Repetidor',
-      cannon: 'Cañón'
+      turret: {
+        name: 'Torreta',
+        description: 'Description'
+      },
+      railgun: {
+        name: 'Repetidor',
+        description: 'Description'
+      },
+      cannon: {
+        name: 'Cañón',
+        description: 'Description'
+      }
     },
     faction: {
-      scavenger: 'Carroñero',
-      sedi: 'Sedi',
-      jith: 'Jith',
-      merchant: 'Mercader',
-      scholar: 'Escolar',
-      warrior: 'Guerrero'
+      scavenger: {
+        name: 'Carroñero',
+        description: 'Description'
+      },
+      sedi: {
+        name: 'Sedi',
+        description: 'Description'
+      },
+      jith: {
+        name: 'Jith',
+        description: 'Description'
+      },
+      merchant: {
+        name: 'Mercader',
+        description: 'Description'
+      },
+      scholar: {
+        name: 'Escolar',
+        description: 'Description'
+      },
+      warrior: {
+        name: 'Guerrero',
+        description: 'Description'
+      }
     },
     relic: {
-      supernova: 'Supernova',
-      gravitron: 'Gravitrón',
-      destroyer: 'Destructor',
-      shipwreck: 'Naufragio',
-      portal: 'Portal',
-      timeturner: 'Giratiempo'
+      supernova: {
+        name: 'Supernova',
+        description: 'Description'
+      },
+      gravitron: {
+        name: 'Gravitrón',
+        description: 'Description'
+      },
+      destroyer: {
+        name: 'Destructor',
+        description: 'Description'
+      },
+      shipwreck: {
+        name: 'Naufragio',
+        description: 'Description'
+      },
+      portal: {
+        name: 'Portal',
+        description: 'Description'
+      },
+      timeturner: {
+        name: 'Giratiempo',
+        description: 'Description'
+      }
     },
     tree: {
-      attack: 'Ataque',
-      defense: 'Defensa',
-      utility: 'Utilidad'
+      attack: {
+        name: 'Ataque',
+        description: 'Description'
+      },
+      defense: {
+        name: 'Defensa',
+        description: 'Description'
+      },
+      utility: {
+        name: 'Utilidad',
+        description: 'Description'
+      }
     },
     mission: {
-      example: 'Ejemplo'
+      example: {
+        name: 'Ejemplo',
+        description: 'Description'
+      }
     },
     achievement: {
-      scavenger: 'Recolector',
-      jeweller: 'Joyero',
-      prospector: 'Prospector',
-      commander: 'Comandante',
-      architect: 'Arquitecto',
-      conqueror: 'Conquistador',
-      engineer: 'Ingeniero',
-      terraformer: 'Terraformador',
-      scientist: 'Científico'
+      scavenger: {
+        name: 'Recolector',
+        description: 'Description'
+      },
+      jeweller: {
+        name: 'Joyero',
+        description: 'Description'
+      },
+      prospector: {
+        name: 'Prospector',
+        description: 'Description'
+      },
+      commander: {
+        name: 'Comandante',
+        description: 'Description'
+      },
+      architect: {
+        name: 'Arquitecto',
+        description: 'Description'
+      },
+      conqueror: {
+        name: 'Conquistador',
+        description: 'Description'
+      },
+      engineer: {
+        name: 'Ingeniero',
+        description: 'Description'
+      },
+      terraformer: {
+        name: 'Terraformador',
+        description: 'Description'
+      },
+      scientist: {
+        name: 'Científico',
+        description: 'Description'
+      }
     }
   }
 }

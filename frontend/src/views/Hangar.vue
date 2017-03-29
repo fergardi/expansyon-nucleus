@@ -31,7 +31,7 @@
           md-progress(v-bind:md-progress="ship.defense")
           md-progress(v-bind:md-progress="ship.speed")
         md-card-content.center
-          span {{ ship.description }}
+          span {{ ship.description | i18n }}
         md-card-content.center
           md-chip {{ ship.metal | format }} {{ 'resource.metal' | i18n }}
           md-chip {{ ship.crystal | format }} {{ 'resource.crystal' | i18n }}

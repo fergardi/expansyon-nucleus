@@ -6,7 +6,7 @@
         md-card-header
           .md-title {{ selected.name | i18n }}
         md-card-content
-          span {{ selected.description }}
+          span {{ selected.description | i18n }}
         md-card-content.center
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
@@ -25,7 +25,7 @@
           md-chip(v-if="relic.station") {{ 'resource.station' | i18n }}
           md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
         md-card-content.center
-          span {{ relic.description }}
+          span {{ relic.description | i18n }}
         md-card-content.center
           md-chip.pink {{ relic.aether | format }} {{ 'resource.aether' | i18n }}
 

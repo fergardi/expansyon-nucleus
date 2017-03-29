@@ -34,7 +34,7 @@
           md-progress(v-bind:md-progress="building.shield")
           md-progress(v-bind:md-progress="building.storage")
         md-card-content.center
-          span {{ building.description }}
+          span {{ building.description | i18n }}
         md-card-content.center
           md-chip {{ building.metal | format }} {{ 'resource.metal' | i18n }}
           md-chip {{ building.crystal | format }} {{ 'resource.crystal' | i18n }}

@@ -194,10 +194,10 @@
     },
     computed: {
       faction () {
-        return store.state.player.Faction
+        return store.state.player.Faction || { name: '', class: '' }
       },
       referendum () {
-        return store.state.player.Referendum
+        return store.state.player.Referendum || { name: '', class: '' }
       }
     }
   }

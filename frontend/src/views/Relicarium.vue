@@ -6,7 +6,7 @@
         md-card-header
           .md-title {{ selected.name | i18n }}
         md-card-content
-          span {{ selected.description }}
+          span {{ selected.description | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="activate()") {{ 'button.activate' | i18n }}
@@ -23,7 +23,7 @@
           md-chip(v-if="relic.station") {{ 'resource.station' | i18n }}
           md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
         md-card-content.center
-          span {{ relic.description }}
+          span {{ relic.description | i18n }}
 
     md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-chip.red {{ 'filter.nothing' | i18n }}

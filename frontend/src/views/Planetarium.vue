@@ -6,7 +6,7 @@
         md-card-header
           .md-title {{ selected.name }} {{ selected.total }}
         md-card-content
-          span {{ selected.description }}
+          span {{ selected.description | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.close' | i18n }}
 
@@ -28,7 +28,7 @@
           md-chip(v-if="planet.moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="planet.station") {{ 'resource.station' | i18n }}
         md-card-content.center
-          span {{ planet.description }}
+          span {{ planet.description | i18n }}
 
     md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-chip.red {{ 'filter.nothing' | i18n }}

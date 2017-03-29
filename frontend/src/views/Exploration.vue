@@ -9,15 +9,15 @@
           md-card-content
             md-input-container
               md-icon send
-              label {{ 'ship.fighter' | i18n }}
+              label {{ 'ship.fighter.name' | i18n }}
               md-input(type="number", v-model="fighter", min="0", required)
             md-input-container
               md-icon toys
-              label {{ 'ship.cruiser' | i18n }}
+              label {{ 'ship.cruiser.name' | i18n }}
               md-input(type="number", v-model="cruiser", min="0", required)
             md-input-container
               md-icon bubble_chart
-              label {{ 'ship.bomber' | i18n }}
+              label {{ 'ship.bomber.name' | i18n }}
               md-input(type="number", v-model="bomber", min="0", required)
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
@@ -41,7 +41,7 @@
           md-chip(v-if="planet.moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="planet.station") {{ 'resource.station' | i18n }}
         md-card-content.center
-          span {{ planet.description }}
+          span {{ planet.description | i18n }}
 
     md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-chip.red {{ 'filter.nothing' | i18n }}

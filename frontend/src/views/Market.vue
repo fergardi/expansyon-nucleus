@@ -8,7 +8,7 @@
             span {{ item(selected).name | i18n }}
             span(v-if="selected.quantity > 0")  ({{ selected.quantity | format }})
         md-card-content
-          span {{ item(selected).description }}
+          span {{ item(selected).description | i18n }}
         md-card-content.center
           md-chip(v-if="selected.metal > 0") {{ selected.metal | format }} {{ 'resource.metal' | i18n }}
           md-chip(v-if="selected.crystal > 0") {{ selected.crystal | format }} {{ 'resource.crystal' | i18n }}
@@ -44,7 +44,7 @@
           md-chip(v-if="item(sale).moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="item(sale).station") {{ 'resource.station' | i18n }}
         md-card-content.center(v-if="item(sale).description")
-          span {{ item(sale).description }}
+          span {{ item(sale).description | i18n }}
         md-card-content.center
           md-chip(v-if="sale.metal > 0") {{ sale.metal | format }} {{ 'resource.metal' | i18n }}
           md-chip(v-if="sale.crystal > 0") {{ sale.crystal | format }} {{ 'resource.crystal' | i18n }}

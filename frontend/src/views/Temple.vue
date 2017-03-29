@@ -6,7 +6,7 @@
         md-card-header
           .md-title {{ selected.name | i18n }}
         md-card-content
-          span {{ selected.description }}
+          span {{ selected.description | i18n }}
         md-card-content.center
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
@@ -31,7 +31,7 @@
           md-progress(v-bind:md-progress="faction.defense")
           md-progress(v-bind:md-progress="faction.speed")
         md-card-content.center
-          span {{ faction.description }}
+          span {{ faction.description | i18n }}
         md-card-content.center
           md-chip.pink {{ faction.aether | format }} {{ 'resource.aether' | i18n }}
 
