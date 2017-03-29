@@ -5,9 +5,10 @@
       md-card.md-primary(v-bind:class="color(selected)")
         md-card-header
           .md-title {{ selected.name }}
-        md-card-content.center
+        md-card-content
           md-chip {{ selected.Planets.length | format }} {{ 'resource.planets' | i18n }}
           md-chip {{ selected.influence | format }} {{ 'resource.influence' | i18n }}
+          md-chip(v-if="selected.Guild") {{ selected.Guild.name | format }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="enemy()") {{ 'button.enemy' | i18n }}

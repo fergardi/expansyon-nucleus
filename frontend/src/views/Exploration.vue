@@ -5,7 +5,9 @@
       md-card.md-primary(v-bind:class="selected.class")
         form(v-on:submit.stop.prevent="attack()")
           md-card-header
-            .md-title {{ selected.name }}
+            .md-title
+              span {{ selected.name }}
+              md-chip {{ selected.total }}
           md-card-content
             md-input-container
               md-icon send

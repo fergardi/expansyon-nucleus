@@ -4,8 +4,10 @@
     md-dialog(ref='confirm')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
-          .md-title {{ selected.name }}
-        md-card-content.center
+          .md-title
+            span {{ selected.name }}
+            md-chip {{ selected.total }}
+        md-card-content
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}

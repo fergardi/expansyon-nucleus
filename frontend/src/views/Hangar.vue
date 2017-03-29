@@ -5,13 +5,15 @@
       md-card.md-primary(v-bind:class="selected.class")
         form(v-on:submit.stop.prevent="build()")
           md-card-header
-            .md-title {{ selected.name | i18n }}
+            .md-title
+              span {{ selected.name | i18n }}
+              md-chip {{ selected.PlayerShip.quantity | format }}
           md-card-content
             md-input-container
               md-icon add
               label {{ 'resource.quantity' | i18n }}
               md-input(type="number", v-model="quantity", min="0", required)
-          md-card-content.center
+          md-card-content
             md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
             md-chip {{ (selected.crystal * quantity) | format }} {{ 'resource.crystal' | i18n }}
             md-chip {{ (selected.oil * quantity) | format }} {{ 'resource.oil' | i18n }}
@@ -49,7 +51,11 @@
   export default {
     data () {
       return {
-        selected: {},
+        selected: {
+          PlayerShip: {
+            quantity: 0
+          }
+        },
         metal: 0,
         crystal: 0,
         oil: 0,

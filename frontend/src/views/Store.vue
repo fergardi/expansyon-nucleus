@@ -2,12 +2,12 @@
   md-layout
 
     md-dialog(ref='confirm')
-      md-card.md-primary
+      md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name | i18n }}
         md-card-content
           span {{ selected.description | i18n }}
-        md-card-content.center
+        md-card-content
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}

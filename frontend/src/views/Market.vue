@@ -6,10 +6,10 @@
         md-card-header
           .md-title
             span {{ item(selected).name | i18n }}
-            span(v-if="selected.quantity > 0")  ({{ selected.quantity | format }})
+            md-chip(v-if="selected.quantity > 0") {{ selected.quantity | format }}
         md-card-content
           span {{ item(selected).description | i18n }}
-        md-card-content.center
+        md-card-content
           md-chip(v-if="selected.metal > 0") {{ selected.metal | format }} {{ 'resource.metal' | i18n }}
           md-chip(v-if="selected.crystal > 0") {{ selected.crystal | format }} {{ 'resource.crystal' | i18n }}
           md-chip(v-if="selected.oil > 0") {{ selected.oil | format }} {{ 'resource.oil' | i18n }}

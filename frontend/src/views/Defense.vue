@@ -5,7 +5,9 @@
       md-card.md-primary(v-bind:class="selected.class")
         form(v-on:submit.stop.prevent="build()")
           md-card-header
-            .md-title {{ selected.name | i18n }}
+            .md-title
+              span {{ selected.name | i18n }}
+              md-chip {{ selected.PlayerTower.quantity | format }}
           md-card-content
             md-input-container
               md-icon add
@@ -49,7 +51,11 @@
   export default {
     data () {
       return {
-        selected: {},
+        selected: {
+          PlayerTower: {
+            quantity: 0
+          }
+        },
         metal: 0,
         crystal: 0,
         oil: 0,

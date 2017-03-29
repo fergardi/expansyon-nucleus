@@ -14,10 +14,12 @@
     md-dialog(ref='info')
       md-card.md-primary.grey
         md-card-header
-          .md-title {{ selected.name }}
+          .md-title
+            span {{ selected.name }}
+            md-chip {{ selected.Players.length | format }}
         md-card-content
           span {{ selected.description }}
-        md-card-content.center
+        md-card-content
           md-chip {{ selected.members | format }} {{ 'guild.members' | i18n }}
           md-chip {{ selected.influence | format }} {{ 'guild.influence' | i18n }}
         md-card-actions
@@ -84,7 +86,9 @@
           influence: 0,
           members: 0
         },
-        selected: {},
+        selected: {
+          Players: []
+        },
         field: 'influence',
         direction: 'desc'
       }

@@ -512,6 +512,7 @@
   /* search */
   .search
     margin-left 10px !important
+    flex-grow 2
   
   /* OPACITY */
   opacity = 0.90
@@ -533,6 +534,15 @@
   .md-dialog
     max-width 90%
     max-height 90%
+    .md-card
+      .md-card-header
+        .md-title
+          margin 0 !important
+          display flex
+          justify-content flex-start
+          align-items center
+          span + .md-chip
+            margin-left 5px
 
   /* CARDS */
   border = 4px

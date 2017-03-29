@@ -4,7 +4,9 @@
     md-dialog(ref='info')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
-          .md-title {{ selected.name }} {{ selected.total }}
+          .md-title
+            span {{ selected.name }}
+            md-chip {{ selected.total | format }}
         md-card-content
           span {{ selected.description | i18n }}
         md-card-actions
