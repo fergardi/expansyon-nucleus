@@ -111,6 +111,12 @@ const api = {
       return response
     })
   },
+  regretMarket: (player, sale) => {
+    return axios.get(`/player/${player}/regret/${sale}`)
+    .then((response) => {
+      return response
+    })
+  },
   buyStore: (player, relic) => {
     return axios.get(`/player/${player}/store/${relic}`)
     .then((response) => {

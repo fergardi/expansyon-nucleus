@@ -15,8 +15,9 @@
           md-chip(v-if="selected.oil > 0") {{ selected.oil | format }} {{ 'resource.oil' | i18n }}
           md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.close' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="regret()", v-if="mine") {{ 'button.regret' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="buy()", v-if="!mine", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
 
     md-layout(v-for="sale in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
 
@@ -67,7 +68,11 @@
     data () {
       return {
         sales: [],
-        selected: {}
+        selected: {
+          Player: {
+            id: 0
+          }
+        }
       }
     },
     created () {
@@ -114,6 +119,19 @@
           this.close()
         })
       },
+      regret () {
+        api.regretMarket(store.state.player.id, this.selected.id)
+        .then((result) => {
+          notification.success('notification.market.remove')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.market.error')
+        })
+        .then(() => {
+          this.close()
+        })
+      },
       color (player) {
         return player.Faction
           ? player.Faction.class
@@ -135,6 +153,9 @@
       },
       can () {
         return this.selected.metal <= store.state.player.metal && this.selected.crystal <= store.state.player.crystal && this.selected.oil <= store.state.player.oil && this.selected.aether <= store.state.player.aether
+      },
+      mine () {
+        return this.selected.Player.id === store.state.player.id
       }
     }
   }

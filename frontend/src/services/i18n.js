@@ -115,7 +115,8 @@ const translation = {
       build: 'Build',
       buy: 'Buy',
       attack: 'Attack',
-      activate: 'Activate'
+      activate: 'Activate',
+      regret: 'Regret'
     },
     account: {
       login: 'Login',
@@ -519,7 +520,8 @@ const translation = {
       build: 'Construir',
       buy: 'Comprar',
       attack: 'Atacar',
-      activate: 'Activar'
+      activate: 'Activar',
+      regret: 'Retirar'
     },
     account: {
       login: 'Entrar',
