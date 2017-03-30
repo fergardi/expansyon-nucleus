@@ -154,7 +154,7 @@
           md-avatar
             md-icon.md-primary opacity
           span {{ 'resource.oil' | i18n }}
-          md-chip.red {{ player.oil | format }}
+          md-chip.yellow {{ player.oil | format }}
         md-list-item
           md-avatar
             md-icon.md-primary home
@@ -169,7 +169,7 @@
           md-avatar
             md-icon.md-primary star
           span {{ 'resource.influence' | i18n }}
-          md-chip.yellow {{ player.influence | format }}
+          md-chip.red {{ player.influence | format }}
         md-list-item
           md-avatar
             md-icon.md-primary hourglass_full

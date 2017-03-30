@@ -16,7 +16,7 @@
           md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="buy()") {{ 'button.buy' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="buy()", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
 
     md-layout(v-for="sale in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
 
@@ -59,8 +59,9 @@
 </template>
 
 <script>
-  import store from '../vuex/store'
   import api from '../services/api'
+  import notification from '../services/notification'
+  import store from '../vuex/store'
 
   export default {
     data () {
@@ -101,8 +102,17 @@
         return sale.Planet || sale.Ship || sale.Relic || {}
       },
       buy () {
-        // TODO
-        this.close()
+        api.buyMarket(store.state.player.id, this.selected.id)
+        .then((result) => {
+          notification.success('notification.market.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.market.error')
+        })
+        .then(() => {
+          this.close()
+        })
       },
       color (player) {
         return player.Faction
@@ -122,6 +132,9 @@
               ? sale.Planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
               : this.$t(sale.Ship.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      can () {
+        return this.selected.metal <= store.state.player.metal && this.selected.crystal <= store.state.player.crystal && this.selected.oil <= store.state.player.oil && this.selected.aether <= store.state.player.aether
       }
     }
   }
