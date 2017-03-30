@@ -49,6 +49,7 @@ const translation = {
       market: {
         new: 'There are new sales in the market',
         ok: 'Transaction completed',
+        regret: 'Sale canceled',
         error: 'There has been an error'
       },
       exploration: {
@@ -454,6 +455,7 @@ const translation = {
       market: {
         new: 'Hay nuevas ofertas en el mercado',
         ok: 'Compra finalizada',
+        regret: 'Oferta cancelada',
         error: 'Ha ocurrido un error'
       },
       exploration: {

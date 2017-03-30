@@ -70,7 +70,8 @@
         sales: [],
         selected: {
           Player: {
-            id: 0
+            id: 0,
+            name: ''
           }
         }
       }
@@ -122,7 +123,7 @@
       regret () {
         api.regretMarket(store.state.player.id, this.selected.id)
         .then((result) => {
-          notification.success('notification.market.remove')
+          notification.success('notification.market.regret')
         })
         .catch((error) => {
           console.error(error)
@@ -144,11 +145,11 @@
       },
       filtered () {
         return this.sales.filter((sale) => {
-          return sale.Relic
+          return sale.Player.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 || (sale.Relic
             ? this.$t(sale.Relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
             : sale.Planet
               ? sale.Planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-              : this.$t(sale.Ship.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+              : this.$t(sale.Ship.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1)
         })
       },
       can () {
