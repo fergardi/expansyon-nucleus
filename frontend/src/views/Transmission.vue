@@ -21,20 +21,17 @@
         md-table(md-sort="end", md-sort-type="desc", v-on:sort="order")
           md-table-header
             md-table-row
-              md-table-head(md-sort-by="From.name") {{ 'table.from' | i18n }}
+              md-table-head(md-sort-by="Player.name") {{ 'table.from' | i18n }}
               md-table-head.hide(md-sort-by="start") {{ 'table.start' | i18n }}
-              md-table-head(md-sort-by="To.name") {{ 'table.to' | i18n }}
-              md-table-head.hide(md-sort-by="end") {{ 'table.end' | i18n }}
+              md-table-head(md-sort-by="end") {{ 'table.end' | i18n }}
 
           md-table-body
             md-table-row(v-for="battle in battlesOrdered", md-auto-select, v-bind:md-item="battle", v-on:click.native="select(battle)")
               md-table-cell
-                md-chip(v-bind:class="from(battle)") {{ battle.From.name }}
+                md-chip(v-bind:class="from(battle)") {{ battle.Player.name }}
               md-table-cell.hide
                 md-chip {{ battle.start | date }}
               md-table-cell
-                md-chip(v-bind:class="to(battle)") {{ battle.To.name }}
-              md-table-cell.hide
                 md-chip {{ battle.end | date }}
 
             md-table-row(v-if="!battlesOrdered.length")
@@ -102,6 +99,7 @@
 
 <script>
   import api from '../services/api'
+  import notification from '../services/notification'
   import _ from 'lodash'
   import store from '../vuex/store'
 
@@ -111,8 +109,6 @@
       return {
         battles: [],
         players: [],
-        received: [],
-        sent: [],
         field: 'date',
         direction: 'desc',
         selected: {
@@ -127,25 +123,23 @@
       }
     },
     created () {
-      api.getPlayer(store.state.account.id)
-      .then((player) => {
-        this.received = player.Received
-        this.sent = player.Sent
-      })
-      api.getBattles()
-      .then((battles) => {
-        this.battles = battles
-      })
-      api.getPlayers()
-      .then((players) => {
-        this.players = players
-        this.message.to = store.state.account.id
-      })
+      this.refresh()
     },
     mounted () {
       store.commit('title', 'title.transmission')
     },
     methods: {
+      refresh () {
+        api.getBattles()
+        .then((battles) => {
+          this.battles = battles
+        })
+        api.getPlayers()
+        .then((players) => {
+          this.players = players
+          this.message.to = store.state.account.id
+        })
+      },
       select (message) {
         this.selected = message
         this.$refs['info'].open()
@@ -162,9 +156,17 @@
         this.close()
       },
       send () {
-        // TODO
-        console.log('sending')
-        this.clear()
+        api.sendMessage(store.state.player.id, this.message)
+        .then((result) => {
+          notification.success('notification.message.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.message.error')
+        })
+        .then(() => {
+          this.clear()
+        })
       },
       clear () {
         this.message.to = store.state.account.id
@@ -185,13 +187,8 @@
             : ''
       },
       from (battle) {
-        return battle.From.Faction
-          ? battle.From.Faction.class
-          : ''
-      },
-      to (battle) {
-        return battle.To.Faction
-          ? battle.To.Faction.class
+        return battle.Player.Faction
+          ? battle.Player.Faction.class
           : ''
       },
       name (message) {
@@ -206,7 +203,7 @@
       },
       battlesFiltered () {
         return this.battles.filter((battle) => {
-          return battle.To.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1 || battle.From.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+          return battle.Player.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
       },
       battlesOrdered () {
@@ -227,6 +224,12 @@
       },
       sentOrdered () {
         return _.orderBy(this.sentFiltered, this.field, this.direction)
+      },
+      received () {
+        return store.state.player.Received
+      },
+      sent () {
+        return store.state.player.Sent
       }
     }
   }

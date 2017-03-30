@@ -158,6 +158,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  sendMessage: (player, message) => {
+    return axios.post(`/player/${player}/message`, message)
+    .then((response) => {
+      return response
+    })
   }
 }
 
