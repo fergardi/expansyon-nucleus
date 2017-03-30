@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "watchify": "watchify -vd -p [ browserify-hmr -p 12345 -u localhost:12345 ] -e src/main.js -o dist/build.js -t [ eslintify --extension js --extension vue --formatter stylish --quiet-ignored ]",
+    "watchify": "watchify -vd -p [ browserify-hmr -p 12345 -u localhost:12345 ] -e src/main.js -o dist/build.js --debug --verbose -t [ eslintify --extension js --extension vue --formatter stylish --quiet-ignored ]",
     "serve": "http-server -p 23456 -o -s -c 1",
     "dev": "npm-run-all --parallel watchify serve",
     "test": "karma start karma.config.js",
