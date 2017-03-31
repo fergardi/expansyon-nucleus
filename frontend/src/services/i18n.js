@@ -32,6 +32,9 @@ const translation = {
       end: 'Arrival'
     },
     notification: {
+      planetarium: {
+        sale: 'Planet sale placed'
+      },
       temple: {
         new: 'There are new prices in the temple',
         ok: 'Transaction completed',
@@ -39,6 +42,7 @@ const translation = {
       },
       relicarium: {
         ok: 'Relic activated',
+        sale: 'Relics sale placed',
         error: 'There has been an error'
       },
       store: {
@@ -69,7 +73,7 @@ const translation = {
       },
       hangar: {
         ok: 'Ships built',
-        sale: 'Ship sale placed',
+        sale: 'Ships sale placed',
         error: 'There has been an error'
       },
       infrastructure: {
@@ -440,6 +444,9 @@ const translation = {
       end: 'Llegada'
     },
     notification: {
+      planetarium: {
+        sale: 'Planeta a la venta'
+      },
       temple: {
         new: 'Hay nuevos precios en el templo',
         ok: 'Ingreso correcto',
@@ -447,6 +454,7 @@ const translation = {
       },
       relicarium: {
         ok: 'Reliquia activada',
+        sale: 'Reliquias a la venta',
         error: 'Ha ocurrido un error'
       },
       store: {

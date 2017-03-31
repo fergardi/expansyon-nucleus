@@ -166,7 +166,19 @@ const api = {
     })
   },
   sellShip: (player, sale) => {
-    return axios.post(`/player/${player}/sell/ship`, sale)
+    return axios.post(`/player/${player}/sale/ship`, sale)
+    .then((response) => {
+      return response
+    })
+  },
+  sellRelic: (player, sale) => {
+    return axios.post(`/player/${player}/sale/relic`, sale)
+    .then((response) => {
+      return response
+    })
+  },
+  sellPlanet: (player, sale) => {
+    return axios.post(`/player/${player}/sale/planet`, sale)
     .then((response) => {
       return response
     })

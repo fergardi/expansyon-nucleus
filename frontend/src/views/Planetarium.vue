@@ -1,6 +1,34 @@
 <template lang="pug">
   md-layout
 
+    md-dialog(ref='sale')
+      md-card.md-primary(v-bind:class="selected.class")
+        form(v-on:submit.stop.prevent="sell()")
+          md-card-header
+            .md-title
+              span {{ selected.name | i18n }}
+              md-chip {{ selected.total | format }}
+          md-card-content
+            md-input-container
+              md-icon apps
+              label {{ 'resource.metal' | i18n }}
+              md-input(type="number", v-model.number="metal", min="0", required)
+            md-input-container
+              md-icon texture
+              label {{ 'resource.crystal' | i18n }}
+              md-input(type="number", v-model.number="crystal", min="0", required)
+            md-input-container
+              md-icon opacity
+              label {{ 'resource.oil' | i18n }}
+              md-input(type="number", v-model.number="oil", min="0", required)
+            md-input-container
+              md-icon whatshot
+              label {{ 'resource.aether' | i18n }}
+              md-input(type="number", v-model.number="aether", min="0", required)
+          md-card-actions
+            md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!has") {{ 'button.sell' | i18n }}
+
     md-dialog(ref='info')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
@@ -11,10 +39,11 @@
           span {{ selected.description | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.close' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="sale()") {{ 'button.sell' | i18n }}
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
     
-      md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="info(planet)")
+      md-card.md-primary.card(v-bind:class="planet.class", md-with-hover, v-on:click.native="select(planet)")
         md-card-header
           .md-title
             span {{ planet.name }}
@@ -39,24 +68,66 @@
 </template>
 
 <script>
+  import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
     data () {
       return {
-        selected: {}
+        selected: {},
+        metal: 0,
+        crystal: 0,
+        oil: 0,
+        aether: 0
       }
     },
     mounted () {
       store.commit('title', 'title.planetarium')
     },
     methods: {
-      info (planet) {
-        this.selected = planet
+      info () {
         this.$refs['info'].open()
+      },
+      sale () {
+        this.$refs['info'].close()
+        this.$refs['sale'].open()
+      },
+      select (planet) {
+        this.selected = planet
+        this.info()
       },
       close () {
         this.$refs['info'].close()
+        this.$refs['sale'].close()
+      },
+      clear () {
+        this.metal = 0
+        this.crystal = 0
+        this.oil = 0
+        this.aether = 0
+      },
+      sell () {
+        var sale = {
+          planetId: this.selected.id,
+          quantity: 1,
+          metal: this.metal,
+          crystal: this.crystal,
+          oil: this.oil,
+          aether: this.aether
+        }
+        api.sellPlanet(store.state.player.id, sale)
+        .then((result) => {
+          notification.success('notification.planetarium.sale')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.planetarium.error')
+        })
+        .then(() => {
+          this.clear()
+          this.close()
+        })
       }
     },
     computed: {
@@ -67,6 +138,9 @@
         return this.planets.filter((planet) => {
           return planet.name.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      has () {
+        return this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0
       },
       planets () {
         return store.state.player.Planets

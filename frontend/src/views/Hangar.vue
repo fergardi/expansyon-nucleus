@@ -14,19 +14,19 @@
               label {{ 'resource.quantity' | i18n }}
               md-input(type="number", v-model.number="quantity", min="0", v-bind:max="selected.PlayerShip.quantity", required)
             md-input-container
-              md-icon add
+              md-icon apps
               label {{ 'resource.metal' | i18n }}
               md-input(type="number", v-model.number="metal", min="0", required)
             md-input-container
-              md-icon add
+              md-icon texture
               label {{ 'resource.crystal' | i18n }}
               md-input(type="number", v-model.number="crystal", min="0", required)
             md-input-container
-              md-icon add
+              md-icon opacity
               label {{ 'resource.oil' | i18n }}
               md-input(type="number", v-model.number="oil", min="0", required)
             md-input-container
-              md-icon add
+              md-icon whatshot
               label {{ 'resource.aether' | i18n }}
               md-input(type="number", v-model.number="aether", min="0", required)
           md-card-actions
@@ -140,7 +140,7 @@
       },
       sell () {
         var sale = {
-          ship: this.selected.id,
+          shipId: this.selected.id,
           quantity: this.quantity,
           metal: this.metal,
           crystal: this.crystal,

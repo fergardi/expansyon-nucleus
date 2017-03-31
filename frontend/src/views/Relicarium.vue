@@ -1,7 +1,39 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='confirm')
+    md-dialog(ref='sale')
+      md-card.md-primary(v-bind:class="selected.class")
+        form(v-on:submit.stop.prevent="sell()")
+          md-card-header
+            .md-title
+              span {{ selected.name | i18n }}
+              md-chip {{ selected.PlayerRelic.quantity - quantity | format }}
+          md-card-content
+            md-input-container
+              md-icon add
+              label {{ 'resource.quantity' | i18n }}
+              md-input(type="number", v-model.number="quantity", min="0", v-bind:max="selected.PlayerRelic.quantity", required)
+            md-input-container
+              md-icon apps
+              label {{ 'resource.metal' | i18n }}
+              md-input(type="number", v-model.number="metal", min="0", required)
+            md-input-container
+              md-icon texture
+              label {{ 'resource.crystal' | i18n }}
+              md-input(type="number", v-model.number="crystal", min="0", required)
+            md-input-container
+              md-icon opacity
+              label {{ 'resource.oil' | i18n }}
+              md-input(type="number", v-model.number="oil", min="0", required)
+            md-input-container
+              md-icon whatshot
+              label {{ 'resource.aether' | i18n }}
+              md-input(type="number", v-model.number="aether", min="0", required)
+          md-card-actions
+            md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!has") {{ 'button.sell' | i18n }}
+
+    md-dialog(ref='enable')
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title
@@ -11,6 +43,7 @@
           span {{ selected.description | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="sale()") {{ 'button.sell' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="activate()") {{ 'button.activate' | i18n }}
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
@@ -45,22 +78,39 @@
           PlayerRelic: {
             quantity: 0
           }
-        }
+        },
+        quantity: 0,
+        metal: 0,
+        crystal: 0,
+        oil: 0,
+        aether: 0
       }
     },
     mounted () {
       store.commit('title', 'title.relicarium')
     },
     methods: {
-      confirm () {
-        this.$refs['confirm'].open()
+      enable () {
+        this.$refs['enable'].open()
+      },
+      sale () {
+        this.$refs['enable'].close()
+        this.$refs['sale'].open()
       },
       close () {
-        this.$refs['confirm'].close()
+        this.$refs['enable'].close()
+        this.$refs['sale'].close()
+      },
+      clear () {
+        this.quantity = 0
+        this.metal = 0
+        this.crystal = 0
+        this.oil = 0
+        this.aether = 0
       },
       select (relic) {
         this.selected = relic
-        this.confirm()
+        this.enable()
       },
       activate () {
         api.activateRelic(store.state.account.id, this.selected.id)
@@ -75,8 +125,27 @@
           this.close()
         })
       },
-      dismiss () {
-        this.$refs['alert'].close()
+      sell () {
+        var sale = {
+          relicId: this.selected.id,
+          quantity: this.quantity,
+          metal: this.metal,
+          crystal: this.crystal,
+          oil: this.oil,
+          aether: this.aether
+        }
+        api.sellRelic(store.state.player.id, sale)
+        .then((result) => {
+          notification.success('notification.relicarium.sale')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.relicarium.error')
+        })
+        .then(() => {
+          this.clear()
+          this.close()
+        })
       }
     },
     computed: {
@@ -87,6 +156,9 @@
         return this.relics.filter((relic) => {
           return this.$t(relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      has () {
+        return (this.quantity <= this.selected.PlayerRelic.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)
       },
       relics () {
         return store.state.player.Relics
