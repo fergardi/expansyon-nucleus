@@ -1,7 +1,17 @@
 <template lang="pug">
   md-table-card
 
-    md-dialog(ref='info')
+    md-dialog(ref='report')
+      md-card.md-primary
+        md-card-header
+          .md-title Manouver
+        md-card-content
+          md-chip.grey(v-for="ship in reported.Ships") {{ ship.BattleShip.quantity | format }} {{ ship.name | i18n }}
+        md-card-actions
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="confirm()") {{ 'button.retreat' | i18n }}
+
+    md-dialog(ref='message')
       md-card.md-primary
         md-card-header
           .md-title {{ selected.subject }}
@@ -18,12 +28,12 @@
     md-dialog(ref='confirm')
       md-card.md-primary
         md-card-header
-          .md-title {{ 'dialog.delete.title' | i18n }}
+          .md-title {{ 'dialog.confirm.title' | i18n }}
         md-card-content
-          span {{ 'dialog.delete.description' | i18n }}
+          span {{ 'dialog.confirm.description' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="remove()") {{ 'button.delete' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="remove()") {{ 'button.ok' | i18n }}
 
     md-tabs(md-fixed)
 
@@ -36,7 +46,7 @@
               md-table-head.md-numeric(md-sort-by="end") {{ 'table.end' | i18n }}
 
           md-table-body
-            md-table-row(v-for="battle in battlesOrdered", md-auto-select, v-bind:md-item="battle", v-on:click.native="select(battle)")
+            md-table-row(v-for="battle in battlesOrdered", md-auto-select, v-bind:md-item="battle", v-on:click.native="report(battle)")
               md-table-cell
                 md-chip(v-bind:class="from(battle)") {{ battle.Player.name }}
               md-table-cell.md-numeric {{ battle.start | date }}
@@ -123,6 +133,9 @@
           From: {},
           To: {}
         },
+        reported: {
+          Ships: []
+        },
         message: {
           to: null,
           subject: '',
@@ -150,15 +163,20 @@
       },
       select (message) {
         this.selected = message
-        this.$refs['info'].open()
+        this.$refs['message'].open()
+      },
+      report (battle) {
+        this.reported = battle
+        this.$refs['report'].open()
       },
       confirm () {
-        this.$refs['info'].close()
+        this.$refs['message'].close()
         this.$refs['confirm'].open()
       },
       close () {
-        this.$refs['info'].close()
+        this.$refs['message'].close()
         this.$refs['confirm'].close()
+        this.$refs['report'].close()
       },
       remove () {
         api.removeMessage(store.state.player.id, this.selected.id)
@@ -195,6 +213,10 @@
         this.message.to = store.state.account.id
         this.message.subject = ''
         this.message.text = ''
+      },
+      retreat () {
+        // TODO
+        this.close()
       },
       order (column) {
         this.field = column.name

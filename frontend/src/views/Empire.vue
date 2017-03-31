@@ -1,7 +1,7 @@
 <template lang="pug">
   md-layout
     
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="33", md-flex-xsmall="33")
       md-card.md-primary.card
         md-card-header
           .md-title {{ 'subtitle.planets' | i18n }}
@@ -9,7 +9,7 @@
           pie(v-bind:data="planets.data")
           span.total {{ planets.total }}
 
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="33", md-flex-xsmall="33")
       md-card.md-primary.card
         md-card-header
           .md-title {{ 'subtitle.buildings' | i18n }}
@@ -17,7 +17,7 @@
           pie(v-bind:data="buildings.data")
           span.total {{ buildings.total }}
 
-    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
+    md-layout(md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="33", md-flex-xsmall="33")
       md-card.md-primary.card
         md-card-header
           .md-title {{ 'subtitle.ships' | i18n }}
@@ -205,6 +205,7 @@
 
 <style lang="stylus" scoped>
   .doughnut
+    padding 4px
     display flex
     justify-content center
     align-items center

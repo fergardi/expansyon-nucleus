@@ -5,9 +5,9 @@ const translation = {
       english: 'English'
     },
     dialog: {
-      delete: {
-        title: 'Confirm deletion',
-        description: 'Are you sure to delete this?'
+      confirm: {
+        title: 'Confirmation',
+        description: 'This action cannot be undone'
       }
     },
     transmission: {
@@ -133,7 +133,8 @@ const translation = {
       attack: 'Attack',
       activate: 'Activate',
       regret: 'Regret',
-      sell: 'Sell'
+      sell: 'Sell',
+      retreat: 'Retreat'
     },
     account: {
       login: 'Login',
@@ -427,9 +428,9 @@ const translation = {
       english: 'Inglés'
     },
     dialog: {
-      delete: {
-        title: 'Confirmar borrado',
-        description: 'Estás seguro de borar esto?'
+      confirm: {
+        title: 'Confirmar',
+        description: 'Esta acción no se puede deshacer'
       }
     },
     transmission: {
@@ -555,7 +556,8 @@ const translation = {
       attack: 'Atacar',
       activate: 'Activar',
       regret: 'Retirar',
-      sell: 'Vender'
+      sell: 'Vender',
+      retreat: 'Retirada'
     },
     account: {
       login: 'Entrar',
