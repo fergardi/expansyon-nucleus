@@ -106,55 +106,55 @@ const api = {
     })
   },
   buyMarket: (player, sale) => {
-    return axios.get(`/player/${player}/market/${sale}`)
+    return axios.post(`/player/${player}/market/${sale}`)
     .then((response) => {
       return response
     })
   },
   regretMarket: (player, sale) => {
-    return axios.get(`/player/${player}/regret/${sale}`)
+    return axios.put(`/player/${player}/regret/${sale}`)
     .then((response) => {
       return response
     })
   },
   buyStore: (player, relic) => {
-    return axios.get(`/player/${player}/store/${relic}`)
+    return axios.post(`/player/${player}/store/${relic}`)
     .then((response) => {
       return response
     })
   },
   activateRelic: (player, relic) => {
-    return axios.get(`/player/${player}/relic/${relic}`)
+    return axios.post(`/player/${player}/relic/${relic}`)
     .then((response) => {
       return response
     })
   },
   joinFaction: (player, faction) => {
-    return axios.get(`/player/${player}/faction/${faction}`)
+    return axios.patch(`/player/${player}/faction/${faction}`)
     .then((response) => {
       return response
     })
   },
   voteReferendum: (player, referendum) => {
-    return axios.get(`/player/${player}/referendum/${referendum}`)
+    return axios.patch(`/player/${player}/referendum/${referendum}`)
     .then((response) => {
       return response
     })
   },
   buildShip: (player, ship, quantity) => {
-    return axios.get(`/player/${player}/ship/${ship}/quantity/${quantity}`)
+    return axios.patch(`/player/${player}/ship/${ship}/quantity/${quantity}`)
     .then((response) => {
       return response
     })
   },
   buildBuilding: (player, building, quantity) => {
-    return axios.get(`/player/${player}/building/${building}/quantity/${quantity}`)
+    return axios.patch(`/player/${player}/building/${building}/quantity/${quantity}`)
     .then((response) => {
       return response
     })
   },
   buildTower: (player, tower, quantity) => {
-    return axios.get(`/player/${player}/tower/${tower}/quantity/${quantity}`)
+    return axios.patch(`/player/${player}/tower/${tower}/quantity/${quantity}`)
     .then((response) => {
       return response
     })
