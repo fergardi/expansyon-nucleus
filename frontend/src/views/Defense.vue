@@ -20,7 +20,6 @@
             md-chip {{ (selected.oil * quantity) | format }} {{ 'resource.oil' | i18n }}
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-            md-button.md-dense.md-warn(v-on:click.native="clear()") {{ 'button.clear' | i18n }}
             md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") {{ 'button.build' | i18n }}
 
     md-layout(v-for="tower in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")

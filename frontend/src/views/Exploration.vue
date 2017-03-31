@@ -23,7 +23,6 @@
               md-input(type="number", v-model="bomber", min="0", required)
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-            md-button.md-dense.md-warn(v-on:click.native="clear()") {{ 'button.clear' | i18n }}
             md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") {{ 'button.attack' | i18n }}
 
     md-layout(v-for="planet in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
