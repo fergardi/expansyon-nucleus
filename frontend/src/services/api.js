@@ -164,6 +164,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  sellShip: (player, sale) => {
+    return axios.post(`/player/${player}/sell/ship`, sale)
+    .then((response) => {
+      return response
+    })
   }
 }
 

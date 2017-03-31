@@ -1,7 +1,39 @@
 <template lang="pug">
   md-layout
 
-    md-dialog(ref='form')
+    md-dialog(ref='sale')
+      md-card.md-primary(v-bind:class="selected.class")
+        form(v-on:submit.stop.prevent="sell()")
+          md-card-header
+            .md-title
+              span {{ selected.name | i18n }}
+              md-chip {{ selected.PlayerShip.quantity - quantity | format }}
+          md-card-content
+            md-input-container
+              md-icon add
+              label {{ 'resource.quantity' | i18n }}
+              md-input(type="number", v-model.number="quantity", min="0", v-bind:max="selected.PlayerShip.quantity", required)
+            md-input-container
+              md-icon add
+              label {{ 'resource.metal' | i18n }}
+              md-input(type="number", v-model.number="metal", min="0", required)
+            md-input-container
+              md-icon add
+              label {{ 'resource.crystal' | i18n }}
+              md-input(type="number", v-model.number="crystal", min="0", required)
+            md-input-container
+              md-icon add
+              label {{ 'resource.oil' | i18n }}
+              md-input(type="number", v-model.number="oil", min="0", required)
+            md-input-container
+              md-icon add
+              label {{ 'resource.aether' | i18n }}
+              md-input(type="number", v-model.number="aether", min="0", required)
+          md-card-actions
+            md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+            md-button.md-dense.md-accent(type="submit", v-bind:disabled="!has") {{ 'button.sell' | i18n }}
+
+    md-dialog(ref='construct')
       md-card.md-primary(v-bind:class="selected.class")
         form(v-on:submit.stop.prevent="build()")
           md-card-header
@@ -20,7 +52,7 @@
             md-chip {{ (selected.oil * quantity) | format }} {{ 'resource.oil' | i18n }}
           md-card-actions
             md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-            md-button.md-dense.md-warn(v-on:click.native="clear()") {{ 'button.clear' | i18n }}
+            md-button.md-dense.md-accent(v-on:click.native="sale()") {{ 'button.sell' | i18n }}
             md-button.md-dense.md-accent(type="submit", v-bind:disabled="!can") {{ 'button.build' | i18n }}
 
     md-layout(v-for="ship in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
@@ -59,30 +91,65 @@
             quantity: 0
           }
         },
-        quantity: 0
+        quantity: 0,
+        metal: 0,
+        crystal: 0,
+        oil: 0,
+        aether: 0
       }
     },
     mounted () {
       store.commit('title', 'title.hangar')
     },
     methods: {
-      form () {
-        this.$refs['form'].open()
+      construct () {
+        this.$refs['construct'].open()
+      },
+      sale () {
+        this.$refs['construct'].close()
+        this.$refs['sale'].open()
       },
       close () {
-        this.$refs['form'].close()
+        this.$refs['construct'].close()
+        this.$refs['sale'].close()
       },
       clear () {
         this.quantity = 0
+        this.metal = 0
+        this.crystal = 0
+        this.oil = 0
+        this.aether = 0
       },
       select (ship) {
         this.selected = ship
-        this.form()
+        this.construct()
       },
       build () {
         api.buildShip(store.state.player.id, this.selected.id, this.quantity)
         .then((result) => {
           notification.success('notification.hangar.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.hangar.error')
+        })
+        .then(() => {
+          this.clear()
+          this.close()
+        })
+      },
+      sell () {
+        var sale = {
+          ship: this.selected.id,
+          quantity: this.quantity,
+          metal: this.metal,
+          crystal: this.crystal,
+          oil: this.oil,
+          aether: this.aether
+        }
+        api.sellShip(store.state.player.id, sale)
+        .then((result) => {
+          notification.success('notification.hangar.sale')
         })
         .catch((error) => {
           console.error(error)
@@ -105,6 +172,9 @@
       },
       can () {
         return this.selected.metal * this.quantity <= store.state.player.metal && this.selected.crystal * this.quantity <= store.state.player.crystal && this.selected.oil * this.quantity <= store.state.player.oil
+      },
+      has () {
+        return (this.quantity <= this.selected.PlayerShip.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)
       },
       ships () {
         return store.state.player.Ships

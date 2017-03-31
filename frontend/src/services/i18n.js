@@ -69,6 +69,7 @@ const translation = {
       },
       hangar: {
         ok: 'Ships built',
+        sale: 'Ship sale placed',
         error: 'There has been an error'
       },
       infrastructure: {
@@ -117,7 +118,8 @@ const translation = {
       buy: 'Buy',
       attack: 'Attack',
       activate: 'Activate',
-      regret: 'Regret'
+      regret: 'Regret',
+      sell: 'Sell'
     },
     account: {
       login: 'Login',
@@ -475,6 +477,7 @@ const translation = {
       },
       hangar: {
         ok: 'Naves construidas',
+        sale: 'Naves a la venta',
         error: 'Ha ocurrido un error'
       },
       infrastructure: {
@@ -523,7 +526,8 @@ const translation = {
       buy: 'Comprar',
       attack: 'Atacar',
       activate: 'Activar',
-      regret: 'Retirar'
+      regret: 'Retirar',
+      sell: 'Vender'
     },
     account: {
       login: 'Entrar',
