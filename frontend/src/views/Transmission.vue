@@ -7,13 +7,23 @@
           .md-title {{ selected.subject }}
         md-card-content
           span {{ selected.text | lorem }}
-        md-card-content.center
+        md-card-content
           md-chip(v-bind:class="color(selected)") {{ name(selected) }}
-          md-chip(v-bind:class="color(selected)") {{ selected.datetime | date }}
+          md-chip.grey {{ selected.datetime | date }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-warn(v-on:click.native="remove") {{ 'button.delete' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="reply") {{ 'button.reply' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="confirm()") {{ 'button.delete' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="reply()") {{ 'button.reply' | i18n }}
+
+    md-dialog(ref='confirm')
+      md-card.md-primary
+        md-card-header
+          .md-title {{ 'dialog.delete.title' | i18n }}
+        md-card-content
+          span {{ 'dialog.delete.description' | i18n }}
+        md-card-actions
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="remove()") {{ 'button.delete' | i18n }}
 
     md-tabs(md-fixed)
 
@@ -22,17 +32,15 @@
           md-table-header
             md-table-row
               md-table-head(md-sort-by="Player.name") {{ 'table.from' | i18n }}
-              md-table-head.hide(md-sort-by="start") {{ 'table.start' | i18n }}
-              md-table-head(md-sort-by="end") {{ 'table.end' | i18n }}
+              md-table-head.md-numeric(md-sort-by="start") {{ 'table.start' | i18n }}
+              md-table-head.md-numeric(md-sort-by="end") {{ 'table.end' | i18n }}
 
           md-table-body
             md-table-row(v-for="battle in battlesOrdered", md-auto-select, v-bind:md-item="battle", v-on:click.native="select(battle)")
               md-table-cell
                 md-chip(v-bind:class="from(battle)") {{ battle.Player.name }}
-              md-table-cell.hide
-                md-chip {{ battle.start | date }}
-              md-table-cell
-                md-chip {{ battle.end | date }}
+              md-table-cell.md-numeric {{ battle.start | date }}
+              md-table-cell.md-numeric {{ battle.end | date }}
 
             md-table-row(v-if="!battlesOrdered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
@@ -100,8 +108,8 @@
 <script>
   import api from '../services/api'
   import notification from '../services/notification'
-  import _ from 'lodash'
   import store from '../vuex/store'
+  import _ from 'lodash'
 
   export default {
     name: 'Transmission',
@@ -144,12 +152,26 @@
         this.selected = message
         this.$refs['info'].open()
       },
+      confirm () {
+        this.$refs['info'].close()
+        this.$refs['confirm'].open()
+      },
       close () {
         this.$refs['info'].close()
+        this.$refs['confirm'].close()
       },
       remove () {
-        // TODO
-        this.close()
+        api.removeMessage(store.state.player.id, this.selected.id)
+        .then((result) => {
+          notification.success('notification.transmission.remove')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.transmission.error')
+        })
+        .then(() => {
+          this.close()
+        })
       },
       reply () {
         // TODO
@@ -166,6 +188,7 @@
         })
         .then(() => {
           this.clear()
+          this.close()
         })
       },
       clear () {

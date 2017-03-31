@@ -165,6 +165,12 @@ const api = {
       return response
     })
   },
+  removeMessage: (player, message) => {
+    return axios.delete(`/player/${player}/message/${message}/remove`)
+    .then((response) => {
+      return response
+    })
+  },
   sellShip: (player, sale) => {
     return axios.post(`/player/${player}/sale/ship`, sale)
     .then((response) => {

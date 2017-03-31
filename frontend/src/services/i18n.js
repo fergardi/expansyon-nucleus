@@ -4,6 +4,12 @@ const translation = {
       spanish: 'Spanish',
       english: 'English'
     },
+    dialog: {
+      delete: {
+        title: 'Confirm deletion',
+        description: 'Are you sure to delete this?'
+      }
+    },
     transmission: {
       to: 'To',
       from: 'From',
@@ -82,6 +88,10 @@ const translation = {
       },
       defense: {
         ok: 'Towers built',
+        error: 'There has been an error'
+      },
+      transmission: {
+        delete: 'Message deleted',
         error: 'There has been an error'
       }
     },
@@ -416,6 +426,12 @@ const translation = {
       spanish: 'Español',
       english: 'Inglés'
     },
+    dialog: {
+      delete: {
+        title: 'Confirmar borrado',
+        description: 'Estás seguro de borar esto?'
+      }
+    },
     transmission: {
       to: 'Para',
       from: 'De',
@@ -494,6 +510,10 @@ const translation = {
       },
       defense: {
         ok: 'Torres construidas',
+        error: 'Ha ocurrido un error'
+      },
+      transmission: {
+        delete: 'Mensaje borrado',
         error: 'Ha ocurrido un error'
       }
     },

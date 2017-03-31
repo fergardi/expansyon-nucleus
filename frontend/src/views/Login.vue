@@ -92,7 +92,7 @@
             .then((player) => {
               store.commit('player', player)
               this.logging = false
-              this.$router.push('/relicarium')
+              this.$router.push('/transmission')
             })
           }
         })
