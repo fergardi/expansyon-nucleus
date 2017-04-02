@@ -33,7 +33,7 @@
           span {{ 'dialog.confirm.description' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="remove()") {{ 'button.ok' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="remove()") {{ 'button.accept' | i18n }}
 
     md-tabs(md-fixed)
 

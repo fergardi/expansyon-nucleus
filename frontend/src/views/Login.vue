@@ -27,6 +27,11 @@
           form(v-on:submit.stop.prevent="register()")
             md-card.md-primary.card.no-padding.rounded-bottom
               md-card-content
+                md-input-container(v-bind:class="{ 'md-input-invalid' : name }")
+                  md-icon person
+                  label {{ 'account.name' | i18n }}
+                  md-input(type="text", v-model="information.name", minlength="6", required)
+                  span.md-error {{ 'account.repeated' | i18n }}
                 md-input-container(v-bind:class="{ 'md-input-invalid' : email }")
                   md-icon mail
                   label {{ 'account.email' | i18n }}
@@ -42,11 +47,6 @@
                   label {{ 'account.repeat' | i18n }}
                   md-input(type="password", v-model="information.repeat", minlength="6", required)
                   span.md-error {{ 'account.mismatch' | i18n }}
-                md-input-container(v-bind:class="{ 'md-input-invalid' : name }")
-                  md-icon person
-                  label {{ 'account.name' | i18n }}
-                  md-input(type="text", v-model="information.name", minlength="6", required)
-                  span.md-error {{ 'account.repeated' | i18n }}
               md-card-actions
                 md-button.md-dense.md-warn(type="reset", v-bind:class="{ hidden: registering }") {{ 'button.clear' | i18n }}
                 md-button.md-dense.md-accent(type="submit", v-bind:disabled="registering || email || name || !match || !secure") {{ 'button.accept' | i18n }}
@@ -65,10 +65,10 @@
           password: 'test'
         },
         information: {
-          email: '',
-          password: '',
-          repeat: '',
-          name: ''
+          name: 'register',
+          email: 'register@register.com',
+          password: 'register',
+          repeat: 'register'
         },
         email: false,
         name: false,
@@ -91,8 +91,13 @@
             api.getPlayer(store.state.account.id)
             .then((player) => {
               store.commit('player', player)
+              this.$router.push('/empire')
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+            .then(() => {
               this.logging = false
-              this.$router.push('/transmission')
             })
           }
         })
@@ -106,6 +111,11 @@
           this.registering = true
           auth.register(this.information)
           .then((response) => {
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+          .then(() => {
             this.registering = false
           })
         }
