@@ -26,10 +26,13 @@
           md-progress(v-bind:md-progress="faction.oil")
           md-progress(v-bind:md-progress="faction.size")
           md-progress(v-bind:md-progress="faction.energy")
-          md-progress(v-bind:md-progress="faction.influence")
+          md-progress(v-bind:md-progress="faction.experience")
           md-progress(v-bind:md-progress="faction.attack")
           md-progress(v-bind:md-progress="faction.defense")
           md-progress(v-bind:md-progress="faction.speed")
+          md-progress(v-bind:md-progress="faction.aim")
+          md-progress(v-bind:md-progress="faction.evasion")
+          md-progress(v-bind:md-progress="faction.cargo")
         md-card-content.center
           span {{ faction.description | i18n }}
         md-card-content.center

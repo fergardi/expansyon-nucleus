@@ -10,7 +10,9 @@ Online real timed web space conquer browser game.
 * Fixtures
 * Cron
 * JWT
-* Karma
+* Mocha
+* Chai
+* Logger
 * ESLint
 * PayPal
 ##### Frontend

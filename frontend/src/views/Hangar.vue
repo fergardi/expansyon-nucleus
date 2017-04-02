@@ -67,6 +67,9 @@
           md-progress(v-bind:md-progress="ship.attack")
           md-progress(v-bind:md-progress="ship.defense")
           md-progress(v-bind:md-progress="ship.speed")
+          md-progress(v-bind:md-progress="ship.aim")
+          md-progress(v-bind:md-progress="ship.evasion")
+          md-progress(v-bind:md-progress="ship.cargo")
         md-card-content.center
           span {{ ship.description | i18n }}
         md-card-content.center

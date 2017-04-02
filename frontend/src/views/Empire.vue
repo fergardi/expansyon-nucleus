@@ -57,15 +57,18 @@
         md-card-header
           .md-title {{ faction.name | i18n }}
         md-card-content.no-padding
-          md-progress.green(v-bind:md-progress="faction.metal")
-          md-progress.green(v-bind:md-progress="faction.crystal")
-          md-progress.green(v-bind:md-progress="faction.oil")
-          md-progress.green(v-bind:md-progress="faction.size")
-          md-progress.green(v-bind:md-progress="faction.energy")
-          md-progress.green(v-bind:md-progress="faction.influence")
-          md-progress.green(v-bind:md-progress="faction.attack")
-          md-progress.green(v-bind:md-progress="faction.defense")
-          md-progress.green(v-bind:md-progress="faction.speed")
+          md-progress(v-bind:md-progress="faction.metal")
+          md-progress(v-bind:md-progress="faction.crystal")
+          md-progress(v-bind:md-progress="faction.oil")
+          md-progress(v-bind:md-progress="faction.size")
+          md-progress(v-bind:md-progress="faction.energy")
+          md-progress(v-bind:md-progress="faction.experience")
+          md-progress(v-bind:md-progress="faction.attack")
+          md-progress(v-bind:md-progress="faction.defense")
+          md-progress(v-bind:md-progress="faction.speed")
+          md-progress(v-bind:md-progress="faction.aim")
+          md-progress(v-bind:md-progress="faction.evasion")
+          md-progress(v-bind:md-progress="faction.cargo")
       md-card.md-primary.card(v-else)
         md-card-header
           .md-title Faction

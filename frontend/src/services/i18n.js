@@ -298,7 +298,7 @@ const translation = {
       }
     },
     tower: {
-      turret: {
+      blaster: {
         name: 'Turret',
         description: 'Description'
       },
@@ -721,7 +721,7 @@ const translation = {
       }
     },
     tower: {
-      turret: {
+      blaster: {
         name: 'Torreta',
         description: 'Description'
       },

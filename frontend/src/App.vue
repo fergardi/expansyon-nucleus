@@ -261,8 +261,8 @@
         md-list-item
           md-avatar
             md-icon.md-primary gps_off
-          span {{ 'tower.turret.name' | i18n }}
-          md-chip {{ player.turret | format }}
+          span {{ 'tower.blaster.name' | i18n }}
+          md-chip {{ player.blaster | format }}
         md-list-item
           md-avatar
             md-icon.md-primary gps_not_fixed

@@ -37,6 +37,9 @@
           .orbit(v-if="item(sale).moon || item(sale).station")
             img(src="https://image.flaticon.com/icons/svg/361/361706.svg", v-show="item(sale).moon")
             img(src="https://image.flaticon.com/icons/svg/139/139726.svg", v-show="item(sale).station")
+        md-card-content.center(v-if="item(sale).moon || item(sale).station")
+          md-chip(v-if="item(sale).moon") {{ 'resource.moon' | i18n }}
+          md-chip(v-if="item(sale).station") {{ 'resource.station' | i18n }}
         md-card-content.no-padding(v-if="sale.Planet")
           md-progress(v-bind:md-progress="item(sale).metal", v-if="item(sale).metal")
           md-progress(v-bind:md-progress="item(sale).crystal", v-if="item(sale).crystal")
@@ -44,15 +47,13 @@
           md-progress(v-bind:md-progress="item(sale).size", v-if="item(sale).size")
           md-progress(v-bind:md-progress="item(sale).energy", v-if="item(sale).energy")
           md-progress(v-bind:md-progress="item(sale).influence", v-if="item(sale).influence")
-        md-card-content.no-padding.center(v-if="sale.Relic")
-          // TODO
         md-card-content.no-padding(v-if="sale.Ship")
           md-progress(v-bind:md-progress="item(sale).attack", v-if="item(sale).attack")
           md-progress(v-bind:md-progress="item(sale).defense", v-if="item(sale).defense")
           md-progress(v-bind:md-progress="item(sale).speed", v-if="item(sale).speed")
-        md-card-content.center(v-if="item(sale).moon || item(sale).station")
-          md-chip(v-if="item(sale).moon") {{ 'resource.moon' | i18n }}
-          md-chip(v-if="item(sale).station") {{ 'resource.station' | i18n }}
+          md-progress(v-bind:md-progress="item(sale).aim", v-if="item(sale).aim")
+          md-progress(v-bind:md-progress="item(sale).evasion", v-if="item(sale).evasion")
+          md-progress(v-bind:md-progress="item(sale).cargo", v-if="item(sale).cargo")
         md-card-content.center(v-if="item(sale).description")
           span {{ item(sale).description | i18n }}
         md-card-content.center
