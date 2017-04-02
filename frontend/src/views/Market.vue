@@ -29,8 +29,14 @@
             md-chip(v-if="sale.Planet") {{ sale.Planet.total | format }}
           .md-title
             md-chip(v-bind:class="color(sale.Player)") {{ sale.Player.name }}
-        md-card-media
+        md-card-media(v-if="!sale.Planet")
           img(v-bind:src="item(sale).image")
+        md-card-media.system(v-else)
+          .planet
+            img(v-bind:src="item(sale).image")
+          .orbit(v-if="item(sale).moon || item(sale).station")
+            img(src="https://image.flaticon.com/icons/svg/361/361706.svg", v-show="item(sale).moon")
+            img(src="https://image.flaticon.com/icons/svg/139/139726.svg", v-show="item(sale).station")
         md-card-content.no-padding(v-if="sale.Planet")
           md-progress(v-bind:md-progress="item(sale).metal", v-if="item(sale).metal")
           md-progress(v-bind:md-progress="item(sale).crystal", v-if="item(sale).crystal")
@@ -163,4 +169,14 @@
 </script>
 
 <style lang="stylus" scoped>
+  .system
+    display flex
+    .planet
+      flex 2
+    .orbit
+      flex 1
+      display flex
+      flex-direction column
+      img
+        height 70px !important
 </style>

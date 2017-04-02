@@ -48,8 +48,12 @@
           .md-title
             span {{ planet.name }}
             md-chip {{ planet.total | format }}
-        md-card-media
-          img(v-bind:src="planet.image")
+        md-card-media.system
+          .planet
+            img(v-bind:src="planet.image")
+          .orbit(v-if="planet.moon || planet.station")
+            img(src="https://image.flaticon.com/icons/svg/361/361706.svg", v-show="planet.moon")
+            img(src="https://image.flaticon.com/icons/svg/139/139726.svg", v-show="planet.station")
         md-card-content.no-padding
           md-progress(v-bind:md-progress="planet.size")
           md-progress(v-bind:md-progress="planet.metal")
@@ -150,4 +154,14 @@
 </script>
 
 <style lang="stylus" scoped>
+  .system
+    display flex
+    .planet
+      flex 2
+    .orbit
+      flex 1
+      display flex
+      flex-direction column
+      img
+        height 70px !important
 </style>
