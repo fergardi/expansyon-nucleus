@@ -130,31 +130,31 @@ const api = {
     })
   },
   joinFaction: (player, faction) => {
-    return axios.patch(`/player/${player}/faction/${faction}`)
+    return axios.put(`/player/${player}/faction/${faction}`)
     .then((response) => {
       return response
     })
   },
   voteReferendum: (player, referendum) => {
-    return axios.patch(`/player/${player}/referendum/${referendum}`)
+    return axios.put(`/player/${player}/referendum/${referendum}`)
     .then((response) => {
       return response
     })
   },
   buildShip: (player, ship, quantity) => {
-    return axios.patch(`/player/${player}/ship/${ship}/quantity/${quantity}`)
+    return axios.put(`/player/${player}/ship/${ship}/quantity/${quantity}`)
     .then((response) => {
       return response
     })
   },
   buildBuilding: (player, building, quantity) => {
-    return axios.patch(`/player/${player}/building/${building}/quantity/${quantity}`)
+    return axios.put(`/player/${player}/building/${building}/quantity/${quantity}`)
     .then((response) => {
       return response
     })
   },
   buildTower: (player, tower, quantity) => {
-    return axios.patch(`/player/${player}/tower/${tower}/quantity/${quantity}`)
+    return axios.put(`/player/${player}/tower/${tower}/quantity/${quantity}`)
     .then((response) => {
       return response
     })
