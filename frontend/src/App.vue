@@ -512,6 +512,23 @@
   /* search */
   .search
     flex-grow 2
+
+  /* borders */
+  /*
+  .md-card
+    border 1px solid black
+    .md-card-content
+    .md-card-actions
+    .md-card-media
+      border-top 1px solid black
+    .md-card-media.system
+      .planet
+        img
+          border-right 1px solid black
+      .orbit
+        img
+          border-bottom 1px solid black
+  */
   
   /* OPACITY */
   opacity = 0.90
