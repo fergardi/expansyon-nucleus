@@ -93,6 +93,11 @@ const translation = {
       transmission: {
         delete: 'Message deleted',
         error: 'There has been an error'
+      },
+      research: {
+        ok: 'Skill trees saved',
+        reset: 'Skill trees reverted to previous state',
+        error: 'There has been an error'
       }
     },
     filter: {
@@ -135,7 +140,7 @@ const translation = {
       regret: 'Regret',
       sell: 'Sell',
       retreat: 'Retreat',
-      learn: 'Learn',
+      save: 'Save',
       reset: 'Reset'
     },
     account: {
@@ -640,6 +645,11 @@ const translation = {
       transmission: {
         delete: 'Mensaje borrado',
         error: 'Ha ocurrido un error'
+      },
+      research: {
+        ok: 'Desarrollos guardados',
+        reset: 'Desarrollos revertidos al estado anterior',
+        error: 'Ha ocurrido un error'
       }
     },
     filter: {
@@ -682,7 +692,7 @@ const translation = {
       regret: 'Retirar',
       sell: 'Vender',
       retreat: 'Retirada',
-      learn: 'Aprender',
+      save: 'Guardar',
       reset: 'Reiniciar'
     },
     account: {

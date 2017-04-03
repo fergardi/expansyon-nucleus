@@ -188,6 +188,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  saveTree: (player, tree) => {
+    return axios.put(`/player/${player}/tree`, { tree: tree })
+    .then((response) => {
+      return response
+    })
   }
 }
 

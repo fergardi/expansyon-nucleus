@@ -9,7 +9,7 @@
           span {{ 'dialog.confirm.description' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="save()") {{ 'button.accept' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="save()") {{ 'button.save' | i18n }}
 
     md-layout(v-for="branch in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="branch.class")
@@ -27,21 +27,22 @@
         md-card-content.center
           span {{ branch.description | i18n }}
         md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="reset(branch)") {{ 'button.reset' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="select(branch)") {{ 'button.learn' | i18n }}
+          md-button.md-dense.md-warn(v-on:click.native="refresh()") {{ 'button.reset' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="confirm()") {{ 'button.save' | i18n }}
 
     md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-chip.red {{ 'filter.nothing' | i18n }}
 </template>
 
 <script>
+  import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
     data () {
       return {
-        tree: [],
-        selected: {}
+        tree: []
       }
     },
     mounted () {
@@ -57,23 +58,13 @@
       },
       total (branch) {
         if (branch) return branch.Skills.reduce((total, skill) => total + skill.PlayerSkill.level, 0)
-        else {
-          return 0
-        }
+        else return this.tree.reduce((total, branch) => total + branch.Skills.reduce((subtotal, skill) => subtotal + skill.PlayerSkill.level, 0), 0)
       },
       layout (index) {
         return index > 0 ? 33 : 100
       },
       up (skill) {
-        if (skill.PlayerSkill.level < skill.max && this.total() <= store.state.player.level) skill.PlayerSkill.level++
-      },
-      down (skill) {
-        if (skill.PlayerSkill.level > skill.min && this.total() <= store.state.player.level) skill.PlayerSkill.level--
-      },
-      reset (branch) {
-        branch.Skills.forEach((skill) => {
-          skill.PlayerSkill.level = skill.min
-        })
+        if (skill.PlayerSkill.level < skill.max && this.total() < store.state.player.level) skill.PlayerSkill.level++
       },
       confirm () {
         this.$refs['confirm'].open()
@@ -81,13 +72,18 @@
       close () {
         this.$refs['confirm'].close()
       },
-      select (branch) {
-        this.selected = branch
-        this.confirm()
-      },
-      save (branch) {
-        // TODO
-        this.close()
+      save () {
+        api.saveTree(store.state.player.id, this.tree)
+        .then((result) => {
+          notification.success('notification.research.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.research.error')
+        })
+        .then(() => {
+          this.close()
+        })
       },
       can (skill, branch) {
         return skill.ParentId
