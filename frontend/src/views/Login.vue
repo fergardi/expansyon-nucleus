@@ -91,7 +91,7 @@
             api.getPlayer(store.state.account.id)
             .then((player) => {
               store.commit('player', player)
-              this.$router.push('/empire')
+              this.$router.push('/research')
             })
             .catch((error) => {
               console.error(error)

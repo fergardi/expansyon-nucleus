@@ -363,138 +363,140 @@ const translation = {
         description: 'Description'
       }
     },
-    skill: {
+    tree: {
       offensive: {
         name: 'Offensive',
-        description: 'Description',
-        exploration: {
-          name: 'Exploration',
-          description: 'Description'
-        },
-        fighter: {
-          name: 'Fighter',
-          description: 'Description'
-        },
-        cruiser: {
-          name: 'Cruiser',
-          description: 'Description'
-        },
-        bomber: {
-          name: 'Bomber',
-          description: 'Description'
-        },
-        aim: {
-          name: 'Aim',
-          description: 'Description'
-        },
-        evasion: {
-          name: 'Evasion',
-          description: 'Description'
-        },
-        cargo: {
-          name: 'Cargo',
-          description: 'Description'
-        },
-        speed: {
-          name: 'Speed',
-          description: 'Description'
-        },
-        defense: {
-          name: 'Defense',
-          description: 'Description'
-        },
-        attack: {
-          name: 'Attack',
-          description: 'Description'
-        }
+        description: 'Description'
       },
       utility: {
         name: 'Utility',
-        description: 'Description',
-        experience: {
-          name: 'Experience',
-          description: 'Description'
-        },
-        orbiter: {
-          name: 'Orbiter',
-          description: 'Description'
-        },
-        carrier: {
-          name: 'Carrier',
-          description: 'Description'
-        },
-        recycler: {
-          name: 'Recycler',
-          description: 'Description'
-        },
-        furnace: {
-          name: 'Furnace',
-          description: 'Description'
-        },
-        factory: {
-          name: 'Factory',
-          description: 'Description'
-        },
-        refinery: {
-          name: 'Refinery',
-          description: 'Description'
-        },
-        metal: {
-          name: 'Metal',
-          description: 'Description'
-        },
-        crystal: {
-          name: 'Crystal',
-          description: 'Description'
-        },
-        oil: {
-          name: 'Oil',
-          description: 'Description'
-        }
+        description: 'Description'
       },
       defensive: {
         name: 'Defensive',
-        description: 'Description',
-        nano: {
-          name: 'Nanotechnology',
-          description: 'Description'
-        },
-        blaster: {
-          name: 'Blaster',
-          description: 'Description'
-        },
-        railgun: {
-          name: 'Railgun',
-          description: 'Description'
-        },
-        cannon: {
-          name: 'Cannon',
-          description: 'Description'
-        },
-        plant: {
-          name: 'Plant',
-          description: 'Description'
-        },
-        barrier: {
-          name: 'Barrier',
-          description: 'Description'
-        },
-        warehouse: {
-          name: 'Warehouse',
-          description: 'Description'
-        },
-        energy: {
-          name: 'Energy',
-          description: 'Description'
-        },
-        counter: {
-          name: 'Counter',
-          description: 'Description'
-        },
-        size: {
-          name: 'Terraforming',
-          description: 'Description'
-        }
+        description: 'Description'
+      }
+    },
+    skill: {
+      exploration: {
+        name: 'Exploration',
+        description: 'Description'
+      },
+      fighter: {
+        name: 'Fighter',
+        description: 'Description'
+      },
+      cruiser: {
+        name: 'Cruiser',
+        description: 'Description'
+      },
+      bomber: {
+        name: 'Bomber',
+        description: 'Description'
+      },
+      aim: {
+        name: 'Aim',
+        description: 'Description'
+      },
+      evasion: {
+        name: 'Evasion',
+        description: 'Description'
+      },
+      cargo: {
+        name: 'Cargo',
+        description: 'Description'
+      },
+      speed: {
+        name: 'Speed',
+        description: 'Description'
+      },
+      defense: {
+        name: 'Defense',
+        description: 'Description'
+      },
+      attack: {
+        name: 'Attack',
+        description: 'Description'
+      },
+      experience: {
+        name: 'Experience',
+        description: 'Description'
+      },
+      orbiter: {
+        name: 'Orbiter',
+        description: 'Description'
+      },
+      carrier: {
+        name: 'Carrier',
+        description: 'Description'
+      },
+      recycler: {
+        name: 'Recycler',
+        description: 'Description'
+      },
+      furnace: {
+        name: 'Furnace',
+        description: 'Description'
+      },
+      factory: {
+        name: 'Factory',
+        description: 'Description'
+      },
+      refinery: {
+        name: 'Refinery',
+        description: 'Description'
+      },
+      metal: {
+        name: 'Metal',
+        description: 'Description'
+      },
+      crystal: {
+        name: 'Crystal',
+        description: 'Description'
+      },
+      oil: {
+        name: 'Oil',
+        description: 'Description'
+      },
+      nano: {
+        name: 'Nanotechnology',
+        description: 'Description'
+      },
+      blaster: {
+        name: 'Blaster',
+        description: 'Description'
+      },
+      railgun: {
+        name: 'Railgun',
+        description: 'Description'
+      },
+      cannon: {
+        name: 'Cannon',
+        description: 'Description'
+      },
+      plant: {
+        name: 'Plant',
+        description: 'Description'
+      },
+      barrier: {
+        name: 'Barrier',
+        description: 'Description'
+      },
+      warehouse: {
+        name: 'Warehouse',
+        description: 'Description'
+      },
+      energy: {
+        name: 'Energy',
+        description: 'Description'
+      },
+      counter: {
+        name: 'Counter',
+        description: 'Description'
+      },
+      size: {
+        name: 'Terraforming',
+        description: 'Description'
       }
     },
     mission: {
@@ -906,138 +908,140 @@ const translation = {
         description: 'Descripción'
       }
     },
-    skill: {
+    tree: {
       offensive: {
         name: 'Ofensivo',
-        description: 'Descripción',
-        exploration: {
-          name: 'Exploración',
-          description: 'Descripción'
-        },
-        fighter: {
-          name: 'Caza',
-          description: 'Descripción'
-        },
-        cruiser: {
-          name: 'Crucero',
-          description: 'Descripción'
-        },
-        bomber: {
-          name: 'Bombardero',
-          description: 'Descripción'
-        },
-        aim: {
-          name: 'Puntería',
-          description: 'Descripción'
-        },
-        evasion: {
-          name: 'Evasión',
-          description: 'Descripción'
-        },
-        cargo: {
-          name: 'Carga',
-          description: 'Descripción'
-        },
-        speed: {
-          name: 'Velocidad',
-          description: 'Descripción'
-        },
-        defense: {
-          name: 'Defensa',
-          description: 'Descripción'
-        },
-        attack: {
-          name: 'Ataque',
-          description: 'Descripción'
-        }
+        description: 'Descripción'
       },
       utility: {
         name: 'Utilidad',
-        description: 'Descripción',
-        experience: {
-          name: 'Experiencia',
-          description: 'Descripción'
-        },
-        orbiter: {
-          name: 'Orbitador',
-          description: 'Descripción'
-        },
-        carrier: {
-          name: 'Transporte',
-          description: 'Descripción'
-        },
-        recycler: {
-          name: 'Reciclador',
-          description: 'Descripción'
-        },
-        furnace: {
-          name: 'Forja',
-          description: 'Descripción'
-        },
-        factory: {
-          name: 'Fábrica',
-          description: 'Descripción'
-        },
-        refinery: {
-          name: 'Refinería',
-          description: 'Descripción'
-        },
-        metal: {
-          name: 'Metal',
-          description: 'Descripción'
-        },
-        crystal: {
-          name: 'Cristal',
-          description: 'Descripción'
-        },
-        oil: {
-          name: 'Combustible',
-          description: 'Descripción'
-        }
+        description: 'Descripción'
       },
       defensive: {
         name: 'Defensivo',
-        description: 'Descripción',
-        nano: {
-          name: 'Nanotecnología',
-          description: 'Descripción'
-        },
-        blaster: {
-          name: 'Torreta',
-          description: 'Descripción'
-        },
-        railgun: {
-          name: 'Repetidor',
-          description: 'Descripción'
-        },
-        cannon: {
-          name: 'Cañón',
-          description: 'Descripción'
-        },
-        plant: {
-          name: 'Planta',
-          description: 'Descripción'
-        },
-        barrier: {
-          name: 'Barrera',
-          description: 'Descripción'
-        },
-        warehouse: {
-          name: 'Almacén',
-          description: 'Descripción'
-        },
-        energy: {
-          name: 'Energía',
-          description: 'Descripción'
-        },
-        counter: {
-          name: 'Contraataque',
-          description: 'Descripción'
-        },
-        size: {
-          name: 'Terraformación',
-          description: 'Descripción'
-        }
+        description: 'Descripción'
+      }
+    },
+    skill: {
+      exploration: {
+        name: 'Exploración',
+        description: 'Descripción'
+      },
+      fighter: {
+        name: 'Caza',
+        description: 'Descripción'
+      },
+      cruiser: {
+        name: 'Crucero',
+        description: 'Descripción'
+      },
+      bomber: {
+        name: 'Bombardero',
+        description: 'Descripción'
+      },
+      aim: {
+        name: 'Puntería',
+        description: 'Descripción'
+      },
+      evasion: {
+        name: 'Evasión',
+        description: 'Descripción'
+      },
+      cargo: {
+        name: 'Carga',
+        description: 'Descripción'
+      },
+      speed: {
+        name: 'Velocidad',
+        description: 'Descripción'
+      },
+      defense: {
+        name: 'Defensa',
+        description: 'Descripción'
+      },
+      attack: {
+        name: 'Ataque',
+        description: 'Descripción'
+      },
+      experience: {
+        name: 'Experiencia',
+        description: 'Descripción'
+      },
+      orbiter: {
+        name: 'Orbitador',
+        description: 'Descripción'
+      },
+      carrier: {
+        name: 'Transporte',
+        description: 'Descripción'
+      },
+      recycler: {
+        name: 'Reciclador',
+        description: 'Descripción'
+      },
+      furnace: {
+        name: 'Forja',
+        description: 'Descripción'
+      },
+      factory: {
+        name: 'Fábrica',
+        description: 'Descripción'
+      },
+      refinery: {
+        name: 'Refinería',
+        description: 'Descripción'
+      },
+      metal: {
+        name: 'Metal',
+        description: 'Descripción'
+      },
+      crystal: {
+        name: 'Cristal',
+        description: 'Descripción'
+      },
+      oil: {
+        name: 'Combustible',
+        description: 'Descripción'
+      },
+      nano: {
+        name: 'Nanotecnología',
+        description: 'Descripción'
+      },
+      blaster: {
+        name: 'Torreta',
+        description: 'Descripción'
+      },
+      railgun: {
+        name: 'Repetidor',
+        description: 'Descripción'
+      },
+      cannon: {
+        name: 'Cañón',
+        description: 'Descripción'
+      },
+      plant: {
+        name: 'Planta',
+        description: 'Descripción'
+      },
+      barrier: {
+        name: 'Barrera',
+        description: 'Descripción'
+      },
+      warehouse: {
+        name: 'Almacén',
+        description: 'Descripción'
+      },
+      energy: {
+        name: 'Energía',
+        description: 'Descripción'
+      },
+      counter: {
+        name: 'Contraataque',
+        description: 'Descripción'
+      },
+      size: {
+        name: 'Terraformación',
+        description: 'Descripción'
       }
     },
     mission: {

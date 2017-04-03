@@ -2,17 +2,17 @@
   md-layout
 
     md-dialog(ref='confirm')
-      md-card.md-primary(v-bind:class="selected.class")
+      md-card.md-primary
         md-card-header
-          .md-title {{ selected.name }}
+          .md-title {{ 'dialog.confirm.title' | i18n }}
         md-card-content
-          span Are you sure to save this skilltree?
+          span {{ 'dialog.confirm.description' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="save()") Learn
+          md-button.md-dense.md-accent(v-on:click.native="save()") {{ 'button.accept' | i18n }}
 
     md-layout(v-for="branch in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="100", md-flex-xsmall="100")
-      md-card.md-primary.card(v-bind:class="branch.class")
+      md-card.md-primary.card(v-bind:class="branch.class", md-width-hover, v-on:click.native="select(branch)")
         md-card-header
           .md-title {{ branch.name }}
         md-card-content.center.background.padding
@@ -23,9 +23,6 @@
                 md-icon {{ skill.level }}
         md-card-content.center
           span {{ branch.description | i18n }}
-        md-card-actions
-          md-button.md-dense.md-warn(v-on:click.native="reset(branch)") Reset
-          md-button.md-dense.md-accent(v-on:click.native="select(branch)") Learn
 
     md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-chip.red {{ 'filter.nothing' | i18n }}
@@ -49,6 +46,8 @@
       for (let i = 0; i < 3; i++) {
         this.tree.push(factory.build())
       }
+      console.log(this.tree)
+      console.log(store.state.player.Skills)
     },
     methods: {
       layout (index) {
