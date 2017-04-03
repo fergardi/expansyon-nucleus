@@ -85,7 +85,7 @@
             md-avatar
               md-icon.md-primary dialpad
             span {{ 'title.research' | i18n }}
-            md-chip {{ player.level | format }}
+            md-chip {{ player.research | format }}
         md-list-item
           router-link(exact, to="/hangar", v-on:click.native="collapse()")
             md-avatar
