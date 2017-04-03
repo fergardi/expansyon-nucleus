@@ -23,7 +23,9 @@
               md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)", v-bind:disabled="!can(skill, branch)")
                 img(v-bind:src="skill.image")
                 md-icon {{ skill.PlayerSkill.level }}
-              span {{ skill.name | i18n }}
+              div
+                span {{ skill.name | i18n }}
+                md-tooltip(md-direction="top") {{ skill.description | i18n }}
         md-card-content.center
           span {{ branch.description | i18n }}
         md-card-actions
