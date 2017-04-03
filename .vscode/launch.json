@@ -11,9 +11,14 @@
       "cwd": "${workspaceRoot}/backend",
       "runtimeExecutable": "nodemon",
       "runtimeArgs": [
-        "--debug=5858"
+        "--ignore",
+        "./test",
+        "--debug=5858",
+        "--nolazy"
       ],
       "program": "${workspaceRoot}/backend/bin/server.js",
+      "args": [
+      ],
       "restart": true,
       "port": 5858,
       "console": "integratedTerminal",
