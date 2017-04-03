@@ -20,7 +20,7 @@
         md-card-content.center.background.padding
           md-layout.center
             md-layout.flex.center(v-for="(skill, index) in branch.Skills", v-bind:md-flex-xlarge="layout(index)", v-bind:md-flex-large="layout(index)", v-bind:md-flex-small="layout(index)", v-bind:md-flex-xsmall="layout(index)")
-              md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)")
+              md-button.md-fab.md-raised.md-primary.skill(v-on:click.native="up(skill)", v-bind:disabled="!can(skill, branch)")
                 img(v-bind:src="skill.image")
                 md-icon {{ skill.PlayerSkill.level }}
               span {{ skill.name | i18n }}
@@ -56,13 +56,19 @@
         this.tree = JSON.parse(JSON.stringify(store.state.player.Tree))
       },
       total (branch) {
-        return branch.Skills.reduce((total, skill) => total + skill.PlayerSkill.level, 0)
+        if (branch) return branch.Skills.reduce((total, skill) => total + skill.PlayerSkill.level, 0)
+        else {
+          return 0
+        }
       },
       layout (index) {
         return index > 0 ? 33 : 100
       },
       up (skill) {
-        if (skill.PlayerSkill.level < skill.max) skill.PlayerSkill.level++
+        if (skill.PlayerSkill.level < skill.max && this.total() <= store.state.player.level) skill.PlayerSkill.level++
+      },
+      down (skill) {
+        if (skill.PlayerSkill.level > skill.min && this.total() <= store.state.player.level) skill.PlayerSkill.level--
       },
       reset (branch) {
         branch.Skills.forEach((skill) => {
@@ -82,6 +88,11 @@
       save (branch) {
         // TODO
         this.close()
+      },
+      can (skill, branch) {
+        return skill.ParentId
+          ? branch.Skills.filter((sk) => sk.id === skill.ParentId)[0].PlayerSkill.level > 0
+          : true
       }
     },
     computed: {
@@ -119,4 +130,7 @@
         display flex
         align-items center
         justify-content center
+    .md-button.skill:disabled
+      .md-icon
+        color grey
 </style>

@@ -432,7 +432,6 @@
     scroll-behavior smooth !important
   .md-chip
     margin 2px
-    box-shadow 0px 2px 2px rgba(0, 0, 0, 0.2) !important
   .md-toolbar
     .md-button
       margin 0 !important
