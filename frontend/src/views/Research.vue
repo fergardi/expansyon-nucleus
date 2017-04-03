@@ -87,7 +87,7 @@
       },
       can (skill, branch) {
         return skill.ParentId
-          ? branch.Skills.filter((sk) => sk.id === skill.ParentId)[0].PlayerSkill.level > 0
+          ? branch.Skills.filter((item) => item.id === skill.ParentId)[0].PlayerSkill.level > 0
           : true
       }
     },

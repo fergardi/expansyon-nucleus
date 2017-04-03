@@ -172,11 +172,6 @@
           md-chip.red {{ player.influence | format }}
         md-list-item
           md-avatar
-            md-icon.md-primary hourglass_full
-          span {{ 'resource.turns' | i18n }}
-          md-chip.orange {{ player.turns | format }}
-        md-list-item
-          md-avatar
             md-icon.md-primary whatshot
           span {{ 'resource.aether' | i18n }}
           md-chip.pink {{ player.aether | format }}

@@ -201,7 +201,6 @@ const translation = {
       progress: 'Progress'
     },
     resource: {
-      turns: 'Turns',
       metal: 'Metal',
       crystal: 'Crystal',
       oil: 'Oil',
@@ -212,6 +211,9 @@ const translation = {
       planets: 'Planets',
       moon: 'Moon',
       station: 'Station',
+      ship: 'Ships',
+      building: 'Buildings',
+      tower: 'Towers',
       aether: 'Aether',
       quantity: 'Quantity',
       experience: 'Experience',
@@ -753,7 +755,6 @@ const translation = {
       progress: 'Progreso'
     },
     resource: {
-      turns: 'Turnos',
       metal: 'Metal',
       crystal: 'Cristal',
       oil: 'Combustible',
@@ -764,6 +765,9 @@ const translation = {
       planets: 'Planetas',
       moon: 'Luna',
       station: 'Estación',
+      ship: 'Naves',
+      building: 'Edificios',
+      tower: 'Torres',
       aether: 'Éter',
       quantity: 'Cantidad',
       experience: 'Experiencia',
