@@ -134,7 +134,9 @@ const translation = {
       activate: 'Activate',
       regret: 'Regret',
       sell: 'Sell',
-      retreat: 'Retreat'
+      retreat: 'Retreat',
+      learn: 'Learn',
+      reset: 'Reset'
     },
     account: {
       login: 'Login',
@@ -679,7 +681,9 @@ const translation = {
       activate: 'Activar',
       regret: 'Retirar',
       sell: 'Vender',
-      retreat: 'Retirada'
+      retreat: 'Retirada',
+      learn: 'Aprender',
+      reset: 'Reiniciar'
     },
     account: {
       login: 'Entrar',
@@ -972,7 +976,7 @@ const translation = {
         description: 'Descripción'
       },
       carrier: {
-        name: 'Transporte',
+        name: 'Transportador',
         description: 'Descripción'
       },
       recycler: {

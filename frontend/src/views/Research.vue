@@ -14,7 +14,9 @@
     md-layout(v-for="branch in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="100", md-flex-xsmall="100")
       md-card.md-primary.card(v-bind:class="branch.class")
         md-card-header
-          .md-title {{ branch.name | i18n }}
+          .md-title
+            span {{ branch.name | i18n }}
+            md-chip {{ total(branch) | format }}
         md-card-content.center.background.padding
           md-layout.center
             md-layout.flex.center(v-for="(skill, index) in branch.Skills", v-bind:md-flex-xlarge="layout(index)", v-bind:md-flex-large="layout(index)", v-bind:md-flex-small="layout(index)", v-bind:md-flex-xsmall="layout(index)")
@@ -24,6 +26,9 @@
               span {{ skill.name | i18n }}
         md-card-content.center
           span {{ branch.description | i18n }}
+        md-card-actions
+          md-button.md-dense.md-warn(v-on:click.native="reset(branch)") {{ 'button.reset' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="select(branch)") {{ 'button.learn' | i18n }}
 
     md-layout.center(v-if="!filtered.length", md-flex-xlarge="100", md-flex-large="100", md-flex-medium="100", md-flex-small="100", md-flex-xsmall="100")
       md-chip.red {{ 'filter.nothing' | i18n }}
@@ -50,6 +55,9 @@
         // deep clone object to avoid vuex mutation error
         this.tree = JSON.parse(JSON.stringify(store.state.player.Tree))
       },
+      total (branch) {
+        return branch.Skills.reduce((total, skill) => total + skill.PlayerSkill.level, 0)
+      },
       layout (index) {
         return index > 0 ? 33 : 100
       },
@@ -57,8 +65,8 @@
         if (skill.PlayerSkill.level < skill.max) skill.PlayerSkill.level++
       },
       reset (branch) {
-        branch.skills.forEach((skill) => {
-          skill.level = skill.min
+        branch.Skills.forEach((skill) => {
+          skill.PlayerSkill.level = skill.min
         })
       },
       confirm () {
@@ -92,6 +100,8 @@
 <style lang="stylus" scoped>
   .flex
     flex-direction column
+    span
+      font-size 0.75em
     .md-button.skill
       padding 5px
       display flex
@@ -109,6 +119,4 @@
         display flex
         align-items center
         justify-content center
-    span
-      font-size 0.8em
 </style>
