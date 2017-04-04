@@ -110,14 +110,14 @@
   .flex
     flex-direction column
     span
-      font-size 0.75em
+      font-size 0.8em
     .md-button.skill
       padding 5px
       display flex
       align-items center
       justify-content center
       .md-icon
-        font-family Roboto,Noto Sans,Noto,sans-serif
+        font-family 'Raleway', sans-serif !important
         background-color rgba(0,0,0,0.8)
         border-radius 50%
         font-size 14px
