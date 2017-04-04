@@ -943,123 +943,123 @@ const translation = {
     skill: {
       exploration: {
         name: 'Exploración',
-        description: 'Descripción'
+        description: 'Aumenta en +1 los planetas en Exploración'
       },
       fighter: {
         name: 'Caza',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Cazas'
       },
       cruiser: {
         name: 'Crucero',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Cruceros'
       },
       bomber: {
         name: 'Bombardero',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Bombarderos'
       },
       aim: {
         name: 'Puntería',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la Puntería de Naves y Torres'
       },
       evasion: {
         name: 'Evasión',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la Evasión de Naves y Torres'
       },
       cargo: {
         name: 'Carga',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la Carga de Naves y Torres'
       },
       speed: {
         name: 'Velocidad',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la Velocidad de Naves y Torres'
       },
       defense: {
         name: 'Defensa',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la Defensa de Naves y Torres'
       },
       attack: {
         name: 'Ataque',
-        description: 'Descripción'
+        description: 'Aumenta en +10% el Ataque de Naves y Torres'
       },
       experience: {
         name: 'Experiencia',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la cantidad de Experiencia'
       },
       orbiter: {
         name: 'Orbitador',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Orbitadores'
       },
       carrier: {
         name: 'Transportador',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Transportadores'
       },
       recycler: {
         name: 'Reciclador',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Recicladores'
       },
       furnace: {
         name: 'Forja',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la construcción de Forjas'
       },
       factory: {
         name: 'Fábrica',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la construcción de Fábricas'
       },
       refinery: {
         name: 'Refinería',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la construcción de Refinerías'
       },
       metal: {
         name: 'Metal',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Metal'
       },
       crystal: {
         name: 'Cristal',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Crystal'
       },
       oil: {
         name: 'Combustible',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la producción de Combustible'
       },
       nano: {
         name: 'Nanotecnología',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la reconstrucción de Edificios'
       },
       blaster: {
         name: 'Torreta',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la construcción de Torretas'
       },
       railgun: {
         name: 'Repetidor',
-        description: 'Descripción'
+        description: 'Aumenta en +10% construcción de Repetidores'
       },
       cannon: {
         name: 'Cañón',
-        description: 'Descripción'
+        description: 'Aumenta en +10% construcción de Cañones'
       },
       plant: {
         name: 'Planta',
-        description: 'Descripción'
+        description: 'Aumenta en +10% construcción de Plantas'
       },
       barrier: {
         name: 'Barrera',
-        description: 'Descripción'
+        description: 'Aumenta en +10% construcción de Barreras'
       },
       warehouse: {
         name: 'Almacén',
-        description: 'Descripción'
+        description: 'Aumenta en +10% construcción de Almacenes'
       },
       energy: {
         name: 'Energía',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la cantidad de Energía'
       },
       counter: {
         name: 'Contraataque',
-        description: 'Descripción'
+        description: 'Aumenta en +10% el Ataque al defender'
       },
       size: {
         name: 'Terraformación',
-        description: 'Descripción'
+        description: 'Aumenta en +10% la cantidad de Espacio'
       }
     },
     mission: {

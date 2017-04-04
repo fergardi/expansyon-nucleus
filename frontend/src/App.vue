@@ -83,7 +83,7 @@
         md-list-item
           router-link(exact, to="/research", v-on:click.native="collapse()")
             md-avatar
-              md-icon.md-primary dialpad
+              md-icon.md-primary.flip dialpad
             span {{ 'title.research' | i18n }}
             md-chip {{ player.research | format }}
         md-list-item
@@ -697,6 +697,9 @@
     &.md-chip
       background-color pink !important
       color white !important
+
+  .flip
+    transform: translate(-50%,-50%) rotate(180deg) !important
 
   /* ANIMATION TRANSITION */
   /*base code*/
