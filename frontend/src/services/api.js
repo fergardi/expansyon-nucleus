@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// baseUrl and authorization bearer have been defined in auth service
+// baseUrl, timeout and authorization bearer have been defined in ../services/auth
 
 const api = {
   getFactions: () => {
