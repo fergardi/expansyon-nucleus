@@ -9,10 +9,11 @@
               span {{ selected.name | i18n }}
               md-chip {{ selected.PlayerShip.quantity - quantity | format }}
           md-card-content
-            md-input-container
+            md-input-container(v-bind:class="{ 'md-input-invalid': !can }")
               md-icon add
               label {{ 'resource.quantity' | i18n }}
               md-input(type="number", v-model.number="quantity", min="0", v-bind:max="selected.PlayerShip.quantity", required)
+              span.md-error {{ 'resource.insufficient' | i18n }}
             md-input-container
               md-icon apps
               label {{ 'resource.metal' | i18n }}

@@ -9,10 +9,11 @@
               span {{ selected.name | i18n }}
               md-chip {{ selected.PlayerRelic.quantity - quantity | format }}
           md-card-content
-            md-input-container
+            md-input-container(v-bind:class="{ 'md-input-invalid': !can }")
               md-icon add
               label {{ 'resource.quantity' | i18n }}
               md-input(type="number", v-model.number="quantity", min="0", v-bind:max="selected.PlayerRelic.quantity", required)
+              span.md-error {{ 'resource.insufficient' | i18n }}
             md-input-container
               md-icon apps
               label {{ 'resource.metal' | i18n }}
@@ -44,7 +45,17 @@
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="sale()") {{ 'button.sell' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="activate()") {{ 'button.activate' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="confirm()") {{ 'button.activate' | i18n }}
+
+    md-dialog(ref='confirm')
+      md-card.md-primary
+        md-card-header
+          .md-title {{ 'dialog.confirm.title' | i18n }}
+        md-card-content
+          span {{ 'dialog.confirm.description' | i18n }}
+        md-card-actions
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="activate()") {{ 'button.confirm' | i18n }}
     
     md-layout(v-for="relic in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
 
@@ -102,12 +113,16 @@
       enable () {
         this.$refs['enable'].open()
       },
+      confirm () {
+        this.$refs['confirm'].open()
+      },
       sale () {
-        this.$refs['enable'].close()
+        this.$refs['confirm'].close()
         this.$refs['sale'].open()
       },
       close () {
         this.$refs['enable'].close()
+        this.$refs['confirm'].close()
         this.$refs['sale'].close()
       },
       clear () {
@@ -158,6 +173,18 @@
       }
     },
     computed: {
+      player () {
+        return store.state.player
+      },
+      relics () {
+        return this.player.Relics
+      },
+      has () {
+        return (this.quantity <= this.selected.PlayerRelic.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)
+      },
+      can () {
+        return this.quantity > 0
+      },
       search () {
         return store.state.search
       },
@@ -165,12 +192,6 @@
         return this.relics.filter((relic) => {
           return this.$t(relic.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
-      },
-      has () {
-        return (this.quantity <= this.selected.PlayerRelic.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)
-      },
-      relics () {
-        return store.state.player.Relics
       }
     }
   }

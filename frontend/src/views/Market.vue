@@ -16,8 +16,19 @@
           md-chip.pink(v-if="selected.aether > 0") {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.close' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="regret()", v-if="mine") {{ 'button.regret' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="buy()", v-if="!mine", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="confirm()", v-if="mine") {{ 'button.regret' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="confirm()", v-if="!mine", v-bind:disabled="!can") {{ 'button.buy' | i18n }}
+
+    md-dialog(ref='confirm')
+      md-card.md-primary
+        md-card-header
+          .md-title {{ 'dialog.confirm.title' | i18n }}
+        md-card-content
+          span {{ 'dialog.confirm.description' | i18n }}
+        md-card-actions
+          md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="regret()", v-if="mine") {{ 'button.confirm' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="buy()", v-if="!mine") {{ 'button.confirm' | i18n }}
 
     md-layout(v-for="sale in filtered", md-flex-xlarge="33", md-flex-large="33", md-flex-medium="33", md-flex-small="50", md-flex-xsmall="100")
 
@@ -117,8 +128,13 @@
       info () {
         this.$refs['info'].open()
       },
+      confirm () {
+        this.$refs['info'].close()
+        this.$refs['confirm'].open()
+      },
       close () {
         this.$refs['info'].close()
+        this.$refs['confirm'].close()
       },
       select (sale) {
         this.selected = sale

@@ -2,14 +2,14 @@
   md-table-card
 
     md-dialog(ref='confirm')
-      md-card.md-primary.grey
+      md-card.md-primary
         md-card-header
-          .md-title {{ guild.name }}
+          .md-title {{ 'dialog.confirm.title' | i18n }}
         md-card-content
-          span {{ 'guild.confirm' | i18n }}
+          span {{ 'dialog.confirm.description' | i18n }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
-          md-button.md-dense.md-accent(v-on:click.native="leave()") {{ 'button.leave' | i18n }}
+          md-button.md-dense.md-accent(v-on:click.native="leave()") {{ 'button.confirm' | i18n }}
 
     md-dialog(ref='info')
       md-card.md-primary.grey
