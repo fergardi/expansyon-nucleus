@@ -11,8 +11,8 @@
           md-card-content
             md-input-container(v-bind:class="{ 'md-input-invalid': !can }")
               md-icon add
-              label {{ 'resource.quantity' | i18n }}
-              md-input(type="number", v-model.number="quantity", min="0", required)
+              label {{ 'resource.quantity' | i18n }} ({{ (maximum - quantity) | format }})
+              md-input(type="number", v-model.number="quantity", min="0", v-bind:max="maximum", required)
               span.md-error {{ 'resource.insufficient' | i18n }}
           md-card-content
             md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
@@ -57,6 +57,9 @@
     data () {
       return {
         selected: {
+          metal: 1,
+          crystal: 1,
+          oil: 1,
           PlayerBuilding: {
             quantity: 0
           }
@@ -97,6 +100,18 @@
       }
     },
     computed: {
+      player () {
+        return store.state.player
+      },
+      buildings () {
+        return this.player.Buildings
+      },
+      maximum () {
+        return Math.min(Math.floor(this.player.metal / this.selected.metal), Math.floor(this.player.crystal / this.selected.crystal), Math.floor(this.player.oil / this.selected.oil))
+      },
+      can () {
+        return this.selected.metal * this.quantity <= this.player.metal && this.selected.crystal * this.quantity <= this.player.crystal && this.selected.oil * this.quantity <= this.player.oil && this.quantity > 0 && this.quantity <= this.maximum
+      },
       search () {
         return store.state.search
       },
@@ -104,12 +119,6 @@
         return this.buildings.filter((building) => {
           return this.$t(building.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
-      },
-      can () {
-        return this.selected.metal * this.quantity <= store.state.player.metal && this.selected.crystal * this.quantity <= store.state.player.crystal && this.selected.oil * this.quantity <= store.state.player.oil
-      },
-      buildings () {
-        return store.state.player.Buildings
       }
     }
   }

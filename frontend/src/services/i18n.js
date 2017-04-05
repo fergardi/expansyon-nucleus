@@ -1031,23 +1031,23 @@ const translation = {
       },
       railgun: {
         name: 'Repetidor',
-        description: 'Aumenta en +10% construcción de Repetidores'
+        description: 'Aumenta en +10% la construcción de Repetidores'
       },
       cannon: {
         name: 'Cañón',
-        description: 'Aumenta en +10% construcción de Cañones'
+        description: 'Aumenta en +10% la construcción de Cañones'
       },
       plant: {
         name: 'Planta',
-        description: 'Aumenta en +10% construcción de Plantas'
+        description: 'Aumenta en +10% la construcción de Plantas'
       },
       barrier: {
         name: 'Barrera',
-        description: 'Aumenta en +10% construcción de Barreras'
+        description: 'Aumenta en +10% la construcción de Barreras'
       },
       warehouse: {
         name: 'Almacén',
-        description: 'Aumenta en +10% construcción de Almacenes'
+        description: 'Aumenta en +10% la construcción de Almacenes'
       },
       energy: {
         name: 'Energía',

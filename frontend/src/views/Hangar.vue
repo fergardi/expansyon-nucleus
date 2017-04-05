@@ -43,8 +43,8 @@
           md-card-content
             md-input-container(v-bind:class="{ 'md-input-invalid': !can }")
               md-icon add
-              label {{ 'resource.quantity' | i18n }}
-              md-input(type="number", v-model.number="quantity", min="0", required)
+              label {{ 'resource.quantity' | i18n }} ({{ (maximum - quantity) | format }})
+              md-input(type="number", v-model.number="quantity", min="0", v-bind:max="maximum", required)
               span.md-error {{ 'resource.insufficient' | i18n }}
           md-card-content
             md-chip {{ (selected.metal * quantity) | format }} {{ 'resource.metal' | i18n }}
@@ -90,6 +90,9 @@
     data () {
       return {
         selected: {
+          metal: 1,
+          crystal: 1,
+          oil: 1,
           PlayerShip: {
             quantity: 0
           }
@@ -165,6 +168,21 @@
       }
     },
     computed: {
+      player () {
+        return store.state.player
+      },
+      ships () {
+        return this.player.Ships
+      },
+      maximum () {
+        return Math.min(Math.floor(this.player.metal / this.selected.metal), Math.floor(this.player.crystal / this.selected.crystal), Math.floor(this.player.oil / this.selected.oil))
+      },
+      can () {
+        return this.selected.metal * this.quantity <= this.player.metal && this.selected.crystal * this.quantity <= this.player.crystal && this.selected.oil * this.quantity <= this.player.oil && this.quantity > 0 && this.quantity <= this.maximum
+      },
+      has () {
+        return (this.quantity <= this.selected.PlayerShip.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)
+      },
       search () {
         return store.state.search
       },
@@ -172,15 +190,6 @@
         return this.ships.filter((ship) => {
           return this.$t(ship.name).toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
-      },
-      can () {
-        return this.selected.metal * this.quantity <= store.state.player.metal && this.selected.crystal * this.quantity <= store.state.player.crystal && this.selected.oil * this.quantity <= store.state.player.oil
-      },
-      has () {
-        return (this.quantity <= this.selected.PlayerShip.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)
-      },
-      ships () {
-        return store.state.player.Ships
       }
     }
   }

@@ -3,6 +3,7 @@ import axios from 'axios'
 import store from '../vuex/store'
 
 axios.defaults.baseURL = constants.api
+axios.defaults.timeout = 5000
 
 const auth = {
   login: (credentials) => {

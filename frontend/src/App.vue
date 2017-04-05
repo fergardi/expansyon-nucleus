@@ -507,6 +507,13 @@
   .search
     flex-grow 2
 
+  /* tooltips */
+  .md-tooltip
+    width 100px
+    white-space normal
+    text-align center
+    height auto
+
   /* borders */
   /*
   .md-card
@@ -699,7 +706,7 @@
       color white !important
 
   .flip
-    transform: translate(-50%,-50%) rotate(180deg) !important
+    transform translate(-50%,-50%) rotate(180deg) !important
 
   /* ANIMATION TRANSITION */
   /*base code*/
