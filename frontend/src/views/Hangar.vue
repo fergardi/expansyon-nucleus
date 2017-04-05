@@ -179,7 +179,7 @@
         return Math.min(Math.floor(this.player.metal / this.selected.metal), Math.floor(this.player.crystal / this.selected.crystal), Math.floor(this.player.oil / this.selected.oil))
       },
       can () {
-        return this.selected.metal * this.quantity <= this.player.metal && this.selected.crystal * this.quantity <= this.player.crystal && this.selected.oil * this.quantity <= this.player.oil && this.quantity > 0 && this.quantity <= this.maximum
+        return this.selected.metal * this.quantity <= this.player.metal && this.selected.crystal * this.quantity <= this.player.crystal && this.selected.oil * this.quantity <= this.player.oil && this.quantity > 0 && this.quantity <= this.maximum && (this.selected.PlayerShip.quantity + this.quantity <= this.player.energy)
       },
       has () {
         return (this.quantity <= this.selected.PlayerShip.quantity && this.quantity > 0) && (this.metal > 0 || this.crystal > 0 || this.oil > 0 || this.aether > 0)

@@ -144,27 +144,27 @@
           md-avatar
             md-icon.md-primary apps
           span {{ 'resource.metal' | i18n }}
-          md-chip.indigo {{ player.metal | format }}
+          md-chip.indigo {{ player.metal | format }} / {{ player.secure | format }}
         md-list-item
           md-avatar
             md-icon.md-primary texture
           span {{ 'resource.crystal' | i18n }}
-          md-chip.purple {{ player.crystal | format }}
+          md-chip.purple {{ player.crystal | format }} / {{ player.secure | format }}
         md-list-item
           md-avatar
             md-icon.md-primary opacity
           span {{ 'resource.oil' | i18n }}
-          md-chip.yellow {{ player.oil | format }}
+          md-chip.yellow {{ player.oil | format }} / {{ player.secure | format }}
         md-list-item
           md-avatar
             md-icon.md-primary home
           span {{ 'resource.size' | i18n }}
-          md-chip.green {{ player.size | format }}
+          md-chip.green {{ player.infrastructure | format }} / {{ player.size | format }}
         md-list-item
           md-avatar
             md-icon.md-primary flash_on
           span {{ 'resource.energy' | i18n }}
-          md-chip.cyan {{ player.energy | format }}
+          md-chip.cyan {{ player.hangar | format }} / {{ player.energy | format }}
         md-list-item
           md-avatar
             md-icon.md-primary star
@@ -181,12 +181,12 @@
           md-avatar
             md-icon.md-primary school
           span {{ 'resource.experience' | i18n }}
-          md-chip {{ player.experience | format }}
+          md-chip {{ player.experience | format }} / {{ player.up | format }}
         md-list-item
           md-avatar
             md-icon.md-primary share
           span {{ 'resource.level' | i18n }}
-          md-chip {{ player.level | format }}
+          md-chip {{ player.level | format }} / {{ player.cap | format }}
 
         md-subheader {{ 'subtitle.hangar' | i18n }}
         md-list-item

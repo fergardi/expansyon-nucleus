@@ -218,7 +218,7 @@ const translation = {
       quantity: 'Quantity',
       experience: 'Experience',
       level: 'Level',
-      insufficient: 'Insufficient resources or quantity'
+      insufficient: 'Insufficient resources, quantity, energy or space'
     },
     planet: {
       rich: {
@@ -772,7 +772,7 @@ const translation = {
       quantity: 'Cantidad',
       experience: 'Experiencia',
       level: 'Nivel',
-      insufficient: 'Recursos o cantidad insuficientes'
+      insufficient: 'Recursos, cantidad, espacio o energía insuficiente'
     },
     planet: {
       rich: {

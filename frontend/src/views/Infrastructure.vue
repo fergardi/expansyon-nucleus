@@ -107,7 +107,7 @@
         return Math.min(Math.floor(this.player.metal / this.selected.metal), Math.floor(this.player.crystal / this.selected.crystal), Math.floor(this.player.oil / this.selected.oil))
       },
       can () {
-        return this.selected.metal * this.quantity <= this.player.metal && this.selected.crystal * this.quantity <= this.player.crystal && this.selected.oil * this.quantity <= this.player.oil && this.quantity > 0 && this.quantity <= this.maximum
+        return this.selected.metal * this.quantity <= this.player.metal && this.selected.crystal * this.quantity <= this.player.crystal && this.selected.oil * this.quantity <= this.player.oil && this.quantity > 0 && this.quantity <= this.maximum && (this.selected.PlayerBuilding.quantity + this.quantity <= this.player.size)
       },
       search () {
         return store.state.search
