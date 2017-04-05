@@ -41,10 +41,10 @@
             img(src="https://image.flaticon.com/icons/svg/361/361706.svg", v-show="planet.moon")
             img(src="https://image.flaticon.com/icons/svg/139/139726.svg", v-show="planet.station")
         md-card-content.no-padding.center
-          md-progress(v-bind:md-progress="planet.size")
           md-progress(v-bind:md-progress="planet.metal")
           md-progress(v-bind:md-progress="planet.crystal")
           md-progress(v-bind:md-progress="planet.oil")
+          md-progress(v-bind:md-progress="planet.size")
           md-progress(v-bind:md-progress="planet.energy")
           md-progress(v-bind:md-progress="planet.influence")
         md-card-content.center(v-if="planet.moon || planet.station")
