@@ -159,7 +159,7 @@
           md-avatar
             md-icon.md-primary home
           span {{ 'resource.size' | i18n }}
-          md-chip.green {{ player.infrastructure | format }} / {{ player.size | format }}
+          md-chip.green {{ (player.infrastructure + player.defense) | format }} / {{ player.size | format }}
         md-list-item
           md-avatar
             md-icon.md-primary flash_on

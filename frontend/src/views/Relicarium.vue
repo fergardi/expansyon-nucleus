@@ -114,6 +114,7 @@
         this.$refs['enable'].open()
       },
       confirm () {
+        this.$refs['enable'].close()
         this.$refs['confirm'].open()
       },
       sale () {
