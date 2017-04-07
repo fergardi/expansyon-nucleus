@@ -194,6 +194,12 @@ const api = {
     .then((response) => {
       return response
     })
+  },
+  startBattle: (battle) => {
+    return axios.post(`/battle`, battle)
+    .then((response) => {
+      return response
+    })
   }
 }
 

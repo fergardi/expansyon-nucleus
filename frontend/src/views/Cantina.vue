@@ -45,6 +45,7 @@
 
 <script>
   import api from '../services/api'
+  import notification from '../services/notification'
   import store from '../vuex/store'
 
   export default {
@@ -92,8 +93,26 @@
         this.form()
       },
       attack () {
-        // TODO
-        this.close()
+        var battle = {
+          PlayerId: store.state.player.id,
+          MissionId: this.selected.id,
+          PlanetId: null,
+          fighter: this.fighter,
+          cruiser: this.cruiser,
+          bomber: this.bomber
+        }
+        api.startBattle(battle)
+        .then((battle) => {
+          notification.success('notification.cantina.ok')
+        })
+        .catch((error) => {
+          console.error(error)
+          notification.error('notification.cantina.error')
+        })
+        .then(() => {
+          this.clear()
+          this.close()
+        })
       }
     },
     computed: {

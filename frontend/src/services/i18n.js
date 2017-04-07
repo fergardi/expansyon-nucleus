@@ -670,7 +670,7 @@ const translation = {
       battle: 'Batalla',
       received: 'Recibido',
       sent: 'Enviado',
-      create: 'Nuevo'
+      create: 'Crear'
     },
     button: {
       forgot: 'Recordar',

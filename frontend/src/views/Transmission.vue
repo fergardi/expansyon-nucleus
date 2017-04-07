@@ -106,7 +106,7 @@
               md-option(v-for="player in players", v-bind:value="player.id") {{ player.name }}
           md-input-container
             label {{ 'transmission.subject' | i18n }}
-            md-input(type="text", v-model="message.subject", required)
+            md-input(type="text", v-model="message.subject", maxlength="70", required)
           md-input-container
             label {{ 'transmission.text' | i18n }}
             md-textarea(v-model="message.text", maxlength="140", required)
