@@ -181,12 +181,12 @@
           md-avatar
             md-icon.md-primary school
           span {{ 'resource.experience' | i18n }}
-          md-chip {{ player.experience | format }} / {{ player.up | format }}
+          md-chip {{ player.experience | format }} / {{ (player.up * player.level) | format }}
         md-list-item
           md-avatar
             md-icon.md-primary share
           span {{ 'resource.level' | i18n }}
-          md-chip {{ player.level | format }} / {{ player.cap | format }}
+          md-chip {{ player.level | format }}
 
         md-subheader {{ 'subtitle.hangar' | i18n }}
         md-list-item
