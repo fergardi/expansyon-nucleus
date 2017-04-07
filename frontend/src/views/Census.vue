@@ -11,6 +11,7 @@
           md-chip(v-if="selected.Guild") {{ selected.Guild.name | format }}
         md-card-actions
           md-button.md-dense.md-warn(v-on:click.native="close()") {{ 'button.cancel' | i18n }}
+        //
           md-button.md-dense.md-accent(v-on:click.native="enemy()") {{ 'button.enemy' | i18n }}
           md-button.md-dense.md-accent(v-on:click.native="friend()") {{ 'button.friend' | i18n }}
 
@@ -38,7 +39,7 @@
 
             md-table-row(v-if="!ordered.length")
               md-table-cell {{ 'filter.nothing' | i18n }}
-
+    //
       md-tab#friends.no-padding(v-bind:md-label="$t('tab.friends')")
         
         md-table(md-sort="influence", md-sort-type="desc", v-on:sort="order")
