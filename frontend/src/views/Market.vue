@@ -74,10 +74,11 @@
           md-chip(v-if="item(sale).tower") {{ 'resource.tower' | i18n }}
           md-chip(v-if="item(sale).moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="item(sale).station") {{ 'resource.station' | i18n }}
+          md-chip(v-if="item(sale).main") {{ 'resource.main' | i18n }}
+          md-chip(v-if="item(sale).reset") {{ 'resource.reset' | i18n }}
           md-chip(v-if="item(sale).metal > 0") {{ item(sale).metal | format }} {{ 'resource.metal' | i18n }}
           md-chip(v-if="item(sale).crystal > 0") {{ item(sale).crystal | format }} {{ 'resource.crystal' | i18n }}
           md-chip(v-if="item(sale).oil > 0") {{ item(sale).oil | format }} {{ 'resource.oil' | i18n }}
-          md-chip.pink(v-if="item(sale).aether > 0") {{ item(sale).aether | format }} {{ 'resource.aether' | i18n }}
         md-card-content.center(v-if="item(sale).description")
           span {{ item(sale).description | i18n }}
         md-card-content.center

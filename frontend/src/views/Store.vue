@@ -20,10 +20,20 @@
           .md-title {{ relic.name | i18n }}
         md-card-media
           img(v-bind:src="relic.image")
-        md-card-content.center(v-if="relic.moon || relic.station || relic.planet")
+        md-card-content.center
+          md-chip(v-if="relic.level > 0") {{ relic.level | format }} {{ 'resource.level' | i18n }}
+          md-chip(v-if="relic.experience > 0") {{ relic.experience | format }} {{ 'resource.experience' | i18n }}
+          md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
+          md-chip(v-if="relic.ship") {{ 'resource.ship' | i18n }}
+          md-chip(v-if="relic.building") {{ 'resource.building' | i18n }}
+          md-chip(v-if="relic.tower") {{ 'resource.tower' | i18n }}
           md-chip(v-if="relic.moon") {{ 'resource.moon' | i18n }}
           md-chip(v-if="relic.station") {{ 'resource.station' | i18n }}
-          md-chip(v-if="relic.planet") {{ 'resource.planet' | i18n }}
+          md-chip(v-if="relic.main") {{ 'resource.main' | i18n }}
+          md-chip(v-if="relic.reset") {{ 'resource.reset' | i18n }}
+          md-chip(v-if="relic.metal > 0") {{ relic.metal | format }} {{ 'resource.metal' | i18n }}
+          md-chip(v-if="relic.crystal > 0") {{ relic.crystal | format }} {{ 'resource.crystal' | i18n }}
+          md-chip(v-if="relic.oil > 0") {{ relic.oil | format }} {{ 'resource.oil' | i18n }}
         md-card-content.center
           span {{ relic.description | i18n }}
         md-card-content.center

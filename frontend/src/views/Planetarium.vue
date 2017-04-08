@@ -6,7 +6,7 @@
         form(v-on:submit.stop.prevent="sell()")
           md-card-header
             .md-title
-              span {{ selected.name | i18n }}
+              span {{ selected.name }}
               md-chip {{ selected.total | format }}
           md-card-content
             md-input-container

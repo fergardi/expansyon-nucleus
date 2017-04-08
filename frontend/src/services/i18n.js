@@ -218,7 +218,9 @@ const translation = {
       quantity: 'Quantity',
       experience: 'Experience',
       level: 'Level',
-      insufficient: 'Insufficient resources, quantity, energy or space'
+      reset: 'Reset',
+      main: 'Main',
+      insufficient: 'No resources, quantity, energy or space'
     },
     planet: {
       rich: {
@@ -347,28 +349,60 @@ const translation = {
       }
     },
     relic: {
-      supernova: {
-        name: 'Supernova',
+      experience: {
+        name: 'Experience',
         description: 'Description'
       },
-      gravitron: {
-        name: 'Gravitron',
+      level: {
+        name: 'Level',
         description: 'Description'
       },
-      destroyer: {
-        name: 'Destroyer',
+      metal: {
+        name: 'Metal',
         description: 'Description'
       },
-      shipwreck: {
-        name: 'Shipwreck',
+      crystal: {
+        name: 'Crystal',
         description: 'Description'
       },
-      portal: {
-        name: 'Portal',
+      oil: {
+        name: 'Oil',
         description: 'Description'
       },
-      timeturner: {
-        name: 'Timeturner',
+      resources: {
+        name: 'Resources',
+        description: 'Description'
+      },
+      planet: {
+        name: 'Planet',
+        description: 'Description'
+      },
+      ship: {
+        name: 'Ship',
+        description: 'Description'
+      },
+      building: {
+        name: 'Building',
+        description: 'Description'
+      },
+      tower: {
+        name: 'Tower',
+        description: 'Description'
+      },
+      moon: {
+        name: 'Moon',
+        description: 'Description'
+      },
+      station: {
+        name: 'Station',
+        description: 'Description'
+      },
+      reset: {
+        name: 'Reset',
+        description: 'Description'
+      },
+      main: {
+        name: 'Main',
         description: 'Description'
       }
     },
@@ -772,7 +806,9 @@ const translation = {
       quantity: 'Cantidad',
       experience: 'Experiencia',
       level: 'Nivel',
-      insufficient: 'Recursos, cantidad, espacio o energía insuficiente'
+      reset: 'Reiniciar',
+      main: 'Principal',
+      insufficient: 'Sin recursos, cantidad, espacio o energía'
     },
     planet: {
       rich: {
@@ -901,28 +937,60 @@ const translation = {
       }
     },
     relic: {
-      supernova: {
-        name: 'Supernova',
+      experience: {
+        name: 'Experiencia',
         description: 'Descripción'
       },
-      gravitron: {
-        name: 'Gravitrón',
+      level: {
+        name: 'Nivel',
         description: 'Descripción'
       },
-      destroyer: {
-        name: 'Destructor',
+      metal: {
+        name: 'Metal',
         description: 'Descripción'
       },
-      shipwreck: {
-        name: 'Naufragio',
+      crystal: {
+        name: 'Cristal',
         description: 'Descripción'
       },
-      portal: {
-        name: 'Portal',
+      oil: {
+        name: 'Combustible',
         description: 'Descripción'
       },
-      timeturner: {
-        name: 'Giratiempo',
+      resources: {
+        name: 'Recursos',
+        description: 'Descripción'
+      },
+      planet: {
+        name: 'Planeta',
+        description: 'Descripción'
+      },
+      ship: {
+        name: 'Naves',
+        description: 'Descripción'
+      },
+      building: {
+        name: 'Edificios',
+        description: 'Descripción'
+      },
+      tower: {
+        name: 'Torres',
+        description: 'Descripción'
+      },
+      moon: {
+        name: 'Luna',
+        description: 'Descripción'
+      },
+      station: {
+        name: 'Estación',
+        description: 'Descripción'
+      },
+      reset: {
+        name: 'Reiniciar',
+        description: 'Descripción'
+      },
+      main: {
+        name: 'Principal',
         description: 'Descripción'
       }
     },
