@@ -40,6 +40,8 @@
           .md-title
             span {{ selected.name | i18n }}
             md-chip {{ selected.PlayerRelic.quantity | format }}
+        md-card-media
+          img(v-bind:src="selected.image")
         md-card-content
           span {{ selected.description | i18n }}
         md-card-actions

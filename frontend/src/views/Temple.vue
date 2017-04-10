@@ -5,6 +5,8 @@
       md-card.md-primary(v-bind:class="selected.class")
         md-card-header
           .md-title {{ selected.name | i18n }}
+        md-card-media
+          img(v-bind:src="selected.image")
         md-card-content
           span {{ selected.description | i18n }}
         md-card-content

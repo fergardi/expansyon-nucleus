@@ -560,6 +560,10 @@
           align-items center
           span + .md-chip
             margin-left 5px
+      .md-card-media
+        img
+          height 140px
+          padding 10px
 
   /* CARDS */
   border = 4px

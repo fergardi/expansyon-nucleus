@@ -7,6 +7,8 @@
           .md-title
             span {{ selected.name }}
             md-chip {{ selected.total }}
+        md-card-media
+          img(v-bind:src="selected.image")
         md-card-content
           md-chip.pink {{ selected.aether | format }} {{ 'resource.aether' | i18n }}
         md-card-actions

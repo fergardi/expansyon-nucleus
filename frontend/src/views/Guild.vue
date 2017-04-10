@@ -17,6 +17,8 @@
           .md-title
             span {{ selected.name }}
             md-chip {{ selected.Players.length | format }}
+        md-card-media
+          img(v-bind:src="selected.image")
         md-card-content
           span {{ selected.description }}
         md-card-content

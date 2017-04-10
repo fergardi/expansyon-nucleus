@@ -6,6 +6,8 @@
         form(v-on:submit.stop.prevent="attack()")
           md-card-header
             .md-title {{ selected.name | i18n }}
+          md-card-media
+            img(v-bind:src="selected.image")
           md-card-content
             md-input-container(v-bind:class="{ 'md-input-invalid': !hasFighter }")
               md-icon send

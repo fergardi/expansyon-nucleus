@@ -5,6 +5,8 @@
       md-card.md-primary(v-bind:class="color(selected)")
         md-card-header
           .md-title {{ selected.name }}
+        md-card-media
+          img(v-bind:src="selected.image")
         md-card-content
           md-chip {{ selected.Planets.length | format }} {{ 'resource.planets' | i18n }}
           md-chip {{ selected.influence | format }} {{ 'resource.influence' | i18n }}

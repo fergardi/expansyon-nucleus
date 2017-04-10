@@ -8,6 +8,8 @@
             .md-title
               span {{ selected.name | i18n }}
               md-chip {{ selected.PlayerTower.quantity | format }}
+          md-card-media
+            img(v-bind:src="selected.image")
           md-card-content
             md-input-container(v-bind:class="{ 'md-input-invalid': !can }")
               md-icon add

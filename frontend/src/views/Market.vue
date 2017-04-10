@@ -7,6 +7,14 @@
           .md-title
             span {{ item(selected).name | i18n }}
             md-chip(v-if="selected.quantity > 0") {{ selected.quantity | format }}
+        md-card-media(v-if="!selected.Planet")
+          img(v-bind:src="item(selected).image")
+        md-card-media.system(v-else)
+          .planet
+            img(v-bind:src="item(selected).image")
+          .orbit(v-if="item(selected).moon || item(selected).station")
+            img(src="https://image.flaticon.com/icons/svg/361/361706.svg", v-show="item(selected).moon")
+            img(src="https://image.flaticon.com/icons/svg/139/139726.svg", v-show="item(selected).station")
         md-card-content
           span {{ item(selected).description | i18n }}
         md-card-content
